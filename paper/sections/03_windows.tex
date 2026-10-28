@@ -1,0 +1,83 @@
+% 03_windows.tex
+\section{Periodic windows}
+\label{sec:windows}
+
+\begin{definition}[the family $P$]
+A \emph{periodic window} is a state
+\begin{equation}
+\rho=\mathcal N(v;L_v^2)\,\mathcal N(w;L_w^2)\Big[1+e^{-w^2/2\ell^2}\big(f(k_0v/\sigma)-1\big)\Big],
+\label{eq:P}
+\end{equation}
+with $f\ge0$ $2\pi$-periodic of mean $1$, $f(t)=1+\sum_{n\ge1}a_n\cos nt$.
+\end{definition}
+
+For every positive profile $|a_n|\le2$ (a positive measure has $|\hat\rho_n|\le\hat\rho_0$). The strip is $a_1=c\le1$, $a_{n\ge2}=0$; a
+\emph{comb} of Gaussian teeth of width $\tau$ (in units of the period$/2\pi$) has $a_n=2e^{-n^2\tau^2/2}$, so $a_1\to2$ as the teeth sharpen.
+
+\paragraph*{Blurred quantities.}
+Put $V=L_v^2+\sigma^2$, $L^2=L_w^2+\sigma^2$, $S_b=(L_w^{-2}+\ell^{-2})^{-1}$, $K=k_0^2L_v^2/V$, $k'=(k_0/\sigma)L_v^2/V$ and $x=(k'\sigma)^2\le K$.
+
+\begin{lemma}[exact factorisation] \proofst
+\label{lem:AW1P}
+$p=\mathcal N(v;V)\,\Gamma(w)\big[1+\sum_nq_n(w)\cos(nk'v)\big]$ with $\Gamma=\mathcal N(0,L^2)$, $q_n(w)=q0_n\,e^{-w^2/2s^2}$,
+$1/s^2=1/(S_b+\sigma^2)-1/L^2$ (one $s$ for all harmonics), $\bar q_n=|a_n|e^{-n^2K/2}$ and $0<q0_n\le\bar q_n$.
+\end{lemma}
+
+We write $\Qb=\sum_n\bar q_n$ (the blurred contrast), $N_p=\sum_nn^p\bar q_n$, $\varrho=s^2/(2L^2)$ (the window's aspect), and use the fact
+that the fundamental dominates after the blur: if $|a_n|\le|a_1|$ then $\bar q_n\le\bar q_1e^{-(n^2-1)x/2}$, and $\bar q_1\le2e^{-x/2}$.
+
+\paragraph*{From the strip to the window.}
+The strip analysis used ``$c\le1$'' and ``one cosine'' at a handful of places. Table~\ref{tab:replace} lists them with the replacement; the
+proofs are in Appendix~\ref{app:plemmas}. Two structural facts carry everything: (i) the blur keeps one envelope $e^{-w^2/2s^2}$ for all
+harmonics, and (ii) $1-\Qb\le f_{\mathrm{blurred}}\le1+\Qb$, so the exact period averages of the strip become sandwiches with factors
+$1/(1\pm\Qb)$.
+
+\begin{table*}
+\caption{Where the strip proof used one cosine with $c\le1$, and the replacement for periodic windows (all \proofst; App.~\ref{app:plemmas}).}
+\label{tab:replace}
+\begin{ruledtabular}
+\begin{tabular}{p{0.14\textwidth}p{0.22\textwidth}p{0.56\textwidth}}
+step & strip & periodic window\\ \hline
+factorisation & $p=\mathcal N_V\Gamma[1+q\cos t]$ & exact: $p=\mathcal N_V\Gamma[1+\sum q_n\cos nt]$, one $s$ for all $n$\\
+$w$-information & exact period average & $(1+u_0/(8(1+\Qb)))/L^2\le\Jww\le(1+u_0/(8(1-\Qb)))/L^2$\\
+$v$-information & exact period average & $xI_2/(2(1+\Qb))\le W_p\le xI_2/(2(1-\Qb))$, $I_2=\sum n^2q0_n^2s/\sqrt{s^2+2L^2}$\\
+envelope separation & $\keff^2=x\,S+\sigma^2/(4V)$ & unchanged (any periodic part)\\
+$S$ (every $u$) & $S\le8\kappa_2u/(8+u)$ & $S\le8\kappa_2(\Qb,\varrho)u_2/(8+u_0/(1+\Qb))$, $u_2$ the $n^2$-weighted $u$\\
+$S\le1+K_1\bar q^2$ & binomial series of $\sqrt{1+q\cos t}$ & Wiener majorant: $S\le S_i(x)$, $\sup_x x(S_i-1)=1.41$\\
+curvature term & exact cancellations, parity & $\gamma_P=[x(N_2(1+\Qb)+N_1^2)+\sqrt xN_1(1+2\Qb)/\sqrt e]/(1-\Qb)^2$; $f$ even\\
+last step & $q0^2\le e^{-x}$ & $q0_1^2\le4e^{-x}$ ($a_1\le2$): $\ln256$ enters the constant\\
+$L_w$ & assumed $\le1$ & removed (Lemma~\ref{lem:AY1P})\\
+$F_c$ & state factor & bounded by the window's parameters (Lemma~\ref{lem:AY2P})\\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+Here $W_p=\sigma^2\Jvv-\sigma^2/V$ is the window's $v$-information, $u_0=4L^2\int\Gamma\sum_nq_n'^2$, and $S=(\keff^2-\sigma^2/(4V))/x$ is the share of
+the $w$-gradient carried by the ripple's harmonics. The $w$- and $v$-sandwiches and the $S$-bounds were checked on exact point fields of
+seven states (comb and strip optima at $10^{-12}$ and $10^{-24}$, three further combs) \numst.
+
+The next two lemmas are the periodic-window forms of the two improvements that made the strip theorem final. Write
+$\eta=1/(1-|\varepsilon|)$, $G$ for the gap threshold of the proof by contradiction, and $\theta_G=1/(1-\eta G\sigma)$.
+
+\begin{lemma}[no assumption on the envelope] \proofst
+\label{lem:AY1P}
+Let $C=\langle\cos(R/\sqrt2)\rangle$ with $R$ the periodic part of $\sqrt2m_z-v'$ (App.~\ref{app:plemmas}). The period average of $p$ has the exact
+$w$-marginal $\Gamma$, and $R-w=\sigma^2(\tilde s+s_w)$ with $|\sigma^2\tilde s|\le\xi_P=\sigma\sqrt xN_1/(1-\Qb)$ pointwise. Inside the case
+$g<G$ one has $\sigma^4\Jww<\eta G\theta_G\sigma^3$, so $r:=\sqrt{\E(R-w)^2}\le\xi_P+\sigma^{3/2}\sqrt{\eta G\theta_G}$ and
+\begin{equation}
+1-C\;\ge\;(1-e^{-L^2/4})-\tfrac12(Lr+r^2/2)\;\ge\;\varphi_1\min(L^2,1),
+\end{equation}
+$\varphi_1=1-e^{-1/4}-O(\sqrt\sigma)\ge0.2211$, for $\sigma/(\eta G\theta_G)\le L^2\le1/\sigma$. Consequently a window with $L>1$ cannot have $g<G$:
+the AM--GM step of the lower-side chain would force $W_p>\varphi_1\omega^2/\Gamma_2^2$, which exceeds $\sup W_p$ by a factor $>2700$ on every cell of the certificate.
+\end{lemma}
+
+\begin{lemma}[$F_c$ from the window's parameters] \proofst
+\label{lem:AY2P}
+$F_c\ge(1-|\varepsilon|)A_1A_2A_3$ with $A_1=1/(1+J_{ww,\mathrm{up}}/J_{vv,\mathrm{lo}})$, $A_2=(1-\delta_H)(1-r_C)$, $A_3=\sqrt{1-r_w}$, where
+$\delta_H=\sigma^2/L^2+(\sigma/s)^2[\Qb/(1-\Qb)+\Qb^2/(e(1-\Qb)^2)]+\sqrt x(\sigma/s)N_1/(\sqrt e(1-\Qb)^2)$ and $r_C$, $r_w$ are explicit in
+$(\Qb,N_1,x,L,s,V,\sigma)$ (App.~\ref{app:plemmas}). In particular $F_c\to1$ when $L^2$, $V$ and $\sigma/s$ are small.
+\end{lemma}
+
+On the eight states checked with paper~E's evaluator (comb and strip optima at $10^{-12}$ and $10^{-24}$, the comb optimum at $10^{-6}$,
+three further combs) each of $a/\mathrm{den}$, $|C_w|$ and $\sqrt{(1-\Phi/4)(1-\delta_w)}$ lies above its bound \numst; on the optima at
+$10^{-12}$ and $10^{-24}$ the bound for $F_c$ agrees with the actual value to $4\times10^{-7}$.

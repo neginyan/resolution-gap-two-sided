@@ -1,0 +1,54 @@
+% 06_finite_sigma.tex
+\section{The family at finite blur}
+\label{sec:finite}
+
+\subsection{The comb is the strip seen through a sharper lens}
+Paper~E's leading-order analysis of the strips (and its continuation in Appendix~\ref{app:numerics}) gives the gap as an explicit function
+$g_{\mathrm{LO}}(\sigma;k_0,\lambda,M,\eta,a)$ of the parameters, where $a$ is the window's fundamental amplitude (for $k_0\gtrsim1.2$ the
+fundamental dominates every leading-order quantity, so a periodic window acts as a strip with $c\to a$).
+
+\begin{proposition}[contrast and blur] \derivst
+\label{prop:BE1}
+Under $(a,M,\sigma)\to(1,a^2M,\sigma/a^8)$ the leading-order quantities $\mathrm{CR}$, $M^2\lambda^2W$ and $rM^2$ are invariant, and only the
+denominator $1+r$ changes: exactly,
+\begin{equation}
+\begin{aligned}&g_{\mathrm{LO}}(\sigma;k_0,\lambda,M,\eta,a)\\&\quad=g_{\mathrm{LO}}(\sigma/a^8;k_0,\lambda,a^2M,\eta,1)\,\frac{1+r'}{1+a^4r'} .\end{aligned}
+\end{equation}
+Hence the leading-order minimum of the family is attained at the largest admissible amplitude, $a_1=2$ (the comb), and
+$g^{\mathrm{comb}}_{\min}(\sigma)=g^{\mathrm{strip}}_{\min}(\sigma/256)(1+O(r))$, with ratio
+$g^{\mathrm{comb}}_{\min}/g^{\mathrm{strip}}_{\min}=1-4\ln2/\ls+O(\ln\ls/\ls^2)$.
+\end{proposition}
+
+The identity is exact for the leading-order formula (checked at $2000$ random parameter sets to $2\times10^{-13}$); the statement about the
+true gap is at the level of that formula. In the observer's words: doubling the fundamental's contrast is worth exactly as much as dividing
+the blur by $256$. The gain is $\ln256$ in $\ln(1/\sigma)$, visible at practical blurs and invisible in the limit.
+
+\begin{table}
+\caption{Leading-order minima of strips and combs \derivst{} and the true comb minima \numst{} (paper~E's evaluator).}
+\label{tab:finite}
+\begin{ruledtabular}
+\begin{tabular}{lccccc}
+$\sigma$ & strip & comb & ratio & comb & strip\\
+ & LO & LO & & true & true\\ \hline
+$10^{-6}$ & 0.7542 & 0.5003 & 0.663 & 0.5429 & 0.7428\\
+$10^{-12}$ & 0.3352 & 0.2789 & 0.832 & 0.2852 & 0.3349\\
+$10^{-24}$ & 0.1794 & 0.1667 & 0.929 & 0.1690 & 0.1798\\
+$10^{-256}$ & 0.04255 & 0.04234 & 0.9951 & -- & --\\
+$10^{-1024}$ & 0.02079 & 0.02076 & 0.9988 & -- & --\\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\subsection{Combs below the mixtures}
+Paper~E found that the best Gaussian mixtures have $g=0.884$ and that the strips come below them only for $\sigma\lesssim7\times10^{-6}$.
+For the combs the threshold moves up by about the factor $256$ of Proposition~\ref{prop:BE1}. With paper~E's evaluator (a Nelder--Mead search
+from the leading-order comb minimiser, Appendix~\ref{app:numerics}) the comb minima are $1.007$, $0.837$, $0.777$ and $0.714$ at
+$\sigma=3\times10^{-3}$, $10^{-3}$, $3\times10^{-4}$ and $10^{-4}$ \numst. So the comb comes below the mixtures between $3\times10^{-3}$ and
+$10^{-3}$; log-linear interpolation gives $\sigma\approx1.4\times10^{-3}$, in line with the corrected leading-order crossing $1.5\times10^{-3}$
+($\approx271$ times the strip's $5.6\times10^{-6}$). The searches are local, so these minima are upper bounds for the family's minimum at each $\sigma$.
+
+\subsection{No deep valleys}
+Paper~E's Proposition~14 gives an unconditional log law with a smaller constant for states without deep posterior valleys. On the combs the
+largest posterior excess over the window $t\in[\sigma^2/4,\sigma^2]$ is $\Lambda^*=4.62$, $5.75$, $2.31$ at $\sigma=10^{-6}$, $10^{-12}$, $10^{-24}$
+(strips: $1.82$, $1.60$, $1.08$) \numst: deeper than the strips, but finite and decreasing at small $\sigma$, so Proposition~14 applies to
+the combs as it does to the strips.

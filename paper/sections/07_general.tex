@@ -1,0 +1,70 @@
+% 07_general.tex
+\section{Towards general states: how far we got}
+\label{sec:general}
+
+Paper~E's Conjecture~1 ($g\ge c/\sqrt{\ls+C}$ for all states under its hypotheses (H1), (H2)) remains a \emph{conjecture}. This section records
+what is now proved for every state and isolates what is missing.
+
+\paragraph*{Two routes that do not close.}
+Two static targets suggested by paper~E fail in general. On a $w$-line plus a point, the heat-flow curvature grows like a power of the
+separation, so a heat-flow bound cannot close \proofst. Hidden multipoles (fine structure buried deep in the blur) make $\Lambda/\ls$ unbounded
+even under (H1), (H2) \derivst{}\numst; yet their true gap stays above $1$, because they are rescued by the branches of~\eqref{eq:branch}.
+So the fineness $\Lambda$ cannot be bounded by $\ln(1/\sigma)$ for all states; any proof must use the branches.
+
+\begin{lemma}[decorrelation dichotomy] \proofst
+\label{lem:BB1}
+Let $\theta=\E[s_v^2\phi]/\Jvv\in[0,2]$ (the bending felt by the $v$-information). For every state, $g\ge(1-|\varepsilon|)\theta/(2\sigma)$.
+\end{lemma}
+\begin{proof}
+With $A=\sigma^2\Jww$, $B=\sigma^2\Jvv$: $(a)\ge A/(\sigma(A+B))$ since $\phi\le2$, and $(a')=\theta B/(2\sigma(A+B))$ exactly; so
+$(a)+(a')\ge\min(1,\theta/2)/\sigma=\theta/(2\sigma)$, and~\eqref{eq:branch} gives the claim.
+\end{proof}
+
+$v$-information that sits where the pendulum is bent costs a gap of order $1/\sigma$. A gap of order $1$ forces the $v$-information to sit,
+to accuracy $\sigma$, where the pendulum is straight; the strips are the extreme case ($\theta\approx1.8\times10^{-25}$ at $10^{-24}$).
+
+\begin{theorem}[case split] \proofst
+\label{thm:BC1}
+Let $W_2=\E[y_w^2]+\tfrac18(\E[x_w^2(x_v+x_w)^2]+\sigma^2\E[(x_v+x_w)^2])$ and $Q=4\theta/W_2$. For every state
+\begin{equation}
+g\ \ge\ (1-|\varepsilon|)\max\Big(\frac{\theta}{2\sigma},\ \min\Big(2,\ \frac{(1-2\sigma)\sqrt Q}{\sqrt{\sigma^2\Jvv}}\Big)\Big).
+\end{equation}
+\end{theorem}
+\begin{proof}
+The first term is Lemma~\ref{lem:BB1}. Put $A=\sigma^2\Jww$, $B=\sigma^2\Jvv$, $u=1-\phi/4\in[\tfrac12,1]$.
+(i) \emph{$A_w\ge\sigma^2/W_2$ for every state.} Integration by parts gives $\E[s_wy_w]=-1$, so by Cauchy--Schwarz
+$1\le\E[s_w^2u]\,\E[y_w^2/u]$. Since $1/u\le1+\phi/2$, $\phi=1-\cos m_z\le m_z^2/2$ and $m_z^2\le\E[x_z^2\,|\,y]$ (Jensen),
+$\E[y_w^2/u]\le\E[y_w^2]+\tfrac14\E[y_w^2x_z^2]$; with $y=x+n$, $n\sim\mathcal N(0,\sigma^2I)$ independent of $x$ and $x_z=(x_v+x_w)/\sqrt2$, the last term is
+$\tfrac18(\E[x_w^2(x_v+x_w)^2]+\sigma^2\E[(x_v+x_w)^2])$, so $\E[y_w^2/u]\le W_2$ and $A_w=\sigma^2\E[s_w^2u]\ge\sigma^2/W_2$.
+(ii) \emph{Exchange.} Always $A_w\ge A/2$, so $(a)\ge A/(\sigma(A+B))$. If $A/(A+B)\ge2\sigma$ then $(a)\ge2$. Otherwise $B/(A+B)>1-2\sigma$ and
+\[
+\begin{aligned}(a)(a')&=\frac{2A_w}{\sigma(A+B)}\cdot\frac{\theta B}{2\sigma(A+B)}\ge\frac{\theta}{W_2}\,\frac{B}{(A+B)^2}\\&\ge\frac{(1-2\sigma)^2\theta}{W_2B}=\frac{(1-2\sigma)^2Q}{4B}.\end{aligned}
+\]
+Hence $(a)+(a')\ge2\sqrt{(a)(a')}\ge(1-2\sigma)\sqrt Q/\sqrt B$, and~\eqref{eq:branch} gives $g\ge(1-|\varepsilon|)\min(2,(1-2\sigma)\sqrt Q/\sqrt B)$.
+\end{proof}
+
+Fix $c>0$. \emph{Case~1} ($\theta\ge2\sigma c/\sqrt{\ls}$): $g\ge(1-|\varepsilon|)c/\sqrt{\ls}$. \emph{Case~2} ($Q\ge c^2/\ls$, one $w$-scale):
+$g\ge(1-|\varepsilon|)(1-2\sigma)c/\sqrt{\ls}$; this contains the common-envelope class (where $Q\approx1$, with explicit remainders)
+and all hidden multipoles whose $\Lambda$ grows faster than $\ls$ \proofst. \emph{Case~3} (the rest): the $v$-information hides in a window
+much narrower than the $w$-spread --- two $w$-scales, as in the strips and the combs. There only Theorem~\ref{thm:AT2} is available.
+
+\begin{lemma}[localisation of case~3] \proofst
+\label{lem:BD1}
+With the $v$-information weight $\pi_v=s_v^2p/\Jvv$ and $d(t)$ the distance of $t$ to $2\pi\mathbb Z$, $\E_{\pi_v}[d(m_z)^2]\le(\pi^2/2)\theta=(\pi^2/8)QW_2$.
+\end{lemma}
+(From $1-\cos t\ge(2/\pi^2)d(t)^2$.) In case~3 the $v$-information therefore sits within a root-mean-square distance $\ll\sqrt{W_2/\ls}$ of
+the straight points: a window.
+
+\begin{conjecture}[visibility inequality] \conjst
+\label{conj:VI}
+In case~3, $\keff^2\le\tfrac12\ln(1/Q)+C$.
+\end{conjecture}
+
+On strips $Q\approx s^2/(2L^2)$ and the inequality is the proved bound $\keff^2\le\ln(L/s)+O(1)$; for periodic windows it follows from the
+$S$-bounds of Sec.~\ref{sec:windows}. The leading-order reason is general: a harmonic of wavenumber $k$ carries a share
+$\min(1,a^2e^{-k^2}L/s)$ of the $w$-information, so $\keff^2\le\max_kk^2\min(1,e^{-k^2}L/s)$ for any profile. Numerically it holds with
+margin ($\keff^2-\tfrac12\ln(1/Q)\le-2.0$) on all $13$ case-3 states computed \numst. With a floor $Q\ge\sigma^2/C$ (structure finer than
+$\sigma$ in $w$ is itself $w$-information), Conjecture~\ref{conj:VI} and Theorem~\ref{thm:AT2} would give $g\ge F_c/(2\sqrt{\ls+C''})$ in case~3,
+i.e. Conjecture~1 with constant $\tfrac12$. \emph{Where we stand:} cases~1 and~2 are proved; case~3 is reduced to one inequality, which the
+periodic windows satisfy and which no computed state violates; the sharp constant $1$ in case~3 would need, in addition, the balance
+$\ln(L/s)\approx\tfrac14\ls$ that the periodic windows realise.

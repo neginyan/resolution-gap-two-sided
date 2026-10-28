@@ -1,0 +1,83 @@
+% 01_introduction.tex
+\section{Introduction}
+\label{sec:intro}
+
+An observer who sees a mechanical system only through a blur cannot always tell the direction of time. A sharp criterion for when Gaussian
+coarse-graining produces a coarse-grained arrow of time was given in Ref.~\cite{paperA}, and the \emph{resolution gap} of nonlinear flows was introduced in
+Ref.~\cite{paperB}. Paper~E~\cite{paperE} made this
+quantitative for the simplest unstable motion, the pendulum near its hyperbolic top, and studied the \emph{resolution gap}
+$g$ (the gap per unit blur, Sec.~\ref{sec:setting}) over all phase-space states. Its main findings were:
+(i) $g$ is \emph{not} bounded below uniformly in the blur width $\sigma$: a family of ``ripple strips'' has $g_{\min}(\sigma)\to0$;
+(ii) on that family $g_{\min}(\sigma)$ follows a logarithmic law, found numerically as $1.02/\sqrt{\ln(1/\sigma)-23.4}$ over
+$10^{-2}\ge\sigma\ge10^{-96}$; (iii) unconditional log-law theorems on several families and a conjecture (Conjecture~1 of paper~E)
+that $g\ge c/\sqrt{\ln(1/\sigma)+C}$ for all states under its confinement hypotheses. Paper~E listed as an open problem to derive the
+strip law analytically.
+
+\paragraph*{What this paper does.}
+We prove the logarithmic law \emph{with the sharp constant} on a family that contains the strips: the \emph{periodic windows}
+(Sec.~\ref{sec:windows}). A periodic window is a Gaussian state that carries, inside a window of width $\ell\sim\sqrt\sigma$ in the
+slow direction $w$, an arbitrary even $2\pi$-periodic profile $f$ in the fast direction $v$; the strip is $f=1+c\cos t$, the comb is a
+train of thin teeth whose fundamental amplitude approaches the largest value $2$ that a positive profile allows.
+The central result is:
+
+\begin{quote}
+\textbf{Main result} (Theorem~\ref{thm:BF1} in Sec.~\ref{sec:upper}) \caproofst{App.~\ref{app:cert}}. Under the assumptions (P1)--(P8) of Table~\ref{tab:assumptions},
+$(1-\bar\varepsilon)(1-1.7\tfrac{\ln\ln(1/\sigma)}{\ln(1/\sigma)})\le g_{\min}^{P}\sqrt{\ln(1/\sigma)}
+\le(1+|\varepsilon(S'_C(\sigma))|)(1+6.0\,\tfrac{\ln\ln(1/\sigma)}{\ln(1/\sigma)})$ for every $10^{-100000}\le\sigma\le10^{-24}$, where every state of the class has
+$|\varepsilon|\le\bar\varepsilon\le0.1$ and $S'_C(\sigma)$ is an explicit comb.
+Below $10^{-100000}$ the lower side is proved analytically (Lemma~\ref{lem:BH2}) and the upper side is derived, so
+$g_{\min}\sqrt{\ln(1/\sigma)}\to1$ on the periodic windows: from below proved (up to $1-\bar\varepsilon$), from above derived (Corollary~\ref{cor:limit}).
+\end{quote}
+
+Here $\varepsilon(\rho)$ is paper~E's remainder of its Theorem~2, a quantity of each state $\rho$ that we carry exactly as paper~E does. The lower
+side assumes a bound $|\varepsilon(\rho)|\le\bar\varepsilon\le0.1$ on the whole class; the upper side holds on one explicit comb $S'_C(\sigma)$ and carries
+that state's own $|\varepsilon(S'_C(\sigma))|$, which is a numerical quantity here ($1.5\times10^{-15}$ at $\sigma=10^{-18}$ and $4\times10^{-16}$ at $10^{-24}$, the smallest $\sigma$ the exact evaluator reaches), not a proved bound.
+
+\paragraph*{Relation to paper~E.}
+Paper~E \emph{found} the strip law and stated it as a property of the family it had searched; nothing in it is contradicted here.
+Paper~F proves the law from both sides on a family that is larger than the strips, explains the fitted constant $1.02$ as the slow
+$O(\ln\ln/\ln)$ approach to the limit $1$ over the fitted range, and shows that within the periodic windows the strip is \emph{not} the
+lowest state at finite $\sigma$: the comb is lower, by an exact leading-order rule (``doubling the fundamental's contrast is worth
+dividing the blur by $256$'', Proposition~\ref{prop:BE1}). The constant of the limit is the same.
+
+\paragraph*{How the proof sees the state (observer picture).}
+The observer learns the fast coordinate $v$ from the ripple, and learns the slow coordinate $w$ from the ripple's edges, because a ripple
+that is visible only inside a window must switch off somewhere in $w$. An exact inequality (the window inequality, Theorem~\ref{thm:AT2})
+turns this into $g\gtrsim1/(2k)$ for a ripple of fineness $k$. The blur decides how fine a ripple can still be seen: its contrast
+decays like $e^{-k^2/2}$ and must beat the background's own $v$-signal, which caps $k^2$ at $\tfrac14\ln(1/\sigma)$.
+Together: $g\gtrsim1/\sqrt{\ln(1/\sigma)}$, and a comb sequence reaches it.
+
+\paragraph*{Status labels.}
+Every statement carries one of: \proofst{} (a complete proof is given or cited); \status{proof, computer-assisted} (a proof in which
+finitely many explicit inequalities are verified by a program with rigorous cell bounds or interval arithmetic; the program is in the
+repository); \derivst{} (leading-order analysis without a remainder bound); \numst{} (computation with paper~E's evaluator);
+\conjst. Table~\ref{tab:claims} lists the claims.
+
+\paragraph*{Outline.}
+Section~\ref{sec:setting} recalls the gap formula and the two exact tools we use for every state (the branch identity and the window
+inequality). Section~\ref{sec:windows} defines the periodic windows and the lemmas that carry the strip analysis to them.
+Sections~\ref{sec:lower} and~\ref{sec:upper} prove the lower and the upper side and state Theorem~\ref{thm:BF1}.
+Section~\ref{sec:finite} describes the family at practical blurs. Section~\ref{sec:general} records what is proved for general states
+and the one inequality that is missing. Proofs of the window lemmas and the certificates are in the appendices.
+
+\begin{table*}
+\caption{Claims of this paper and their status. ``CA'' = computer-assisted (certificate in Appendix~\ref{app:cert}).}
+\label{tab:claims}
+\begin{ruledtabular}
+\begin{tabular}{p{0.58\textwidth}p{0.22\textwidth}l}
+claim & status & where\\ \hline
+Branch identity $(1-|\varepsilon|)((a)+(a'))\le g\le(1+|\varepsilon|)((a)+(a'))$; window inequality (Thm.~\ref{thm:AT2}) & proof, every state & Sec.~\ref{sec:setting}\\
+Periodic-window lemmas (exact factorisation; $w$- and $v$-information sandwiches; $S$-bounds; Lemmas~\ref{lem:AY1P}, \ref{lem:AY2P}) & proof & Sec.~\ref{sec:windows}, App.~\ref{app:plemmas}\\
+Lower side, Theorem~\ref{thm:AY1P}: $g\sqrt{\ls}/(1-\bar\varepsilon)\ge1-1.7\ln\ls/\ls$ on $[10^{-100000},10^{-24}]$, all $\bar\varepsilon\le0.1$; tail (Lemma~\ref{lem:BH2}) & proof (CA; tail: proof) & Sec.~\ref{sec:lower}\\
+Strips read as an upward bootstrap: the strip theorem needs $F_c\ge0.5$ ($10^{-24}$), $\ge0.2$ (below $10^{-96}$) & proof (CA, representative points) & Sec.~\ref{sec:lower}\\
+Upper side, Theorem~\ref{thm:AZ1P} (comb sequence): $U_P\sqrt{\ln}\le1+6.0\ln\ln/\ln$ & proof (CA) & Sec.~\ref{sec:upper}\\
+Theorem~\ref{thm:BF1}: two-sided bounds on $[10^{-100000},10^{-24}]$; Cor.~\ref{cor:limit}: $g_{\min}\sqrt{\ls}\to1$ & proof (CA); limit: proof from below, derivation from above & Sec.~\ref{sec:upper}\\
+Comb $=$ strip at $\sigma/256$ (Prop.~\ref{prop:BE1}) & derivation (exact identity of the leading-order formula) & Sec.~\ref{sec:finite}\\
+Comb below the strip at every finite $\sigma$; below the mixtures ($0.884$) from $\sigma\approx1.4\times10^{-3}$ & numerical & Sec.~\ref{sec:finite}\\
+Combs have no deep valleys ($\Lambda^*$ finite), so paper~E's Proposition~14 applies & numerical & Sec.~\ref{sec:finite}\\
+Decorrelation dichotomy (Lemma~\ref{lem:BB1}); case split (Thm.~\ref{thm:BC1}); window localisation (Lemma~\ref{lem:BD1}) & proof, every state & Sec.~\ref{sec:general}\\
+Visibility inequality, hence the log law in the remaining case & conjecture & Sec.~\ref{sec:general}\\
+Paper~E's Conjecture~1 for all states & conjecture (open) & Sec.~\ref{sec:general}\\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}

@@ -1,0 +1,62 @@
+% 02_setting.tex
+\section{Setting and the two exact tools}
+\label{sec:setting}
+
+\paragraph*{Setting (paper~E).}
+We use the setting and notation of paper~E~\cite{paperE} and recall only what is needed. Near the hyperbolic top the pendulum's phase
+space is described by coordinates $(v,w)$ along the unstable and stable directions; $z=(v+w)/\sqrt2$ is the angle measured from the top.
+A state is a probability density $\rho(v,w)$; the observer sees $p=\rho*\mathcal N(0,\sigma^2I)$. With the score $s=\nabla\ln p$, the
+Hessian $H=-\nabla^2\ln p$, the posterior mean $m=y+\sigma^2s(y)$ (Tweedie~\cite{Efron2011}), $\phi=1-\cos m_z$, and the Fisher informations
+$\Jvv=\E[s_v^2]$, $\Jww=\E[s_w^2]$, put $a=\sigma^2\Jvv$ and $\mathrm{den}=\sigma^2(\Jvv+\Jww)$. Paper~E's cancellation-free formula gives the
+resolution gap (gap per unit blur) as
+\begin{equation}
+g=\frac{2\sigma^2\Jww+N}{\sigma\,\mathrm{den}},
+\label{eq:gap}
+\end{equation}
+where $N$ is paper~E's curvature term ($N=-\sigma^{-2}\E[\mathrm{Cov}(x_p,x_z-\sin x_z\,|\,y)]$ with $x_p$ the momentum coordinate), and its exact numerator decomposition $\sigma\,\mathrm{den}\,g=2A_w+N_\phi+(B+R_3)$ with $A_w=\sigma^2\E[s_w^2(1-\phi/4)]$ and
+$N_\phi=\tfrac{\sigma^2}{2}\E[s_v^2\phi]$. Paper~E's Theorem~2 bounds $g\ge(a/\mathrm{den})\sqrt{P_w}(1-\varepsilon)$ with
+$P_w=4\sigma^2\Jww(1-\Phi/4)(1-\delta_w)\E[s_v^2\phi]/a^2$ and the remainder $\varepsilon=-(B+R_3)/(\sigma a\sqrt{P_w})$, a state quantity;
+$\Phi=\E[\phi]$, $\delta_w$ and $\delta_c$ are the decorrelation defects defined there. The \emph{strip} family of paper~E is
+\begin{equation}
+\begin{aligned}\rho={}&\mathcal N(v;L_v^2)\,\mathcal N(w;L_w^2)\\&\times\big(1+c\,e^{-w^2/2\ell^2}\cos(k_0v/\sigma)\big),\quad 0<c\le1,\end{aligned}
+\label{eq:strip}
+\end{equation}
+with $\ell=\lambda\sqrt\sigma$, $L_w=M\ell$, $L_v=\eta\ell$. We write $\ls=\ln(1/\sigma)$.
+
+\paragraph*{Tool 1: the branch identity \proofst.}
+Write $(a)=2A_w/(\sigma\,\mathrm{den})$ (the $w$-branch) and $(a')=N_\phi/(\sigma\,\mathrm{den})$ (the $N$-branch). The last term of the numerator
+decomposition equals $-\varepsilon\,(a/\mathrm{den})\sqrt{P_w}$, and $(a/\mathrm{den})\sqrt{P_w}=2\sqrt{(a)(a')}\le(a)+(a')$ (paper~E's Theorem~2 is the
+AM--GM inequality of the two branches). Hence, for every state,
+\begin{equation}
+(1-|\varepsilon|)\big((a)+(a')\big)\;\le\;g\;\le\;(1+|\varepsilon|)\big((a)+(a')\big).
+\label{eq:branch}
+\end{equation}
+Both sides of every result below inherit $\varepsilon$ only through this identity.
+
+\paragraph*{Tool 2: the window inequality.}
+Let $\keff^2=\sigma^2\int(\partial_v\partial_w\sqrt p)^2/\int(\partial_w\sqrt p)^2$ (the $v$-fineness of the $w$-gradient) and
+$C_w=\E[s_v^2\cos(m_z/2)(1-\sigma^2(H_{ww}+H_{vw}))]/\Jvv$.
+
+\begin{theorem}[window inequality] \proofst
+\label{thm:AT2}
+For every state with sufficient decay,
+\begin{equation}
+\begin{aligned}g\;&\ge\;\frac{F_c}{2\keff},\\ F_c&:=\frac{a}{\mathrm{den}}(1-\varepsilon)\,|C_w|\sqrt{(1-\Phi/4)(1-\delta_w)} .\end{aligned}
+\end{equation}
+Moreover $\keff^2=\Lambda/4$ identically, with paper~E's $\Lambda=\sigma^2\E[(s_vs_w-2H_{vw})^2]/\Jww$.
+\end{theorem}
+\begin{proof}
+Put $f=s_v\sqrt p=2\partial_v\sqrt p$ and $\psi=2\sin(m_z/2)$, so $\psi^2=2\phi$, and from $m=y+\sigma^2s$,
+$\partial_w\psi=\cos(m_z/2)(1-\sigma^2(H_{ww}+H_{vw}))/\sqrt2$. Integrating by parts in $w$, $\int f^2\partial_w\psi=-2\int\psi f\partial_wf$, and
+Cauchy--Schwarz (a Heisenberg-type step~\cite{Stam1959}) gives $\int(\partial_wf)^2\ge C_w^2\Jvv^2/(16\E[s_v^2\phi])$. The mixed derivatives commute,
+$\partial_wf=2\partial_v\partial_w\sqrt p$, and $\int(\partial_w\sqrt p)^2=\Jww/4$, so $\int(\partial_wf)^2=\keff^2\Jww/\sigma^2$. Inserting
+$\Jww\ge\sigma^2C_w^2\Jvv^2/(16\keff^2\E[s_v^2\phi])$ into $P_w$, the factor $\E[s_v^2\phi]$ cancels:
+$P_w\ge C_w^2(1-\Phi/4)(1-\delta_w)/(4\keff^2)$, and paper~E's Theorem~2 gives the claim. The identity $\keff^2=\Lambda/4$ follows from
+paper~E's Lemma~3, $s_w\sqrt p=2\partial_w\sqrt p$ and $(s_vs_w-2H_{vw})\sqrt p=4\partial_v\partial_w\sqrt p$.
+\end{proof}
+
+The window inequality is the sharp form of paper~E's Corollary~4: the constant $|C_w|\sqrt{(1-\Phi/4)(1-\delta_w)}$ tends to $1$ on the
+states considered here, instead of $(\sqrt2/\pi)(1-\varepsilon_m)\sqrt{1-\varepsilon_\pi^2}\approx0.45$. It contains no window width and no
+decorrelation defect $\delta_c$: a window that hides $v$-information where the pendulum is straight pays for it with $w$-information in
+exactly the inverse amount. What remains is the fineness $\keff$, and the question is how large it can be. On the strips
+$C_w=1.00000$ and the inequality is saturated as $\sigma\to0$.

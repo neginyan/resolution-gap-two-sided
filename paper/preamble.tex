@@ -1,0 +1,33 @@
+% preamble.tex — paper F (revtex4-2, aps, pre, twocolumn)
+\usepackage{amsmath,amssymb,amsthm,bm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}
+
+% theorem environments (one counter)
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% status labels (the spine of the paper)
+\newcommand{\status}[1]{\textsf{[#1]}}
+\newcommand{\proofst}{\status{proof}}
+\newcommand{\caproofst}[1]{\status{proof, computer-assisted: #1}}
+\newcommand{\derivst}{\status{derivation}}
+\newcommand{\numst}{\status{numerical}}
+\newcommand{\conjst}{\status{conjecture}}
+
+% notation
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Jvv}{J_{vv}}
+\newcommand{\Jww}{J_{ww}}
+\newcommand{\keff}{k_{\mathrm{eff}}}
+\newcommand{\Qb}{\bar Q}
+\newcommand{\ls}{\ell_\sigma}
+\newcommand{\code}[1]{\texttt{#1}}

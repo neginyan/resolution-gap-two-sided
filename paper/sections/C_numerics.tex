@@ -1,0 +1,27 @@
+% C_numerics.tex
+\section{Numerical methods}
+\label{app:numerics}
+
+\paragraph*{Evaluator.}
+All true gaps are computed with paper~E's evaluator for Gaussian-windowed states (exact blurred point fields on adaptive $w$-nodes, envelope
+sums in $v$; settings ``fast'' for searches and ``full'' for final values; for the lemma checks $n_0=21$, $40$ nodes per period). Its known
+aliasing near $\sigma=10^{-6}$ is about $3\times10^{-3}$; all comparisons above use tolerances well above it.
+
+\paragraph*{Leading order.}
+The two-scale formula of the strips, $g=[2\sigma^2\Jww+N]/(\sigma\cdot\sigma^2\Jvv)$ with $\sigma^2\Jvv=W+b$, $W=a^2k_0^2e^{-k_0^2}/(2\sqrt2M)$,
+$b=(\sigma/L_v)^2$, $\Jww L_w^2=1+(\sqrt2/8)a^2e^{-k_0^2}M$ and $\sigma^2\E[s_v^2\phi]=[W(\ell^2/2+L_v^2)+bL_w^2]/4$, reproduces the strip optima to
+$2.4\%$, $0.11\%$, $0.009\%$ at $10^{-6}$, $10^{-12}$, $10^{-24}$. Its minimisation over $(k_0,\lambda,M,\eta,a)$ uses a multistart Nelder--Mead.
+A start set that missed the feasible region for $\sigma\gtrsim10^{-4}$ had earlier produced a wrong comb--mixture crossing ($2.7\times10^{-4}$);
+with the wider start set the crossing is $1.5\times10^{-3}$ for the comb and $5.6\times10^{-6}$ for the strip.
+
+\paragraph*{Comb searches.}
+Nelder--Mead over $(k_0,\lambda,M,\eta,\mathrm{logit}\,c,\ln(\text{tooth width}))$, $100$ evaluations at fast settings from the leading-order
+comb minimiser, final value at full settings. Evaluator calls are cached on disk so that a search interrupted by a restart replays
+deterministically.
+
+\paragraph*{Lemma checks.}
+Lemmas~\ref{lem:AY2P} and~\ref{lem:AZ1P} were compared with the evaluator on the states listed in Sec.~\ref{sec:windows} and
+Table~\ref{tab:upper}; every factor lies on the correct side of its bound in full double precision. At $\sigma=10^{-24}$ the factor
+$a/\mathrm{den}$ rounds to $1$ on both sides, so there the deficits are compared: $1-a/\mathrm{den}=4.19\times10^{-26}$ and $4.47\times10^{-26}$
+(comb and strip optima, exact point fields) against the bounds $4.29\times10^{-26}$ and $4.57\times10^{-26}$; the other two factors keep a
+margin of $1.7\times10^{-14}$--$2.1\times10^{-14}$ ($|C_w|$) and $6\times10^{-15}$--$9\times10^{-15}$ (the square-root factor).

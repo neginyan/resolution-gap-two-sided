@@ -1,0 +1,96 @@
+% B_certificates.tex
+\section{The certificates}
+\label{app:cert}
+
+All computer-assisted steps verify finitely many explicit inequalities, in the sense of validated numerics~\cite{Moore1966,Tucker2011}. The programs are in the repository; each prints its constants and
+writes them to a results file that the verification scripts re-read.
+
+\paragraph*{Lower side (\code{bh\_cert\_cells.py}, with the chain of \code{bf\_cert\_p.py}).}
+Cells $[\ell_a,\ell_b]$ of ratio $1.02$ cover $\ls\in[24\ln10,10^5\ln10]$ ($421$ cells). On each cell, by Lemma~\ref{lem:BH1}, the chain is evaluated
+at the worst corner: $\hat\sigma=e^{-\ell_a}$ for every small factor ($10^{-300}$, an upper bound, once $\ell_a>690$), $\ell_b$ for the range of $x$ and for
+$X_P$, $G=G(\ell_a)$, $\eta=1/0.9$ (all $|\varepsilon|\le0.1$ at once), and the bootstrap from $F_0=1.02G(\ell_b)$ with factor $0.9$. Each bootstrap step
+evaluates (L1)--(L5): the a-priori range of $x$ (from $u_0>U_P/x$ and $L\le\sigma^{-1/2}$), $\sup x\gamma_P$, $\sup\gamma_P$, $\sup\sqrt xN_1$,
+$\sup x\min(\tfrac1{16},4e^{-x})$ and the $\omega$-term. Each supremum over $x$ is bounded on a grid of cells $[x_a,x_b]$ with the $x$-factors at $x_b$
+and the harmonic sums (decreasing in $x$) at $x_a$, so no maximum escapes between grid points; beyond $x=8$ all these functions decrease, and the
+cells extend to at least $x_{\mathrm{low}}+20$; suprema that underflow ($x_{\mathrm{low}}\gtrsim700$) are replaced by the upper bound $10^{-300}$.
+The conditions checked are: $\Phi_C$-condition, case-B threshold, $0<\beta<1$, $\nu<1$, $\omega>0$, $\varphi_1>0$, exclusion of $L>1$,
+$F_{\mathrm{int}}>0$, and the sign $d\ge0$ that puts the worst point of the cell at $\ell_a$. All hold on all $421$ cells (smallest margins: case-B
+threshold $>3\times10^{24}$ times $\hat\sigma$, $L>1$ exclusion by a factor $>2700$, $\beta\le0.251$, $\omega\ge0.99985$, $d\ge8.9$). $F_{\mathrm{int}}$ is taken as
+$1-(\eta G\sigma\theta_G+\delta_H+r_C+r_w)$, a lower bound of the product. The roots $x_{\max}$ and $X_P$ are taken from monotone functions with a margin.
+The cell value $L_{\mathrm{cell}}$ satisfies $L_{\mathrm{cell}}\ge1-1.7\ln\ell_a/\ell_a$ on every cell; the largest constant needed is $1.615$.
+A numerical cross-check (not part of the proof, \code{bh\_monotone\_check.py}) re-runs the chain at interior points with the true $\sigma$, $G(\ls)$
+and $|\varepsilon|\in\{0,0.05,0.1\}$: every point value is better than its cell's. The earlier point certificates (\code{bf\_cert\_p.py} at $33$ points,
+\code{be\_cert\_p.py} for the version with $F_c$ and $L_w\le1$ assumed) are superseded by the cell certificate.
+
+\paragraph*{The monotonicity table.}
+Table~\ref{tab:mono} lists the constants of the chain as the certificate computes them. The two remainders of Lemma~\ref{lem:AY2P} appear after the
+chain's bounds have been substituted and $W_p$ has cancelled: with $J_{vv}=1/V+J_{\mathrm{per}}$ ($W_p=\sigma^2J_{\mathrm{per}}$),
+$(1-b)^2(3+VJ_{\mathrm{per}})/(8J_{vv})\le3V/8\le V/2$ and $2(L^2/V+J_{\mathrm{per}}v_*)/(8J_{vv})\le(L^2+\kappa_Qs^2/2)/4\le(L^2+s^2)/4$; then
+$\sigma^4/L^4\le(\hat\sigma\psi)^2$ from (L2), $V\le V_{\max}$ from $\nu$ (where $b\le\beta W_p$ enters through $1-\beta W_{p,\max}$), $L^2\le L^2_{\max}$,
+$s^2\le L^2/4$ ($\varrho\le\tfrac18$) and $(\sigma/s)^2\le\hat\sigma\Gamma_{3P}x\le\hat\sigma\Gamma_{3P}X_P$. The conditions of the certificate are, in the same
+variables: $\varphi_1/\psi\ge8\psi+2\hat\sigma$ ($\Phi_C$), $\hat\sigma\le U_{\mathrm{eff}}/(32\psi(1+\hat\sigma^2)S_\gamma)$ (case B), $\beta<1$, $\nu<1$, $\omega>0$,
+$\varphi_1>0$, $\varphi_1\omega^2/\Gamma_2^2>W_{p,\max}$ ($L>1$ excluded) and $F_{\mathrm{def}}<1$: each is a monotone quantity on the bad side of a constant.
+A grid check moves each of $(\hat\sigma,G,\eta,\ls,F)$ with the others fixed at three base points and confirms every declared direction ($285$ checks,
+\code{bi\_monotone\_table.py}; numerical, not part of the proof). It evaluates the suprema on one global $x$-grid whose first cell starts at
+$x_{\mathrm{low}}$, so that a longer range only adds cells. The certificate itself re-spaces its grid over the current range; each such value is an upper
+bound of the exact supremum, so validity is unaffected, but the computed values wiggle by up to $0.51\%$ along $\ls$ (\code{bi\_grid\_wiggle.py}).
+
+\begin{table*}
+\caption{Lemma~\ref{lem:BH1}: the constants of the lower-side chain in $\hat\sigma$-normalised form, with $\psi=\eta G\theta_G$, and the direction of each
+dependence ($\uparrow$ non-decreasing, $\downarrow$ non-increasing, -- independent) on $\hat\sigma$, $G$, $\eta$, $\ls$ and $F$. Rows are listed in the order in
+which they are composed, so each sign follows from the rows above and the reason given. ``Bad'' is $\uparrow$ for every row except $U_0$, $x_{\mathrm{low}}$,
+$U_P$, $\varphi_1$, $\omega$. No row is non-monotone.}
+\label{tab:mono}
+\begin{ruledtabular}
+\small
+\begin{tabular}{p{0.09\textwidth}p{0.41\textwidth}ccccc p{0.24\textwidth}}
+constant & $\hat\sigma$-normalised form & $\hat\sigma$ & $G$ & $\eta$ & $\ls$ & $F$ & reason\\ \hline
+$\theta_G$ & $1/(1-\eta G\hat\sigma)$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & -- & -- & denominator decreases\\
+$\psi$ & $\eta G\theta_G$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & -- & -- & product of non-decreasing factors\\
+$U_0$ & $F^2/(4G^2)-\tfrac14$ & -- & $\downarrow$ & -- & -- & $\uparrow$ & explicit; decreases in $G$\\
+$x_{\mathrm{low}}$ & $\max(1,U_0/S_i(1),U_0-S1_P)$ & -- & $\downarrow$ & -- & -- & $\uparrow$ & through $U_0$\\
+$U_P$, $U_{\mathrm{eff}}$ & $U_0/(\kappa_2(1+\zeta_2))$, $U_P/(1+\Qb)$ & -- & $\downarrow$ & -- & -- & $\uparrow$ & $U_0$; $\zeta_2(x_{\mathrm{low}})$ decreases in $x_{\mathrm{low}}$\\
+$S_\gamma,S_\xi,S_\omega$ & $\sup x\gamma_P$, $\sup\frac{\sqrt xN_1}{1-\Qb}$, $\sup\sqrt x\gamma_P$ on $[x_{\mathrm{low}},x_e]$ & -- & $\uparrow$ & -- & $\uparrow$ & $\downarrow$ & $x_e$ grows with $\ls$ and $1/U_P$; range shrinks with $x_{\mathrm{low}}$\\
+$d_R$ & $\frac{\sqrt{\hat\sigma\psi}}2(S_\xi+\sqrt{\hat\sigma\psi})+\frac{\hat\sigma\psi}4(S_\xi+\sqrt{\hat\sigma\psi})^2\vee\frac{\sqrt{\hat\sigma}S_\xi+\hat\sigma\sqrt\psi}2+\frac{\hat\sigma^2}4(S_\xi+\sqrt{\hat\sigma\psi})^2$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\downarrow$ & sums of products of $\hat\sigma$, $\psi$, $S_\xi$\\
+$\varphi_1$ & $1-e^{-1/4}-d_R$ & $\downarrow$ & $\downarrow$ & $\downarrow$ & $\downarrow$ & $\uparrow$ & minus $d_R$\\
+$r_{wp}$ & $16\hat\sigma\psi(1+\hat\sigma^2)S_\gamma/U_{\mathrm{eff}}$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\downarrow$ & numerator $\uparrow$, $U_{\mathrm{eff}}\downarrow$\\
+$\beta$ & $r_{wp}\frac{\varphi_1}{\varphi_1-2\psi^2}+\frac{(2\psi+\hat\sigma)\psi}{\varphi_1-2\psi^2}$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\downarrow$ & $\varphi_1\downarrow$, $\psi\uparrow$; $\varphi_1>8\psi^2$ ($\Phi_C$)\\
+$W_{p,\max}$ & $\sup x\min(\tfrac1{16},4e^{-x})\frac{1+\zeta_2}{6(1-\Qb)}$ on $[x_{\mathrm{low}},\cdot]$ & -- & $\uparrow$ & -- & -- & $\downarrow$ & through $x_{\mathrm{low}}$ only\\
+$\nu$ & $\hat\sigma^2+2\hat\sigma\psi+2r_{wp}$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\downarrow$ & sum of rows above\\
+$V_{\max}$ & $-4\ln(1-\nu)/(1-\beta W_{p,\max})^2$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\downarrow$ & $\nu\uparrow$, $\beta W_{p,\max}\uparrow$\\
+$\omega$ & $(1-\beta W_{p,\max})e^{-V_{\max}/8}-S_\omega\sqrt{32\hat\sigma\psi(1+\hat\sigma^2)/U_{\mathrm{eff}}}$ & $\downarrow$ & $\downarrow$ & $\downarrow$ & $\downarrow$ & $\uparrow$ & each term moves the bad way\\
+$\Gamma_2$ & $2\psi(1+\beta)+\hat\sigma$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\downarrow$ & $\psi,\beta\uparrow$\\
+$\Gamma_{3P}$ & $2\psi(1+\beta)(1+\Qb)(1+\zeta_2)(1+\varrho)^{3/2}/(1-\Qb)$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\downarrow$ & $\psi,\beta\uparrow$; $\zeta_2,\Qb$ via $x_{\mathrm{low}}$\\
+$K_P$ & $\ln\frac{256\Gamma_2^2\Gamma_{3P}(1+\zeta_2)(1+\zeta_0)^3}{(1-\Qb)U_P^3\varphi_1\omega^2}$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\downarrow$ & numerator $\uparrow$, denominator $\downarrow$\\
+$X_P$ & root of $4X=\ls+5\ln X+K_P$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\downarrow$ & $4-5/X>0$ for $X>\frac54$\\
+$S_q,S_N$ & $\sup x\min(\frac1{16},4e^{-x})$, $\sup\sqrt xN_1$ on $[x_{\mathrm{low}},X_P]$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\downarrow$ & range grows with $X_P$\\
+$L^2_{\max}$ & $\min\big(1,\frac{\Gamma_2^2S_q(1+\zeta_2)}{4\sqrt2(1-\Qb)\varphi_1\omega^2}\big)$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\downarrow$ & $\Gamma_2,S_q\uparrow$; $\varphi_1,\omega\downarrow$\\
+$(\sigma/s)^2_{\max}$ & $\hat\sigma\Gamma_{3P}X_P$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\downarrow$ & product\\
+$\Xi_P$ & $\hat\sigma^2S_{\xi,X}^2+\hat\sigma^2(\sigma/s)^2_{\max}\frac{\Qb^2}{e(1-\Qb)^2}$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\downarrow$ & product\\
+$\delta_H$ & $\hat\sigma\psi+(\sigma/s)^2_{\max}\big[\frac{\Qb}{1-\Qb}+\frac{\Qb^2}{e(1-\Qb)^2}\big]+\frac{S_N(\sigma/s)_{\max}}{\sqrt e(1-\Qb)^2}$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\downarrow$ & sum of products\\
+$r_C$ & $\frac{V_{\max}}2+(1+3\hat\sigma^2\psi^2)\frac{5L^2_{\max}}{16}+\frac34\Xi_P$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\downarrow$ & sum of products\\
+$r_w$ & $\frac{V_{\max}}8+(1+3\hat\sigma^2\psi^2)\big(\frac34+\frac{3\kappa_Q}{32}\big)L^2_{\max}+\frac34\Xi_P$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\downarrow$ & sum of products\\
+$F_{\mathrm{def}}$ & $\hat\sigma\psi+\delta_H+r_C+r_w$ ($F_{\mathrm{int}}\ge1-F_{\mathrm{def}}$) & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\downarrow$ & sum\\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\paragraph*{Tail (\code{bh\_tail.py}).}
+Lemma~\ref{lem:BH2} from the last cell's constants ($K_{\mathrm{end}}$, $F_{\mathrm{int,end}}$); the explicit tail bound
+$(1-F_{\mathrm{def,end}})\sqrt{\ls/(X_P+c)}/2$ with $4X_P=\ls+5\ln X_P+K_{\mathrm{end}}-\tfrac92\ln(\ls/\ell_{\mathrm{end}})$ increases from $0.99996$ to $1$, and direct
+runs of the chain at $\ls=10^6,10^7,10^8$ satisfy every condition with $K_P$ below the bound of the lemma.
+
+\paragraph*{Strips read upward (\code{bf\_ay\_bootstrap.py}).}
+The strip certificate of the earlier stage, run as an upward bootstrap from $F_0\in\{0.2,\dots,0.9\}$: it closes from $F_0=0.5$ at $10^{-24}$ and
+from $0.2$ at $10^{-96}$ and $10^{-1024}$, and ends at the same $F$ as the fixed-point reading. These are representative points; the continuous
+statement for strips with $x\ge1$ is the cell certificate above.
+
+\paragraph*{Upper side (\code{bf\_cert\_upper.py}; \code{ba\_cert.py} for $S'$).}
+Claim: $h(k_0)=U_P\sqrt{t}-1-6.0\ln t/t<0$ on $[3.43,240]$, $t(k_0)=4k_0^2+11\ln k_0-8\ln2=\ls$ increasing, $t(3.43)\le24\ln10$,
+$t(240)\ge10^5\ln10$. Numbers are carried as $\exp(\alpha k_0^2+\beta\ln k_0)\times m$ with exact rational $(\alpha,\beta)$, so the huge factors
+cancel exactly; the mantissas $m$ are interval dual numbers (value and derivative enclosures) in $60$-digit decimal arithmetic, widened outward
+after every operation. Harmonics: $\Qb=\bar q_1(1+E_0)$, $N_p=\bar q_1(1+E_p)$, $\sum q0_n^2=q0_1^2(1+Z_0)$, $\sum n^2q0_n^2=q0_1^2(1+Z_2)$ with
+$0\le E_p\le5.8\times10^{-7}$, $0\le Z_p\le8.4\times10^{-14}$ ($a_n\le a_1$ and $K\ge10.5$ on the range); the lower sum in $\mathrm{den}_{\mathrm{lo}}$
+keeps $n=1$ only. These enter as interval parameters with zero derivative, which is valid for the mean-value form at every fixed value of the
+parameters. On each cell, $h\le h(m)+\max|h'|\cdot(b-a)/2$. Result: $1464$ cells, no bisection, largest upper bound $-1.35\times10^{-4}$ (for $S'$
+with constant $7.4$: $1470$ cells, $-1.98\times10^{-4}$).

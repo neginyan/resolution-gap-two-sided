@@ -1,0 +1,111 @@
+% 05_upper.tex
+\section{The upper side and the two-sided theorem}
+\label{sec:upper}
+
+\begin{lemma}[closed-form upper bounds of the branches] \proofst
+\label{lem:AZ1P}
+On every periodic window,
+$(a)\le2\sigma^2J_{ww,\mathrm{up}}/(\sigma\,\mathrm{den}_{\mathrm{lo}})$ with $J_{ww,\mathrm{up}}=(1+u_0/(8(1-\Qb)))/L^2$ and
+$\mathrm{den}_{\mathrm{lo}}=b+xI_2/(2(1+\Qb))$; and $(a')\le\tfrac{\sigma^2}{2}\E[s_v^2\phi]/(\sigma\,\mathrm{den}_{\mathrm{lo}})$ with
+\begin{equation}
+\begin{aligned}\E[s_v^2\phi]\le{}&(1-e)J_{\mathrm{per,up}}+\tfrac14\langle\tilde s^2R^2\rangle\\&+\frac{1-e}{V}+\frac{1-C}{V}+\alpha^2eC+\gamma_P(1-C),\end{aligned}
+\end{equation}
+$1-C\le(L+r)^2/4$, $J_{\mathrm{per,up}}=xI_2/(2(1-\Qb)\sigma^2)$, $e=e^{-\alpha^2V/2}$, $\alpha=(1-\sigma^2/V)/\sqrt2$, and
+$\langle\tilde s^2R^2\rangle$, $r$ bounded by Minkowski and the Gaussian moments of the common envelope (App.~\ref{app:plemmas}).
+With~\eqref{eq:branch}: $g(\rho)\le(1+|\varepsilon(\rho)|)U_P(\rho)$, $U_P:=(a)_{\mathrm{up}}+(a')_{\mathrm{up}}$, for every periodic window $\rho$.
+\end{lemma}
+
+\paragraph*{Two explicit sequences.}
+The strip sequence $S'$: $c=1$, $4k_0^2+11\ln k_0=\ls$, $M=k_0^2e^{k_0^2}$, $\eta=1/k_0^2$, $\lambda=2/\sqrt{k_0}$. The comb sequence $S'_C$ is its image
+under the map of Proposition~\ref{prop:BE1} with $a=2$:
+\begin{equation}
+\begin{aligned}&4k_0^2+11\ln k_0=\ln(256/\sigma),\\ &M=\tfrac14k_0^2e^{k_0^2},\quad \eta=\tfrac1{k_0^2},\quad\lambda=\tfrac2{\sqrt{k_0}},\end{aligned}
+\end{equation}
+with Gaussian teeth $a_n=2e^{-n^2/(2k_0^4)}$ ($a_1\to2$, $|a_n|\le a_1$, $f$ even). Along both sequences every length is an exact monomial in
+$k_0$ and $e^{k_0^2}$ (for $S'_C$: $\sqrt\sigma=16k_0^{-11/2}e^{-2k_0^2}$, $\ell=32k_0^{-6}e^{-2k_0^2}$, $L_w=8k_0^{-4}e^{-k_0^2}$,
+$L_v=32k_0^{-8}e^{-2k_0^2}$), which is what makes a rigorous evaluation possible far below double precision.
+
+\begin{theorem}[upper side on the comb sequence] \caproofst{\code{bf\_cert\_upper.py}}
+\label{thm:AZ1P}
+Along $S'_C$, $g(S'_C(\sigma))\le(1+|\varepsilon(S'_C(\sigma))|)\,U_P(\sigma)$ and
+\begin{equation}
+U_P\sqrt{\ls}\ \le\ 1+6.0\,\frac{\ln\ls}{\ls}\qquad(10^{-100000}\le\sigma\le10^{-24}).
+\end{equation}
+The same holds along the strip sequence $S'$ with the constant $7.4$ (certified in the same way, \code{ba\_cert.py}).
+\end{theorem}
+
+The one-variable inequality is verified on $1464$ cells covering $k_0\in[3.43,240]$ ($\ls$ from $55.07$ to $230455$) with exact rational
+exponents for the large factors and $60$-digit outward-rounded interval arithmetic for the $O(1)$ factors; the harmonics $n\ge2$ enter
+through interval parameters of width $\le6\times10^{-7}$ (Appendix~\ref{app:cert}). The comb's constant is smaller than the strip's because
+$S'_C$ is $S'$ at $\sigma/256$ and $\ls$ is shorter by $\ln256$. Paper~E's evaluator confirms the bound (Table~\ref{tab:upper}): it holds
+for $(a)$, $(a')$ and $g$ separately and becomes sharp as $\sigma\to0$ \numst.
+
+\begin{table}
+\caption{The comb sequence $S'_C$ against paper~E's evaluator (four harmonics; bound with the same four).}
+\label{tab:upper}
+\begin{ruledtabular}
+\begin{tabular}{lccccc}
+$\sigma$ & $a_1$ & $\Qb$ & $g$ & $U_P$ & $U_P/g-1$\\ \hline
+$10^{-6}$ & 1.906 & 0.38 & 0.6323 & 1.1452 & 0.81\\
+$10^{-12}$ & 1.971 & 0.11 & 0.3405 & 0.4042 & 0.19\\
+$10^{-18}$ & 1.987 & 0.025 & 0.2401 & 0.2506 & 0.043\\
+$10^{-24}$ & 1.993 & 0.0054 & 0.1904 & 0.1923 & 0.0097\\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\subsection{The two-sided theorem}
+
+\begin{table}
+\caption{The assumptions of Theorem~\ref{thm:BF1}, and what they exclude.}
+\label{tab:assumptions}
+\begin{ruledtabular}
+\begin{tabular}{lp{0.70\columnwidth}}
+(P1) & $f$ even (parity step of the curvature term)\\
+(P2) & $|a_n|\le|a_1|$: the fundamental is the largest harmonic\\
+(P3) & $\Qb\le\tfrac14$ (blurred contrast)\\
+(P4) & $\varrho=s^2/(2L^2)\le\tfrac18$ (window narrower than the envelope)\\
+(P5) & $x=(k'\sigma)^2\ge1$ (period within the blur's reach)\\
+(P6) & every state of the class has $|\varepsilon(\rho)|\le\bar\varepsilon$, $\bar\varepsilon\le0.1$ (paper~E's remainder, a state quantity)\\
+(P7) & $\sigma\le10^{-24}$ (both certificates cover $10^{-100000}\le\sigma\le10^{-24}$ continuously; below, the lower side by Lemma~\ref{lem:BH2})\\
+(P8) & $F_c\ge1.02G$ (start of the bootstrap; $=1.22/\sqrt{\ls}$ below $10^{-28}$)\\ \hline
+none & on $L_w$ beyond $L_w\le\sigma^{-1/2}$\\
+\emph{not covered} & odd components of $f$; profiles whose fundamental is not the largest harmonic (a window of a shorter period);
+$x<1$ (separated lines in a window); states with $F_c<1.02G$\\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\begin{theorem}[periodic windows: the logarithmic law from both sides] \caproofst{\code{bh\_cert\_cells.py}, \code{bf\_cert\_upper.py}}
+\label{thm:BF1}
+Let $g_{\min}^P(\sigma)$ be the infimum of $g$ over the periodic windows that satisfy (P1)--(P8). Then for every $\sigma$ with
+$10^{-100000}\le\sigma\le10^{-24}$
+\begin{equation}
+\begin{aligned}(1-\bar\varepsilon)\Big(1-1.7\,\frac{\ln\ls}{\ls}\Big)\ &\le\ g_{\min}^P\sqrt{\ls}\ \le\ g(S'_C(\sigma))\sqrt{\ls}\\ &\le\ \big(1+|\varepsilon(S'_C(\sigma))|\big)\Big(1+6.0\,\frac{\ln\ls}{\ls}\Big),\end{aligned}
+\end{equation}
+where $\bar\varepsilon\le0.1$ is the class bound of (P6), the left side is Theorem~\ref{thm:AY1P} ($421$ cells) and the right side is Theorem~\ref{thm:AZ1P} on
+the explicit comb $S'_C(\sigma)$ ($1464$ cells). The factor $|\varepsilon(S'_C(\sigma))|$ is a number for each $\sigma$; it is not bounded by a proof here
+(numerically $6\times10^{-7}$, $4\times10^{-13}$, $1.5\times10^{-15}$, $4\times10^{-16}$ at $\sigma=10^{-6}$, $10^{-12}$, $10^{-18}$, $10^{-24}$).
+\end{theorem}
+\begin{proof}
+The lower side is Theorem~\ref{thm:AY1P}. For the upper side, the comb sequence lies in the class on the whole range: (P1), (P2) by construction;
+$\Qb\le0.0056$, $\varrho\le3.5\times10^{-12}$ and $x\ge11.76$ (interval arithmetic on the same $1464$ cells, \code{bg\_members.py}); and Lemma~\ref{lem:AY2P}
+gives $F_c\ge(1-|\varepsilon(S'_C)|)(1-1.7\times10^{-13})\ge1.02G$ whenever $|\varepsilon(S'_C)|\le0.1$ (interval arithmetic on the same cells, \code{bh\_members\_fc.py}). So (P3)--(P5), (P8) hold;
+(P6) for the comb itself concerns the single number $\varepsilon(S'_C(\sigma))$, which is carried in the statement.
+Theorem~\ref{thm:AZ1P} then bounds $g$ on members of the class.
+\end{proof}
+
+\begin{corollary}[the limit] \label{cor:limit}
+(i) \proofst{} $\liminf_{\sigma\to0}g_{\min}^P\sqrt{\ls}\ge1-\bar\varepsilon$ (Lemma~\ref{lem:BH2}).
+(ii) \derivst{} $\limsup_{\sigma\to0}g_{\min}^P\sqrt{\ls}\le1$. This needs two further facts, neither proved here: (a) $\varepsilon(S'_C(\sigma))\to0$ ---
+numerically $|\varepsilon(S'_C)|$ falls from $6\times10^{-7}$ at $10^{-6}$ to $4\times10^{-16}$ at $10^{-24}$; and (b) $U_P\sqrt{\ls}\to1$ beyond
+$10^{-100000}$ --- along $S'_C$ the coefficient $(U_P\sqrt{\ls}-1)\ls/\ln\ls$ decreases on the certified range from $5.9$ to $3.36$, and the leading-order
+expansion gives the limit $\tfrac{11}4$; a proof would need explicit remainders of that expansion.
+So $g_{\min}^P\sqrt{\ln(1/\sigma)}\to1$ is proved from below (up to $1-\bar\varepsilon$) and derived from above.
+\end{corollary}
+
+\paragraph*{Reading (observer).}
+Whatever the shape of the teeth, the observer sees the window through its fundamental. The lower side says that the ripple cannot be finer
+than $k_0^2\approx\tfrac14\ln(1/\sigma)$; the upper side says that the sharpest admissible comb reaches that limit. Sharpening the teeth
+doubles the fundamental's contrast, which is worth dividing the blur by $256$ --- and changes $\ln(1/\sigma)$ only by $\ln256$, so the
+constant stays $1$.

@@ -1,0 +1,12 @@
+% 09_back_matter.tex
+\begin{acknowledgments}
+The author used AI assistants in this work. Anthropic Claude (\mbox{claude-opus-5-5}) was used in two separate sessions. In the first session it planned the study and wrote the instructions for each stage, re-ran every verification suite independently, checked key steps by independent calculations (among them the periodic average behind Lemma~\ref{lem:AY1P}, the leading-order amplitude of the comb and the ratio of Proposition~\ref{prop:BE1}, and the lower-side certificate at random interior points of its cells), found that the first lower-side certificate covered only isolated values of $\sigma$ and $\varepsilon$, and reviewed the manuscript. In the second session it carried out the computations, derived the lemmas and the window inequality, wrote the computer-assisted certificates, the evaluation and verification code, and drafted the text. Results were passed between the sessions as written summaries and checked in the first session. Google Gemini (Gemini 4 Argon) and OpenAI ChatGPT (GPT-5.6 Luna) reviewed a draft of the manuscript: both re-checked the directions of the monotonicity lemma and the quantification of the remainder $\varepsilon$, and Gemini re-derived the limiting constant $11/4$ of the upper coefficient; their questions led to the monotonicity table of Appendix~B, the notation $\hat\sigma$, and the explicit statement of which $\varepsilon$ enters each side of Theorem~\ref{thm:BF1}. The author directed the research, made all decisions on its content, and takes full responsibility for this article.
+\end{acknowledgments}
+
+\section*{Data and code availability}
+All scripts, stored results, the certificates and the verification code are available at
+\url{https://github.com/neginyan/resolution-gap-two-sided}; a single entry point, \code{verification/run\_all.py}, checks the stored results
+against their hashes and recomputes representative cells of every certificate. The computer-assisted parts of the proofs are in
+\code{certificates/}: \code{bh\_cert\_cells.py} (with \code{bf\_cert\_p.py}), \code{bh\_tail.py}, \code{bf\_ay\_bootstrap.py}, \code{ba\_ivl.py},
+\code{ba\_cert.py}, \code{bf\_cert\_upper.py}, \code{bg\_members.py} and \code{bh\_members\_fc.py}; each reruns on a single core in under an hour.
+A notebook in \code{demo/} shows the two-sided band and the comb--strip relation of Proposition~\ref{prop:BE1}.
