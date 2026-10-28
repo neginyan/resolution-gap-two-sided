@@ -1,0 +1,2423 @@
+{
+ "table": {
+  "theta_G": [
+   1,
+   1,
+   1,
+   0,
+   0
+  ],
+  "U0": [
+   0,
+   -1,
+   0,
+   0,
+   1
+  ],
+  "x_low": [
+   0,
+   -1,
+   0,
+   0,
+   1
+  ],
+  "U_P": [
+   0,
+   -1,
+   0,
+   0,
+   1
+  ],
+  "phi1": [
+   -1,
+   -1,
+   -1,
+   -1,
+   1
+  ],
+  "beta": [
+   1,
+   1,
+   1,
+   1,
+   -1
+  ],
+  "nu": [
+   1,
+   1,
+   1,
+   1,
+   -1
+  ],
+  "V_max": [
+   1,
+   1,
+   1,
+   1,
+   -1
+  ],
+  "omega": [
+   -1,
+   -1,
+   -1,
+   -1,
+   1
+  ],
+  "Gam2": [
+   1,
+   1,
+   1,
+   1,
+   -1
+  ],
+  "Gam3P": [
+   1,
+   1,
+   1,
+   1,
+   -1
+  ],
+  "K_P": [
+   1,
+   1,
+   1,
+   1,
+   -1
+  ],
+  "X_P": [
+   1,
+   1,
+   1,
+   1,
+   -1
+  ],
+  "L2max": [
+   1,
+   1,
+   1,
+   1,
+   -1
+  ],
+  "sigma_over_s_max": [
+   1,
+   1,
+   1,
+   1,
+   -1
+  ],
+  "delta_H": [
+   1,
+   1,
+   1,
+   1,
+   -1
+  ],
+  "r_C": [
+   1,
+   1,
+   1,
+   1,
+   -1
+  ],
+  "r_w": [
+   1,
+   1,
+   1,
+   1,
+   -1
+  ],
+  "F_def": [
+   1,
+   1,
+   1,
+   1,
+   -1
+  ]
+ },
+ "runs": [
+  {
+   "base": 0,
+   "var": "hs",
+   "const": "theta_G",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "hs",
+   "const": "U0",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "hs",
+   "const": "x_low",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "hs",
+   "const": "U_P",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "hs",
+   "const": "phi1",
+   "declared": -1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "hs",
+   "const": "beta",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "hs",
+   "const": "nu",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "hs",
+   "const": "V_max",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "hs",
+   "const": "omega",
+   "declared": -1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "hs",
+   "const": "Gam2",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "hs",
+   "const": "Gam3P",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "hs",
+   "const": "K_P",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "hs",
+   "const": "X_P",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "hs",
+   "const": "L2max",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "hs",
+   "const": "sigma_over_s_max",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "hs",
+   "const": "delta_H",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "hs",
+   "const": "r_C",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "hs",
+   "const": "r_w",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "hs",
+   "const": "F_def",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "G",
+   "const": "theta_G",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "G",
+   "const": "U0",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "G",
+   "const": "x_low",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "G",
+   "const": "U_P",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "G",
+   "const": "phi1",
+   "declared": -1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "G",
+   "const": "beta",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "G",
+   "const": "nu",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "G",
+   "const": "V_max",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "G",
+   "const": "omega",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "G",
+   "const": "Gam2",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "G",
+   "const": "Gam3P",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "G",
+   "const": "K_P",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "G",
+   "const": "X_P",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "G",
+   "const": "L2max",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "G",
+   "const": "sigma_over_s_max",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "G",
+   "const": "delta_H",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "G",
+   "const": "r_C",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "G",
+   "const": "r_w",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "G",
+   "const": "F_def",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "eta",
+   "const": "theta_G",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "eta",
+   "const": "U0",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "eta",
+   "const": "x_low",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "eta",
+   "const": "U_P",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "eta",
+   "const": "phi1",
+   "declared": -1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "eta",
+   "const": "beta",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "eta",
+   "const": "nu",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "eta",
+   "const": "V_max",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "eta",
+   "const": "omega",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "eta",
+   "const": "Gam2",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "eta",
+   "const": "Gam3P",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "eta",
+   "const": "K_P",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "eta",
+   "const": "X_P",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "eta",
+   "const": "L2max",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "eta",
+   "const": "sigma_over_s_max",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "eta",
+   "const": "delta_H",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "eta",
+   "const": "r_C",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "eta",
+   "const": "r_w",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "eta",
+   "const": "F_def",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "l",
+   "const": "theta_G",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "l",
+   "const": "U0",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "l",
+   "const": "x_low",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "l",
+   "const": "U_P",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "l",
+   "const": "phi1",
+   "declared": -1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "l",
+   "const": "beta",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "l",
+   "const": "nu",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "l",
+   "const": "V_max",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "l",
+   "const": "omega",
+   "declared": -1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "l",
+   "const": "Gam2",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "l",
+   "const": "Gam3P",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "l",
+   "const": "K_P",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "l",
+   "const": "X_P",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "l",
+   "const": "L2max",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "l",
+   "const": "sigma_over_s_max",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "l",
+   "const": "delta_H",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "l",
+   "const": "r_C",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "l",
+   "const": "r_w",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "l",
+   "const": "F_def",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "F",
+   "const": "theta_G",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "F",
+   "const": "U0",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "F",
+   "const": "x_low",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "F",
+   "const": "U_P",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "F",
+   "const": "phi1",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "F",
+   "const": "beta",
+   "declared": -1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "F",
+   "const": "nu",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "F",
+   "const": "V_max",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "F",
+   "const": "omega",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "F",
+   "const": "Gam2",
+   "declared": -1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "F",
+   "const": "Gam3P",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "F",
+   "const": "K_P",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "F",
+   "const": "X_P",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "F",
+   "const": "L2max",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "F",
+   "const": "sigma_over_s_max",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "F",
+   "const": "delta_H",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "F",
+   "const": "r_C",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "F",
+   "const": "r_w",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 0,
+   "var": "F",
+   "const": "F_def",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "hs",
+   "const": "theta_G",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "hs",
+   "const": "U0",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "hs",
+   "const": "x_low",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "hs",
+   "const": "U_P",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "hs",
+   "const": "phi1",
+   "declared": -1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "hs",
+   "const": "beta",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "hs",
+   "const": "nu",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "hs",
+   "const": "V_max",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "hs",
+   "const": "omega",
+   "declared": -1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "hs",
+   "const": "Gam2",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "hs",
+   "const": "Gam3P",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "hs",
+   "const": "K_P",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "hs",
+   "const": "X_P",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "hs",
+   "const": "L2max",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "hs",
+   "const": "sigma_over_s_max",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "hs",
+   "const": "delta_H",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "hs",
+   "const": "r_C",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "hs",
+   "const": "r_w",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "hs",
+   "const": "F_def",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "G",
+   "const": "theta_G",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "G",
+   "const": "U0",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "G",
+   "const": "x_low",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "G",
+   "const": "U_P",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "G",
+   "const": "phi1",
+   "declared": -1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "G",
+   "const": "beta",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "G",
+   "const": "nu",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "G",
+   "const": "V_max",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "G",
+   "const": "omega",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "G",
+   "const": "Gam2",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "G",
+   "const": "Gam3P",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "G",
+   "const": "K_P",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "G",
+   "const": "X_P",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "G",
+   "const": "L2max",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "G",
+   "const": "sigma_over_s_max",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "G",
+   "const": "delta_H",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "G",
+   "const": "r_C",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "G",
+   "const": "r_w",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "G",
+   "const": "F_def",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "eta",
+   "const": "theta_G",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "eta",
+   "const": "U0",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "eta",
+   "const": "x_low",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "eta",
+   "const": "U_P",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "eta",
+   "const": "phi1",
+   "declared": -1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "eta",
+   "const": "beta",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "eta",
+   "const": "nu",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "eta",
+   "const": "V_max",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "eta",
+   "const": "omega",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "eta",
+   "const": "Gam2",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "eta",
+   "const": "Gam3P",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "eta",
+   "const": "K_P",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "eta",
+   "const": "X_P",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "eta",
+   "const": "L2max",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "eta",
+   "const": "sigma_over_s_max",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "eta",
+   "const": "delta_H",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "eta",
+   "const": "r_C",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "eta",
+   "const": "r_w",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "eta",
+   "const": "F_def",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "l",
+   "const": "theta_G",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "l",
+   "const": "U0",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "l",
+   "const": "x_low",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "l",
+   "const": "U_P",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "l",
+   "const": "phi1",
+   "declared": -1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "l",
+   "const": "beta",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "l",
+   "const": "nu",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "l",
+   "const": "V_max",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "l",
+   "const": "omega",
+   "declared": -1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "l",
+   "const": "Gam2",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "l",
+   "const": "Gam3P",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "l",
+   "const": "K_P",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "l",
+   "const": "X_P",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "l",
+   "const": "L2max",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "l",
+   "const": "sigma_over_s_max",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "l",
+   "const": "delta_H",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "l",
+   "const": "r_C",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "l",
+   "const": "r_w",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "l",
+   "const": "F_def",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "F",
+   "const": "theta_G",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "F",
+   "const": "U0",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "F",
+   "const": "x_low",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "F",
+   "const": "U_P",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "F",
+   "const": "phi1",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "F",
+   "const": "beta",
+   "declared": -1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "F",
+   "const": "nu",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "F",
+   "const": "V_max",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "F",
+   "const": "omega",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "F",
+   "const": "Gam2",
+   "declared": -1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "F",
+   "const": "Gam3P",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "F",
+   "const": "K_P",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "F",
+   "const": "X_P",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "F",
+   "const": "L2max",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "F",
+   "const": "sigma_over_s_max",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "F",
+   "const": "delta_H",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "F",
+   "const": "r_C",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "F",
+   "const": "r_w",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 1,
+   "var": "F",
+   "const": "F_def",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "hs",
+   "const": "theta_G",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "hs",
+   "const": "U0",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "hs",
+   "const": "x_low",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "hs",
+   "const": "U_P",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "hs",
+   "const": "phi1",
+   "declared": -1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "hs",
+   "const": "beta",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "hs",
+   "const": "nu",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "hs",
+   "const": "V_max",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "hs",
+   "const": "omega",
+   "declared": -1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "hs",
+   "const": "Gam2",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "hs",
+   "const": "Gam3P",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "hs",
+   "const": "K_P",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "hs",
+   "const": "X_P",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "hs",
+   "const": "L2max",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "hs",
+   "const": "sigma_over_s_max",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "hs",
+   "const": "delta_H",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "hs",
+   "const": "r_C",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "hs",
+   "const": "r_w",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "hs",
+   "const": "F_def",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "G",
+   "const": "theta_G",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "G",
+   "const": "U0",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "G",
+   "const": "x_low",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "G",
+   "const": "U_P",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "G",
+   "const": "phi1",
+   "declared": -1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "G",
+   "const": "beta",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "G",
+   "const": "nu",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "G",
+   "const": "V_max",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "G",
+   "const": "omega",
+   "declared": -1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "G",
+   "const": "Gam2",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "G",
+   "const": "Gam3P",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "G",
+   "const": "K_P",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "G",
+   "const": "X_P",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "G",
+   "const": "L2max",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "G",
+   "const": "sigma_over_s_max",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "G",
+   "const": "delta_H",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "G",
+   "const": "r_C",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "G",
+   "const": "r_w",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "G",
+   "const": "F_def",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "eta",
+   "const": "theta_G",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "eta",
+   "const": "U0",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "eta",
+   "const": "x_low",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "eta",
+   "const": "U_P",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "eta",
+   "const": "phi1",
+   "declared": -1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "eta",
+   "const": "beta",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "eta",
+   "const": "nu",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "eta",
+   "const": "V_max",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "eta",
+   "const": "omega",
+   "declared": -1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "eta",
+   "const": "Gam2",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "eta",
+   "const": "Gam3P",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "eta",
+   "const": "K_P",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "eta",
+   "const": "X_P",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "eta",
+   "const": "L2max",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "eta",
+   "const": "sigma_over_s_max",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "eta",
+   "const": "delta_H",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "eta",
+   "const": "r_C",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "eta",
+   "const": "r_w",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "eta",
+   "const": "F_def",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "l",
+   "const": "theta_G",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "l",
+   "const": "U0",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "l",
+   "const": "x_low",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "l",
+   "const": "U_P",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "l",
+   "const": "phi1",
+   "declared": -1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "l",
+   "const": "beta",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "l",
+   "const": "nu",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "l",
+   "const": "V_max",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "l",
+   "const": "omega",
+   "declared": -1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "l",
+   "const": "Gam2",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "l",
+   "const": "Gam3P",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "l",
+   "const": "K_P",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "l",
+   "const": "X_P",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "l",
+   "const": "L2max",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "l",
+   "const": "sigma_over_s_max",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "l",
+   "const": "delta_H",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "l",
+   "const": "r_C",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "l",
+   "const": "r_w",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "l",
+   "const": "F_def",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "F",
+   "const": "theta_G",
+   "declared": 0,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "F",
+   "const": "U0",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "F",
+   "const": "x_low",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "F",
+   "const": "U_P",
+   "declared": 1,
+   "observed": 1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "F",
+   "const": "phi1",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "F",
+   "const": "beta",
+   "declared": -1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "F",
+   "const": "nu",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "F",
+   "const": "V_max",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "F",
+   "const": "omega",
+   "declared": 1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "F",
+   "const": "Gam2",
+   "declared": -1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "F",
+   "const": "Gam3P",
+   "declared": -1,
+   "observed": 0,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "F",
+   "const": "K_P",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "F",
+   "const": "X_P",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "F",
+   "const": "L2max",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "F",
+   "const": "sigma_over_s_max",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "F",
+   "const": "delta_H",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "F",
+   "const": "r_C",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "F",
+   "const": "r_w",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  },
+  {
+   "base": 2,
+   "var": "F",
+   "const": "F_def",
+   "declared": -1,
+   "observed": -1,
+   "ok": true
+  }
+ ],
+ "n_checks": 285,
+ "all_ok": true,
+ "bad": [],
+ "n_nonmonotone": 0
+}

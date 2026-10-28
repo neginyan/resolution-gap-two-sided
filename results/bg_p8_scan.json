@@ -1,0 +1,28 @@
+{
+ "1e-12": {
+  "G": 0.14751,
+  "states_in_class": 4000,
+  "F_lower_below_1.02G": 1708,
+  "rescued_by_W_or_N": 1708,
+  "min_max_WN_over_G_among_small": 22418.778556088506,
+  "worst_state_V_L2_sigma_over_s": [
+   2.0606762594462728e-08,
+   2801.4398488104016,
+   1.6653199514251527e-08
+  ],
+  "median_F_lower_all": 0.9321492623741693
+ },
+ "1e-24": {
+  "G": 0.14751,
+  "states_in_class": 4000,
+  "F_lower_below_1.02G": 30,
+  "rescued_by_W_or_N": 30,
+  "min_max_WN_over_G_among_small": 5.740569710062482e+24,
+  "worst_state_V_L2_sigma_over_s": [
+   1.2116303001978062e-16,
+   1.9018460950047953e-17,
+   1.6460396327202424e-14
+  ],
+  "median_F_lower_all": 0.9899999999989835
+ }
+}
