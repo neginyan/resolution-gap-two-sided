@@ -18,3 +18,15 @@ keywords:
   - resolution gap
   - computer-assisted proof
   - interval arithmetic
+preferred-citation:
+  type: article
+  title: "How fine can a hidden ripple be? A two-sided logarithmic law for the resolution gap of the arrow of time"
+  authors:
+    - family-names: "Namba"
+      given-names: "Taishi"
+      orcid: "https://orcid.org/0009-0002-7098-970X"
+  year: 2026
+  doi: "10.5281/zenodo.23746972"
+  publisher:
+    name: "Zenodo"
+  notes: "Preprint"
