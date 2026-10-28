@@ -1,0 +1,35 @@
+[
+ {
+  "alpha": 0.1,
+  "second_component": "same strip",
+  "g": 0.7428031822243,
+  "g_component_0": 0.7428040149723873,
+  "g_component_2pi": 0.7428040149723873,
+  "E_xz2": 3.948631033325124,
+  "Var_xz": 3.55384685728155,
+  "H1": true,
+  "H2": true
+ },
+ {
+  "alpha": 0.24,
+  "second_component": "same strip",
+  "g": 0.7428031822242432,
+  "g_component_0": 0.7428040149723873,
+  "g_component_2pi": 0.7428040149723873,
+  "E_xz2": 9.475609497935164,
+  "Var_xz": 7.2016526439241755,
+  "H1": true,
+  "H2": true
+ },
+ {
+  "alpha": 0.24,
+  "second_component": "2 k0 strip",
+  "g": 0.8084736043918804,
+  "g_component_0": 0.7428040149723873,
+  "g_component_2pi": 3.801430631895697,
+  "E_xz2": 9.475609497935164,
+  "Var_xz": 7.2016526439241755,
+  "H1": true,
+  "H2": true
+ }
+]

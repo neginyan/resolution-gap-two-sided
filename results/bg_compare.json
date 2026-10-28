@@ -1,0 +1,24 @@
+{
+ "A1_deficit": {
+  "comb optimum 1e-12": {
+   "actual": 6.868755788630596e-14,
+   "bound": 1.0236431843848265e-13,
+   "ok": true
+  },
+  "strip optimum 1e-12": {
+   "actual": 8.060389694103034e-14,
+   "bound": 1.1126315373065826e-13,
+   "ok": true
+  },
+  "comb optimum 1e-24": {
+   "actual": 4.1880157053678514e-26,
+   "bound": 4.2888511498714796e-26,
+   "ok": true
+  },
+  "strip optimum 1e-24": {
+   "actual": 4.4736834646039435e-26,
+   "bound": 4.565713388953466e-26,
+   "ok": true
+  }
+ }
+}

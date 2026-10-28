@@ -1,0 +1,146 @@
+{
+ "1e-24": {
+  "rows": [
+   {
+    "F0": 0.2,
+    "F_final": 0.2641535350652016,
+    "closed": false
+   },
+   {
+    "F0": 0.3,
+    "F_final": 0.3,
+    "closed": false
+   },
+   {
+    "F0": 0.4,
+    "F_final": 0.4,
+    "closed": false
+   },
+   {
+    "F0": 0.5,
+    "F_final": 0.9891090675435854,
+    "closed": true
+   },
+   {
+    "F0": 0.6,
+    "F_final": 0.9891090675435977,
+    "closed": true
+   },
+   {
+    "F0": 0.7,
+    "F_final": 0.989109067543609,
+    "closed": true
+   },
+   {
+    "F0": 0.8,
+    "F_final": 0.9891090675430909,
+    "closed": true
+   },
+   {
+    "F0": 0.9,
+    "F_final": 0.9891090675434697,
+    "closed": true
+   }
+  ],
+  "smallest_F0": 0.5,
+  "G": 0.14750999999999997,
+  "AY1_fixed_point_F": 0.9891090676523854,
+  "AY1_g_sqrt_ln": 0.9114868510258236
+ },
+ "1e-96": {
+  "rows": [
+   {
+    "F0": 0.2,
+    "F_final": 0.989999999894459,
+    "closed": true
+   },
+   {
+    "F0": 0.3,
+    "F_final": 0.989999999894459,
+    "closed": true
+   },
+   {
+    "F0": 0.4,
+    "F_final": 0.989999999894459,
+    "closed": true
+   },
+   {
+    "F0": 0.5,
+    "F_final": 0.989999999894459,
+    "closed": true
+   },
+   {
+    "F0": 0.6,
+    "F_final": 0.9899999998942335,
+    "closed": true
+   },
+   {
+    "F0": 0.7,
+    "F_final": 0.9899999998944429,
+    "closed": true
+   },
+   {
+    "F0": 0.8,
+    "F_final": 0.9899999998944582,
+    "closed": true
+   },
+   {
+    "F0": 0.9,
+    "F_final": 0.9899999998944589,
+    "closed": true
+   }
+  ],
+  "smallest_F0": 0.2,
+  "G": 0.08071193981406206,
+  "AY1_fixed_point_F": 0.989999999894459,
+  "AY1_g_sqrt_ln": 0.9669151118825405
+ },
+ "1e-1024": {
+  "rows": [
+   {
+    "F0": 0.2,
+    "F_final": 0.99,
+    "closed": true
+   },
+   {
+    "F0": 0.3,
+    "F_final": 0.99,
+    "closed": true
+   },
+   {
+    "F0": 0.4,
+    "F_final": 0.99,
+    "closed": true
+   },
+   {
+    "F0": 0.5,
+    "F_final": 0.99,
+    "closed": true
+   },
+   {
+    "F0": 0.6,
+    "F_final": 0.99,
+    "closed": true
+   },
+   {
+    "F0": 0.7,
+    "F_final": 0.99,
+    "closed": true
+   },
+   {
+    "F0": 0.8,
+    "F_final": 0.99,
+    "closed": true
+   },
+   {
+    "F0": 0.9,
+    "F_final": 0.99,
+    "closed": true
+   }
+  ],
+  "smallest_F0": 0.2,
+  "G": 0.024712883586834777,
+  "AY1_fixed_point_F": 0.99,
+  "AY1_g_sqrt_ln": 0.9875682535037256
+ }
+}
