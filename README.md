@@ -4,6 +4,7 @@
 
 Code, stored results and computer-assisted proofs for the paper by Taishi Namba (2026).
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23746555.svg)](https://doi.org/10.5281/zenodo.23746555)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/neginyan/resolution-gap-two-sided/blob/main/demo/hidden_ripple_demo.ipynb)
 [![verify](https://github.com/neginyan/resolution-gap-two-sided/actions/workflows/verify.yml/badge.svg)](https://github.com/neginyan/resolution-gap-two-sided/actions/workflows/verify.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -76,6 +77,7 @@ The study was carried out with AI assistants: Anthropic Claude (planning, comput
 ## Citation
 
 Please cite the paper and this repository; see `CITATION.cff`.
+The code is archived at Zenodo: [doi:10.5281/zenodo.23746555](https://doi.org/10.5281/zenodo.23746555) (all versions; v1.0.0 is [10.5281/zenodo.23746556](https://doi.org/10.5281/zenodo.23746556)).
 
 ## License
 
