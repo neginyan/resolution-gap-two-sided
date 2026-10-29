@@ -13,6 +13,8 @@ Code, stored results and computer-assisted proofs for the paper by Taishi Namba 
 
 > **Version 1.1 (2026-10-29).** Version 1.0 treated the Gaussian average over v in the window lemmas as an exact period average; for states whose background v-width is only a few σ a correction is needed. Version 1.1 closes this: a computer-assisted lemma shows that every state with a small gap has τ = k′²V > 80, where the correction is below 10⁻¹³ relative, and every certificate is rerun with input perturbations of 10⁻⁶. It also removes the start condition (P8), which now follows from (P0)–(P7). The standing condition L_w ≤ σ⁻¹ᐟ², already used in v1.0, is now listed as (P0), and the statement of the limit now separates what is proved from what is derived; otherwise the theorems are unchanged. The v1.0 certificates are kept in the repository.
 
+> **Note (2026-10-29, after v1.1).** In the certificate of the narrow-width lemma (`certificates/bk_narrow_lemma.py`, Lemma 20 of the paper) one factor, |1 − n²τ|e^{−n²τ/2}, is not monotone in τ, but was evaluated at the smallest τ of each cell. With its supremum over the cell every cell still closes; the smallest margin is 2.78 instead of the stated 2.80. The lemma and the theorems are unchanged. The corrected code will be part of the next version.
+
 ## The result in brief
 
 An observer who sees a pendulum's phase space through a Gaussian blur of width σ cannot always resolve the arrow of time near the hyperbolic top. The *resolution gap* g measures by how much. The companion paper ([paper E](https://doi.org/10.5281/zenodo.23617343)) showed that g is not bounded below uniformly in σ: a hidden ripple of the right fineness makes it shrink, like 1/√ln(1/σ) on the strips it searched.
