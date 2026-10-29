@@ -11,6 +11,8 @@ Code, stored results and computer-assisted proofs for the paper by Taishi Namba 
 [![verify](https://github.com/neginyan/resolution-gap-two-sided/actions/workflows/verify.yml/badge.svg)](https://github.com/neginyan/resolution-gap-two-sided/actions/workflows/verify.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
+> **Known issue (v1.0, found by the author on 2026-10-29).** The window lemmas of the paper treat the Gaussian average over v as an exact period average. For states whose background v-width is only a few σ, a correction is needed: the Gaussian average is a period average weighted by a wrapped normal of width τ = k′²V, with relative correction δ_τ = 2Σₙ e^{−n²τ/2}. The narrow case (τ ≤ 40) is now closed by a new computer-assisted lemma; for τ > 40 the correction is below 5 × 10⁻⁹ relative. The statements of the theorems are expected to be unchanged. A corrected version (v1.1) of the paper and of this code is in preparation.
+
 ## The result in brief
 
 An observer who sees a pendulum's phase space through a Gaussian blur of width σ cannot always resolve the arrow of time near the hyperbolic top. The *resolution gap* g measures by how much. The companion paper ([paper E](https://doi.org/10.5281/zenodo.23617343)) showed that g is not bounded below uniformly in σ: a hidden ripple of the right fineness makes it shrink, like 1/√ln(1/σ) on the strips it searched.
