@@ -15,9 +15,22 @@ and the harmonic sums (decreasing in $x$) at $x_a$, so no maximum escapes betwee
 cells extend to at least $x_{\mathrm{low}}+20$; suprema that underflow ($x_{\mathrm{low}}\gtrsim700$) are replaced by the upper bound $10^{-300}$.
 The conditions checked are: $\Phi_C$-condition, case-B threshold, $0<\beta<1$, $\nu<1$, $\omega>0$, $\varphi_1>0$, exclusion of $L>1$,
 $F_{\mathrm{int}}>0$, and the sign $d\ge0$ that puts the worst point of the cell at $\ell_a$. All hold on all $421$ cells (smallest margins: case-B
-threshold $>3\times10^{24}$ times $\hat\sigma$, $L>1$ exclusion by a factor $>2700$, $\beta\le0.251$, $\omega\ge0.99985$, $d\ge8.9$). $F_{\mathrm{int}}$ is taken as
+threshold $>8\times10^{23}$ times $\hat\sigma$, $L>1$ exclusion by a factor $>2700$, $\beta\le0.251$, $\omega\ge0.99985$, $d\ge8.9$). $F_{\mathrm{int}}$ is taken as
 $1-(\eta G\sigma\theta_G+\delta_H+r_C+r_w)$, a lower bound of the product. The roots $x_{\max}$ and $X_P$ are taken from monotone functions with a margin.
 The cell value $L_{\mathrm{cell}}$ satisfies $L_{\mathrm{cell}}\ge1-1.7\ln\ell_a/\ell_a$ on every cell; the largest constant needed is $1.615$.
+
+\emph{Perturbed inputs (v1.1, \code{bl\_chain.py}).} The certificate is run with the $\theta_\tau$ forms of App.~\ref{app:theta} and every input lemma
+perturbed by $\varepsilon=\varepsilon_{\mathrm{in}}=10^{-6}$ in the bad direction ($\epsilon_\theta<10^{-13}$ for $\tau>80$, and $\tau>80$ by Lemma~\ref{lem:BK1}):
+$\eta\to\eta/(1-\varepsilon)^2$ (the $w$-information and Lemma~\ref{lem:BL4}); $U_0=F^2/(4G^2(1+\varepsilon))-\frac14$ and the conclusion divided by
+$\sqrt{1+\varepsilon}$ (Lemma~\ref{lem:BL5}); in the curvature step (Lemma~\ref{lem:BL3}) the coefficient of $b$ is $(1-\varepsilon)\min(\Phi,\frac12)$ and
+$\Phi\le4\min(\Phi,\frac12)$, so the case-B threshold has $128$ instead of $32$, $\beta=[\tau_0+(1+\varepsilon)\sigma^2+4r_{wp}\Phi_{b}/(1-\varepsilon)]/(\Phi_b-\tau_0)$
+with $\Phi_b=(1-\varepsilon)\Phi_{\min}$, the $\omega$-term is doubled and $\omega$ carries $\sqrt{1-\varepsilon}$; $\gamma_P$, $\sigma^2$ in $(1-e-\sigma^2)$, $W_{p,\max}$,
+$\Gamma_{3P}$, the $W$-factor of $L^2_{\max}$, $r_C$ and $r_w$ get factors $1+\varepsilon$ or $1+3\varepsilon$; the absolute remainder of Lemma~\ref{lem:BL3} is
+relative because $\eta G\theta_G/\varphi_1\le0.68$ on every cell. All conditions hold on all $421$ cells; $L_{\mathrm{cell}}$ moves by at most $5.8\times10^{-7}$,
+the largest constant needed is at most $1.6145$, and the smallest margin at $c_1=1.7$ is $5.04\times10^{-5}$ (last cell). The modifications are constants, so the
+monotonicity of Lemma~\ref{lem:BH1} is unchanged. The tail (Lemma~\ref{lem:BH2}) re-run in the same form gives the bound
+$(1+\varepsilon_{\mathrm{in}})^{-1/2}(1-F_{\mathrm{def,end}})\sqrt{\ls/(X_P+c)}/2$, increasing from $0.999958$; in the limit the factor
+$(1+\epsilon_\theta)^{-1/2}\to1$, since $\tau\ge x_{\mathrm{low}}/(\beta W_{p,\max})\to\infty$ along the bootstrap.
 A numerical cross-check (not part of the proof, \code{bh\_monotone\_check.py}) re-runs the chain at interior points with the true $\sigma$, $G(\ls)$
 and $|\varepsilon|\in\{0,0.05,0.1\}$: every point value is better than its cell's. The earlier point certificates (\code{bf\_cert\_p.py} at $33$ points,
 \code{be\_cert\_p.py} for the version with $F_c$ and $L_w\le1$ assumed) are superseded by the cell certificate.

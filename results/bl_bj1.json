@@ -1,0 +1,642 @@
+{
+ "eps_in": 1e-06,
+ "1e-24": {
+  "sigma": 1e-24,
+  "c": 0.1488888888888889,
+  "eps": 1e-06,
+  "Gamma_star": 3.622737143377649,
+  "R1": 8.028232119029001,
+  "W_max": 0.057772077569198464,
+  "S_xi": 0.6824847662164051,
+  "T1": 1.5580230596480609,
+  "T2": 1.0440089044716436,
+  "step2a": {
+   "nu": 5.955565555555555e-25,
+   "V_bar": 2.683311308111638e-24,
+   "kappa_a": 0.999999,
+   "one_minus_C_bar": 0.023080887225590506,
+   "r_bar": 6.82484766216791e-25,
+   "L2_bar": 0.09340568727559705,
+   "C_s": 1.1166711333378003,
+   "delta_H": 1.189589385169527e-12,
+   "r_C": 0.028216329609020967,
+   "r_w": 0.07005433558101756,
+   "A1": 0.999999999,
+   "A_min": 0.9371268541885736
+  },
+  "step2b": {
+   "e_prime": 0.017104148629505527,
+   "q_star": 3.3189843050864657e-09,
+   "gamma_star": 3.922458208165655e-07,
+   "a_lower_over_c": 73218.3583799262,
+   "contradiction": true
+  },
+  "step3a": {
+   "g_L1_over_sigma": 0.8395513984135545,
+   "g_Lmax": 0.9999999989996587,
+   "rhs_over_sigma": 0.6806367448094444,
+   "margin": 1.2334793923719192,
+   "unimodal": true,
+   "contradiction": true
+  },
+  "step3b": {
+   "gamma_lo": 0.10494371491413276,
+   "admissible_x": [
+    1.0,
+    13.347
+   ],
+   "inf_x_over_Gamma1sq": 0.007748795152258004,
+   "W_lower_over_W_cap": 208210.7110872347,
+   "contradiction": true
+  },
+  "A_min": 0.9371268541885736,
+  "F_c_lower": 0.8434141687697162,
+  "ok": true
+ },
+ "1e-48": {
+  "sigma": 1e-48,
+  "c": 0.1488888888888889,
+  "eps": 1e-06,
+  "Gamma_star": 3.622737143377649,
+  "R1": 8.028232119029001,
+  "W_max": 0.057772077569198464,
+  "S_xi": 0.6824847662164051,
+  "T1": 1.5580230596480609,
+  "T2": 1.0440089044716436,
+  "step2a": {
+   "nu": 5.955565555555557e-49,
+   "V_bar": 2.6833113081116385e-48,
+   "kappa_a": 0.999999,
+   "one_minus_C_bar": 0.023080887225590506,
+   "r_bar": 6.8248476621640504e-49,
+   "L2_bar": 0.09340568727419983,
+   "C_s": 1.1166711333378003,
+   "delta_H": 1.1895893851676383e-24,
+   "r_C": 0.028216329608598892,
+   "r_w": 0.07005433557996965,
+   "A1": 0.999999999,
+   "A_min": 0.9371268541906235
+  },
+  "step2b": {
+   "e_prime": 0.017104148629505527,
+   "q_star": 3.3189843050864668e-21,
+   "gamma_star": 8.99757127531467e-19,
+   "a_lower_over_c": 3.1919274882955804e+16,
+   "contradiction": true
+  },
+  "step3a": {
+   "g_L1_over_sigma": 0.8395513984141799,
+   "g_Lmax": 0.999999999,
+   "rhs_over_sigma": 0.6806367448094446,
+   "margin": 1.2334793923728378,
+   "unimodal": true,
+   "contradiction": true
+  },
+  "step3b": {
+   "gamma_lo": 0.10494371491413276,
+   "admissible_x": [
+    1.0,
+    13.347
+   ],
+   "inf_x_over_Gamma1sq": 0.007748795152258004,
+   "W_lower_over_W_cap": 2.0821071108823472e+17,
+   "contradiction": true
+  },
+  "A_min": 0.9371268541906235,
+  "F_c_lower": 0.8434141687715612,
+  "ok": true
+ },
+ "1e-100": {
+  "sigma": 1e-100,
+  "c": 0.1488888888888889,
+  "eps": 1e-06,
+  "Gamma_star": 3.622737143377649,
+  "R1": 8.028232119029001,
+  "W_max": 0.057772077569198464,
+  "S_xi": 0.6824847662164051,
+  "T1": 1.5580230596480609,
+  "T2": 1.0440089044716436,
+  "step2a": {
+   "nu": 5.955565555555556e-101,
+   "V_bar": 2.683311308111638e-100,
+   "kappa_a": 0.999999,
+   "one_minus_C_bar": 0.023080887225590506,
+   "r_bar": 6.824847662164051e-101,
+   "L2_bar": 0.09340568727419983,
+   "C_s": 1.1166711333378003,
+   "delta_H": 1.1895893851676384e-50,
+   "r_C": 0.028216329608598892,
+   "r_w": 0.07005433557996965,
+   "A1": 0.999999999,
+   "A_min": 0.9371268541906235
+  },
+  "step2b": {
+   "e_prime": 0.017104148629505527,
+   "q_star": 3.3189843050864666e-47,
+   "gamma_star": 4.1382648757093227e-41,
+   "a_lower_over_c": 6.940008903285316e+38,
+   "contradiction": true
+  },
+  "step3a": {
+   "g_L1_over_sigma": 0.8395513984141797,
+   "g_Lmax": 0.999999999,
+   "rhs_over_sigma": 0.6806367448094445,
+   "margin": 1.2334793923728375,
+   "unimodal": true,
+   "contradiction": true
+  },
+  "step3b": {
+   "gamma_lo": 0.10494371491413276,
+   "admissible_x": [
+    1.0,
+    13.347
+   ],
+   "inf_x_over_Gamma1sq": 0.007748795152258004,
+   "W_lower_over_W_cap": 2.0821071108823468e+43,
+   "contradiction": true
+  },
+  "A_min": 0.9371268541906235,
+  "F_c_lower": 0.8434141687715612,
+  "ok": true
+ },
+ "1e-200": {
+  "sigma": 1e-200,
+  "c": 0.1488888888888889,
+  "eps": 1e-06,
+  "Gamma_star": 3.622737143377649,
+  "R1": 8.028232119029001,
+  "W_max": 0.057772077569198464,
+  "S_xi": 0.6824847662164051,
+  "T1": 1.5580230596480609,
+  "T2": 1.0440089044716436,
+  "step2a": {
+   "nu": 5.955565555555556e-201,
+   "V_bar": 2.6833113081116386e-200,
+   "kappa_a": 0.999999,
+   "one_minus_C_bar": 0.023080887225590506,
+   "r_bar": 6.824847662164051e-201,
+   "L2_bar": 0.09340568727419983,
+   "C_s": 1.1166711333378003,
+   "delta_H": 1.1895893851676382e-100,
+   "r_C": 0.028216329608598892,
+   "r_w": 0.07005433557996965,
+   "A1": 0.999999999,
+   "A_min": 0.9371268541906235
+  },
+  "step2b": {
+   "e_prime": 0.017104148629505527,
+   "q_star": 3.318984305086466e-97,
+   "gamma_star": 4.1382648757093227e-41,
+   "a_lower_over_c": 6.940008903285316e+38,
+   "contradiction": true
+  },
+  "step3a": {
+   "g_L1_over_sigma": 0.8395513984141796,
+   "g_Lmax": 0.999999999,
+   "rhs_over_sigma": 0.6806367448094445,
+   "margin": 1.2334793923728373,
+   "unimodal": true,
+   "contradiction": true
+  },
+  "step3b": {
+   "gamma_lo": 0.10494371491413276,
+   "admissible_x": [
+    1.0,
+    13.347
+   ],
+   "inf_x_over_Gamma1sq": 0.007748795152258004,
+   "W_lower_over_W_cap": 2.082107110882347e+93,
+   "contradiction": true
+  },
+  "A_min": 0.9371268541906235,
+  "F_c_lower": 0.8434141687715612,
+  "ok": true
+ },
+ "1e-300": {
+  "sigma": 1e-300,
+  "c": 0.1488888888888889,
+  "eps": 1e-06,
+  "Gamma_star": 3.622737143377649,
+  "R1": 8.028232119029001,
+  "W_max": 0.057772077569198464,
+  "S_xi": 0.6824847662164051,
+  "T1": 1.5580230596480609,
+  "T2": 1.0440089044716436,
+  "step2a": {
+   "nu": 5.955565555555556e-301,
+   "V_bar": 2.6833113081116382e-300,
+   "kappa_a": 0.999999,
+   "one_minus_C_bar": 0.023080887225590506,
+   "r_bar": 6.824847662164051e-301,
+   "L2_bar": 0.09340568727419983,
+   "C_s": 1.1166711333378003,
+   "delta_H": 1.1895893851676384e-150,
+   "r_C": 0.028216329608598892,
+   "r_w": 0.07005433557996965,
+   "A1": 0.999999999,
+   "A_min": 0.9371268541906235
+  },
+  "step2b": {
+   "e_prime": 0.017104148629505527,
+   "q_star": 3.318984305086467e-147,
+   "gamma_star": 4.1382648757093227e-41,
+   "a_lower_over_c": 6.940008903285316e+38,
+   "contradiction": true
+  },
+  "step3a": {
+   "g_L1_over_sigma": 0.8395513984141799,
+   "g_Lmax": 0.999999999,
+   "rhs_over_sigma": 0.6806367448094445,
+   "margin": 1.233479392372838,
+   "unimodal": true,
+   "contradiction": true
+  },
+  "step3b": {
+   "gamma_lo": 0.10494371491413276,
+   "admissible_x": [
+    1.0,
+    13.347
+   ],
+   "inf_x_over_Gamma1sq": 0.007748795152258004,
+   "W_lower_over_W_cap": 2.0821071108823466e+143,
+   "contradiction": true
+  },
+  "A_min": 0.9371268541906235,
+  "F_c_lower": 0.8434141687715612,
+  "ok": true
+ },
+ "all_ok": true,
+ "step3a_interval": {
+  "g_L1_over_sigma": [
+   0.839551399253106,
+   0.839551399253106
+  ],
+  "rhs_over_sigma": [
+   0.6806367441288077,
+   0.6806367441288077
+  ],
+  "margin_lower": 1.233479394838878,
+  "g_gt_rhs": true,
+  "unimodal": true
+ },
+ "monotonicity": [
+  {
+   "quantity": "theta = 1/(1 - c sigma)",
+   "sigma_dir": 1,
+   "c_dir": 1,
+   "reason": "denominator decreases in c and sigma",
+   "ok_sigma": true,
+   "ok_c": true,
+   "along_sigma": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "along_c": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "quantity": "nu = 4 c sigma theta + (1+eps) sigma^2 + eps sigma (step 2a)",
+   "sigma_dir": 1,
+   "c_dir": 1,
+   "reason": "sum of products of non-decreasing factors",
+   "ok_sigma": true,
+   "ok_c": true,
+   "along_sigma": [
+    5.955565555555555e-25,
+    5.955565555555557e-31,
+    5.955565555555556e-41,
+    5.9555655555555565e-61
+   ],
+   "along_c": [
+    2.0000099999999999e-25,
+    4.0000099999999997e-25,
+    5.2000099999999995e-25,
+    5.955565555555555e-25
+   ]
+  },
+  {
+   "quantity": "V_bar = -2 ln(1 - nu)/alpha_min^2",
+   "sigma_dir": 1,
+   "c_dir": 1,
+   "reason": "-ln(1 - nu) increases with nu",
+   "ok_sigma": true,
+   "ok_c": true,
+   "along_sigma": [
+    2.683311308111638e-24,
+    2.683311308111638e-30,
+    2.6833113081116385e-40,
+    2.6833113081116385e-60
+   ],
+   "along_c": [
+    9.011149989492035e-25,
+    1.80222549234594e-24,
+    2.342891788383982e-24,
+    2.683311308111638e-24
+   ]
+  },
+  {
+   "quantity": "1 - C bound omega_C",
+   "sigma_dir": 1,
+   "c_dir": 1,
+   "reason": "(4c theta + sigma + eps)^2 up, kappa_a and 1 - nu down",
+   "ok_sigma": true,
+   "ok_c": true,
+   "along_sigma": [
+    0.023080887225590506,
+    0.023080887225590506,
+    0.023080887225590506,
+    0.023080887225590506
+   ],
+   "along_c": [
+    0.0026029798987043822,
+    0.010411867535544924,
+    0.017596035831985848,
+    0.023080887225590506
+   ]
+  },
+  {
+   "quantity": "r_bar = sigma (S_xi + sqrt(c sigma theta/(1 - eps)))",
+   "sigma_dir": 1,
+   "c_dir": 1,
+   "reason": "product of non-decreasing factors",
+   "ok_sigma": true,
+   "ok_c": true,
+   "along_sigma": [
+    6.82484766216791e-25,
+    6.824847662164055e-31,
+    6.824847662164051e-41,
+    6.824847662164051e-61
+   ],
+   "along_c": [
+    6.824847662166286e-25,
+    6.824847662167213e-25,
+    6.824847662167656e-25,
+    6.82484766216791e-25
+   ]
+  },
+  {
+   "quantity": "L2_bar = -4 ln(1 - omega_C - delta_r)",
+   "sigma_dir": 1,
+   "c_dir": 1,
+   "reason": "omega_C and delta_r = (L_max r_bar + r_bar^2/2)/2 increase (L_max r_bar ~ sqrt sigma)",
+   "ok_sigma": true,
+   "ok_c": true,
+   "along_sigma": [
+    0.09340568727559705,
+    0.09340568727420122,
+    0.09340568727419983,
+    0.09340568727419983
+   ],
+   "along_c": [
+    0.01042549417665645,
+    0.041865800966298994,
+    0.07101074571275841,
+    0.09340568727559705
+   ]
+  },
+  {
+   "quantity": "C_s (sigma/s bound)",
+   "sigma_dir": 0,
+   "c_dir": 1,
+   "reason": "proportional to c theta",
+   "ok_sigma": true,
+   "ok_c": true,
+   "along_sigma": [
+    1.1166711333378003,
+    1.1166711333378003,
+    1.1166711333378003,
+    1.1166711333378003
+   ],
+   "along_c": [
+    0.3750015000015,
+    0.750003000003,
+    0.9750039000039,
+    1.1166711333378003
+   ]
+  },
+  {
+   "quantity": "delta_H",
+   "sigma_dir": 1,
+   "c_dir": 1,
+   "reason": "terms c sigma theta, C_s sigma, sqrt(C_s sigma)",
+   "ok_sigma": true,
+   "ok_c": true,
+   "along_sigma": [
+    1.189589385169527e-12,
+    1.1895893851676404e-15,
+    1.189589385167638e-20,
+    1.1895893851676382e-30
+   ],
+   "along_c": [
+    6.893677112645658e-13,
+    9.749131667328205e-13,
+    1.111572034314543e-12,
+    1.189589385169527e-12
+   ]
+  },
+  {
+   "quantity": "r_C, r_w",
+   "sigma_dir": 1,
+   "c_dir": 1,
+   "reason": "V_bar, L2_bar, Xi up",
+   "ok_sigma": true,
+   "ok_c": true,
+   "along_sigma": [
+    0.028216329609020967,
+    0.028216329608599308,
+    0.028216329608598892,
+    0.028216329608598892
+   ],
+   "along_c": [
+    0.0031493711850490397,
+    0.012646973368177168,
+    0.02145118424000972,
+    0.028216329609020967
+   ]
+  },
+  {
+   "quantity": "A_min (lower bound)",
+   "sigma_dir": -1,
+   "c_dir": -1,
+   "reason": "1 - dH, 1 - r_C, 1 - r_w and A1 = 1 - c sigma all decrease",
+   "ok_sigma": true,
+   "ok_c": true,
+   "along_sigma": [
+    0.9371268541885736,
+    0.9371268541906215,
+    0.9371268541906235,
+    0.9371268541906235
+   ],
+   "along_c": [
+    0.9929457270594412,
+    0.9717282569530065,
+    0.9521344762562334,
+    0.9371268541885736
+   ]
+  },
+  {
+   "quantity": "e' (step 2b)",
+   "sigma_dir": -1,
+   "c_dir": -1,
+   "reason": "minus sigma^2, sigma eps, 4 c sigma theta; V-floor 1/(4 kap Gamma*) independent of c",
+   "ok_sigma": true,
+   "ok_c": true,
+   "along_sigma": [
+    0.017104148629505527,
+    0.017104148629505527,
+    0.017104148629505527,
+    0.017104148629505527
+   ],
+   "along_c": [
+    0.017104148629505527,
+    0.017104148629505527,
+    0.017104148629505527,
+    0.017104148629505527
+   ]
+  },
+  {
+   "quantity": "q* (step 2b)",
+   "sigma_dir": 1,
+   "c_dir": 1,
+   "reason": "s2/g_min = sqrt(3 sigma^4 + 2 sigma) increases, e' decreases",
+   "ok_sigma": true,
+   "ok_c": true,
+   "along_sigma": [
+    3.3189843050864657e-09,
+    3.318984305086466e-12,
+    3.318984305086466e-17,
+    3.318984305086466e-27
+   ],
+   "along_c": [
+    3.3189843050864657e-09,
+    3.3189843050864657e-09,
+    3.3189843050864657e-09,
+    3.3189843050864657e-09
+   ]
+  },
+  {
+   "quantity": "(a)/c lower bound (step 2b)",
+   "sigma_dir": -1,
+   "c_dir": -1,
+   "reason": "e' down, gamma* up (through q*), and the division by c",
+   "ok_sigma": true,
+   "ok_c": true,
+   "along_sigma": [
+    73218.3583799262,
+    55247474.97694052,
+    3923860357587.1533,
+    2.492252543153402e+22
+   ],
+   "along_c": [
+    218028.00050911357,
+    109014.00025455678,
+    83856.92327273599,
+    73218.3583799262
+   ]
+  },
+  {
+   "quantity": "g(L1)/rhs (step 3a)",
+   "sigma_dir": -1,
+   "c_dir": -1,
+   "reason": "L1^2 = sigma(1-eps)/(2 c theta): g(L1)/sigma ~ 1/(8 c theta) - r-terms; rhs/sigma ~ (32/7) c theta",
+   "ok_sigma": true,
+   "ok_c": true,
+   "along_sigma": [
+    1.2334793923719192,
+    1.233479392372837,
+    1.2334793923728375,
+    1.2334793923728373
+   ],
+   "along_c": [
+    10.937423416014179,
+    2.734362689875602,
+    1.617967022123828,
+    1.2334793923719192
+   ]
+  },
+  {
+   "quantity": "gamma_lo (step 3b)",
+   "sigma_dir": 0,
+   "c_dir": -1,
+   "reason": "1/(64 kap c theta (1 + sigma^3))",
+   "ok_sigma": true,
+   "ok_c": true,
+   "along_sigma": [
+    0.10494371491413276,
+    0.10494371491413276,
+    0.10494371491413276,
+    0.10494371491413276
+   ],
+   "along_c": [
+    0.31249906218875095,
+    0.15624953109437548,
+    0.12019194699567344,
+    0.10494371491413276
+   ]
+  },
+  {
+   "quantity": "W_lo/W_cap (step 3b)",
+   "sigma_dir": -1,
+   "c_dir": -1,
+   "reason": "gamma_lo^2 down, s2/g_min up; inf x/Gamma1^2 over a larger admissible set",
+   "ok_sigma": true,
+   "ok_c": true,
+   "along_sigma": [
+    208210.7110872347,
+    208210711.08823368,
+    20821071108823.47,
+    2.0821071108823468e+23
+   ],
+   "along_c": [
+    2216451.682456553,
+    490971.54212590336,
+    278776.92011713015,
+    208210.7110872347
+   ]
+  }
+ ],
+ "x_ge_200": [
+  {
+   "function": "Gamma1(x)/x = A(x) + B(x)/sqrt x",
+   "reason": "A, B are positive combinations of eta_1(x), eta_2(x), which decrease (each term e^{-(n^2-1)x/2})"
+  },
+  {
+   "function": "eta_p(x) = sum_{n>=2} n^p e^{-(n^2-1)x/2}",
+   "reason": "every term decreases in x"
+  },
+  {
+   "function": "Z2(x) = sum_{n>=2} n^2 e^{-(n^2-1)x}",
+   "reason": "every term decreases in x"
+  },
+  {
+   "function": "m(x) = min(1/4, 2 e^{-x/2})",
+   "reason": "equals 2 e^{-x/2} for x >= 2 ln 64, decreasing"
+  },
+  {
+   "function": "x e^{-x}, x min(1/16, 4 e^{-x})(1 + Z2)",
+   "reason": "d/dx ln(x e^{-x}) = 1/x - 1 < 0 for x > 1; (1 + Z2) decreases"
+  },
+  {
+   "function": "Gamma1(x) m(x) = 2 e^{-x/2}(x A + sqrt x B)",
+   "reason": "d/dx ln(x e^{-x/2}) = 1/x - 1/2 < 0 for x > 2, A, B decrease"
+  },
+  {
+   "function": "sqrt x m(x)(1 + eta_1)/(1 - Q)",
+   "reason": "d/dx ln(sqrt x e^{-x/2}) = 1/(2x) - 1/2 < 0 for x > 1"
+  },
+  {
+   "function": "x (1 + Z2) Q(x)/(1 - Q), x sqrt(1 + Z2) m(x)(1 + eta_1)",
+   "reason": "Q(x) <= m(x)(1 + eta_0) ~ e^{-x/2}: x e^{-x/2} decreases for x > 2"
+  },
+  {
+   "function": "x / Gamma1(x)^2 (inf in step 3b)",
+   "reason": "not needed beyond 200: the admissible set {Gamma1 m >= gamma_lo} ends below x = 16"
+  }
+ ]
+}

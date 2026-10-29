@@ -17,7 +17,10 @@ share of the $w$-information.
 \item[(L5)] Combining the three length relations with $q0_1^2\le4e^{-x}$ gives $e^{4x}<C(G,F)\,x^5/\sigma$, i.e. $x\le X_P$ with
 $4X_P=\ls+5\ln X_P+K_P$. With (L4) and the Wiener bound $xS\le x+S1_P$: $\keff^2\le X_P+S1_P+\tfrac14$.
 \end{itemize}
-Then Theorem~\ref{thm:AT2} gives $g\ge F/(2\sqrt{X_P+S1_P+1/4})$. The small constants ($\beta$, $\omega$, $\Gamma_2$, $\Gamma_3$, the range of $x$,
+Then Theorem~\ref{thm:AT2} gives $g\ge F/(2\sqrt{X_P+S1_P+1/4})$.
+In v1.1 every window lemma enters the chain in its $\theta_\tau$ form (App.~\ref{app:theta}): by Lemma~\ref{lem:BK1} a state with $g<G$ has
+$\tau=k'^2V>80$, where the Gaussian averages differ from the period averages by a relative $\epsilon_\theta<10^{-13}$; the certificate perturbs every input
+lemma by $\varepsilon_{\mathrm{in}}=10^{-6}$ in the bad direction (App.~\ref{app:cert}). The small constants ($\beta$, $\omega$, $\Gamma_2$, $\Gamma_3$, the range of $x$,
 the case thresholds) are explicit functions of $(\sigma,G,\varepsilon,F,x)$; every supremum over $x$ is bounded cell by cell from
 monotone factors (Appendix~\ref{app:cert}).
 
@@ -56,7 +59,7 @@ $\ls$: they do not decrease in $\ls$ and do not increase in $x_{\mathrm{low}}$. 
 
 Hence, on a cell $\ls\in[\ell_a,\ell_b]$ and for all $\bar\varepsilon\le0.1$ at once, the chain may be evaluated at the worst corner: $\hat\sigma=e^{-\ell_a}$,
 $\ls=\ell_b$ for the range, $G=G(\ell_a)\ge G(\ls)$ (the proof by contradiction from $g<G(\ls)$ also runs with any larger threshold), $\eta=1/0.9$, and the
-bootstrap from (P8), $F_c\ge1.02G(\ls)\ge1.02G(\ell_b)$, with steps $F_{k+1}=0.9F_{\mathrm{int}}(F_k)$ (valid for every state with $|\varepsilon|\le0.1$ because
+bootstrap from $F_c\ge1.02G(\ls)\ge1.02G(\ell_b)$ (which every state with $g<G$ satisfies, Lemma~\ref{lem:BJ1}), with steps $F_{k+1}=0.9F_{\mathrm{int}}(F_k)$ (valid for every state with $|\varepsilon|\le0.1$ because
 $F_c\ge(1-|\varepsilon|)A_1A_2A_3\ge0.9A_1A_2A_3$). The resulting $F_{\mathrm{int}}^*$ and $K^*$ hold for every state of the cell; inside the cell
 $x\le X_P(\ls)$ with $4X_P=\ls+5\ln X_P+K^*$, and $\ls/(X_P(\ls)+c)$, $c=S1_P+\tfrac14$, is increasing in $\ls$ when
 $d=4c-5-5c/X_P+5\ln X_P+K^*\ge0$ at $\ell_a$ (checked on every cell), so the cell's worst point is $\ell_a$ and no width is lost.
@@ -68,7 +71,7 @@ $K_P(\ls)\le K_{\mathrm{end}}-\tfrac92\ln(\ls/\ell_{\mathrm{end}})$. Consequentl
 $\liminf_{\sigma\to0}g_{\min}^P\sqrt{\ls}\ge1-\bar\varepsilon$.
 \end{lemma}
 \begin{proof}
-With $F/G$ fixed, Lemma~\ref{lem:BH1} makes every step at $\ls$ at least as good as at $\ell_{\mathrm{end}}$ ($s$ and $G$ are smaller; the suprema over $x$
+With $F/G$ fixed, Lemma~\ref{lem:BH1} makes every step at $\ls$ at least as good as at $\ell_{\mathrm{end}}$ ($\hat\sigma$ and $G$ are smaller; the suprema over $x$
 do not depend on the right end of the range once $x_{\mathrm{low}}\ge8$, since all functions decrease beyond $x=8$). For $K_P$: $\Gamma_2\le(G/G_{\mathrm{end}})\Gamma_{2,\mathrm{end}}$
 and $\Gamma_{3P}\le(G/G_{\mathrm{end}})\Gamma_{3P,\mathrm{end}}$ ($\theta_G$, $\beta$, $\zeta_2$ decrease, $\sigma/G$ decreases), $U_P\ge(G_{\mathrm{end}}/G)^2U_{P,\mathrm{end}}$ (from
 $U_0=F^2/(4G^2)-\frac14$ with $F\ge F_{\mathrm{end}}$), and $\varphi_1$, $\omega$ do not decrease; so $K_P$ drops by $9\ln(G_{\mathrm{end}}/G)$. Every term of
@@ -84,14 +87,14 @@ proof it must start from an assumed $F_0$. For strips (no assumption $x\ge1$, so
 upward bootstrap closes from $F_0=0.5$ at $\sigma=10^{-24}$ and from $F_0=0.2$ at $10^{-96}$ and below \caproofst{\code{bf\_ay\_bootstrap.py}}.
 So the strip lower bound holds under the a-priori condition $F_c\ge\tfrac12$ (resp.\ $0.2$), with the same final constants:
 $g\sqrt{\ls}/(1-|\varepsilon|)\ge0.921$ ($10^{-24}$), $0.977$ ($10^{-96}$), $0.998$ ($10^{-1024}$). A strip with $x\ge1$ is a periodic window and
-needs only $F_c\ge1.02G$ (Theorem~\ref{thm:AY1P}). (The strip certificate is checked at these representative points only; the continuous
+needs no a-priori bound on $F_c$ (Lemma~\ref{lem:BJ1}, Theorem~\ref{thm:AY1P}). (The strip certificate is checked at these representative points only; the continuous
 statement for strips with $x\ge1$ is Theorem~\ref{thm:AY1P}.)
 \end{remark}
 
 \subsection{The theorem}
 \begin{theorem}[lower side] \caproofst{\code{bh\_cert\_cells.py}}
 \label{thm:AY1P}
-Let every state of the class satisfy (P1)--(P6) and (P8) of Table~\ref{tab:assumptions}, with $|\varepsilon(\rho)|\le\bar\varepsilon\le0.1$. Then for every
+Let every state of the class satisfy (P0)--(P7) of Table~\ref{tab:assumptions}, with $|\varepsilon(\rho)|\le\bar\varepsilon\le0.1$. Then for every
 $\ls\in[24\ln10,\,10^5\ln10]$ and every such state,
 \begin{equation}
 \begin{aligned}
@@ -100,13 +103,13 @@ g\ &\ge\ \min\Big(G(\ls),\ \frac{(1-\bar\varepsilon)\,F_{\mathrm{int}}^*}{2\sqrt
 \end{aligned}
 \end{equation}
 with $G(\ls)=\min(0.134,1.2/\sqrt{\ls})$, $4X_P=\ls+5\ln X_P+K^*$, $S1_P=1.41$, and $F_{\mathrm{int}}^*$, $K^*$ the certified constants of the cell
-containing $\ls$. The constants do not depend on $\bar\varepsilon$ (they are certified at $\bar\varepsilon=0.1$, Lemma~\ref{lem:BH1}). For $\ls>10^5\ln10$ the chain holds as
+containing $\ls$ ($F_{\mathrm{int}}^*$ includes the factor $(1+\varepsilon_{\mathrm{in}})^{-1/2}$ of Lemma~\ref{lem:BL5}). The constants do not depend on $\bar\varepsilon$ (they are certified at $\bar\varepsilon=0.1$, Lemma~\ref{lem:BH1}). For $\ls>10^5\ln10$ the chain holds as
 well and $\liminf g_{\min}^P\sqrt{\ls}\ge1-\bar\varepsilon$ (Lemma~\ref{lem:BH2}).
 \end{theorem}
 
 The certificate covers $[24\ln10,10^5\ln10]$ with $421$ cells of ratio $\ell_b/\ell_a=1.02$; every condition holds on every cell, and $d\ge8.9$.
 The constant needed on a cell, $(1-L_{\mathrm{cell}})\ell_a/\ln\ell_a$, is at most $1.615$ (at $\ls\approx80.5$); with $c_1=1.7$ the smallest
-absolute margin is $5.1\times10^{-5}$ (last cell). Table~\ref{tab:lower} shows representative cells.
+absolute margin is $5.0\times10^{-5}$ (last cell; all with the input lemmas perturbed by $\varepsilon_{\mathrm{in}}=10^{-6}$). Table~\ref{tab:lower} shows representative cells.
 
 \begin{table}
 \caption{Theorem~\ref{thm:AY1P}: certified cell values $L_{\mathrm{cell}}\le g\sqrt{\ls}/(1-\bar\varepsilon)$, valid for every $\ls$ in the cell and every

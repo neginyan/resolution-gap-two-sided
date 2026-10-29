@@ -13,6 +13,8 @@ $\mathrm{den}_{\mathrm{lo}}=b+xI_2/(2(1+\Qb))$; and $(a')\le\tfrac{\sigma^2}{2}\
 $1-C\le(L+r)^2/4$, $J_{\mathrm{per,up}}=xI_2/(2(1-\Qb)\sigma^2)$, $e=e^{-\alpha^2V/2}$, $\alpha=(1-\sigma^2/V)/\sqrt2$, and
 $\langle\tilde s^2R^2\rangle$, $r$ bounded by Minkowski and the Gaussian moments of the common envelope (App.~\ref{app:plemmas}).
 With~\eqref{eq:branch}: $g(\rho)\le(1+|\varepsilon(\rho)|)U_P(\rho)$, $U_P:=(a)_{\mathrm{up}}+(a')_{\mathrm{up}}$, for every periodic window $\rho$.
+(The averages here are period averages; Lemma~\ref{lem:BL7} gives the $\theta_\tau$ remainders, which along the comb sequence below are smaller
+than $e^{-10^{22}}$ relative to $U_P$, since there $\tau=k'^2V\ge8\times10^{22}$.)
 \end{lemma}
 
 \paragraph*{Two explicit sequences.}
@@ -61,6 +63,7 @@ $10^{-24}$ & 1.993 & 0.0054 & 0.1904 & 0.1923 & 0.0097\\
 \label{tab:assumptions}
 \begin{ruledtabular}
 \begin{tabular}{lp{0.70\columnwidth}}
+(P0) & $L_w\le\sigma^{-1/2}$ (the window's Gaussian envelope in $w$ is not wider than $\sigma^{-1/2}$; no other condition on $L_w$)\\
 (P1) & $f$ even (parity step of the curvature term)\\
 (P2) & $|a_n|\le|a_1|$: the fundamental is the largest harmonic\\
 (P3) & $\Qb\le\tfrac14$ (blurred contrast)\\
@@ -68,17 +71,16 @@ $10^{-24}$ & 1.993 & 0.0054 & 0.1904 & 0.1923 & 0.0097\\
 (P5) & $x=(k'\sigma)^2\ge1$ (period within the blur's reach)\\
 (P6) & every state of the class has $|\varepsilon(\rho)|\le\bar\varepsilon$, $\bar\varepsilon\le0.1$ (paper~E's remainder, a state quantity)\\
 (P7) & $\sigma\le10^{-24}$ (both certificates cover $10^{-100000}\le\sigma\le10^{-24}$ continuously; below, the lower side by Lemma~\ref{lem:BH2})\\
-(P8) & $F_c\ge1.02G$ (start of the bootstrap; $=1.22/\sqrt{\ls}$ below $10^{-28}$)\\ \hline
-none & on $L_w$ beyond $L_w\le\sigma^{-1/2}$\\
+\hline
 \emph{not covered} & odd components of $f$; profiles whose fundamental is not the largest harmonic (a window of a shorter period);
-$x<1$ (separated lines in a window); states with $F_c<1.02G$\\
+$x<1$ (separated lines in a window); windows with $L_w>\sigma^{-1/2}$\\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
 
 \begin{theorem}[periodic windows: the logarithmic law from both sides] \caproofst{\code{bh\_cert\_cells.py}, \code{bf\_cert\_upper.py}}
 \label{thm:BF1}
-Let $g_{\min}^P(\sigma)$ be the infimum of $g$ over the periodic windows that satisfy (P1)--(P8). Then for every $\sigma$ with
+Let $g_{\min}^P(\sigma)$ be the infimum of $g$ over the periodic windows that satisfy (P0)--(P7). Then for every $\sigma$ with
 $10^{-100000}\le\sigma\le10^{-24}$
 \begin{equation}
 \begin{aligned}(1-\bar\varepsilon)\Big(1-1.7\,\frac{\ln\ls}{\ls}\Big)\ &\le\ g_{\min}^P\sqrt{\ls}\ \le\ g(S'_C(\sigma))\sqrt{\ls}\\ &\le\ \big(1+|\varepsilon(S'_C(\sigma))|\big)\Big(1+6.0\,\frac{\ln\ls}{\ls}\Big),\end{aligned}
@@ -88,9 +90,9 @@ the explicit comb $S'_C(\sigma)$ ($1464$ cells). The factor $|\varepsilon(S'_C(\
 (numerically $6\times10^{-7}$, $4\times10^{-13}$, $1.5\times10^{-15}$, $4\times10^{-16}$ at $\sigma=10^{-6}$, $10^{-12}$, $10^{-18}$, $10^{-24}$).
 \end{theorem}
 \begin{proof}
-The lower side is Theorem~\ref{thm:AY1P}. For the upper side, the comb sequence lies in the class on the whole range: (P1), (P2) by construction;
-$\Qb\le0.0056$, $\varrho\le3.5\times10^{-12}$ and $x\ge11.76$ (interval arithmetic on the same $1464$ cells, \code{bg\_members.py}); and Lemma~\ref{lem:AY2P}
-gives $F_c\ge(1-|\varepsilon(S'_C)|)(1-1.7\times10^{-13})\ge1.02G$ whenever $|\varepsilon(S'_C)|\le0.1$ (interval arithmetic on the same cells, \code{bh\_members\_fc.py}). So (P3)--(P5), (P8) hold;
+The lower side is Theorem~\ref{thm:AY1P}. For the upper side, the comb sequence lies in the class on the whole range: (P0) since $L_w=8k_0^{-4}e^{-k_0^2}<1$; (P1), (P2) by construction;
+$\Qb\le0.0056$, $\varrho\le3.5\times10^{-12}$ and $x\ge11.76$ (interval arithmetic on the same $1464$ cells, \code{bg\_members.py}). So (P3)--(P5) hold
+(the former condition (P8) is no longer an assumption, Lemma~\ref{lem:BJ1}; the comb satisfies it anyway, $F_c\ge(1-|\varepsilon(S'_C)|)(1-1.7\times10^{-13})$, \code{bh\_members\_fc.py});
 (P6) for the comb itself concerns the single number $\varepsilon(S'_C(\sigma))$, which is carried in the statement.
 Theorem~\ref{thm:AZ1P} then bounds $g$ on members of the class.
 \end{proof}
@@ -101,7 +103,7 @@ Theorem~\ref{thm:AZ1P} then bounds $g$ on members of the class.
 numerically $|\varepsilon(S'_C)|$ falls from $6\times10^{-7}$ at $10^{-6}$ to $4\times10^{-16}$ at $10^{-24}$; and (b) $U_P\sqrt{\ls}\to1$ beyond
 $10^{-100000}$ --- along $S'_C$ the coefficient $(U_P\sqrt{\ls}-1)\ls/\ln\ls$ decreases on the certified range from $5.9$ to $3.36$, and the leading-order
 expansion gives the limit $\tfrac{11}4$; a proof would need explicit remainders of that expansion.
-So $g_{\min}^P\sqrt{\ln(1/\sigma)}\to1$ is proved from below (up to $1-\bar\varepsilon$) and derived from above.
+So the limit $1$ is \emph{not} claimed as a theorem: the lower limit is proved up to the class bound $1-\bar\varepsilon$ (on the states that approach the infimum $|\varepsilon|$ is numerically below $10^{-15}$, but no bound on it is proved), and the upper limit is derived.
 \end{corollary}
 
 \paragraph*{Reading (observer).}

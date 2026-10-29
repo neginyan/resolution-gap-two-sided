@@ -11,7 +11,7 @@ Code, stored results and computer-assisted proofs for the paper by Taishi Namba 
 [![verify](https://github.com/neginyan/resolution-gap-two-sided/actions/workflows/verify.yml/badge.svg)](https://github.com/neginyan/resolution-gap-two-sided/actions/workflows/verify.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-> **Known issue (v1.0, found by the author on 2026-10-29).** The window lemmas of the paper treat the Gaussian average over v as an exact period average. For states whose background v-width is only a few σ, a correction is needed: the Gaussian average is a period average weighted by a wrapped normal of width τ = k′²V, with relative correction δ_τ = 2Σₙ e^{−n²τ/2}. The narrow case (τ ≤ 40) is now closed by a new computer-assisted lemma; for τ > 40 the correction is below 5 × 10⁻⁹ relative. The statements of the theorems are expected to be unchanged. A corrected version (v1.1) of the paper and of this code is in preparation.
+> **Version 1.1 (2026-10-29).** Version 1.0 treated the Gaussian average over v in the window lemmas as an exact period average; for states whose background v-width is only a few σ a correction is needed. Version 1.1 closes this: a computer-assisted lemma shows that every state with a small gap has τ = k′²V > 80, where the correction is below 10⁻¹³ relative, and every certificate is rerun with input perturbations of 10⁻⁶. It also removes the start condition (P8), which now follows from (P0)–(P7). The standing condition L_w ≤ σ⁻¹ᐟ², already used in v1.0, is now listed as (P0), and the statement of the limit now separates what is proved from what is derived; otherwise the theorems are unchanged. The v1.0 certificates are kept in the repository.
 
 ## The result in brief
 
@@ -19,12 +19,12 @@ An observer who sees a pendulum's phase space through a Gaussian blur of width �
 
 This paper asks how fine such a hidden ripple can be, and answers it on the **periodic windows**: states that carry, inside a narrow window, any even periodic profile, from a single cosine (the strip) to a comb of thin teeth.
 
-- **Two-sided theorem** [proof, computer-assisted]. Under explicit assumptions (P1)–(P8), for every 10⁻¹⁰⁰⁰⁰⁰ ≤ σ ≤ 10⁻²⁴,
+- **Two-sided theorem** [proof, computer-assisted]. Under explicit assumptions (P0)–(P7), for every 10⁻¹⁰⁰⁰⁰⁰ ≤ σ ≤ 10⁻²⁴,
 
   (1 − ε̄)(1 − 1.7 lnℓ/ℓ) ≤ g_min √ℓ ≤ (1 + |ε(S′_C)|)(1 + 6.0 lnℓ/ℓ),  ℓ = ln(1/σ).
 
   The lower side is certified on 421 cells covering the whole range and all |ε| ≤ ε̄ ≤ 0.1; the upper side on 1464 cells along an explicit comb sequence, in exact interval arithmetic.
-- **The limit.** g_min √ln(1/σ) → 1: proved from below (up to 1 − ε̄), derived from above.
+- **The limit.** liminf g_min √ln(1/σ) ≥ 1 − ε̄ is proved; the matching limsup ≤ 1, and so the limit 1, is derived, not proved.
 - **A sharper lens** [derivation]. At leading order, the comb at blur σ is the strip at blur σ/256. Combs fall below the best Gaussian mixtures already at σ ≈ 1.4 × 10⁻³ [numerical].
 - **General states.** A decorrelation dichotomy and a three-case split are proved for every state. The remaining case is reduced to one conjectured inequality, so paper E's Conjecture 1 remains open.
 
@@ -41,16 +41,17 @@ The [Colab notebook](demo/hidden_ripple_demo.ipynb) runs on a CPU in under a min
 
 ```bash
 pip install -r requirements.txt
-python verification/run_all.py              # about 2 minutes
-python verification/run_all.py --recompute  # every certificate in full (about 20 minutes)
+python verification/run_all.py              # about 3 minutes
+python verification/run_all.py --recompute  # every certificate in full (about 40 minutes, one core)
 ```
 
-`run_all.py` runs 22 checks:
+`run_all.py` runs 35 checks:
 - the SHA-256 hashes in `MANIFEST.sha256`;
 - the stored certificates, with representative cells recomputed (30 lower cells, 184 upper cells);
 - the lemma checks against the evaluator;
-- 62 numbers of the paper against the stored results;
-- the demo notebook.
+- 102 numbers of the paper against the stored results;
+- the demo notebook;
+- the v1.1 lemmas: the narrow-width lemma, the θ_τ corrections, the chain with perturbed inputs, the removal of (P8), and the upper side in θ_τ form.
 
 With `--recompute`, all 421 lower cells, all 1464 upper cells, the class membership and the monotonicity table are recomputed.
 
@@ -61,7 +62,7 @@ The upper certificate uses 60-digit decimal interval arithmetic with outward rou
 | folder | content |
 |---|---|
 | `src/` | the evaluator of paper E and shared tools |
-| `certificates/` | the computer-assisted proofs: lower side (`bh_cert_cells.py` with `bf_cert_p.py`, tail `bh_tail.py`), upper side (`bf_cert_upper.py` with `ba_ivl.py`, `ba_cert.py`), class membership (`bg_members.py`, `bh_members_fc.py`), monotonicity table (`bi_monotone_table.py`) |
+| `certificates/` | the computer-assisted proofs: lower side (`bh_cert_cells.py` with `bf_cert_p.py`, tail `bh_tail.py`), upper side (`bf_cert_upper.py` with `ba_ivl.py`, `ba_cert.py`), class membership (`bg_members.py`, `bh_members_fc.py`), monotonicity table (`bi_monotone_table.py`); v1.1: narrow width (`bk_narrow_lemma.py`, `bl_narrow80.py`), θ_τ corrections (`bl_theta.py`), perturbed chain (`bl_chain.py`), start condition (`bj_lemma.py`, `bl_bj1.py`), upper side (`bm_bl7.py`) |
 | `experiments/` | scripts for the numerical results: comb searches, comparison with mixtures, lemma checks, leading-order formulas |
 | `results/` | stored results; `MANIFEST.sha256` lists their SHA-256 |
 | `verification/` | `run_all.py`, the single entry point |

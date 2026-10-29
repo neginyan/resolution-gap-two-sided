@@ -2,6 +2,9 @@
 \section{The periodic-window lemmas}
 \label{app:plemmas}
 
+The proofs below are written with period averages. The Gaussian averages that actually occur are $\theta_\tau$-weighted period averages;
+App.~\ref{app:theta} gives each lemma in that form with explicit remainders (v1.1).
+
 Throughout, $p=\mathcal N_V(v)\Gamma(w)h(t,w)$ with $t=k'v$ and $h=1+\sum_nq_n(w)\cos nt$ (Lemma~\ref{lem:AW1P}); $1-\Qb\le h\le1+\Qb$, and
 $\langle\cdot\rangle$ is the average over one period in $t$.
 
@@ -15,8 +18,8 @@ With $\langle(\sum q_n'\cos nt)^2\rangle=\tfrac12\sum q_n'^2$ and $1-\Qb\le h\le
 $\int\Gamma q_n'^2=u_0$-terms are Gaussian integrals. The $v$-information is the same computation with $\langle(\sum nq_n\sin nt)^2\rangle$. \qed
 
 \paragraph*{The $S$-bounds.}
-By the envelope separation (integration by parts in $v$ against $\mathcal N_V$; the Gaussian average of a periodic function is its period average
-up to $e^{-k'^2V/2}$), $\keff^2=xS+\sigma^2/(4V)$ with $S=\sum n^2\|F_n\|^2/(2\|F_0\|^2+\sum_{n\ge1}\|F_n\|^2)$, $F=\partial_w\sqrt{\Gamma h}$.
+By the envelope separation (integration by parts in $v$ against $\mathcal N_V$; the Gaussian average of a periodic function is its $\theta_\tau$-weighted
+period average, Lemma~\ref{lem:BL5}), $\keff^2=xS+\sigma^2/(4V)$ up to the relative factor $\nu_\tau$, with $S=\sum n^2\|F_n\|^2/(2\|F_0\|^2+\sum_{n\ge1}\|F_n\|^2)$, $F=\partial_w\sqrt{\Gamma h}$.
 (i) Bounding the three terms of $\partial_w\partial_t\sqrt{p}$ in mean square per period and $\int F^2=\Jww/4$ from below gives
 $S\le8\kappa_2(\Qb,\varrho)u_2/(8+u_0/(1+\Qb))$, $\kappa_2=(1+\varrho+\Qb/(2(1-\Qb)))^2/(8(1-\Qb))$.
 (ii) Wiener majorant: $\sqrt{1+H}=1+\sum_jb_jH^j$ with $H=\sum q_n\cos nt$; the $\cos nt$-coefficient of $H^j$ is at most $2h_\omega^j\omega^{-n}$ for

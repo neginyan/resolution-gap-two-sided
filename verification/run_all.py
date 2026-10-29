@@ -2,7 +2,10 @@
 
   python verification/run_all.py              # default (a few minutes on one core): hashes, stored results, every number of the manuscript,
                                               # and a recomputation of representative cells of every certificate
-  python verification/run_all.py --recompute  # in addition, recompute every certificate in full (about 20 minutes on one core; writes nothing to results/)
+  python verification/run_all.py --recompute  # in addition, recompute every certificate in full (about an hour on one core; writes nothing to results/)
+
+v1.1 adds section 7: Lemma BK1 (tau0 = 80), the theta_tau corrections of the window lemmas (App. D), the lower-side chain with every input lemma
+perturbed by eps_in = 1e-6 (421 cells and the tail), Lemma BJ1 (the former (P8)), and Lemma BL7 (the upper side in theta_tau form).
 
 Comparisons of recomputed floating-point values with stored ones use a relative tolerance (CPUs differ in the last bits); the interval-arithmetic
 certificate (decimal, 60 digits) is compared exactly.  Each check prints which kind of comparison it made.  Exit code 0 iff every check passes."""
@@ -25,6 +28,14 @@ J = lambda f: json.load(open(os.path.join('results', f)))
 
 
 def rel(a, b): return abs(a - b) / max(abs(a), abs(b), 1e-300)
+
+
+def same(a, b, tol=1e-9):
+    """JSON-like objects equal up to a relative tolerance on floats (booleans and integers exactly)."""
+    if isinstance(a, dict): return isinstance(b, dict) and set(a) == set(b) and all(same(a[k], b[k], tol) for k in a)
+    if isinstance(a, (list, tuple)): return isinstance(b, (list, tuple)) and len(a) == len(b) and all(same(x, y, tol) for x, y in zip(a, b))
+    if isinstance(a, bool) or isinstance(b, bool) or isinstance(a, str): return a == b
+    return rel(float(a), float(b)) <= tol
 
 
 # ---------------------------------------------------------------- 1. files
@@ -117,10 +128,10 @@ check('combs have no deep valleys: Lambda* = %s finite' % ', '.join('%.2f' % LA[
       all(np.isfinite(LA['comb_%s' % s]['Lambda_star']) for s in ('1e-06', '1e-12', '1e-24')))
 
 # ---------------------------------------------------------------- 5. the manuscript
-import bh_numbers
+import bm_numbers
 tex = ''.join(open(f).read() for f in sorted(glob.glob('paper/sections/*.tex')))
-N = bh_numbers.numbers(); miss = [x['text'] for x in N if x['text'] not in tex]
-check('every number of the manuscript recomputed from results/ is found in paper/sections (%d numbers)' % len(N), not miss and len(N) >= 55, ', '.join(miss[:5]))
+N = bm_numbers.numbers(); miss = [x['text'] for x in N if x['text'] not in tex]
+check('every number of the manuscript (v1.1) recomputed from results/ is found in paper/sections (%d numbers)' % len(N), not miss and len(N) >= 100, ', '.join(miss[:5]))
 
 # ---------------------------------------------------------------- 6. the demo notebook (stored with its outputs)
 NBK = json.load(open('demo/hidden_ripple_demo.ipynb'))
@@ -130,5 +141,73 @@ check('demo notebook: %d code cells executed in order, no error output, %d figur
       len(cc), sum('image/png' in o.get('data', {}) for o in outs)),
       [c['execution_count'] for c in cc] == list(range(1, len(cc) + 1)) and not any(o['output_type'] == 'error' for o in outs)
       and sum('image/png' in o.get('data', {}) for o in outs) >= 3 and txt.count('h < 0: True') == 3 and 'h < 0: False' not in txt)
+
+# ---------------------------------------------------------------- 7. v1.1: theta_tau forms, Lemma BK1, the perturbed chain, Lemma BJ1, Lemma BL7
+t7 = time.time(); np.seterr(all='ignore')
+N8 = J('bl_narrow80.json')
+check('Lemma BK1 (tau0 = 80, stored): %d cells cover {1 <= x <= 80, x/80 <= b <= 1}; every cell closes, smallest margin %.3f' % (N8['cells'], N8['worst_margin']),
+      N8['all_ok'] and N8['cells'] == 57600 and N8['worst_margin'] > 2.5)
+import bk_narrow_lemma as BK
+xs = np.geomspace(1.0, 80.0, 241); step = 1 if FULL else 12; wm = np.inf; allok = True; nc = 0
+for xa, xb in zip(xs[:-1][::step], xs[1:][::step]):
+    bs = np.geomspace(xa / 80.0, 1.0, 241)
+    for ba, bb in zip(bs[:-1], bs[1:]):
+        r = BK.cell(xa, xb, ba, bb); nc += 1; allok &= r['ok']; wm = min(wm, r['margin'])
+check('Lemma BK1 recomputed on %d cells (%s): all close, smallest margin %.3f (floating point, relative %.0e)' % (nc, 'all' if FULL else 'every 12th x-cell', wm, RTOL),
+      allok and wm >= N8['worst_margin'] * (1 - RTOL) and (not FULL or rel(wm, N8['worst_margin']) <= RTOL))
+import bl_theta as BT
+TH = J('bl_theta.json'); t80 = TH['eps_table_tau80']; e80 = BT.eps_table()
+check('theta_tau corrections for tau >= 80 (Lemmas BL1-BL6): eps_theta = %.2e recomputed (stored %.2e; relative %.0e); far below eps_in = 1e-6' % (
+      e80['eps_theta'], t80['eps_theta'], RTOL), rel(e80['eps_theta'], t80['eps_theta']) <= RTOL and t80['eps_theta'] < 1e-12)
+CH = TH['checks']
+check('theta_tau lemmas against direct quadrature (stored, numerical): exact identity of Lemma BL3 to %.0e; BL1, BL2, BL3, BL5 hold on %d states (tau 3 ... 25)' % (
+      max(c['identity_rel_err'] for c in CH), len(CH)), TH['all_checks_ok'] and max(c['identity_rel_err'] for c in CH) < 1e-9)
+pickst = CH if FULL else [c for c in CH if c['tau'] == 12.0 and c['x'] == 2.0 and c['sigma'] == 1e-24]
+STATES = {(1.0,): ([0.25], 1e-3, 1e-4), (4.0,): ([0.12, 0.01], 3e-3, 2e-4), (2.0,): ([0.2], 0.3, 0.02)}
+okst = True; maxdev = 0.0
+for c in pickst:
+    q0, L2, s2 = STATES[(c['x'],)]; r = BT.check_state(c['sigma'], c['b'], c['x'], q0, L2, s2)
+    okst &= r['AX3_ok'] and r['Jww_ok'] and r['W_ok'] and r['keff_ok'] and r['BL7_ok'] and r['identity_rel_err'] < 1e-9
+    maxdev = max(maxdev, rel(r['two_Nphi'], c['two_Nphi']))
+check('theta_tau lemmas recomputed on %d state(s) by direct quadrature: all bounds hold, 2N_phi agrees (relative %.1e; numerical)' % (len(pickst), maxdev), okst and maxdev < 1e-6)
+CC7 = {}
+for f in sorted(glob.glob('results/bl_chain_cells_part*.jsonl')):
+    for line in open(f):
+        if line.strip(): d = json.loads(line); CC7[d['i']] = d
+c1m = max(d['c1_needed'] for d in CC7.values()); mg = min(d['margin_c1_1.7'] for d in CC7.values())
+check('Theorem 9 with every input lemma perturbed by eps_in = 1e-6 (stored): %d cells, every condition holds; largest constant needed %.4f, smallest margin at c1 = 1.7: %.2e' % (
+      len(CC7), c1m, mg), sorted(CC7) == list(range(421)) and all(d['ok'] and d['eps_in'] == 1e-6 for d in CC7.values()) and c1m < 1.7 and mg > 0
+      and max(d['absorb_ratio'] for d in CC7.values()) <= 1)
+import bl_chain as BLC
+redo7 = sorted(CC7) if FULL else list(range(0, 421, 30)) + [420]; w7 = 0.0; ok7 = True
+for i in redo7:
+    r = BLC.cell(CC7[i]['la'], CC7[i]['lb'], meta['S1_P'], meta['S_i_at_1']); ok7 &= r['ok']; w7 = max(w7, rel(r['L_cell'], CC7[i]['L_cell']))
+check('perturbed chain recomputed on %d cells (%s): every condition holds; L_cell agrees (relative %.1e <= %.0e; floating point)' % (
+      len(redo7), 'all' if FULL else 'every 30th cell', w7, RTOL), ok7 and w7 <= RTOL)
+TL7 = J('bl_chain_tail.json'); r6 = BLC.cell(1e6, 1e6 * 1.0000001, meta['S1_P'], meta['S_i_at_1'])
+check('Lemma 7 (tail) with perturbed inputs: bound increases from %.6f; direct cells at 1e6, 1e7, 1e8 hold (1e6 recomputed: K relative %.1e)' % (
+      TL7['T_at_l_end'], rel(r6['K'], TL7['direct']['1e+06']['K'])), TL7['T_increasing'] and all(v['ok'] and v['K'] <= v['K_bound_from_tail'] for v in TL7['direct'].values())
+      and r6['ok'] and rel(r6['K'], TL7['direct']['1e+06']['K']) <= RTOL)
+import bl_bj1 as BJ1
+BJ = J('bl_bj1.json'); sig_list = (24, 48, 100, 200, 300) if FULL else (24,); okb = True; devb = 0.0
+for e in sig_list:
+    rb = BJ1.constants(10.0 ** (-e)); okb &= rb['ok']; devb = max(devb, rel(rb['A_min'], BJ['1e-%d' % e]['A_min']), rel(rb['step3a']['margin'], BJ['1e-%d' % e]['step3a']['margin']))
+check('Lemma BJ1 (the former (P8)) recomputed at sigma = %s: every step closes, A_min = %.6f, 3(i) margin %.4f (relative %.1e)' % (
+      ', '.join('1e-%d' % e for e in sig_list), BJ['1e-24']['A_min'], BJ['1e-24']['step3a']['margin'], devb), okb and BJ['all_ok'] and devb <= RTOL)
+IA = BJ1.step3a_interval()
+check('Lemma BJ1 step 3(i) in outward-rounded interval arithmetic: g(L1) > right side (margin >= %.4f) and the unimodality test (decimal intervals; exact)' % IA['margin_lower'],
+      IA['g_gt_rhs'] and IA['unimodal'] and IA['margin_lower'] > 1.2 and same(IA, BJ['step3a_interval']))
+if FULL:
+    mono = BJ1.mono_grid()
+    check('Lemma BJ1 monotonicity table recomputed on the grid: %d rows, every declared direction confirmed (numerical)' % len(mono), all(m['ok_sigma'] and m['ok_c'] for m in mono))
+else:
+    check('Lemma BJ1 monotonicity table (stored grid check): %d rows confirmed (numerical)' % len(BJ['monotonicity']), all(m['ok_sigma'] and m['ok_c'] for m in BJ['monotonicity']))
+import bm_bl7 as B7
+M7 = J('bm_bl7.json'); c7 = B7.comb_corrections()
+check('Lemma BL7 on the comb sequence: tau >= %.3e, every theta correction to h <= 10^(%.4e) << the margin 1.35e-4 (decimal intervals; exact)' % (
+      c7['tau_min'], c7['log10_correction_bound']), c7['negligible'] and same(c7, M7['comb']))
+check('Lemma BL7 against direct quadrature (stored, numerical): 2N_phi below the bound on %d states (largest ratio %.6f)' % (
+      len(M7['checks']), max(c['BL7_ratio'] for c in M7['checks'])), M7['all_checks_ok'])
+print('section 7 (v1.1): %.0f s' % (time.time() - t7))
 print('elapsed %.0f s (%s)' % (time.time() - t0, 'full recomputation' if FULL else 'default'))
 finish()

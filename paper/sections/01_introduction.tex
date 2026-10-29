@@ -21,17 +21,26 @@ train of thin teeth whose fundamental amplitude approaches the largest value $2$
 The central result is:
 
 \begin{quote}
-\textbf{Main result} (Theorem~\ref{thm:BF1} in Sec.~\ref{sec:upper}) \caproofst{App.~\ref{app:cert}}. Under the assumptions (P1)--(P8) of Table~\ref{tab:assumptions},
+\textbf{Main result} (Theorem~\ref{thm:BF1} in Sec.~\ref{sec:upper}) \caproofst{App.~\ref{app:cert}}. Under the assumptions (P0)--(P7) of Table~\ref{tab:assumptions},
 $(1-\bar\varepsilon)(1-1.7\tfrac{\ln\ln(1/\sigma)}{\ln(1/\sigma)})\le g_{\min}^{P}\sqrt{\ln(1/\sigma)}
 \le(1+|\varepsilon(S'_C(\sigma))|)(1+6.0\,\tfrac{\ln\ln(1/\sigma)}{\ln(1/\sigma)})$ for every $10^{-100000}\le\sigma\le10^{-24}$, where every state of the class has
 $|\varepsilon|\le\bar\varepsilon\le0.1$ and $S'_C(\sigma)$ is an explicit comb.
-Below $10^{-100000}$ the lower side is proved analytically (Lemma~\ref{lem:BH2}) and the upper side is derived, so
-$g_{\min}\sqrt{\ln(1/\sigma)}\to1$ on the periodic windows: from below proved (up to $1-\bar\varepsilon$), from above derived (Corollary~\ref{cor:limit}).
+Below $10^{-100000}$ the lower side is proved analytically (Lemma~\ref{lem:BH2}): $\liminf g_{\min}\sqrt{\ln(1/\sigma)}\ge1-\bar\varepsilon$. The matching
+$\limsup\le1$, and so the limit $1$, is derived, not proved (Corollary~\ref{cor:limit}).
 \end{quote}
 
 Here $\varepsilon(\rho)$ is paper~E's remainder of its Theorem~2, a quantity of each state $\rho$ that we carry exactly as paper~E does. The lower
 side assumes a bound $|\varepsilon(\rho)|\le\bar\varepsilon\le0.1$ on the whole class; the upper side holds on one explicit comb $S'_C(\sigma)$ and carries
 that state's own $|\varepsilon(S'_C(\sigma))|$, which is a numerical quantity here ($1.5\times10^{-15}$ at $\sigma=10^{-18}$ and $4\times10^{-16}$ at $10^{-24}$, the smallest $\sigma$ the exact evaluator reaches), not a proved bound.
+
+\paragraph*{Version~1.1.}
+Version~1.0 treated the Gaussian average over the background's $v$-envelope and the average over one ripple period as equal. For states whose
+background $v$-width is at most a few $\sigma$ this needs a correction: the Gaussian average is a period average weighted by a wrapped normal
+$\theta_\tau$, $\tau=k'^2V$, and differs from the plain one by a relative $\delta_\tau=2\sum_ne^{-n^2\tau/2}$. Version~1.1 supplies the correction:
+Lemma~\ref{lem:BK1} shows that such narrow states have a large gap, so that every state with $g<G$ has $\tau>80$ ($\delta_\tau<10^{-17}$), and
+App.~\ref{app:theta} restates every window lemma in $\theta_\tau$ form with explicit remainders; the certificates were re-run with the input lemmas
+perturbed by a relative $10^{-6}$. The bounds of the theorems are unchanged; the standing condition $L_w\le\sigma^{-1/2}$, already used in v1.0, is now listed as (P0), and the limit is stated with what is proved and what is derived kept apart. Version~1.1 also removes the a-priori condition (P8) of v1.0
+($F_c\ge1.02G$), which now follows from (P0)--(P7) (Lemma~\ref{lem:BJ1}).
 
 \paragraph*{Relation to paper~E.}
 Paper~E \emph{found} the strip law and stated it as a property of the family it had searched; nothing in it is contradicted here.
@@ -68,10 +77,13 @@ and the one inequality that is missing. Proofs of the window lemmas and the cert
 claim & status & where\\ \hline
 Branch identity $(1-|\varepsilon|)((a)+(a'))\le g\le(1+|\varepsilon|)((a)+(a'))$; window inequality (Thm.~\ref{thm:AT2}) & proof, every state & Sec.~\ref{sec:setting}\\
 Periodic-window lemmas (exact factorisation; $w$- and $v$-information sandwiches; $S$-bounds; Lemmas~\ref{lem:AY1P}, \ref{lem:AY2P}) & proof & Sec.~\ref{sec:windows}, App.~\ref{app:plemmas}\\
+The same lemmas in $\theta_\tau$ form with explicit remainders (Lemmas~\ref{lem:BL0}--\ref{lem:BL6}; upper side Lemma~\ref{lem:BL7}) & proof & App.~\ref{app:theta}\\
+Narrow envelopes have a large gap: $g<G\Rightarrow\tau>80$ (Lemma~\ref{lem:BK1}) & proof (CA) & App.~\ref{app:theta}\\
+The start of the bootstrap is automatic: $g<G\Rightarrow F_c\ge0.84$ (Lemma~\ref{lem:BJ1}; former (P8)) & proof (CA) & App.~\ref{app:theta}\\
 Lower side, Theorem~\ref{thm:AY1P}: $g\sqrt{\ls}/(1-\bar\varepsilon)\ge1-1.7\ln\ls/\ls$ on $[10^{-100000},10^{-24}]$, all $\bar\varepsilon\le0.1$; tail (Lemma~\ref{lem:BH2}) & proof (CA; tail: proof) & Sec.~\ref{sec:lower}\\
 Strips read as an upward bootstrap: the strip theorem needs $F_c\ge0.5$ ($10^{-24}$), $\ge0.2$ (below $10^{-96}$) & proof (CA, representative points) & Sec.~\ref{sec:lower}\\
 Upper side, Theorem~\ref{thm:AZ1P} (comb sequence): $U_P\sqrt{\ln}\le1+6.0\ln\ln/\ln$ & proof (CA) & Sec.~\ref{sec:upper}\\
-Theorem~\ref{thm:BF1}: two-sided bounds on $[10^{-100000},10^{-24}]$; Cor.~\ref{cor:limit}: $g_{\min}\sqrt{\ls}\to1$ & proof (CA); limit: proof from below, derivation from above & Sec.~\ref{sec:upper}\\
+Theorem~\ref{thm:BF1}: two-sided bounds on $[10^{-100000},10^{-24}]$; Cor.~\ref{cor:limit}: the limit $1$ & proof (CA); limit: $\liminf\ge1-\bar\varepsilon$ proof, $\limsup\le1$ derivation & Sec.~\ref{sec:upper}\\
 Comb $=$ strip at $\sigma/256$ (Prop.~\ref{prop:BE1}) & derivation (exact identity of the leading-order formula) & Sec.~\ref{sec:finite}\\
 Comb below the strip at every finite $\sigma$; below the mixtures ($0.884$) from $\sigma\approx1.4\times10^{-3}$ & numerical & Sec.~\ref{sec:finite}\\
 Combs have no deep valleys ($\Lambda^*$ finite), so paper~E's Proposition~14 applies & numerical & Sec.~\ref{sec:finite}\\

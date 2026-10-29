@@ -1,0 +1,299 @@
+% D_theta.tex — v1.1: periodic averages and the wrapped normal theta_tau
+\section{Periodic averages and the wrapped normal $\theta_\tau$}
+\label{app:theta}
+
+\paragraph*{What changed from v1.0.}
+Version~1.0 treated the Gaussian average over the background's $v$-envelope and the average over one ripple period as equal. They are equal
+only up to a correction of relative size $\delta_\tau=2\sum_{n\ge1}e^{-n^2\tau/2}$, $\tau=k'^2V$ (the squared number of ripple periods per
+blurred $v$-width): $\delta_\tau=0.17$ at $\tau=5$, $4\times10^{-9}$ at $\tau=40$, $8.5\times10^{-18}$ at $\tau=80$. States whose background $v$-width
+is at most a few $\sigma$ need the correction. Version~1.1 supplies it in two parts: Lemma~\ref{lem:BK1} shows that every state with $g<G$
+has $\tau>80$, and Lemmas~\ref{lem:BL1}--\ref{lem:BL7} restate every window lemma with the Gaussian average written exactly as a
+$\theta_\tau$-weighted period average, with explicit remainders. The certificates were re-run with all input lemmas perturbed by a
+relative $\varepsilon_{\mathrm{in}}=10^{-6}$, far above the corrections ($<10^{-13}$ for $\tau>80$). The bounds of the theorems are unchanged; the standing condition $L_w\le\sigma^{-1/2}$, already used in v1.0, is now listed as (P0), and the limit is stated with what is proved and what is derived kept apart.
+
+\paragraph*{Notation.}
+$p=\mathcal N_V(v)\Gamma(w)h(t,w)/Z$ with $t=k'v$ and $Z=\int p$ (Lemma~\ref{lem:AW1P}); $\langle\cdot\rangle$ is the average over one period in $t$;
+$e_n=e^{-n^2\tau/2}$; $\alpha=(1-b)/\sqrt2$, $e=e^{-\alpha^2V/2}$, $y=\alpha^2V$, $\beta=\alpha k'V\le\sigma\tau/\sqrt{2x}$; $\nu_k=2\sum_{n\ge1}n^ke_ne^{n\beta}$;
+$\omega_k=2\sum_{n\ge1}e_n|P_k(n\sqrt\tau)|$ and $\omega'_k=2\sum_{n\ge1}ne_n|P_k(n\sqrt\tau)|$, where $\E[Z^ke^{iuZ}]=e^{-u^2/2}P_k(u)$ for a standard normal $Z$
+($|P_1|=u$, $|P_2|=|1-u^2|$, $|P_3|=|u^3-3u|$, $|P_4|=|u^4-6u^2+3|$). Since $\sigma\le10^{-24}$ and $x\ge1$, $\tau^j\nu_k$, $\tau^j\omega_k$ ($j\le3$) decrease
+for $\tau\ge8$; at $\tau=80$, $\nu_0=8.50\times10^{-18}$.
+
+\begin{lemma}[$\theta_\tau$ calculus] \proofst
+\label{lem:BL0}
+For a $2\pi$-periodic $F$: (i) $\int\mathcal N_V(v)F(k'v)\,dv=\langle\theta_\tau F\rangle$ with $\theta_\tau(t)=1+2\sum_ne_n\cos nt\ge0$ (the wrapped normal),
+$|\theta_\tau-1|\le\nu_0$. (ii) $\int\mathcal N_Ve^{i\alpha v}F(k'v)\,dv=e\,\langle\Theta F\rangle$, $\Theta(t)=\sum_{n\in\mathbb Z}e_{|n|}e^{-n\beta}e^{-int}$, with
+$|\Theta-1|\le\nu_0$, $|\theta_\tau-\Theta|\le\beta\nu_1$, $|\partial_t\Theta|\le\nu_1$, and $\langle\Theta\,\partial_tF\rangle=-\langle\partial_t\Theta\,F\rangle$.
+(iii) $\int\mathcal N_Vv^kF(k'v)\,dv=V^{k/2}(m_k\langle F\rangle+r_k)$ with $m_k$ the Gaussian moments and $|r_k|\le\langle|F|\rangle\omega_k$; for $F\ge0$,
+$|\hat F_n|\le\langle F\rangle$.
+\end{lemma}
+\begin{proof}
+Expand $F$ in $e^{int}$ and use $\int\mathcal N_Ve^{i(\alpha+nk')v}dv=e\,e_ne^{-n\alpha k'V}$ and $\E[(\sqrt VZ)^ke^{in\sqrt\tau Z}]=V^{k/2}e_nP_k(n\sqrt\tau)$;
+$|1-e^{-n\beta}|\le n\beta$, $e^{n\beta}-1\le n\beta e^{n\beta}$.
+\end{proof}
+
+\begin{lemma}[narrow envelopes have a large gap] \caproofst{\code{bl\_narrow80.py}}
+\label{lem:BK1}
+Let $\rho$ be a periodic window with (P2)--(P5), $L_w\le\sigma^{-1/2}$, $\sigma\le10^{-24}$, and $0<c\le c_*=0.134/0.9$. If $\tau\le80$, then
+$(a)\ge c$ or $(a')\ge c$. Hence every state with $g<G$ ($G\le0.134$, $|\varepsilon|\le0.1$) has $\tau>80$.
+\end{lemma}
+\begin{proof}
+All quantities are used exactly (no average is replaced by another). (i) $(a)\ge\sigma^2\Jww/(\sigma\,\mathrm{den})$ and $b+W=\sigma^2\Jvv\le1$, so
+$(a)<c$ gives $\mathrm{den}<\theta(b+W)$, $\theta=1/(1-c\sigma)$. (ii) Cram\'er--Rao for the $w$-marginal, which is
+$\Gamma(w)(1+\sum_nq0_ne^{-w^2/2s^2}e_n)/Z$ exactly: $\Jww\ge1/(\kappa_wL^2)$, hence $L^2>L_1^2=\sigma/(c\theta\kappa_w(b+W))$. (iii) The exact
+$W=(x/Z)\int\Gamma\langle\theta_\tau(h_t^2/h-h_{tt})\rangle$ (Lemma~\ref{lem:BL2}) gives $W\le W_N$ with $-\langle\theta_\tau h_{tt}\rangle=\sum n^2q_ne_n$.
+(iv) Cram\'er--Rao on every $w$-slice in $v$ ($\mathrm{Var}_w\le\kappa_sV$ from $\int\mathcal N_Vv^2\cos(nk'v)=V(1-n^2\tau)e_n$), together with
+$1-\cos(A+\delta)\ge1-\cos A-|\sin A||\delta|-\delta^2/2$ and Gaussian moments of $\delta$, gives $\sigma^2\int Ps_v^2\phi\ge b\Psi(L)(1-qH_0g_1)/\kappa_s-\mathrm{Err}$,
+$\Psi(L)=1-e^{-\gamma^2L^2/2}$, $\mathrm{Err}=O(\sigma\sqrt b)$ explicit; here $\kappa_w$, $\kappa_s$, $H_0$, $g_1$ and $\gamma$ are explicit $O(1)$ factors from the $e_n$ series, defined in \code{bk\_narrow\_lemma.py} (used by \code{bl\_narrow80.py}). (v) $(a')<c$ contradicts (iv) at $L\ge L_1$. The set
+$\{1\le x\le80,\ x/80\le b\le1\}$ is covered by $57600$ cells, each evaluated at its worst corner; every cell closes, the smallest ratio of the
+two sides is $2.80$.
+\end{proof}
+
+\begin{lemma}[$w$-information] \proofst
+\label{lem:BL1}
+$\Jww=J_{ww,\mathrm{per}}(1+\epsilon_1)$ with $J_{ww,\mathrm{per}}=1/L^2+\int\Gamma\langle h_w^2/h\rangle$ and $|\epsilon_1|\le\nu_0(1+2\Qb)/(1-\Qb\nu_0/2)$.
+So the $w$-sandwich of Table~\ref{tab:replace} holds for $J_{ww,\mathrm{per}}$ exactly and for $\Jww$ up to the factor $1\pm\epsilon_1$.
+\end{lemma}
+\begin{proof}
+$Z\Jww=1/L^2+\sum_ne_n\int\Gamma q_n(2/L^2-w^2/L^4)+\int\Gamma\langle\theta_\tau h_w^2/h\rangle$ (expand $s_w=-w/L^2+h_w/h$; the cross term
+$2\int\Gamma'\langle\theta_\tau h_w\rangle=2\sum e_n\int\Gamma'q_n'$ no longer vanishes; integrate by parts). The middle term is at most
+$\tfrac32\Qb\nu_0/L^2$ in absolute value, the last lies between $(1\mp\nu_0)\int\Gamma\langle h_w^2/h\rangle$, and $|Z-1|\le\Qb\nu_0/2$.
+\end{proof}
+
+\begin{lemma}[$v$-information] \proofst
+\label{lem:BL2}
+$\sigma^2\Jvv=b+W$ exactly, with
+$ZW=\sigma^2\int\Gamma\langle\theta_\tau h'^2/h\rangle+x\int\Gamma\sum_nn^2q_ne_n$ ($h'=\partial_vh$). Hence, with $W_{\mathrm{per}}=x\int\Gamma\langle h_t^2/h\rangle$,
+\begin{equation}
+\frac{(1-\nu_0)W_{\mathrm{per}}-\tfrac12b\tau\Qb\nu_2}{1+\Qb\nu_0/2}\le W\le\frac{(1+\nu_0)W_{\mathrm{per}}+\tfrac12b\tau\Qb\nu_2}{1-\Qb\nu_0/2}.
+\end{equation}
+The second term is the one that breaks the $v$-sandwich of v1.0 at small $\tau$ (it is linear in the contrast); it is a multiple of $b$, so it is
+relative as soon as $b\le\beta W$ or $b\le W$ is known, which is where the proofs use the upper side of the sandwich.
+\end{lemma}
+\begin{proof}
+Expand $s_v=-v/V+k'h_t/h$; Lemma~\ref{lem:BL0}(iii) with $\int\mathcal N_V(v/V)^2\cos(nk'v)=(1-n^2\tau)e_n/V$ and
+$\int\mathcal N_V(v/V)\partial_vh=-\tfrac1V\sum n^2\tau q_ne_n$ gives $(b/Z)\int\Gamma(1+\sum q_ne_n)=b$ for the background part.
+\end{proof}
+
+\begin{lemma}[the curvature term in $\theta_\tau$ form; AX3-P] \proofst
+\label{lem:BL3}
+Let $\psi=R/\sqrt2$ with $R=\sigma^2(\tilde s+s_w)+w$ the periodic part of $\sqrt2m_z-(1-b)v$, $C=\int\Gamma\langle h\cos\psi\rangle$ (period average),
+$\Phi=1-C\in[0,2]$ and $\Psi=1-eC(1-y)$. Then $\Psi\ge\min(\Phi,\tfrac12)$, $\Phi\le4\min(\Phi,\tfrac12)$, and
+\begin{equation}
+\begin{aligned}
+2N_\phi\ \ge\ &\Big(1-e-\frac{\sigma^2}{1-\nu_0}\Big)W+\frac{b\Psi}{1+\Qb\nu_0/2}-\frac{\sigma^2\gamma_P\Phi}{1-\Qb\nu_0/2}\\
+&-\frac{\tfrac12b\Qb(\nu_0+\tau\nu_2)\Phi+\sigma b\,E_R}{1-\Qb\nu_0/2},
+\end{aligned}
+\label{eq:BL3}
+\end{equation}
+with $E_R(x,\tau)$ the explicit sum of the nine terms in the proof (each a product of $\nu_k$, powers of $\tau$, and $N_1$, $\gamma_P$, $c_\chi$).
+For $\tau\ge80$, $E_R\le9.9\times10^{-15}$. If moreover $\min(\Phi,\tfrac12)\ge\sigma/2$ or $\eta G\theta_G/\varphi_1\le1$ in the chain, all remainders are
+relative:  $2N_\phi\ge(1-e-(1+\epsilon_3)\sigma^2)W+(1-\epsilon_3)b\Psi-(1+\epsilon_3)\sigma^2\gamma_P\Phi$ with $\epsilon_3\le2.1\times10^{-14}$.
+\end{lemma}
+\begin{proof}
+\emph{Exact identity.} For fixed $w$ put $P=\mathcal N_Vh$, $F=h'^2/h$, $D=(h'-ih\psi')e^{i\psi}$, $G[f]=\int\mathcal N_Vf\,dv$, $A[f]=\int\mathcal N_Ve^{i\alpha v}f\,dv$.
+From $P'^2/P=P''-P(\ln P)''$, integration by parts against $\mathcal N_V$ and $\phi=1-\mathrm{Re}\,e^{i(\alpha v+\psi)}$,
+\begin{equation}
+\begin{aligned}
+\sigma^2\!\!\int\!Ps_v^2\phi\,dv={}&b(G[h]-\mathrm{Re}A[he^{i\psi}])+\sigma^2(G[F]-\mathrm{Re}A[Fe^{i\psi}])\\
+&+\sigma^2\mathrm{Re}A[h(\alpha^2+2\alpha\psi')e^{i\psi}]\\&+\sigma^2\mathrm{Re}A[D']-\sigma^2G[h''].
+\end{aligned}
+\label{eq:BLid}
+\end{equation}
+(Checked by direct quadrature to $4\times10^{-13}$ for $\tau$ from $3$ to $25$, \code{bl\_theta.py}.) When $\theta_\tau=\Theta=1$ this is Lemma~AW6: the
+last line has period average $0$.
+
+\emph{Main terms.} With $c_w=\langle h\cos\psi\rangle$, $\langle h\rangle=1$ and $\sigma^2\alpha^2=by$, the first and the $\alpha^2$ terms give
+$b[1-e(1-y)c_w]$ plus remainders; integrated, $b\Psi$. The bound $\Psi\ge\min(\Phi,\frac12)$: for $C\ge0$, $e(1-y)\le1$; for $C<0$,
+$\Psi\ge1-\max_y(y-1)e^{-y/2}=1-2e^{-3/2}>\tfrac12$. The $F$-term is $(1-e)\sigma^2\langle\theta_\tau F\rangle+e\sigma^2\langle\theta_\tau F(1-\cos\psi)\rangle+\dots\ge(1-e)\sigma^2\langle\theta_\tau F\rangle-\dots$.
+The cross term: $2\alpha\psi'=(1-b)\sigma^2G$ with $|\sigma^2G|\le\gamma_P$ and the exact parity identity $\langle hG\rangle=-\langle F\rangle$
+($\langle h_wh'/h\rangle=0$ for even $f$), so $\langle h\sigma^2G\cos\psi\rangle\ge-\sigma^2\langle F\rangle-\gamma_P\langle h(1-\cos\psi)\rangle$.
+The last line: $\sigma^2A[D']-\sigma^2e^{iw/\sqrt2}A[h'']=-e\sigma^2k'\langle\partial_t\Theta\,(D-h'e^{iw/\sqrt2})\rangle$, and
+$\sigma^2\mathrm{Re}(e^{iw/\sqrt2}A[h''])-\sigma^2G[h'']=t_w(1-e\cos\tfrac{w}{\sqrt2})-e\cos\tfrac{w}{\sqrt2}\,x\sum n^2q_ne_n(\cosh n\beta-1)$ with
+$t_w=x\sum n^2q_ne_n$, which pairs with the second term of $ZW$ in Lemma~\ref{lem:BL2}: $(1-e)t_w$ joins $(1-e)ZW$ and
+$e(1-\cos\frac w{\sqrt2})t_w$ is bounded by $\frac12x\Qb\nu_2(\Phi_w+\chi_w)$.
+
+\emph{Remainders.} With $\chi=\psi-w/\sqrt2=\sigma^2(\tilde s+s_w)/\sqrt2$, $\int\Gamma\sup_t|\chi|\le\sigma c_\chi$,
+$c_\chi=(\sqrt xN_1/(1-\Qb)+\sqrt{2/\pi}+\Qb e^{-1/2}/(1-\Qb))/\sqrt2$, $1-\cos\frac w{\sqrt2}\le\Phi_w+\sup_t|\chi|$, $\beta^2\le\sigma^2\tau^2/(2x)$, and
+Lemma~\ref{lem:BL0}, the nine absolute remainders are
+$a_1=\tfrac38\sigma^2\Qb\nu_0$ ($b(1-e(1-y))\le\frac34\sigma^2$),
+$a_2=b(1+\Qb)\sigma c_\chi\nu_0(1+\Qb/2)$,
+$a_3=b\Qb\sigma^2\tau^2\nu_2/(8x)$,
+$a_4=\sigma\tau\sqrt xN_1^2\nu_1/(\sqrt2(1-\Qb))$ ($\theta_\tau-\Theta$ in the $F$-term),
+$a_5=\sigma^2\nu_0(1+\Qb)\gamma_P$,
+$a_6=\nu_1(xN_1\sigma c_\chi+\sigma\sqrt x(1+\Qb)\gamma_P/\sqrt2)$,
+$a_7=\tfrac12x\Qb\nu_2(1+\Qb)\sigma c_\chi$,
+$a_8=\Qb\sigma^2\tau^2\nu_4/8$,
+$a_9=\sigma^2x\Qb\nu_2/(2(1-\nu_0))$ (from $\sigma^2W_{\mathrm{per}}\le\sigma^2(ZW+\tfrac12x\Qb\nu_2)/(1-\nu_0)$);
+each carries a factor $\sigma$, and $\sum a_i=\sigma b\,E_R$ with $x=b\tau$. The $\Phi$-proportional remainders are
+$\frac12b\Qb\nu_0\Phi$ (from $\langle\theta_\tau h\rangle-1$) and $\frac12x\Qb\nu_2\Phi=\frac12b\tau\Qb\nu_2\Phi$. Dividing by $Z$ gives~\eqref{eq:BL3}.
+For the relative form use $\Phi\le4\Psi$ and $\sigma bE_R\le E_R\,b\min(\Phi,\frac12)\cdot(\eta G\theta_G/\varphi_1)$ in the chain (Lemma~\ref{lem:BL4}),
+resp.\ $\le2E_Rb\min(\Phi,\frac12)$.
+\end{proof}
+
+Compared with v1.0 ($2N_\phi\ge(1-e-\sigma^2)W+\Phi(b-\sigma^2\gamma_P)$), the coefficient of $b$ is $\Psi\ge\min(\Phi,\frac12)$ instead of $\Phi$
+(this also covers $C<0$, which v1.0 excluded by a remark). The chain and Lemma~\ref{lem:BJ1} use it through $\Phi\le4\min(\Phi,\frac12)$,
+which moves two case thresholds by constant factors (App.~\ref{app:cert}).
+
+\begin{lemma}[$1-C$; Lemma~\ref{lem:AY1P} in $\theta_\tau$ form] \proofst
+\label{lem:BL4}
+Lemma~\ref{lem:AY1P} holds verbatim for the period average $C$ of Lemma~\ref{lem:BL3}, with $r\le\xi_P+\sigma^2\sqrt{J_{ww,\mathrm{per}}}\le
+\xi_P+\sigma^{3/2}\sqrt{\eta G\theta_G/(1-\epsilon_1)}$.
+\end{lemma}
+\begin{proof}
+The period average of $p$ has $w$-marginal $\Gamma$ exactly ($\langle h\rangle=1$); the steps of Lemma~\ref{lem:AY1P} are period averages; only
+$\sigma^4J_{ww,\mathrm{per}}\le\sigma^4\Jww/(1-\epsilon_1)$ (Lemma~\ref{lem:BL1}) changes.
+\end{proof}
+
+\begin{lemma}[envelope separation; AW3] \proofst
+\label{lem:BL5}
+With $S_{\mathrm{per}}=\int\langle F_t^2\rangle/\int\langle F^2\rangle$, $F=\partial_w\sqrt{\Gamma h}$, and $\nu_\tau=2\sum_ne_n(1+n^2\tau)$,
+\begin{equation}
+\frac{1-\nu_\tau}{1+\nu_0}\le\frac{\keff^2}{xS_{\mathrm{per}}+b/4}\le\frac{1+\nu_\tau}{1-\nu_0}.
+\end{equation}
+The $S$-bounds of Table~\ref{tab:replace} (AX4-P and the Wiener majorant) are statements about the periodic $F$ and hold for $S_{\mathrm{per}}$ unchanged.
+\end{lemma}
+\begin{proof}
+$\partial_v\partial_w\sqrt p=\sqrt{\mathcal N_V}(-\tfrac v{2V}F+k'F_t)/\sqrt Z$; with $\int\mathcal N_V(v/V)k'FF_t=\tfrac12\int\mathcal N_V(v^2/V^2-1/V)F^2$,
+$\sigma^2\int(\partial_v\partial_w\sqrt p)^2=\sigma^2\int\mathcal N_V[\tfrac1{2V}-\tfrac{v^2}{4V^2}]F^2+x\langle\theta_\tau F_t^2\rangle$, and
+$\int\mathcal N_V[\tfrac1{2V}-\tfrac{v^2}{4V^2}]e^{int}=e_n(1+n^2\tau)/(4V)$, $|\widehat{F^2}_n|\le\langle F^2\rangle$.
+\end{proof}
+
+\begin{lemma}[$F_c$ factors; Lemma~\ref{lem:AY2P}] \proofst
+\label{lem:BL6}
+Lemma~\ref{lem:AY2P} holds with $r_C$, $r_w$ multiplied by $1+\epsilon_5$,
+$\epsilon_5=(\nu_0+\omega_2+\omega_4/3+\sqrt\tau(\omega'_1+\omega'_3)+\Qb\nu_0)/(1-\Qb\nu_0/2)$ ($7\times10^{-14}$ at $\tau=80$); $\delta_H$ is pointwise and unchanged;
+inside the chain $A_1=a/\mathrm{den}>1-\eta G\sigma$ is exact.
+\end{lemma}
+\begin{proof}
+Every step of Lemma~\ref{lem:AY2P} is either pointwise ($\cos(m/2)\ge1-m^2/8$, $\phi\le m^2/2$, $m_z^2\le v'^2+R^2$, $R^2\le2w^2+2(R-w)^2$, the bounds of
+$\sigma^2H$), or a moment $\E_p[v^kP(t,w)Q(w)]$. By Lemma~\ref{lem:BL0}(iii) the even moments with $P\ge0$ ($\E[v^4]/V^2$, $\E[v^2\tilde s^2]$, $\E[v^2w^2]$,
+$\E[\tilde s^2w^2]$) are their separated values times $1\pm\max(\omega_2,\omega_4/3,\nu_0)$, and the odd ones vanish up to
+$|\E[v^3\tilde s]|/V\le\sqrt\tau N_1\omega'_3$, $|\E[v\tilde sw^2]|/V\le\sqrt\tau N_1\omega'_1L^2/V$, which are relative to the even terms $3$ and $L^2/V$
+next to them. The cross term of $\langle s_w^2w^2\rangle$ is at most $3\Qb\nu_0g_1s^2/L^2$ against $3$.
+\end{proof}
+
+\begin{lemma}[upper side; Lemma~\ref{lem:AZ1P} in $\theta_\tau$ form] \proofst
+\label{lem:BL7}
+With the notation of Lemma~\ref{lem:BL3}, $z=\Qb\nu_0/2$, and $\sigma^2\E_P$ the bound of $\sigma^2\E[s_v^2\phi]$ in Lemma~\ref{lem:AZ1P}
+(i.e.\ $(1-e)\sigma^2J_{\mathrm{per,up}}+\frac{\sigma^2}4\langle\tilde s^2R^2\rangle+b(1-e)+b(1-C)+\sigma^2\alpha^2e+\sigma^2\gamma_P(1-C)$, all averages over one period),
+\begin{equation}
+\begin{aligned}
+2N_\phi\ \le\ &\frac{1+\nu_0}{1-z}\,\sigma^2\E_P\\
+&+\frac{\frac12(1-e)b\tau\Qb\nu_2+\frac12b\Qb(\nu_0+\tau\nu_2)\Phi+\sigma b\,E_R}{1-z},
+\end{aligned}
+\label{eq:BL7}
+\end{equation}
+$\mathrm{den}\ge\kappa_d\,\mathrm{den}_{\mathrm{lo}}$ with $\kappa_d=(1-\nu_0-\frac12\tau\Qb\nu_2)/(1+z)$, and $\Jww\le(1+\epsilon_1)J_{ww,\mathrm{up}}$. Hence
+$U_P^\theta:=(a)_{\mathrm{up}}^\theta+(a')_{\mathrm{up}}^\theta\le(1+\epsilon_U)U_P+A_U$ with
+$\epsilon_U=(1+\nu_0)(1+\epsilon_1)/((1-z)\kappa_d)-1$ and $A_U=[(\frac32\tau\Qb\nu_2+\Qb\nu_0)/\sigma+E_R]/(2\kappa_d)$.
+\end{lemma}
+\begin{proof}
+Read the exact identity~\eqref{eq:BLid} from above, term by term, with the same remainders as in Lemma~\ref{lem:BL3} (each was bounded there in absolute value).
+\emph{$b$ and $\alpha^2$ terms:} $b[1-e(1-y)c_w]+b[\zeta_w-e(1-y)\cos\frac w{\sqrt2}\tilde\zeta_w]-eb(1-y)\mathrm{Re}\rho_w\le b[1-e(1-y)c_w]+\frac12b\Qb\nu_0(\Phi_w+\chi_w)+a_1+a_2+a_3$;
+integrated, $b\Psi=b\Phi+bC(1-e)+\sigma^2\alpha^2eC\le b\Phi+b(1-e)+\sigma^2\alpha^2e$ (for $C<0$ the last two terms are negative).
+\emph{$F$ term:} $(1-e)\sigma^2\langle\theta_\tau F\rangle+e\sigma^2\langle\theta_\tau F(1-\cos\psi)\rangle+e\sigma^2\mathrm{Re}\langle(\theta_\tau-\Theta)Fe^{i\psi}\rangle
+\le(1-e)\sigma^2\langle\theta_\tau F\rangle+(1+\nu_0)\sigma^2\langle F(1-\cos\psi)\rangle+a_4$, and $F(1-\cos\psi)\le h\tilde s^2R^2/4$ ($1-\cos\psi\le\psi^2/2$, $F=h\tilde s^2$).
+\emph{Cross term:} $\sigma^2e(1-b)\mathrm{Re}\langle\Theta h\sigma^2Ge^{i\psi}\rangle\le\sigma^2e(1-b)[\sigma^2\langle hG\rangle+\langle h\sigma^2G(1-\cos\psi)\rangle]+a_5
+\le\sigma^2\gamma_P\Phi_w+a_5$, since $\langle hG\rangle=-\langle F\rangle\le0$.
+\emph{Last line:} $(1-e)t_w+e(1-\cos\frac w{\sqrt2})t_w+a_8+E_D\le(1-e)t_w+\frac12x\Qb\nu_2(\Phi_w+\chi_w)+a_6+a_8$.
+Integrating with $\Gamma$, $(1-e)\int\Gamma[\sigma^2\langle\theta_\tau F\rangle+t_w]=(1-e)ZW$ and Lemma~\ref{lem:BL2} gives
+$(1-e)W\le(1-e)[(1+\nu_0)W_{\mathrm{per}}+\frac12b\tau\Qb\nu_2]/(1-z)$, $W_{\mathrm{per}}\le\sigma^2J_{\mathrm{per,up}}$; dividing by $Z\ge1-z$ gives~\eqref{eq:BL7}.
+For $\mathrm{den}$: $\mathrm{den}\ge b+W$ and the lower side of Lemma~\ref{lem:BL2} with $W_{\mathrm{per}}\ge xI_2/(2(1+\Qb))$. Then $(a)\le2\sigma^2\Jww/(\sigma\,\mathrm{den})$,
+$(a')=N_\phi/(\sigma\,\mathrm{den})$, $b\le\mathrm{den}_{\mathrm{lo}}$, $1-e\le1$ and $\Phi\le2$ give $U_P^\theta$.
+\end{proof}
+
+\paragraph*{The comb sequence.} Along $S'_C$, $L_v^2=4\sigma k_0^{-5}$, so $\tau=k'^2V=4/(k_0^3\sigma(1+\sigma k_0^5/4))$, which increases with $k_0$
+($\frac d{dk_0}\ln\tau=8/k_0+8k_0+\dots>0$); in outward-rounded interval arithmetic $\tau\ge8.20\times10^{22}$ on the whole range ($k_0\ge3.43$), and
+$\sigma\tau\le4/k_0^3\le0.0992$, $1/\sigma\le\tau k_0^3/2\le6.92\times10^6\tau$. With $\nu_k\le2.0001\,e^{-\tau/2+\sigma\tau}$ ($k\le4$),
+$E_R\le K_E\tau^3\nu$ and $U_P\sqrt t\le1.44$, the correction to the certified function $h=U_P\sqrt t-1-6.0\ln t/t$ is
+\begin{equation}
+1.5\,\epsilon_U+\sqrt t\,A_U\ \le\ C_{\mathrm{tot}}\,\tau^5e^{-\tau/2+0.1}\ \le\ 10^{-1.78\times10^{22}},
+\end{equation}
+far below the certificate's margin ($h\le-1.35\times10^{-4}$ on every cell) \caproofst{\code{bm\_bl7.py}}. So Theorem~\ref{thm:AZ1P} holds for the exact Gaussian
+averages. On the $22$ states of the numerical check, $2N_\phi$ lies below the bound~\eqref{eq:BL7} \numst.
+
+\paragraph*{Size of the corrections.} For $\tau\ge80$ and every $x\ge1$ (\code{bl\_theta.py}):
+$\epsilon_1\le1.3\times10^{-17}$, the relative part of Lemma~\ref{lem:BL2} $\le9.6\times10^{-18}$ and its $b$-part $\le8.5\times10^{-17}b$,
+$\epsilon_3\le2.1\times10^{-14}$, the factor of Lemma~\ref{lem:BL5} $\le6.7\times10^{-16}$, $\epsilon_5\le7.1\times10^{-14}$. So
+$\epsilon_\theta:=\max\le7.1\times10^{-14}$. On $22$ states with $\tau$ from $3$ to $25$ (where the corrections are visible) every inequality of
+Lemmas~\ref{lem:BL1}, \ref{lem:BL2}, \ref{lem:BL3} and \ref{lem:BL5} holds against direct two-dimensional quadrature \numst.
+
+\paragraph*{The start of the bootstrap (former (P8)).}
+The lower-side chain starts its bootstrap from $F_c\ge1.02G$; v1.0 assumed this as (P8). It follows from (P0)--(P7):
+
+\begin{lemma}[the start of the bootstrap is automatic] \caproofst{\code{bl\_bj1.py}}
+\label{lem:BJ1}
+Let $\rho$ be a periodic window with (P1)--(P5), $L_w\le\sigma^{-1/2}$ and $\sigma\le10^{-24}$, and let $0<c\le c_*:=0.134/0.9$. If both branches are small,
+$(a)<c$ and $(a')<c$, then the factor of Lemma~\ref{lem:AY2P} satisfies $A_1A_2A_3\ge A_{\min}=0.937$. Consequently, for every $G\le0.134$ and every
+state with $|\varepsilon(\rho)|\le\bar\varepsilon\le0.1$,
+\begin{equation}
+g<G\quad\Longrightarrow\quad F_c\ \ge\ (1-|\varepsilon|)A_{\min}\ \ge\ 0.84\ \ge\ 1.02\,G ,
+\end{equation}
+so the start of the bootstrap holds for every state of the proof by contradiction (it was the assumption (P8) in v1.0).
+\end{lemma}
+\begin{proof}
+By Lemma~\ref{lem:BK1}, $\tau>80$, so Lemmas~\ref{lem:BL1}--\ref{lem:BL6} apply; each is used with the relative perturbation
+$\varepsilon=\varepsilon_{\mathrm{in}}=10^{-6}>\epsilon_\theta$, and $\kappa:=(1+\varepsilon)/(1-\varepsilon)$. Write $D=\mathrm{den}=b+W+\sigma^2\Jww$ (exact), $W=W_p$,
+$J=\Jww$, $q=q0_1$; $b+W=\sigma^2\Jvv\le1$. Tools: $(a)\ge\sigma^2J/(\sigma D)$ ($\phi\le2$); Lemma~\ref{lem:BL3} with
+$\gamma_0=\gamma_P$ evaluated with $N_p^0=\sum n^pq0_n$ (the pointwise bounds hold with $q0_n$ since $q_n(w)\le q0_n$), so $\gamma_0\le q\,\Gamma_1(x)$,
+$\Gamma_1(x)=[x((1+\eta_2)(1+Q_*)+Q_*(1+\eta_1)^2)+\sqrt x(1+\eta_1)(1+2Q_*)/\sqrt e]/(1-Q_*)^2$, $Q_*=\tfrac14$, $\eta_p(x)=\sum_{n\ge2}n^pe^{-(n^2-1)x/2}$
+((P2) and $K\ge x$); Lemma~\ref{lem:BL4}; the sandwiches of Lemmas~\ref{lem:BL1}, \ref{lem:BL2}: $J\ge(1-\varepsilon)/L^2$ and
+$(1-3\varepsilon)xq^2g_s/(2(1+\Qb))-\varepsilon b\le W\le(1+3\varepsilon)xq^2(1+Z_2(x))g_s/(2(1-\Qb))+\varepsilon b$ with $g_s=s/\sqrt{s^2+2L^2}\ge g_{\min}:=
+\sigma/\sqrt{\sigma^2+2/\sigma+2\sigma^2}$ ($s\ge\sigma$, $L^2\le1/\sigma+\sigma^2$).
+
+\emph{Step 1.} $(a)<c$ gives $\sigma^2J<c\sigma D$, hence $A_1=a/\mathrm{den}>1-c\sigma$, $D<\theta(b+W)$, $\theta=1/(1-c\sigma)$, and $L^2>(1-\varepsilon)\sigma/(c\theta(b+W))$.
+
+\emph{Step 2 ($W\ge b$).} (i) If $b<4\kappa\sigma^2\gamma_0$, then $V>1/(4\kappa\Gamma_*)$ and $1-e\ge e'$ with
+$e'=1-\exp(-(1-4\kappa\sigma^2\Gamma_*)^2/(16\kappa\Gamma_*))-(1+\varepsilon)\sigma^2-\varepsilon\sigma-4c\sigma\theta=0.0171$; Lemma~\ref{lem:BL3} with $b\Psi\ge0$,
+$\Phi\le2$ gives $W<2(1+\varepsilon)\sigma^2\gamma_0/e'$, the $W$-sandwich gives $q<q_*$ and $\gamma_0\le\gamma_*=\sup_x\Gamma_1(x)\min(q_*,m(x))$,
+$m(x)=\min(\tfrac14,2e^{-x/2})$; then $(a)\ge(1-\varepsilon)e'/(4\theta(1+\varepsilon)\gamma_*(1+\sigma^3))\ge7\times10^4c$: a contradiction.
+(ii) If $b\ge4\kappa\sigma^2\gamma_0$, then $(1-\varepsilon)b\Psi\ge(1+\varepsilon)\sigma^2\gamma_0\Phi$ ($\Phi\le4\Psi$), and Lemma~\ref{lem:BL3} gives
+$1-e<\nu:=4c\sigma\theta+(1+\varepsilon)\sigma^2+\varepsilon\sigma$, so $V<\bar V=-2\ln(1-\nu)/\alpha^2_{\min}=2.69\sigma$; then $\sigma^2\gamma_0\le b\bar V\Gamma_*$ and the AM--GM of
+$(1-e)W\ge\tfrac12\alpha^2(1-\nu)(\sigma^2/b)W$ and $b\min(\Phi,\frac12)(1-\varepsilon-4(1+\varepsilon)\bar V\Gamma_*)$ gives $\min(\Phi,\frac12)<0.0231$, hence
+$1-C<0.0231$ and $L^2<0.0935$; $(a)<c$ with $u_0\ge q^2\varrho^{-1/2}(1+\varrho)^{-3/2}$ gives $(\sigma/s)^2<C_s\,x(1+Z_2)\sigma$. Inserting these
+in Lemma~\ref{lem:BL6}: $\delta_H\le1.2\times10^{-12}$, $r_C\le0.0283$, $r_w\le0.0701$, so $A_1A_2A_3\ge0.937$.
+
+\emph{Step 3 ($W<b$).} (i) If $b\ge32\kappa\sigma^2\gamma_0$, Lemma~\ref{lem:BL3} gives $\tfrac78(1-\varepsilon)\min(\Phi,\frac12)<4c\sigma\theta+(1+\varepsilon)\sigma^2+\varepsilon\sigma$,
+while $L^2>(1-\varepsilon)\sigma/(2c\theta)=:L_1^2$ and Lemma~\ref{lem:BL4} give $1-C\ge\min(g(L_1),g(L_{\max}))$, $g(L)=(1-e^{-L^2/4})-\tfrac12(L\bar r+\bar r^2/2)$.
+$g$ is unimodal on $[L_1,\infty)$: $g'(L)=\frac12(Le^{-L^2/4}-\bar r)$, and $Le^{-L^2/4}$ increases up to $\sqrt2$ and then decreases, so $g'$ changes
+sign at most once, from $+$ to $-$, once $L_1e^{-L_1^2/4}>\bar r$ (checked). In outward-rounded interval arithmetic at $\sigma=10^{-24}$,
+$c=c_*$: $g(L_1)\ge0.839551\sigma>0.680637\sigma\ge$ the right side (margin $1.2334$; the step needs $32c^2<\tfrac78$, i.e.\ $c<0.165$): a contradiction.
+(ii) If $b<32\kappa\sigma^2\gamma_0$, then $(1-\varepsilon)\sigma^2/L^2_{\max}\le\sigma^2J<64\kappa c\theta\sigma^3\gamma_0$ gives $\gamma_0>\gamma_{\mathrm{lo}}=0.104$, hence
+$q>\gamma_{\mathrm{lo}}/\Gamma_1(x)$ with $x\le13.35$, and the lower $W$-sandwich exceeds $32\kappa\sigma^2\Gamma_*>b>W$ by a factor $2.0\times10^{5}$: a contradiction.
+
+Every bound is monotone in $\sigma$ (worst at $10^{-24}$) and in $c$ (worst at $c_*$); Table~\ref{tab:monoBJ} lists the directions. The suprema over $x\ge1$
+($\Gamma_*=3.623$, $W_{\max}=0.0578$, $S_\xi=0.683$, and those in $\delta_H$) are bounded on $20000$ cells of $[1,200]$ from monotone factors; beyond $x=200$
+every function involved decreases (Table~\ref{tab:monoBJ}).
+\end{proof}
+
+\begin{table}
+\caption{Lemma~\ref{lem:BJ1}: directions in $\sigma$ and $c$ ($\uparrow$ increases, $\downarrow$ decreases, -- independent) and the reason; the bad
+direction is $\uparrow$ except for the rows marked $\ast$. A grid check ($\sigma\in[10^{-60},10^{-24}]$, $c\in[0.05,c_*]$) confirms every row \numst.
+Below: why each function of $x$ decreases beyond $x=200$.}
+\label{tab:monoBJ}
+\begin{ruledtabular}
+\small
+\begin{tabular}{p{0.30\columnwidth}ccp{0.42\columnwidth}}
+quantity & $\sigma$ & $c$ & reason\\ \hline
+$\theta=1/(1-c\sigma)$ & $\uparrow$ & $\uparrow$ & denominator decreases\\
+$\nu$, $\bar V$ & $\uparrow$ & $\uparrow$ & sums of products; $-\ln(1-\nu)$\\
+bound of $1-C$ (2(ii)) & $\uparrow$ & $\uparrow$ & $(4c\theta+\sigma+\varepsilon)^2$ up, $1-\nu$ down\\
+$\bar r$, $\bar L^2$ & $\uparrow$ & $\uparrow$ & products; $L_{\max}\bar r\sim\sqrt\sigma$\\
+$C_s$ & -- & $\uparrow$ & $\propto c\theta$\\
+$\delta_H$, $r_C$, $r_w$ & $\uparrow$ & $\uparrow$ & sums of the rows above\\
+$A_{\min}$ $\ast$ & $\downarrow$ & $\downarrow$ & $1-\delta_H$, $1-r_C$, $1-r_w$, $1-c\sigma$\\
+$e'$ $\ast$ & $\downarrow$ & $\downarrow$ & minus $\sigma^2$, $\varepsilon\sigma$, $4c\sigma\theta$\\
+$q_*$ & $\uparrow$ & $\uparrow$ & $\sigma^2/g_{\min}=\sqrt{3\sigma^4+2\sigma}$, $1/e'$\\
+$(a)/c$ in 2(i) $\ast$ & $\downarrow$ & $\downarrow$ & $e'$ down, $\gamma_*$ up, $1/c$\\
+margin of 3(i) $\ast$ & $\downarrow$ & $\downarrow$ & $g(L_1)/\sigma\approx1/(8c\theta)$, right side $\approx\frac{32}7c\theta\sigma$\\
+$\gamma_{\mathrm{lo}}$ $\ast$ & -- & $\downarrow$ & $1/(64\kappa c\theta)$\\
+ratio of 3(ii) $\ast$ & $\downarrow$ & $\downarrow$ & $\gamma_{\mathrm{lo}}^2$ down, $\sigma^2/g_{\min}$ up\\ \hline
+$\Gamma_1(x)/x$, $\eta_p$, $Z_2$ & & & every term $e^{-(n^2-1)x/2}$ decreases\\
+$m(x)$, $x\,m(x)^2$, $xe^{-x}$ & & & $2e^{-x/2}$; $\frac{d}{dx}\ln(xe^{-x})=\frac1x-1<0$\\
+$\Gamma_1(x)m(x)$ & & & $\frac{d}{dx}\ln(xe^{-x/2})=\frac1x-\frac12<0$ ($x>2$)\\
+$\sqrt x\,m(x)(1+\eta_1)$ & & & $\frac1{2x}-\frac12<0$ ($x>1$)\\
+terms of $\delta_H$ ($T_1$, $T_2$) & & & $x\,m(x)$ factors, $x>2$\\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+

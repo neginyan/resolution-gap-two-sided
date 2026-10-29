@@ -7,9 +7,10 @@ carries, inside a narrow window, any even periodic profile in the momentum-like 
 thin teeth. Under explicit assumptions collected in one place, we prove
 $(1-\bar\varepsilon)(1-1.7\,\ln\ln/\ln)\le g_{\min}\sqrt{\ln(1/\sigma)}\le(1+|\varepsilon_C|)(1+6.0\,\ln\ln/\ln)$ for every
 $10^{-100000}\le\sigma\le10^{-24}$, where $\bar\varepsilon\le0.1$ bounds paper~E's remainder $\varepsilon$ on the class and $\varepsilon_C$ is the remainder of one
-explicit comb (numerically $4\times10^{-16}$ at $\sigma=10^{-24}$, the smallest $\sigma$ the exact evaluator reaches). Hence $g_{\min}\sqrt{\ln(1/\sigma)}\to1$: proved from below (up to $1-\bar\varepsilon$), derived from above.
+explicit comb (numerically $4\times10^{-16}$ at $\sigma=10^{-24}$, the smallest $\sigma$ the exact evaluator reaches). For the limit we prove $\liminf g_{\min}\sqrt{\ln(1/\sigma)}\ge1-\bar\varepsilon$; the matching $\limsup\le1$, and so the limit $1$, is derived, not proved.
 The lower side combines an exact window inequality with an upward bootstrap and is certified on $421$ cells covering the range of $\ln(1/\sigma)$
 and all $\bar\varepsilon\le0.1$ at once; the upper side follows an explicit comb sequence and is certified with exact exponents and interval arithmetic. At finite $\sigma$ the comb is the strip seen through
 a lens $256$ times sharper (a leading-order identity), and numerically it falls below the best Gaussian mixtures already at
 $\sigma\approx1.4\times10^{-3}$. Towards general states we prove a decorrelation dichotomy and a three-case split; the remaining case is
 reduced to a single conjectured inequality. Every claim carries its status: proof, computer-assisted proof, derivation, numerical, or conjecture.
+This version (v1.1) corrects the treatment of Gaussian versus period averages in the window lemmas and removes the start condition (P8); it lists the standing condition $L_w\le\sigma^{-1/2}$ of v1.0 as (P0) and states the limit more carefully; the bounds of the theorems are unchanged.

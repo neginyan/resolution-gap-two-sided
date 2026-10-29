@@ -22,6 +22,7 @@ Put $V=L_v^2+\sigma^2$, $L^2=L_w^2+\sigma^2$, $S_b=(L_w^{-2}+\ell^{-2})^{-1}$, $
 $p=\mathcal N(v;V)\,\Gamma(w)\big[1+\sum_nq_n(w)\cos(nk'v)\big]$ with $\Gamma=\mathcal N(0,L^2)$, $q_n(w)=q0_n\,e^{-w^2/2s^2}$,
 $1/s^2=1/(S_b+\sigma^2)-1/L^2$ (one $s$ for all harmonics), $\bar q_n=|a_n|e^{-n^2K/2}$ and $0<q0_n\le\bar q_n$.
 \end{lemma}
+(The density is normalised by $Z=\int p=1+O(\Qb\nu_0)$, which does not affect the score; the averages over $v$ in the lemmas below are period averages, and App.~\ref{app:theta} gives the exact Gaussian averages and the factor $Z$.)
 
 We write $\Qb=\sum_n\bar q_n$ (the blurred contrast), $N_p=\sum_nn^p\bar q_n$, $\varrho=s^2/(2L^2)$ (the window's aspect), and use the fact
 that the fundamental dominates after the blur: if $|a_n|\le|a_1|$ then $\bar q_n\le\bar q_1e^{-(n^2-1)x/2}$, and $\bar q_1\le2e^{-x/2}$.
@@ -29,19 +30,19 @@ that the fundamental dominates after the blur: if $|a_n|\le|a_1|$ then $\bar q_n
 \paragraph*{From the strip to the window.}
 The strip analysis used ``$c\le1$'' and ``one cosine'' at a handful of places. Table~\ref{tab:replace} lists them with the replacement; the
 proofs are in Appendix~\ref{app:plemmas}. Two structural facts carry everything: (i) the blur keeps one envelope $e^{-w^2/2s^2}$ for all
-harmonics, and (ii) $1-\Qb\le f_{\mathrm{blurred}}\le1+\Qb$, so the exact period averages of the strip become sandwiches with factors
+harmonics, and (ii) $1-\Qb\le f_{\mathrm{blurred}}\le1+\Qb$, so the period averages of the strip (equal to the Gaussian averages up to the relative factor $\delta_\tau$, App.~\ref{app:theta}) become sandwiches with factors
 $1/(1\pm\Qb)$.
 
 \begin{table*}
-\caption{Where the strip proof used one cosine with $c\le1$, and the replacement for periodic windows (all \proofst; App.~\ref{app:plemmas}).}
+\caption{Where the strip proof used one cosine with $c\le1$, and the replacement for periodic windows (all \proofst; App.~\ref{app:plemmas}). The sandwiches are stated for the period averages; the Gaussian averages that enter $\Jww$ and $W_p$ differ from them by the explicit $\theta_\tau$ remainders of App.~\ref{app:theta} (v1.1).}
 \label{tab:replace}
 \begin{ruledtabular}
 \begin{tabular}{p{0.14\textwidth}p{0.22\textwidth}p{0.56\textwidth}}
 step & strip & periodic window\\ \hline
 factorisation & $p=\mathcal N_V\Gamma[1+q\cos t]$ & exact: $p=\mathcal N_V\Gamma[1+\sum q_n\cos nt]$, one $s$ for all $n$\\
-$w$-information & exact period average & $(1+u_0/(8(1+\Qb)))/L^2\le\Jww\le(1+u_0/(8(1-\Qb)))/L^2$\\
-$v$-information & exact period average & $xI_2/(2(1+\Qb))\le W_p\le xI_2/(2(1-\Qb))$, $I_2=\sum n^2q0_n^2s/\sqrt{s^2+2L^2}$\\
-envelope separation & $\keff^2=x\,S+\sigma^2/(4V)$ & unchanged (any periodic part)\\
+$w$-information & period average up to the relative factor $\delta_\tau$ ($\tau=k'^2V$) & $(1+u_0/(8(1+\Qb)))/L^2\le\Jww\le(1+u_0/(8(1-\Qb)))/L^2$\\
+$v$-information & period average up to the relative factor $\delta_\tau$ ($\tau=k'^2V$) & $xI_2/(2(1+\Qb))\le W_p\le xI_2/(2(1-\Qb))$, $I_2=\sum n^2q0_n^2s/\sqrt{s^2+2L^2}$\\
+envelope separation & $\keff^2=x\,S+\sigma^2/(4V)$ & unchanged up to the relative factor $\nu_\tau$ (Lemma~\ref{lem:BL5})\\
 $S$ (every $u$) & $S\le8\kappa_2u/(8+u)$ & $S\le8\kappa_2(\Qb,\varrho)u_2/(8+u_0/(1+\Qb))$, $u_2$ the $n^2$-weighted $u$\\
 $S\le1+K_1\bar q^2$ & binomial series of $\sqrt{1+q\cos t}$ & Wiener majorant: $S\le S_i(x)$, $\sup_x x(S_i-1)=1.41$\\
 curvature term & exact cancellations, parity & $\gamma_P=[x(N_2(1+\Qb)+N_1^2)+\sqrt xN_1(1+2\Qb)/\sqrt e]/(1-\Qb)^2$; $f$ even\\
