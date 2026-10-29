@@ -4,7 +4,7 @@
 
 Code, stored results and computer-assisted proofs for the paper by Taishi Namba (2026).
 
-**Paper:** T. Namba, *How fine can a hidden ripple be? A two-sided logarithmic law for the resolution gap of the arrow of time*, preprint, Zenodo (2026), [doi:10.5281/zenodo.23746972](https://doi.org/10.5281/zenodo.23746972).
+**Paper:** T. Namba, *How fine can a hidden ripple be? A two-sided logarithmic law for the resolution gap of the arrow of time*, preprint, Zenodo (2026), [doi:10.5281/zenodo.23746971](https://doi.org/10.5281/zenodo.23746971).
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23746555.svg)](https://doi.org/10.5281/zenodo.23746555)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/neginyan/resolution-gap-two-sided/blob/main/demo/hidden_ripple_demo.ipynb)
@@ -81,8 +81,8 @@ The study was carried out with AI assistants: Anthropic Claude (planning, comput
 
 ## Citation
 
-Please cite the paper ([doi:10.5281/zenodo.23746972](https://doi.org/10.5281/zenodo.23746972)) and this repository; see `CITATION.cff`.
-The code is archived at Zenodo: [doi:10.5281/zenodo.23746555](https://doi.org/10.5281/zenodo.23746555) (all versions; v1.0.0 is [10.5281/zenodo.23746556](https://doi.org/10.5281/zenodo.23746556)).
+Please cite the paper ([doi:10.5281/zenodo.23746971](https://doi.org/10.5281/zenodo.23746971)) and this repository; see `CITATION.cff`.
+The code is archived at Zenodo: [doi:10.5281/zenodo.23746555](https://doi.org/10.5281/zenodo.23746555) (all versions; v1.1.0 is [10.5281/zenodo.23763622](https://doi.org/10.5281/zenodo.23763622)).
 
 ## License
 
