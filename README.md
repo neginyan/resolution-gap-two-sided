@@ -86,7 +86,7 @@ The study was carried out with AI assistants: Anthropic Claude (planning, comput
 ## Citation
 
 Please cite the paper ([doi:10.5281/zenodo.23746971](https://doi.org/10.5281/zenodo.23746971)) and this repository; see `CITATION.cff`.
-The code is archived at Zenodo: [doi:10.5281/zenodo.23746555](https://doi.org/10.5281/zenodo.23746555) (all versions; v1.1.0 is [10.5281/zenodo.23763622](https://doi.org/10.5281/zenodo.23763622)).
+The code is archived at Zenodo: [doi:10.5281/zenodo.23746555](https://doi.org/10.5281/zenodo.23746555) (all versions; v1.2.0 is [10.5281/zenodo.23806446](https://doi.org/10.5281/zenodo.23806446)).
 
 ## License
 
