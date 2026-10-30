@@ -1,0 +1,234 @@
+% E_pfive.tex — v1.2: removing (P5) for strips, weakening it for windows with at most six harmonics
+\section{Removing (P5)}
+\label{app:P5}
+
+\paragraph*{What this appendix shows.}
+Condition (P5), $x=(k'\sigma)^2\ge1$, enters Theorem~\ref{thm:AY1P} through Lemma~\ref{lem:BK1} (its cells start at $x=1$), Lemma~\ref{lem:BJ1} (its
+suprema over $x$ start at $x=1$) and the chain. A state with $g<G\le0.134$ has, by~\eqref{eq:branch}, $(a)<c$ and $(a')<c$ with $c=G/(1-|\varepsilon|)\le c_*=0.134/0.9$.
+We show that for a strip with $0<x<1$, and for a window with at most six harmonics and $10^{-12}\le x<1$, the two branches cannot both be small: such
+states have $g\ge0.134\ge G(\ls)$ (Theorems~\ref{thm:E6} and~\ref{thm:E8}), so the chain, which needs $x\ge1$, is not needed for them. Throughout,
+$\sigma\le10^{-24}$, $0<c\le c_*$, $\theta=1/(1-c\sigma)$, $b=\sigma^2/V=x/\tau$, $W=W_p$, and $c'=2\times10^{-3}$. A strip is the window with one harmonic,
+$a_1\in(0,1]$, so (P1), (P2) hold, $q:=q0_1>0$ and $q(w)=q_1(w)\ge0$ (for profiles with several harmonics the $a_n$ may have either sign, and harmonic
+sums are taken with $|q0_n|$). Always $b\le b+W=\sigma^2\Jvv\le1$ (Lemma~\ref{lem:BK1}(i)). The proof splits by $\tau$, $b$ and $x$ (Table~\ref{tab:P5cases}).
+
+\begin{table}
+\caption{The four cases for a strip with $0<x<1$ and both branches small, and where each is closed.}
+\label{tab:P5cases}
+\begin{ruledtabular}
+\begin{tabular}{p{0.33\columnwidth}p{0.40\columnwidth}l}
+case & tool & status\\ \hline
+$\tau\le80$, $b\ge c'\sigma$ & cells of Lemma~\ref{lem:BK1} (Lemma~\ref{lem:E1}); $b<2\times10^{-27}$ by scaling (Lemma~\ref{lem:E2}) & CA\\
+$\tau\le80$, $b<c'\sigma$ & Cauchy--Schwarz on every $w$-slice (Lemma~\ref{lem:E3}): $(a')\ge c$ & proof\\
+$\tau>80$, $x\le250\sigma^2$ & the $w$-branch (Lemma~\ref{lem:E4}): $(a)\ge c$ & proof\\
+$\tau>80$, $x>250\sigma^2$ & Lemma~\ref{lem:BJ1} down to $x\to0$ (Lemma~\ref{lem:E5}), Theorem~\ref{thm:AT2} & CA\\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\paragraph*{Observer picture.}
+When the period of the ripple is longer than the blur ($x<1$), the observer stands in one of four places. If the background's $v$-width holds few
+periods ($\tau\le80$) and is not much narrower than $\sigma$, the picture of Lemma~\ref{lem:BK1} applies unchanged. If it is much narrower than
+$\sigma$, every $w$-slice shows the bend $m_z$ directly and the $N$-branch is large. If it holds many periods, either the $w$-edges of the window are
+so sharp that the $w$-branch is large, or the window is wide enough for the argument of Lemma~\ref{lem:BJ1} and the window inequality.
+
+\begin{lemma}[narrow envelopes at $x<1$] \caproofst{\code{bn\_strip\_x.py}, \code{bp\_strip\_p5.py}, \code{bp\_windowsN.py}}
+\label{lem:E1}
+Let $\rho$ be a periodic window with (P0)--(P4) and $\tau\le80$. Then $(a)<c$ and $(a')<c$ do not hold together in each of the cases:
+(i) $\rho$ is a strip and $10^{-12}\le x\le1$; (ii) $\rho$ is a strip, $x<10^{-12}$ and $b\ge2\times10^{-27}$ (so $b\ge c'\sigma$);
+(iii) $a_n=0$ for $n>6$ and $10^{-12}\le x\le1$.
+\end{lemma}
+\begin{proof}
+The proof of Lemma~\ref{lem:BK1} uses $x\ge1$ only through its cells, with one exception: step (iii) bounds $\langle\theta_\tau h_t^2/h\rangle$ by
+$\sup\theta_\tau\le1+\delta_\tau$, which is useless at small $\tau$. For a profile whose harmonics are $n\le N$,
+$\langle\theta_\tau\sin nt\sin mt\rangle=(e_{|n-m|}-e_{n+m})/2$ ($e_0=1$); dropping the diagonal terms $-e_{2n}$ and applying Cauchy--Schwarz to the
+shifted sequences $nq_n$ (of any sign) gives $\langle\theta_\tau h_t^2\rangle\le(1+\delta_N)\langle h_t^2\rangle$ with
+$\delta_N=2\sum_{k=1}^{N-1}e_k+\sum_{s=3}^{2N-1}e_s$; for a strip $\delta_1=0$. Since $h\ge1-\Qb$, this gives $\langle\theta_\tau h_t^2/h\rangle\le(1+\delta_N)\langle h_t^2\rangle/(1-\Qb)$, the form used in $W_N$. The certificate uses $\min(\delta_\tau,\delta_N)$, with the tail of $\delta_\tau$
+beyond $n=59$ bounded explicitly; for a strip the code of Lemma~\ref{lem:BK1} keeps the factor $1+2e_1$, which is
+$\ge1+\delta_1=1$. With at most $N$ harmonics every harmonic sum of Lemma~\ref{lem:BK1} is
+moreover capped by (P3): $\sum|q0_n|e_n\le\Qb e_1$, $\sum|q0_n||1-n^2\tau|e_n\le\Qb\max_n\sup|1-n^2\tau|e^{-n^2\tau/2}$, $\sum n^2|q0_n|e_n\le\Qb\max_{n\le N}n^2e_n$,
+$N_1\le N\Qb$ and $\sum n^2q0_n^2\le N^2q\Qb$; a profile with fewer than $N$ harmonics is covered by the bounds for $N$.
+The cells, each evaluated at its worst corner with the factor $H_1$ by its supremum over the cell's $\tau$-range, and accepted by the rule of
+Lemma~\ref{lem:BK1}(v):
+(i) $480$ geometric $x$-cells on $[10^{-12},1]$ times $240$ $b$-cells on $[x_a/80,1]$, $115200$ cells; every cell closes, smallest ratio $2.054$.
+(ii) $267$ geometric $b$-cells on $[2\times10^{-27},1]$, each with $x$-cells covering $(0,\min(10^{-12},80b_b)]$ (the first one starting at $x=0$),
+$10947$ cells; every cell closes, smallest ratio $1.865$. Since $b\ge2\times10^{-27}=c'\cdot10^{-24}$, the condition $b\ge c'\sigma$ allows every
+$\sigma\le10^{-24}$; the cells are evaluated at $\hat\sigma=10^{-24}$, which covers every smaller $\sigma$ by Lemma~\ref{lem:BK1}(vi) (some of these
+cells have $\Lambda_1\ge0.71$ at $\hat\sigma$; that is case (3) there).
+(iii) $N=6$: $120\times120=14400$ cells; every cell closes, smallest ratio $1.054$.
+\end{proof}
+
+\begin{lemma}[very small $b$ by scaling] \proofst
+\label{lem:E2}
+Let $\rho$ be a strip with (P0), (P3), (P4), $\tau\le80$ and $c'\sigma\le b<b_0:=2\times10^{-27}$. Then $(a)<c$ and $(a')<c$ do not hold together.
+\end{lemma}
+\begin{proof}
+Put $r=\sigma/b\le1/c'$ and keep $\tau=x/b$. Write the bound of Lemma~\ref{lem:BK1}(iv), (v) at a single state as $F(\Lambda;b)$ with the
+point values of $M$, $E_a$, $E_b$, $R$ and $\Lambda_1(b)$, with $q$ replaced by its bound $m(x)=\frac14$ ($x<2$; $F$ decreases in $q$, since $M$
+decreases and $\kappa_w$, $W_N$, $d$, $R$ increase). Then every ingredient is a function of $(b,r,\tau)$:
+$H_0=H_2=e^{-\tau/2}$, $H_1=|1-\tau|e^{-\tau/2}$, $\kappa_w$, $\kappa_s$ and $N'$ depend on $\tau$ only, and $W_N=x\,\omega(\tau)=b\,\tau\omega(\tau)$. Hence
+$M/b$ depends on $\tau$ only, and, with $d=rb(\sqrt{\tau b}\,q+\Qb e^{-1/2})/(1-\Qb)$,
+\begin{equation*}
+\begin{aligned}
+\frac{E_a}b&=\frac{1+\Qb}{\sqrt2}\Big[r\sqrt{2b}\sqrt{(1+\tau N')(6+2\tau N')}\\&\qquad+2d(1+\tau N')\Big],\\
+\frac{E_b}b&=(1+\Qb)\Big[r^2b(3+\tau N')+d^2(1+\tau N')\Big],\\
+\frac Rb&=2c\,r\,\theta\,b\,(1+\tau\omega)(1+g_1qH_0),\qquad \theta=\frac1{1-crb},\\
+\frac{\Lambda_1^2}2&=\frac{r(1-A'rb)^2}{4c\theta\kappa_w(1+\tau\omega)},\qquad A'=c\theta\kappa_wb(1+\tau\omega).
+\end{aligned}
+\end{equation*}
+$E_a/b$, $E_b/b$ and $R/b$ are sums of products of non-negative powers of $b$ (and of $\theta$) with non-negative factors, so they increase with $b$; $\Lambda_1$
+decreases with $b$. So for $b<b_0$ and every $\Lambda$, $F(\Lambda;b)/b\ge F(\Lambda;b_0)/b_0$, and $\Lambda_1(b)\ge\Lambda_1(b_0)$. The point
+$(x_0,b_0,\sigma_0)=(\tau b_0,b_0,rb_0)$ has $\sigma_0\le b_0/c'=10^{-24}$, $b_0\ge c'\sigma_0$ and $x_0\le80b_0<10^{-12}$, so it lies in a cell of
+Lemma~\ref{lem:E1}(ii). By Lemma~\ref{lem:BK1}(vi) that cell's bound, taken at $\sigma_0$, is positive on $[\Lambda_1^{\mathrm{cell}},\infty)$; it lies below
+$F(\cdot;b_0)$, and $\Lambda_1^{\mathrm{cell}}\le\Lambda_1(b_0)$, so $F(\cdot;b_0)>0$ on $[\Lambda_1(b_0),\infty)$. Hence $F(\cdot;b)>0$ on $[\Lambda_1(b),\infty)$, and $(a')<c$ contradicts Lemma~\ref{lem:BK1}(iv) at $b$.
+\end{proof}
+
+\begin{lemma}[background narrower than the blur] \proofst{} (constants in interval arithmetic, \code{bq\_proofs.py})
+\label{lem:E3}
+Let $\rho$ be a strip with (P0), (P3), (P4), $\tau\le80$ and $b<c'\sigma$. If $(a)<c$, then $(a')\ge0.3996>2.68\,c_*$.
+\end{lemma}
+\begin{proof}
+\emph{The envelope.} $(a)<c$ gives $\sigma^2\Jww<c\sigma\,\mathrm{den}$, hence $\mathrm{den}<\theta(b+W)$ and $\sigma\Jww<c\theta(b+W)$. Cram\'er--Rao for the exact
+$w$-marginal (Lemma~\ref{lem:BK1}(ii), with $H_0=e^{-\tau/2}\le1$ for every $\tau$) and (P0) give $\Jww\ge1/(\kappa_wL^2)\ge\sigma/(\kappa_w(1+\sigma^3))$,
+$\kappa_w=(1+qg_1r_s)/(1-qg_1)\le1.1511$. The exact $W$ of Lemma~\ref{lem:BK1}(iii), with $h_t^2/h\le q^2/(1-q)$, $\langle\theta_\tau\rangle=1$,
+$-\langle\theta_\tau h_{tt}\rangle=q(w)e_1$ and $Z\ge1$, gives $W\le x(q^2/(1-q)+q)\le x/3\le\tau b/3$, so $b+W\le\frac{83}3b$. Hence
+$V=\sigma^2/b<V_{\max}:=\frac{83}3c\theta\kappa_w(1+\sigma^3)\le4.742$.
+
+\emph{One $w$-slice.} Fix $w$ and put $P=p(\cdot,w)$, $\psi=2\sin(m_z/2)$, so $\phi=\psi^2/2$. Cauchy--Schwarz and an integration by parts ($Ps_v=\partial_vP$) give
+\begin{equation*}
+\begin{aligned}
+&\int Ps_v^2\phi\,dv=\tfrac12\int P(s_v\psi)^2\ge\frac{J_w^2}{2\int P},\\
+&J_w=\int P\cos\tfrac{m_z}2\,\partial_vm_z\,dv .
+\end{aligned}
+\end{equation*}
+From App.~\ref{app:plemmas}, $\sqrt2m_z=(1-b)v+w+\sigma^2(\tilde s+s_w)$, so $m_z/2=\alpha v/2+w/(2\sqrt2)+\chi/2$ with $\chi$ of Lemma~\ref{lem:BL3}, and
+$\partial_vm_z=\alpha+\sigma^2G/\sqrt2$ with $|\sigma^2G|\le\gamma_P$. Since $\int\mathcal N_Vh\,e^{i\alpha v/2}dv=X_w:=e^{-\alpha^2V/8}+\frac{q(w)}2\big(e^{-(\alpha/2-k')^2V/2}+e^{-(\alpha/2+k')^2V/2}\big)$ is real,
+$\int\mathcal N_Vh\cos(\alpha v/2+w/(2\sqrt2))\,dv=X_w\cos(w/(2\sqrt2))$. With $P=\mathcal N_V\Gamma h/Z$ and $|\cos(a+\delta)-\cos a|\le|\delta|$,
+\begin{equation*}
+\begin{aligned}
+&|J_w-A_w|\le E_w,\qquad A_w=\tfrac\Gamma Z\,\alpha X_w\cos\tfrac w{2\sqrt2},\\
+&E_w=\Big(\int P\Big)\Big[\tfrac\alpha2\sup_t|\chi|+\tfrac{\gamma_P}{\sqrt2}\Big],
+\end{aligned}
+\end{equation*}
+so $J_w^2\ge(|A_w|-E_w)_+^2\ge A_w^2-2|A_w|E_w$, also where the cosine is negative. With $\int P=\frac\Gamma Z(1+q(w)e_1)\in[\frac\Gamma Z,(1+q)\frac\Gamma Z]$,
+$e^{-\alpha^2V/8}\le X_w\le1+q$ ($q\ge0$), $|A_w|E_w/\int P\le\frac\Gamma Z\alpha(1+q)[\cdots]$:
+\begin{equation*}
+\begin{aligned}
+\int Ps_v^2\phi\,dv\ge\frac\Gamma Z\Big[&\frac{\alpha^2e^{-\alpha^2V/4}\cos^2\frac w{2\sqrt2}}{2(1+q)}\\
+&-\alpha(1+q)\Big(\frac\alpha2\sup_t|\chi|+\frac{\gamma_P}{\sqrt2}\Big)\Big].
+\end{aligned}
+\end{equation*}
+
+\emph{Integration.} $\int\Gamma\cos^2\frac w{2\sqrt2}=\frac12(1+e^{-L^2/4})\ge\frac12$, $\int\Gamma\sup_t|\chi|\le\sigma c_\chi$ (Lemma~\ref{lem:BL3}) and $1\le Z\le1+q$ give
+\begin{equation*}
+\frac{2N_\phi}{\sigma^2}\ \ge\ \frac{\alpha^2e^{-\alpha^2V/4}}{4(1+q)^2}-\alpha E,\qquad E=(1+q)\Big(\frac{\alpha\sigma c_\chi}2+\frac{\gamma_P}{\sqrt2}\Big).
+\end{equation*}
+\emph{Constants.} Here $\tau\le80$ and $b<c'\sigma$ (the hypotheses of this lemma), so $\alpha=(1-b)/\sqrt2\ge(1-c'\sigma)/\sqrt2$ and $x=\tau b\le80b<80c'\sigma$; and $\alpha^2e^{-\alpha^2V/4}$ increases in $\alpha^2$ while $\alpha^2V/4<1$ (here $\alpha^2V_{\max}/4\le0.593$), so it is smallest at the
+smallest $\alpha$ and at $V=V_{\max}$; $q\le\frac14$; this bound on $x$ enters $\gamma_P\le q\Gamma_1(x)$ (Lemma~\ref{lem:BJ1}) and $c_\chi$. In interval
+arithmetic: the first term is $\ge0.0442272$, $\alpha E\le1.1\times10^{-13}$.
+
+\emph{Conclusion.} With $\mathrm{den}<\theta\frac{83}3b$ and $\sigma/b>1/c'$,
+\begin{equation*}
+\begin{aligned}(a')&=\frac{N_\phi}{\sigma\,\mathrm{den}}>\frac{2N_\phi}{\sigma^2}\cdot\frac{3\sigma}{166\,\theta b}>\frac{3\,(2N_\phi/\sigma^2)}{166\,\theta c'}\\&\ge0.3996>2.68\,c_* .\end{aligned}
+\end{equation*}
+\end{proof}
+
+\begin{lemma}[sharp $w$-edges] \proofst{} (constants in interval arithmetic, \code{bq\_proofs.py})
+\label{lem:E4}
+Let $\rho$ be a strip with (P0), (P3), (P4) and $\tau>80$. If $(a)<c$, then $x>254.5\,\sigma^2$ and $L^2>254.5\,\sigma/x$. In particular $(a)\ge c$ when
+$x\le250\sigma^2$.
+\end{lemma}
+\begin{proof}
+$b=x/\tau<x/80$. Lemma~\ref{lem:BK1}(iii) for one harmonic, with $e_1\le e^{-40}$, $\delta_\tau\le2.0e^{-40}$, $q\le\frac14$, $g_s\le\frac13$:
+$W\le x[(1+\delta_\tau)q^2g_s/(2(1-\Qb))+g_1qe_1]/(1-g_1qe_1)\le0.0138889\,x$, so $b+W\le0.0263889\,x$. As in Lemma~\ref{lem:E3}, $(a)<c$ gives
+$\sigma\Jww<c\theta(b+W)$ and $\Jww\ge1/(\kappa_wL^2)\ge\sigma/(\kappa_w(1+\sigma^3))$, now with $\kappa_w\le1+10^{-17}$. Hence
+$\sigma^2<c\theta\kappa_w(1+\sigma^3)\cdot0.0263889\,x$, i.e.\ $x>T\sigma^2$ with $T=1/(0.0263889\,c_*\theta\kappa_w(1+\sigma^3))\ge254.51$, and
+$L^2>\sigma/(c\theta\kappa_w(b+W))\ge254.51\,\sigma/x$.
+\end{proof}
+
+\begin{lemma}[Lemma~\ref{lem:BJ1} for strips down to $x\to0$] \caproofst{\code{bp\_strip\_p5.py}}
+\label{lem:E5}
+Let $\rho$ be a strip with (P0), (P3), (P4), $\tau>80$ and $250\sigma^2<x\le1$. If $(a)<c$ and $(a')<c$, then $A_1A_2A_3\ge A_{\min}=0.9862$.
+\end{lemma}
+\begin{proof}
+The proof of Lemma~\ref{lem:BJ1} with the strip's harmonic sums ($\eta_p=Z_2=0$) and $x$-cells covering $[0,1]$: $[0,10^{-30}]$, $6000$ geometric cells up
+to $0.01$ and $4000$ equal cells up to $1$ (every function of $x$ involved has a finite limit at $0$ and is evaluated at the cell's worst end). Three
+points change.
+(a) Step~2(i) bounds $q$ through $W<2(1+\varepsilon)\sigma^2q\Gamma_1(x)/e'$ and the lower $W$-sandwich, $q<C_q\Gamma_1(x)/x$, and uses
+$\gamma_0\le\min(C_q(\sqrt xA+B)^2,\ \Gamma_1(x)m(x))$ with $\Gamma_1=xA+\sqrt xB$, which stays bounded as $x\to0$ (Lemma~\ref{lem:BJ1} used
+$\sup_{x\ge1}\Gamma_1(x)/x=\Gamma_1(1)$).
+(b) $\beta\le\sigma\tau/\sqrt{2x}<\tau/\sqrt{500}$, so the $\nu_k$ are taken with that $\beta$; $\tau^j\nu_k(\tau,\tau/\sqrt{500})$ decreases for $\tau\ge80$ ($j\le3$:
+$j/\tau-n^2/2+n/\sqrt{500}<0$), and the $\Phi$-proportional remainder of Lemma~\ref{lem:BL3} is $\le1.3\times10^{-14}$ relative; the other $\theta_\tau$ corrections ($\epsilon_1$, the
+relative part of Lemma~\ref{lem:BL2}, Lemma~\ref{lem:BL5}, $\epsilon_5$) contain only $e_n$, not $\beta$, and are those of App.~\ref{app:theta}.
+(c) The absolute remainder $\sigma bE_R$ of Lemma~\ref{lem:BL3} is absorbed into the perturbation. Each of its nine terms divided by $\sigma b$ (with
+$b=x/\tau$, $N_1\le\frac14$, $\gamma_P\le\Qb(A+B)$ on $x\le1$) gives $E_R\le A_0/\sqrt x+B_0\sigma/x+C_0$ with $A_0\le1.4\times10^{-13}$,
+$B_0\le5.0\times10^{-12}$, $C_0\le1.3\times10^{-14}$ (interval arithmetic at $\tau=80$; each is decreasing in $\tau$). By Lemma~\ref{lem:E4},
+$L^2>254\sigma/x$, and Lemma~\ref{lem:BL4} gives $1-C\ge0.2\min(254\sigma/x,1)$ (here $r\le\sigma/3+\sigma^{3/2}$, so the $O(\sqrt\sigma)$ loss is
+below $10^{-11}$; its range condition holds, $254\sigma\le L^2\le1/\sigma+\sigma^2$ by (P0)). If $254\sigma/x\le1$, then $\sigma E_R/(0.2\cdot254\sigma/x)=(A_0\sqrt x+B_0\sigma+C_0x)/50.8$; otherwise $\sigma/\sqrt x<1/\sqrt{250}$ and
+$\sigma^2/x<1/250$. In both cases $\sigma bE_R\le\varepsilon_Rb\min(\Phi,\frac12)$ with $\varepsilon_R=5(A_0+B_0+C_0)\le2.6\times10^{-11}$, and the
+certificate is run with $\varepsilon=\varepsilon_{\mathrm{in}}+\varepsilon_R$.
+Result at $\sigma=10^{-24}$, $c=c_*$ ($10001$ cells): $A_{\min}=0.98626$; step~2(i) $(a)/c\ge4\times10^{7}$; step~3(i) margin $1.2334$ (interval arithmetic);
+step~3(ii) ratio $4.9\times10^{6}$. The bounds are monotone in $\sigma$ and $c$ as in Table~\ref{tab:monoBJ} ($C_q\propto\sqrt{3\sigma^4+2\sigma}$ grows with $\sigma$, and $\varepsilon_R$ does not
+depend on $\sigma$ or $c$); the same values are obtained at
+$\sigma=10^{-48}$, $10^{-100}$, $10^{-300}$.
+\end{proof}
+
+\begin{theorem}[strips need no (P5)] \caproofst{Lemmas~\ref{lem:E1}--\ref{lem:E5}}
+\label{thm:E6}
+Let $\rho$ be a strip with (P0), (P3), (P4), $|\varepsilon(\rho)|\le0.1$, $\sigma\le10^{-24}$ and $0<x<1$. Then $g\ge0.134$. Hence the bound of
+Theorem~\ref{thm:AY1P}, and the lower side of Theorem~\ref{thm:BF1}, hold for strips without (P5), with the same constants.
+\end{theorem}
+\begin{proof}
+Suppose $(a)<c_*$ and $(a')<c_*$. If $\tau\le80$ and $b\ge c'\sigma$: Lemma~\ref{lem:E1}(i) ($x\ge10^{-12}$), \ref{lem:E1}(ii) ($x<10^{-12}$,
+$b\ge2\times10^{-27}$) or~\ref{lem:E2} ($b<2\times10^{-27}$) is contradicted. If $\tau\le80$ and $b<c'\sigma$: Lemma~\ref{lem:E3}. If $\tau>80$ and
+$x\le250\sigma^2$: Lemma~\ref{lem:E4}. If $\tau>80$ and $x>250\sigma^2$: Lemma~\ref{lem:E5} gives $F_c\ge(1-|\varepsilon|)A_{\min}\ge0.9A_{\min}$;
+Lemma~\ref{lem:BL5} gives $\keff^2\le(1+\varepsilon)(xS_{\mathrm{per}}+b/4)$, and AX4-P with $u_2=u_0$ gives $S_{\mathrm{per}}\le8\kappa_2u/(8+u/(1+\Qb))
+\le8\kappa_2(1+\Qb)$, $\kappa_2=0.27807$; with $x,b\le1$, $\keff^2\le3.0307$, and Theorem~\ref{thm:AT2} gives $g\ge0.9A_{\min}/(2\sqrt{3.0307})\ge0.2549$.
+So either a branch is $\ge c_*$, and then $g\ge(1-|\varepsilon|)c_*\ge0.134$ by~\eqref{eq:branch}, or $g\ge0.2549$. A strip with $x\ge1$ is a periodic
+window, and $G(\ls)\le0.134$.
+\end{proof}
+
+\begin{lemma}[Lemma~\ref{lem:BJ1} with at most six harmonics] \caproofst{\code{bp\_windowsN.py}}
+\label{lem:E7}
+Let $\rho$ be a periodic window with (P0)--(P4), $a_n=0$ for $n>6$, $\tau>80$ and $10^{-12}\le x<1$. If $(a)<c$ and $(a')<c$, then
+$A_1A_2A_3\ge0.9774$.
+\end{lemma}
+\begin{proof}
+The proof of Lemma~\ref{lem:BJ1} with $\eta_p(x)=\sum_{n=2}^6n^pe^{-(n^2-1)x/2}$ and $Z_2(x)=\sum_{n=2}^6n^2e^{-(n^2-1)x}$ (finite at $x=0$), $6000$
+$x$-cells on $[10^{-12},1]$, and step~2(i) as in Lemma~\ref{lem:E5}(a). Here $\beta\le\sigma\tau/\sqrt{2x}\le10^{-18}\tau$, so the $\theta_\tau$ corrections are those of
+App.~\ref{app:theta} (apart from $E_R$ they do not depend on $x$). The remainder $E_R$ of Lemma~\ref{lem:BL3} (with $N_1\le\min(q(1+\eta_1),6\Qb)$, $\gamma_P\le q\Gamma_1(x)$) is at most
+$1.2\times10^{-7}$ on the range; since $(a)<c$ gives $L^2>(1-\varepsilon)\sigma/(c\theta)$ and so $\min(\Phi,\frac12)\ge\sigma/2$ (Lemma~\ref{lem:BL4}),
+$\sigma bE_R\le2E_Rb\min(\Phi,\frac12)$, and $2E_R+\epsilon_\theta\le2.4\times10^{-7}<\varepsilon_{\mathrm{in}}$. Result: $A_{\min}=0.9774$, step~3(i) margin $1.2334$.
+\end{proof}
+
+\begin{theorem}[at most six harmonics: (P5) weakened] \caproofst{Lemmas~\ref{lem:E1}, \ref{lem:E7}}
+\label{thm:E8}
+Let $\rho$ be a periodic window with (P0)--(P4), $a_n=0$ for $n>6$, $|\varepsilon(\rho)|\le0.1$, $\sigma\le10^{-24}$ and $10^{-12}\le x<1$. Then
+$g\ge0.134$. Hence Theorem~\ref{thm:AY1P} and the lower side of Theorem~\ref{thm:BF1} hold for such windows with (P5) replaced by $x\ge10^{-12}$.
+\end{theorem}
+\begin{proof}
+Suppose $(a)<c_*$ and $(a')<c_*$. If $\tau\le80$, Lemma~\ref{lem:E1}(iii) is contradicted. If $\tau>80$, Lemma~\ref{lem:E7} gives $F_c\ge0.9\times0.9774$. With the
+common envelope and $q0_n\le q0_1e^{-(n^2-1)x/2}$, $u_2/u_0\le1+Z_2(x)$, so $xS_{\mathrm{per}}\le8\kappa_2(1+\Qb)\,x(1+Z_2(x))$ with
+$\sup_{0<x<1}x(1+Z_2(x))\le1.616$ (cells: $x$ at the right end, $Z_2$ at the left); then $\keff^2\le4.744$ and $g\ge0.9\times0.9774/(2\sqrt{4.744})\ge0.2019$.
+\end{proof}
+
+\begin{table}
+\caption{Windows with at most $N$ harmonics at $10^{-12}\le x<1$: smallest ratio of the cells of Lemma~\ref{lem:E1}, $A_{\min}$ of Lemma~\ref{lem:E7}, and the
+resulting lower bound of $g$ in its last case; every $N\le6$ closes \caproofst{\code{bp\_windowsN.py}}. For $N\ge8$ the cells of Lemma~\ref{lem:E1} do not
+close (ratio below $1$); this is a limit of the certificate, not a counterexample.}
+\label{tab:Nwin}
+\begin{ruledtabular}
+\begin{tabular}{lcccc}
+$N$ & cell ratio & $A_{\min}$ & $g\ge$ & closes\\ \hline
+1 (strip) & 2.054 & 0.9862 & 0.2549 & yes\\
+2 & 1.798 & 0.9834 & 0.2333 & yes\\
+3 & 1.680 & 0.9833 & 0.2330 & yes\\
+4 & 1.428 & 0.9833 & 0.2330 & yes\\
+6 & 1.054 & 0.9774 & 0.2019 & yes\\
+8 & 0.798 & 0.9706 & -- & no\\
+12 & 0.494 & 0.9559 & -- & no\\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\paragraph*{What remains.}
+Windows with seven or more harmonics at $x<1$, windows with two to six harmonics at $x<10^{-12}$, and general profiles at $x<1$ are not covered.

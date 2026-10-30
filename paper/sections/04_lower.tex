@@ -87,14 +87,15 @@ proof it must start from an assumed $F_0$. For strips (no assumption $x\ge1$, so
 upward bootstrap closes from $F_0=0.5$ at $\sigma=10^{-24}$ and from $F_0=0.2$ at $10^{-96}$ and below \caproofst{\code{bf\_ay\_bootstrap.py}}.
 So the strip lower bound holds under the a-priori condition $F_c\ge\tfrac12$ (resp.\ $0.2$), with the same final constants:
 $g\sqrt{\ls}/(1-|\varepsilon|)\ge0.921$ ($10^{-24}$), $0.977$ ($10^{-96}$), $0.998$ ($10^{-1024}$). A strip with $x\ge1$ is a periodic window and
-needs no a-priori bound on $F_c$ (Lemma~\ref{lem:BJ1}, Theorem~\ref{thm:AY1P}). (The strip certificate is checked at these representative points only; the continuous
-statement for strips with $x\ge1$ is Theorem~\ref{thm:AY1P}.)
+needs no a-priori bound on $F_c$ (Lemma~\ref{lem:BJ1}, Theorem~\ref{thm:AY1P}), and a strip with $x<1$ has $g\ge0.134$ (Theorem~\ref{thm:E6}). (The strip certificate is checked at these representative points only; the continuous
+statement for all strips is Theorem~\ref{thm:AY1P} with Theorem~\ref{thm:E6}.)
 \end{remark}
 
 \subsection{The theorem}
 \begin{theorem}[lower side] \caproofst{\code{bh\_cert\_cells.py}}
 \label{thm:AY1P}
-Let every state of the class satisfy (P0)--(P7) of Table~\ref{tab:assumptions}, with $|\varepsilon(\rho)|\le\bar\varepsilon\le0.1$. Then for every
+Let every state of the class satisfy (P0)--(P7) of Table~\ref{tab:assumptions}, with $|\varepsilon(\rho)|\le\bar\varepsilon\le0.1$; for strips (P5) is not
+needed, and for windows with at most six harmonics it may be replaced by $x\ge10^{-12}$. Then for every
 $\ls\in[24\ln10,\,10^5\ln10]$ and every such state,
 \begin{equation}
 \begin{aligned}
@@ -106,6 +107,8 @@ with $G(\ls)=\min(0.134,1.2/\sqrt{\ls})$, $4X_P=\ls+5\ln X_P+K^*$, $S1_P=1.41$, 
 containing $\ls$ ($F_{\mathrm{int}}^*$ includes the factor $(1+\varepsilon_{\mathrm{in}})^{-1/2}$ of Lemma~\ref{lem:BL5}). The constants do not depend on $\bar\varepsilon$ (they are certified at $\bar\varepsilon=0.1$, Lemma~\ref{lem:BH1}). For $\ls>10^5\ln10$ the chain holds as
 well and $\liminf g_{\min}^P\sqrt{\ls}\ge1-\bar\varepsilon$ (Lemma~\ref{lem:BH2}).
 \end{theorem}
+(For $x\ge1$ this is the chain above. A strip with $x<1$, and a window with at most six harmonics and $10^{-12}\le x<1$, has $g\ge0.134\ge G(\ls)$
+by Theorems~\ref{thm:E6} and~\ref{thm:E8} of App.~\ref{app:P5}, so the bound holds for it as well.)
 
 The certificate covers $[24\ln10,10^5\ln10]$ with $421$ cells of ratio $\ell_b/\ell_a=1.02$; every condition holds on every cell, and $d\ge8.9$.
 The constant needed on a cell, $(1-L_{\mathrm{cell}})\ell_a/\ln\ell_a$, is at most $1.615$ (at $\ls\approx80.5$); with $c_1=1.7$ the smallest

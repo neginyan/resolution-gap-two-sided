@@ -68,29 +68,30 @@ $10^{-24}$ & 1.993 & 0.0054 & 0.1904 & 0.1923 & 0.0097\\
 (P2) & $|a_n|\le|a_1|$: the fundamental is the largest harmonic\\
 (P3) & $\Qb\le\tfrac14$ (blurred contrast)\\
 (P4) & $\varrho=s^2/(2L^2)\le\tfrac18$ (window narrower than the envelope)\\
-(P5) & $x=(k'\sigma)^2\ge1$ (period within the blur's reach)\\
+(P5) & $x=(k'\sigma)^2\ge1$ (period within the blur's reach); not needed for strips, and weakened to $x\ge10^{-12}$ for profiles with at most six harmonics (App.~\ref{app:P5})\\
 (P6) & every state of the class has $|\varepsilon(\rho)|\le\bar\varepsilon$, $\bar\varepsilon\le0.1$ (paper~E's remainder, a state quantity)\\
 (P7) & $\sigma\le10^{-24}$ (both certificates cover $10^{-100000}\le\sigma\le10^{-24}$ continuously; below, the lower side by Lemma~\ref{lem:BH2})\\
 \hline
 \emph{not covered} & odd components of $f$; profiles whose fundamental is not the largest harmonic (a window of a shorter period);
-$x<1$ (separated lines in a window); windows with $L_w>\sigma^{-1/2}$\\
+$x<1$ for profiles with seven or more harmonics, and $x<10^{-12}$ for two to six harmonics (separated lines in a window); windows with $L_w>\sigma^{-1/2}$\\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
 
 \begin{theorem}[periodic windows: the logarithmic law from both sides] \caproofst{\code{bh\_cert\_cells.py}, \code{bf\_cert\_upper.py}}
 \label{thm:BF1}
-Let $g_{\min}^P(\sigma)$ be the infimum of $g$ over the periodic windows that satisfy (P0)--(P7). Then for every $\sigma$ with
+Let $g_{\min}^P(\sigma)$ be the infimum of $g$ over the periodic windows that satisfy (P0)--(P7), together with the strips that satisfy (P0)--(P7) except
+(P5) and the windows with at most six harmonics that satisfy (P0)--(P7) with (P5) replaced by $x\ge10^{-12}$. Then for every $\sigma$ with
 $10^{-100000}\le\sigma\le10^{-24}$
 \begin{equation}
-\begin{aligned}(1-\bar\varepsilon)\Big(1-1.7\,\frac{\ln\ls}{\ls}\Big)\ &\le\ g_{\min}^P\sqrt{\ls}\ \le\ g(S'_C(\sigma))\sqrt{\ls}\\ &\le\ \big(1+|\varepsilon(S'_C(\sigma))|\big)\Big(1+6.0\,\frac{\ln\ls}{\ls}\Big),\end{aligned}
+\begin{aligned}&(1-\bar\varepsilon)\Big(1-1.7\,\frac{\ln\ls}{\ls}\Big)\ \le\ g_{\min}^P\sqrt{\ls}\\ &\quad\le\ g(S'_C(\sigma))\sqrt{\ls}\\ &\quad\le\ \big(1+|\varepsilon(S'_C(\sigma))|\big)\Big(1+6.0\,\frac{\ln\ls}{\ls}\Big),\end{aligned}
 \end{equation}
 where $\bar\varepsilon\le0.1$ is the class bound of (P6), the left side is Theorem~\ref{thm:AY1P} ($421$ cells) and the right side is Theorem~\ref{thm:AZ1P} on
 the explicit comb $S'_C(\sigma)$ ($1464$ cells). The factor $|\varepsilon(S'_C(\sigma))|$ is a number for each $\sigma$; it is not bounded by a proof here
 (numerically $6\times10^{-7}$, $4\times10^{-13}$, $1.5\times10^{-15}$, $4\times10^{-16}$ at $\sigma=10^{-6}$, $10^{-12}$, $10^{-18}$, $10^{-24}$).
 \end{theorem}
 \begin{proof}
-The lower side is Theorem~\ref{thm:AY1P}. For the upper side, the comb sequence lies in the class on the whole range: (P0) since $L_w=8k_0^{-4}e^{-k_0^2}<1$; (P1), (P2) by construction;
+The lower side is Theorem~\ref{thm:AY1P}, with Theorems~\ref{thm:E6} and~\ref{thm:E8} for the states with $x<1$. For the upper side, the comb sequence lies in the class on the whole range: (P0) since $L_w=8k_0^{-4}e^{-k_0^2}<1$; (P1), (P2) by construction;
 $\Qb\le0.0056$, $\varrho\le3.5\times10^{-12}$ and $x\ge11.76$ (interval arithmetic on the same $1464$ cells, \code{bg\_members.py}). So (P3)--(P5) hold
 (the former condition (P8) is no longer an assumption, Lemma~\ref{lem:BJ1}; the comb satisfies it anyway, $F_c\ge(1-|\varepsilon(S'_C)|)(1-1.7\times10^{-13})$, \code{bh\_members\_fc.py});
 (P6) for the comb itself concerns the single number $\varepsilon(S'_C(\sigma))$, which is carried in the statement.

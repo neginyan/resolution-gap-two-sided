@@ -33,7 +33,7 @@ $|1-e^{-n\beta}|\le n\beta$, $e^{n\beta}-1\le n\beta e^{n\beta}$.
 
 \begin{lemma}[narrow envelopes have a large gap] \caproofst{\code{bl\_narrow80.py}}
 \label{lem:BK1}
-Let $\rho$ be a periodic window with (P2)--(P5), $L_w\le\sigma^{-1/2}$, $\sigma\le10^{-24}$, and $0<c\le c_*=0.134/0.9$. If $\tau\le80$, then
+Let $\rho$ be a periodic window with (P0), (P2)--(P5), $\sigma\le10^{-24}$, and $0<c\le c_*=0.134/0.9$. If $\tau\le80$, then
 $(a)\ge c$ or $(a')\ge c$. Hence every state with $g<G$ ($G\le0.134$, $|\varepsilon|\le0.1$) has $\tau>80$.
 \end{lemma}
 \begin{proof}
@@ -43,9 +43,26 @@ $\Gamma(w)(1+\sum_nq0_ne^{-w^2/2s^2}e_n)/Z$ exactly: $\Jww\ge1/(\kappa_wL^2)$, h
 $W=(x/Z)\int\Gamma\langle\theta_\tau(h_t^2/h-h_{tt})\rangle$ (Lemma~\ref{lem:BL2}) gives $W\le W_N$ with $-\langle\theta_\tau h_{tt}\rangle=\sum n^2q_ne_n$.
 (iv) Cram\'er--Rao on every $w$-slice in $v$ ($\mathrm{Var}_w\le\kappa_sV$ from $\int\mathcal N_Vv^2\cos(nk'v)=V(1-n^2\tau)e_n$), together with
 $1-\cos(A+\delta)\ge1-\cos A-|\sin A||\delta|-\delta^2/2$ and Gaussian moments of $\delta$, gives $\sigma^2\int Ps_v^2\phi\ge b\Psi(L)(1-qH_0g_1)/\kappa_s-\mathrm{Err}$,
-$\Psi(L)=1-e^{-\gamma^2L^2/2}$, $\mathrm{Err}=O(\sigma\sqrt b)$ explicit; here $\kappa_w$, $\kappa_s$, $H_0$, $g_1$ and $\gamma$ are explicit $O(1)$ factors from the $e_n$ series, defined in \code{bk\_narrow\_lemma.py} (used by \code{bl\_narrow80.py}). (v) $(a')<c$ contradicts (iv) at $L\ge L_1$. The set
-$\{1\le x\le80,\ x/80\le b\le1\}$ is covered by $57600$ cells, each evaluated at its worst corner; every cell closes, the smallest ratio of the
-two sides is $2.80$.
+$\Psi(L)=1-e^{-\gamma^2L^2/2}$, $\mathrm{Err}=O(\sigma\sqrt b)$ explicit; here $\gamma=(1-\sigma^2/L^2)/\sqrt2$, and $\kappa_w$, $\kappa_s$, $H_0$ and $g_1$ are explicit $O(1)$ factors from the $e_n$ series, defined in \code{bk\_narrow\_lemma.py} (used by \code{bl\_narrow80.py}). (v) Write $\Lambda=\gamma L$ and $F(\Lambda)=M\Psi-E_a\min(\Lambda,0.71)-E_b-R$, where $M=b(1-qH_0g_1)/\kappa_s$ is the main factor,
+$E_a\min(\Lambda,0.71)+E_b$ bounds $\mathrm{Err}$, and $R=2c\sigma\theta(b+W_N)(1+g_1qH_0)$ bounds $\sigma^2\int Ps_v^2\phi$ from above when $(a')<c$. Since
+$L>L_1$, $(a')<c$ contradicts (iv) as soon as $F>0$ on $[\Lambda_1,\infty)$, $\Lambda_1=\gamma L_1$. A cell is accepted if $F(0.71)>0$ (which covers
+$\Lambda\ge0.71$) and either $\Lambda_1\ge0.71$, or $F(\Lambda_1)>0$ and $M\Lambda_1e^{-\Lambda_1^2/2}\ge E_a$ (then $F$ increases on $[\Lambda_1,0.71]$,
+because $\Lambda e^{-\Lambda^2/2}$ increases for $\Lambda<1$). The set $\{1\le x\le80,\ x/80\le b\le1\}$ is covered by $57600$ cells, each evaluated at
+its worst corner: every factor at the end of the cell's ranges of $x$, $b$ and $\tau=x/b$ where it is worst. One factor is not monotone: in $H_1$,
+$|1-n^2\tau|e^{-n^2\tau/2}$ rises for $1\le n^2\tau\le3$; it enters by its supremum over the cell's $\tau$-range (v1.2; v1.1 took it at the smallest
+$\tau$). Every cell closes; the smallest ratio of the two sides is $2.78$ (v1.1 quoted $2.80$). (The harmonic series are summed to $n=39$; the rest is
+below $e^{-800}$ relative. The code always applies the slope test, which is stricter than this rule.)
+(vi) \emph{Every $\sigma\le10^{-24}$ and every $c\le c_*$.} The cells are evaluated at $\hat\sigma=10^{-24}$ and $c_*$. For $\sigma$: $M$ and $E_a/\sigma$ do not depend on $\sigma$, $E_b/\sigma$ and $R/\sigma$ increase with $\sigma$, and
+$u:=\Lambda_1^2/2=\sigma(1-A'\sigma)^2/(4A')$, $A'=c\theta\kappa_w(b+W_N)$ (from $L_1^2=\sigma/A'$ and $\sigma^2/L_1^2=A'\sigma$), increases with $\sigma$ (as $A'\sigma\le2c\sigma\ll1$) while $u/\sigma$ decreases.
+First at $c=c_*$: let $\sigma<\hat\sigma$ and mark
+values at $\hat\sigma$ by a hat. (1) $F(0.71)/\sigma\ge\hat F(0.71)/\hat\sigma>0$. (2) If $\hat\Lambda_1<0.71$: $\Lambda_1\le\hat\Lambda_1$ and
+$(1-e^{-u})/\sigma=[(1-e^{-u})/u]\,(u/\sigma)\ge(1-e^{-\hat u})/\hat\sigma$, so $F(\Lambda_1)/\sigma\ge\hat F(\hat\Lambda_1)/\hat\sigma>0$, and the slope test persists
+because $\Lambda_1e^{-u}/\sigma=\sqrt{2u/\sigma^2}\,e^{-u}$ grows. (3) If $\hat\Lambda_1\ge0.71>\Lambda_1$: with $u_*=0.71^2/2$, $u<u_*\le\hat u$ and
+$M\Psi(\Lambda_1)/\sigma\ge M\frac{1-e^{-u_*}}{u_*}\frac{\hat u}{\hat\sigma}\ge M\Psi(0.71)/\hat\sigma>(0.71\hat E_a+\hat E_b+\hat R)/\hat\sigma\ge(0.71E_a+E_b+R)/\sigma$,
+so $F(\Lambda_1)>0$ and $M\Psi(\Lambda_1)/\Lambda_1>E_a$; since $\Psi(\Lambda)/\Lambda$ increases on $[0,1.5]$,
+$F(\Lambda)\ge F(\Lambda_1)+(\Lambda-\Lambda_1)(M\Psi(\Lambda_1)/\Lambda_1-E_a)>0$ on $[\Lambda_1,0.71]$. In every case $F>0$ on $[\Lambda_1,\infty)$. Then $c<c_*$ at fixed $\sigma$: $M$, $E_a$, $E_b$ do not depend
+on $c$, $R$ decreases and $\Lambda_1$ increases, so $F>0$ on $[\Lambda_1,\infty)$ persists.
+(On the $57600$ cells $\hat u<10^{-21}$, so only (2) occurs; (3) is used in App.~\ref{app:P5}.) (v1.1 used (vi) without stating it.)
 \end{proof}
 
 \begin{lemma}[$w$-information] \proofst
@@ -64,7 +81,7 @@ $\tfrac32\Qb\nu_0/L^2$ in absolute value, the last lies between $(1\mp\nu_0)\int
 $\sigma^2\Jvv=b+W$ exactly, with
 $ZW=\sigma^2\int\Gamma\langle\theta_\tau h'^2/h\rangle+x\int\Gamma\sum_nn^2q_ne_n$ ($h'=\partial_vh$). Hence, with $W_{\mathrm{per}}=x\int\Gamma\langle h_t^2/h\rangle$,
 \begin{equation}
-\frac{(1-\nu_0)W_{\mathrm{per}}-\tfrac12b\tau\Qb\nu_2}{1+\Qb\nu_0/2}\le W\le\frac{(1+\nu_0)W_{\mathrm{per}}+\tfrac12b\tau\Qb\nu_2}{1-\Qb\nu_0/2}.
+\begin{aligned}&\frac{(1-\nu_0)W_{\mathrm{per}}-\tfrac12b\tau\Qb\nu_2}{1+\Qb\nu_0/2}\le W\\&\quad\le\frac{(1+\nu_0)W_{\mathrm{per}}+\tfrac12b\tau\Qb\nu_2}{1-\Qb\nu_0/2}.\end{aligned}
 \end{equation}
 The second term is the one that breaks the $v$-sandwich of v1.0 at small $\tau$ (it is linear in the contrast); it is a multiple of $b$, so it is
 relative as soon as $b\le\beta W$ or $b\le W$ is known, which is where the proofs use the upper side of the sandwich.
@@ -94,7 +111,7 @@ relative:  $2N_\phi\ge(1-e-(1+\epsilon_3)\sigma^2)W+(1-\epsilon_3)b\Psi-(1+\epsi
 From $P'^2/P=P''-P(\ln P)''$, integration by parts against $\mathcal N_V$ and $\phi=1-\mathrm{Re}\,e^{i(\alpha v+\psi)}$,
 \begin{equation}
 \begin{aligned}
-\sigma^2\!\!\int\!Ps_v^2\phi\,dv={}&b(G[h]-\mathrm{Re}A[he^{i\psi}])+\sigma^2(G[F]-\mathrm{Re}A[Fe^{i\psi}])\\
+\sigma^2\!\!\int\!Ps_v^2\phi\,dv={}&b(G[h]-\mathrm{Re}A[he^{i\psi}])\\&+\sigma^2(G[F]-\mathrm{Re}A[Fe^{i\psi}])\\
 &+\sigma^2\mathrm{Re}A[h(\alpha^2+2\alpha\psi')e^{i\psi}]\\&+\sigma^2\mathrm{Re}A[D']-\sigma^2G[h''].
 \end{aligned}
 \label{eq:BLid}
@@ -223,7 +240,7 @@ The lower-side chain starts its bootstrap from $F_c\ge1.02G$; v1.0 assumed this 
 
 \begin{lemma}[the start of the bootstrap is automatic] \caproofst{\code{bl\_bj1.py}}
 \label{lem:BJ1}
-Let $\rho$ be a periodic window with (P1)--(P5), $L_w\le\sigma^{-1/2}$ and $\sigma\le10^{-24}$, and let $0<c\le c_*:=0.134/0.9$. If both branches are small,
+Let $\rho$ be a periodic window with (P0)--(P5) and $\sigma\le10^{-24}$, and let $0<c\le c_*:=0.134/0.9$. If both branches are small,
 $(a)<c$ and $(a')<c$, then the factor of Lemma~\ref{lem:AY2P} satisfies $A_1A_2A_3\ge A_{\min}=0.937$. Consequently, for every $G\le0.134$ and every
 state with $|\varepsilon(\rho)|\le\bar\varepsilon\le0.1$,
 \begin{equation}

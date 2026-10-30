@@ -88,6 +88,21 @@ $F_{\mathrm{def}}$ & $\hat\sigma\psi+\delta_H+r_C+r_w$ ($F_{\mathrm{int}}\ge1-F_
 \end{ruledtabular}
 \end{table*}
 
+\paragraph*{Audit at interior points (v1.2, \code{bp\_audit.py}).}
+Every certificate evaluates monotone factors at the ends of its cells. To find a factor whose declared monotonicity is wrong, every certificate was
+re-evaluated at points \emph{inside} its cells (at least five per cell, two of them within a relative $10^{-9}$ of the ends), and every intermediate
+quantity, not only the final one, was compared with the cell's value in its declared direction (relative tolerance $10^{-12}$; where the cell value
+is itself a supremum over $x$ bounded on a grid, the point value is the largest value $f(x,x)$ on a grid four times finer, i.e.\ the supremum from
+below, because two grids laid over two ranges give two different valid over-estimates, the wiggle noted above): the suprema over $x$ of
+the chain and of Table~\ref{tab:mono}, the strip certificate, Lemma~\ref{lem:BK1} (general windows and strips at $x<1$), Lemma~\ref{lem:BJ1} (with
+Table~\ref{tab:monoBJ} at random $(\sigma,c)$), the $\theta_\tau$ suprema and their monotonicity in $\tau$, the tail, $61$ cells of the lower chain with
+perturbed inputs, $150$ cells of the upper side, and the class membership; in all $248$ checks, $425559$ cells and $2132407$ interior points
+\numst. The only quantities on the wrong side were the factor $H_1$ of Lemma~\ref{lem:BK1} in the v1.1 code and, through it, $\kappa_s$ (and at $61$ points of the
+strip cells the main factor $M$; the final ratio of each cell stayed on the right side);
+with the v1.2 code there are none. The new certificates of App.~\ref{app:P5} carry the same audit ($54479$ points for Lemma~\ref{lem:E1}(ii) and
+$43200$ for each $N$ of Lemma~\ref{lem:E1}(iii), none on the wrong side). The audit is numerical: it can find a wrong direction, it does not prove that
+there is none; the proofs of the directions are Lemma~\ref{lem:BH1}, Table~\ref{tab:monoBJ} and the proofs in App.~\ref{app:theta}.
+
 \paragraph*{Tail (\code{bh\_tail.py}).}
 Lemma~\ref{lem:BH2} from the last cell's constants ($K_{\mathrm{end}}$, $F_{\mathrm{int,end}}$); the explicit tail bound
 $(1-F_{\mathrm{def,end}})\sqrt{\ls/(X_P+c)}/2$ with $4X_P=\ls+5\ln X_P+K_{\mathrm{end}}-\tfrac92\ln(\ls/\ell_{\mathrm{end}})$ increases from $0.99996$ to $1$, and direct

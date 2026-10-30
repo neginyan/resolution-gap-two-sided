@@ -2,10 +2,14 @@
 
   python verification/run_all.py              # default (a few minutes on one core): hashes, stored results, every number of the manuscript,
                                               # and a recomputation of representative cells of every certificate
-  python verification/run_all.py --recompute  # in addition, recompute every certificate in full (about an hour on one core; writes nothing to results/)
+  python verification/run_all.py --recompute  # in addition, recompute every certificate in full and the whole audit (two to three hours on one
+                                              # core, of which the audit is about 40 min; writes nothing to results/)
 
 v1.1 adds section 7: Lemma BK1 (tau0 = 80), the theta_tau corrections of the window lemmas (App. D), the lower-side chain with every input lemma
 perturbed by eps_in = 1e-6 (421 cells and the tail), Lemma BJ1 (the former (P8)), and Lemma BL7 (the upper side in theta_tau form).
+v1.2 adds section 8: App. E (strips without (P5): Lemmas 29-33 and Theorem 34; at most six harmonics: Lemma 35 and Theorem 36), the corrected
+certificate of Lemma 20 (section 7 now recomputes it), and the audit at interior points (App. B; default: the reduced audit, a few minutes;
+--recompute: the whole audit, about 40 minutes).
 
 Comparisons of recomputed floating-point values with stored ones use a relative tolerance (CPUs differ in the last bits); the interval-arithmetic
 certificate (decimal, 60 digits) is compared exactly.  Each check prints which kind of comparison it made.  Exit code 0 iff every check passes."""
@@ -128,10 +132,10 @@ check('combs have no deep valleys: Lambda* = %s finite' % ', '.join('%.2f' % LA[
       all(np.isfinite(LA['comb_%s' % s]['Lambda_star']) for s in ('1e-06', '1e-12', '1e-24')))
 
 # ---------------------------------------------------------------- 5. the manuscript
-import bm_numbers
+import bq_numbers
 tex = ''.join(open(f).read() for f in sorted(glob.glob('paper/sections/*.tex')))
-N = bm_numbers.numbers(); miss = [x['text'] for x in N if x['text'] not in tex]
-check('every number of the manuscript (v1.1) recomputed from results/ is found in paper/sections (%d numbers)' % len(N), not miss and len(N) >= 100, ', '.join(miss[:5]))
+N = bq_numbers.numbers(); miss = [x['text'] for x in N if x['text'] not in tex]
+check('every number of the manuscript (v1.2) recomputed from results/ is found in paper/sections (%d numbers)' % len(N), not miss and len(N) >= 150, ', '.join(miss[:5]))
 
 # ---------------------------------------------------------------- 6. the demo notebook (stored with its outputs)
 NBK = json.load(open('demo/hidden_ripple_demo.ipynb'))
@@ -209,5 +213,53 @@ check('Lemma BL7 on the comb sequence: tau >= %.3e, every theta correction to h 
 check('Lemma BL7 against direct quadrature (stored, numerical): 2N_phi below the bound on %d states (largest ratio %.6f)' % (
       len(M7['checks']), max(c['BL7_ratio'] for c in M7['checks'])), M7['all_checks_ok'])
 print('section 7 (v1.1): %.0f s' % (time.time() - t7))
+
+# ---------------------------------------------------------------- 8. v1.2: App. E (P5), Lemma 20 (vi), the audit at interior points
+t8 = time.time()
+import subprocess
+def v12(comp):
+    out = subprocess.run([sys.executable, 'verification/bq_v12_checks.py', comp] + (['--full'] if FULL else []), capture_output=True, text=True)
+    try: return json.loads(out.stdout.strip().split('\n')[-1])
+    except Exception: return {'ok': False, 'error': (out.stderr or out.stdout)[-300:]}
+how = 'all' if FULL else 'a subset'
+r = v12('E1i')
+check('Lemma 29(i) (strips, 1e-12 <= x <= 1): %d cells, all close, smallest ratio %.3f; recomputed on %s of the %d x-cells (relative %.1e; floating point)' % (
+      r.get('cells', 0), r.get('worst_margin', 0), how, r.get('of', 0), r.get('dev', 1)), r['ok'] and r.get('stored_ok', False), r.get('error', ''))
+r = v12('E1ii')
+check('Lemma 29(ii) (strips, x < 1e-12, b >= max(c\'sigma, 2e-27), sigma_hat = 1e-24): %d cells, all close, smallest ratio %.3f; b-cells cover [2e-27, 1]; in-cell audit %d points, none on the wrong side; recomputed on %s (relative %.1e)' % (
+      r.get('cells', 0), r.get('worst_margin', 0), r.get('audit_points', 0), how, r.get('dev', 1)), r['ok'], r.get('error', ''))
+r = v12('E1iii')
+check('Lemma 29(iii) (at most six harmonics, 1e-12 <= x <= 1): %d cells for N = 6, smallest ratio %.3f; the certificate closes for N = %s; recomputed on %s (relative %.1e)' % (
+      r.get('N6_cells', 0), r.get('N6_margin', 0), r.get('closes'), how, r.get('dev', 1)), r['ok'], r.get('error', ''))
+r = v12('E2')
+check('Lemma 30 (scaling in b, proof): numerical illustration on %d random states, F/b never decreases and Lambda_1 never decreases as b decreases (numerical)' % r.get('states', 0),
+      r['ok'], r.get('error', ''))
+r = v12('proofs')
+check('Lemmas 31, 32, 33 and Theorems 34, 36: constants in outward-rounded interval arithmetic, identical to the stored ones: T = %.2f > 250, (a\') >= %.4f (%.2f c_*), eps_R <= %.1e; g >= %.4f (strips), %.4f (N = 6) (decimal intervals; exact)' % (
+      r.get('T', 0), r.get('a_prime_lower', 0), r.get('ratio_C', 0), r.get('eps_R', 1), r.get('g_strip', 0), r.get('g_N6', 0)), r['ok'], r.get('error', ''))
+r = v12('E5')
+check('Lemma 33 (Lemma 28 for strips, 250 sigma^2 < x <= 1) recomputed at sigma = %s: A_min = %.6f, step 3(i) margin >= %.4f in interval arithmetic, g >= %.4f (relative %.1e)' % (
+      ', '.join('1e-%d' % e for e in r.get('sigmas', [])), r.get('A_min', 0), r.get('step3a_interval_margin', 0), r.get('g_lower', 0), r.get('dev', 1)), r['ok'], r.get('error', ''))
+r = v12('BN1')
+check('Lemma 28 for strips on [1e-12, 1] and E_R there (the first version of App. E, stage BN) recomputed: A_min = %.6f, E_R <= %.1e (relative %.1e)' % (
+      r.get('A_min', 0), r.get('E_R_sup', 1), r.get('dev', 1)), r['ok'], r.get('error', ''))
+r = v12('E7')
+check('Lemma 35 (at most six harmonics) recomputed for N = %s: A_min = %.4f, E_R <= %.1e (relative %.1e)' % (r.get('N'), r.get('A_min_6', 0), r.get('E_R_6', 1), r.get('dev', 1)),
+      r['ok'], r.get('error', ''))
+r = v12('sigma')
+check('Lemma 20 (vi) (every sigma <= 1e-24), numerical illustration: %d (cell, sigma) pairs at sigma = 1e-30 ... 1e-300 and %d points of Lemma 29(ii) below sigma_hat all close (numerical)' % (
+      r.get('pairs', 0), r.get('caseB_points', 0)), r['ok'], r.get('error', ''))
+AUD = {}
+for line in open('results/bp_audit.jsonl'):
+    if line.strip(): d = json.loads(line); AUD[d['key']] = d
+oth = [k for k, d in AUD.items() if d.get('violations') and 'v1.1 code' not in k]
+check('audit at interior points (stored, App. B): %d checks, %d cells, %d interior points; no quantity on the wrong side except H1 (and what is computed from it) in the v1.1 code of Lemma 20 (numerical)' % (
+      len(AUD), sum(d.get('cells', 0) for d in AUD.values()), sum(d.get('points', 0) for d in AUD.values())),
+      not oth and AUD['bk1(general_tau80, v1.1 code):H1']['violations'] > 0 and all(AUD[k]['violations'] == 0 for k in AUD if 'v1.2 code' in k), ', '.join(oth[:3]))
+r = v12('audit')
+check('audit %s: %d checks, %d interior points; the v1.1 code of Lemma 20 is found again (%s), nothing else on the wrong side%s (numerical)' % (
+      'recomputed in full' if FULL else 'recomputed in reduced form', r.get('checks', 0), r.get('points', 0), ', '.join(r.get('v1.1_code_reversals', [])),
+      '; counts identical to the stored audit' if FULL else ''), r['ok'], r.get('error', ''))
+print('section 8 (v1.2): %.0f s' % (time.time() - t8))
 print('elapsed %.0f s (%s)' % (time.time() - t0, 'full recomputation' if FULL else 'default'))
 finish()

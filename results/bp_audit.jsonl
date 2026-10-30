@@ -1,0 +1,248 @@
+{"key": "xsup:x*gamma_P grid0", "cells": 1000, "points": 6000, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "xsup:x*gamma_P grid1", "cells": 1000, "points": 6000, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "xsup:x*gamma_P grid2", "cells": 1000, "points": 6000, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "xsup:x*gamma_P decreasing for x >= 8", "cells": 4000, "points": 4001, "violations": 0, "example": null}
+{"key": "xsup:sqrt(x)N1/(1-Qbar) grid0", "cells": 1000, "points": 6000, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "xsup:sqrt(x)N1/(1-Qbar) grid1", "cells": 1000, "points": 6000, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "xsup:sqrt(x)N1/(1-Qbar) grid2", "cells": 1000, "points": 6000, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "xsup:sqrt(x)N1/(1-Qbar) decreasing for x >= 8", "cells": 4000, "points": 4001, "violations": 0, "example": null}
+{"key": "xsup:x*min(1/16,4e^-x) grid0", "cells": 1000, "points": 6000, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "xsup:x*min(1/16,4e^-x) grid1", "cells": 1000, "points": 6000, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "xsup:x*min(1/16,4e^-x) grid2", "cells": 1000, "points": 6000, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "xsup:x*min(1/16,4e^-x) decreasing for x >= 8", "cells": 4000, "points": 4001, "violations": 0, "example": null}
+{"key": "xsup:sqrt(x)*gamma_P (omega-term) grid0", "cells": 1000, "points": 6000, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "xsup:sqrt(x)*gamma_P (omega-term) grid1", "cells": 1000, "points": 6000, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "xsup:sqrt(x)*gamma_P (omega-term) grid2", "cells": 1000, "points": 6000, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "xsup:sqrt(x)*gamma_P (omega-term) decreasing for x >= 8", "cells": 4000, "points": 4001, "violations": 0, "example": null}
+{"key": "xsup:sqrt(x)N1 grid0", "cells": 1000, "points": 6000, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "xsup:sqrt(x)N1 grid1", "cells": 1000, "points": 6000, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "xsup:sqrt(x)N1 grid2", "cells": 1000, "points": 6000, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "xsup:sqrt(x)N1 decreasing for x >= 8", "cells": 4000, "points": 4001, "violations": 0, "example": null}
+{"key": "xsup:gamma_P grid0", "cells": 1000, "points": 6000, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "xsup:gamma_P grid1", "cells": 1000, "points": 6000, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "xsup:gamma_P grid2", "cells": 1000, "points": 6000, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "xsup:gamma_P decreasing for x >= 8", "cells": 4000, "points": 4001, "violations": 0, "example": null}
+{"key": "xsup:eta_p(x) p=0..2 decreasing", "cells": 3000, "points": 3001, "violations": 0, "example": null}
+{"key": "xsup:zeta_p(x) p=0,2 decreasing", "cells": 3000, "points": 3001, "violations": 0, "example": null}
+{"key": "xsup:Qbar(x) decreasing", "cells": 3000, "points": 3001, "violations": 0, "example": null}
+{"key": "xsup:q1(x) decreasing", "cells": 3000, "points": 3001, "violations": 0, "example": null}
+{"key": "xsup:N1(x) decreasing", "cells": 3000, "points": 3001, "violations": 0, "example": null}
+{"key": "xsup:S_i(x) decreasing on [1, 60]", "cells": 599, "points": 600, "violations": 0, "example": null}
+{"key": "xsup:S1_P cells x(S_i - 1)", "cells": 200, "points": 1000, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "xsup:x(S_i(x)-1) decreasing beyond 200 (tail of S1_P)", "cells": 199, "points": 200, "violations": 0, "example": null}
+{"key": "strip:x*gamma", "cells": 2000, "points": 12000, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "strip:gamma", "cells": 2000, "points": 12000, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "strip:x K1(q) q^2 (S1 cells)", "cells": 600, "points": 3000, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "strip:K1(q) increasing in q", "cells": 499, "points": 500, "violations": 0, "example": null}
+{"key": "bk1(general_tau80, v1.1 code):H0", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(general_tau80, v1.1 code):H1", "cells": 3000, "points": 18000, "violations": 550, "worst_rel": 0.10738159527185906, "example": [[1.0, 1.0184261488251007, 0.9127509464224635, 0.9295694312014956], [1.0184261488066746, 0.9174359853231375], 0.1312232277810756, 0.14531418731693002], "direction": "U"}
+{"key": "bk1(general_tau80, v1.1 code):H2", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(general_tau80, v1.1 code):delta", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(general_tau80, v1.1 code):Z2", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(general_tau80, v1.1 code):eta1", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(general_tau80, v1.1 code):q", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(general_tau80, v1.1 code):kw", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(general_tau80, v1.1 code):ks", "cells": 3000, "points": 18000, "violations": 18, "worst_rel": 0.00023192621815193524, "example": [[1.2678971947655668, 1.291259657171245, 0.9495108367024275, 0.9660507687695348], [1.2688953386022133, 0.9495108367189674], 1.2126262858403731, 1.2129075256688797], "direction": "U"}
+{"key": "bk1(general_tau80, v1.1 code):WN", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(general_tau80, v1.1 code):L12", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "L"}
+{"key": "bk1(general_tau80, v1.1 code):gam2", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "L"}
+{"key": "bk1(general_tau80, v1.1 code):Psi1", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "L"}
+{"key": "bk1(general_tau80, v1.1 code):Np", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(general_tau80, v1.1 code):tauN", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(general_tau80, v1.1 code):d", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(general_tau80, v1.1 code):Ea", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(general_tau80, v1.1 code):Eb", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(general_tau80, v1.1 code):main_fac", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "L"}
+{"key": "bk1(general_tau80, v1.1 code):rhs", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(general_tau80, v1.1 code):f_L1", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "L"}
+{"key": "bk1(general_tau80, v1.1 code):f_big", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "L"}
+{"key": "bk1(general_tau80, v1.1 code):margin", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "L"}
+{"key": "bk1(general_tau80, v1.2 code):H0", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(general_tau80, v1.2 code):H1", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(general_tau80, v1.2 code):H2", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(general_tau80, v1.2 code):delta", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(general_tau80, v1.2 code):Z2", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(general_tau80, v1.2 code):eta1", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(general_tau80, v1.2 code):q", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(general_tau80, v1.2 code):kw", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(general_tau80, v1.2 code):ks", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(general_tau80, v1.2 code):WN", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(general_tau80, v1.2 code):L12", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "L"}
+{"key": "bk1(general_tau80, v1.2 code):gam2", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "L"}
+{"key": "bk1(general_tau80, v1.2 code):Psi1", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "L"}
+{"key": "bk1(general_tau80, v1.2 code):Np", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(general_tau80, v1.2 code):tauN", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(general_tau80, v1.2 code):d", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(general_tau80, v1.2 code):Ea", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(general_tau80, v1.2 code):Eb", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(general_tau80, v1.2 code):main_fac", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "L"}
+{"key": "bk1(general_tau80, v1.2 code):rhs", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(general_tau80, v1.2 code):f_L1", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "L"}
+{"key": "bk1(general_tau80, v1.2 code):f_big", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "L"}
+{"key": "bk1(general_tau80, v1.2 code):margin", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "L"}
+{"key": "bk1(strip_x_lt_1, v1.1 code):H0", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.1 code):H1", "cells": 3000, "points": 18000, "violations": 1385, "worst_rel": 114.89191795247943, "example": [[7.498942093324558e-06, 7.943282347242822e-06, 7.015640764021076e-06, 7.505006127333411e-06], [7.72111222028369e-06, 7.029400191712861e-06], 0.0004902739190487929, 0.05681878480064324], "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.1 code):H2", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.1 code):delta", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.1 code):Z2", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.1 code):eta1", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.1 code):q", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.1 code):kw", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.1 code):ks", "cells": 3000, "points": 18000, "violations": 721, "worst_rel": 0.009572803768186134, "example": [[8.413951416451964e-11, 8.912509381337441e-11, 7.388090715526589e-11, 8.287831781870667e-11], [8.912509380838884e-11, 7.38809071642633e-11], 1.1798355299481553, 1.191129863955083], "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.1 code):WN", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.1 code):L12", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "L"}
+{"key": "bk1(strip_x_lt_1, v1.1 code):gam2", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "L"}
+{"key": "bk1(strip_x_lt_1, v1.1 code):Psi1", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "L"}
+{"key": "bk1(strip_x_lt_1, v1.1 code):Np", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.1 code):tauN", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.1 code):d", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.1 code):Ea", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.1 code):Eb", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.1 code):main_fac", "cells": 3000, "points": 18000, "violations": 61, "worst_rel": -0.002968638208818801, "example": [[8.413951416451964e-11, 8.912509381337441e-11, 7.388090715526589e-11, 8.287831781870667e-11], [8.912509380838884e-11, 7.38809071642633e-11], 5.840547651977113e-11, 5.823209179057027e-11], "direction": "L"}
+{"key": "bk1(strip_x_lt_1, v1.1 code):rhs", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.1 code):f_L1", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "L"}
+{"key": "bk1(strip_x_lt_1, v1.1 code):f_big", "cells": 3000, "points": 18000, "violations": 61, "worst_rel": -0.00296863820881885, "example": [[8.413951416451964e-11, 8.912509381337441e-11, 7.388090715526589e-11, 8.287831781870667e-11], [8.912509380838884e-11, 7.38809071642633e-11], 1.3012396931091363e-11, 1.2973767832373408e-11], "direction": "L"}
+{"key": "bk1(strip_x_lt_1, v1.1 code):margin", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "L"}
+{"key": "bk1(strip_x_lt_1, v1.2 code):H0", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.2 code):H1", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.2 code):H2", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.2 code):delta", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.2 code):Z2", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.2 code):eta1", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.2 code):q", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.2 code):kw", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.2 code):ks", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.2 code):WN", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.2 code):L12", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "L"}
+{"key": "bk1(strip_x_lt_1, v1.2 code):gam2", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "L"}
+{"key": "bk1(strip_x_lt_1, v1.2 code):Psi1", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "L"}
+{"key": "bk1(strip_x_lt_1, v1.2 code):Np", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.2 code):tauN", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.2 code):d", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.2 code):Ea", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.2 code):Eb", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.2 code):main_fac", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "L"}
+{"key": "bk1(strip_x_lt_1, v1.2 code):rhs", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "U"}
+{"key": "bk1(strip_x_lt_1, v1.2 code):f_L1", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "L"}
+{"key": "bk1(strip_x_lt_1, v1.2 code):f_big", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "L"}
+{"key": "bk1(strip_x_lt_1, v1.2 code):margin", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null, "direction": "L"}
+{"key": "bj1(general):Gamma1*m (Gamma*)", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "bj1(general):W_max", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "bj1(general):S_xi", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "bj1(general):T1", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "bj1(general):T2", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "bj1(general):Gamma1 (upper)", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "bj1(general):x/Gamma1^2 (infimum of step 3(ii))", "cells": 3000, "points": 18000, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "bj1(general):Gamma1(x)/x decreasing (R1 = Gamma1(1) is the sup on x >= 1)", "cells": 2999, "points": 3000, "violations": 0, "example": null}
+{"key": "bj1(general):functions decreasing beyond x = 200", "cells": 1999, "points": 2000, "violations": 0, "example": null}
+{"key": "bj1(strip):Gamma1*m (Gamma*)", "cells": 1600, "points": 9600, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "bj1(strip):W_max", "cells": 1600, "points": 9600, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "bj1(strip):S_xi", "cells": 1600, "points": 9600, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "bj1(strip):T1", "cells": 1600, "points": 9600, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "bj1(strip):T2", "cells": 1600, "points": 9600, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "bj1(strip):Gamma1 (upper)", "cells": 1600, "points": 9600, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "bj1(strip):x/Gamma1^2 (infimum of step 3(ii))", "cells": 1600, "points": 9600, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "bj1(strip):Gamma1 q* product (sqrt x A + B)^2", "cells": 1600, "points": 9600, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "theta:eps_table suprema (N1, gamma_P, c_chi) on [1, 400]", "cells": 4002, "points": 24012, "violations": 0, "parts": [{"key": "theta:eps_table suprema (N1, gamma_P, c_chi) on [1, 400] N1", "cells": 1334, "points": 8004, "violations": 0, "worst_rel": 0.0, "example": null}, {"key": "theta:eps_table suprema (N1, gamma_P, c_chi) on [1, 400] gamma_P", "cells": 1334, "points": 8004, "violations": 0, "worst_rel": 0.0, "example": null}, {"key": "theta:eps_table suprema (N1, gamma_P, c_chi) on [1, 400] c_chi", "cells": 1334, "points": 8004, "violations": 0, "worst_rel": 0.0, "example": null}]}
+{"key": "theta:tau^0 nu_0 decreasing for tau >= 80 (sigma = 1e-24)", "cells": 1999, "points": 2000, "violations": 0, "example": null}
+{"key": "theta:tau^0 nu_1 decreasing for tau >= 80 (sigma = 1e-24)", "cells": 1999, "points": 2000, "violations": 0, "example": null}
+{"key": "theta:tau^0 nu_2 decreasing for tau >= 80 (sigma = 1e-24)", "cells": 1999, "points": 2000, "violations": 0, "example": null}
+{"key": "theta:tau^0 nu_3 decreasing for tau >= 80 (sigma = 1e-24)", "cells": 1999, "points": 2000, "violations": 0, "example": null}
+{"key": "theta:tau^0 nu_4 decreasing for tau >= 80 (sigma = 1e-24)", "cells": 1999, "points": 2000, "violations": 0, "example": null}
+{"key": "theta:tau^1 nu_0 decreasing for tau >= 80 (sigma = 1e-24)", "cells": 1999, "points": 2000, "violations": 0, "example": null}
+{"key": "theta:tau^1 nu_1 decreasing for tau >= 80 (sigma = 1e-24)", "cells": 1999, "points": 2000, "violations": 0, "example": null}
+{"key": "theta:tau^1 nu_2 decreasing for tau >= 80 (sigma = 1e-24)", "cells": 1999, "points": 2000, "violations": 0, "example": null}
+{"key": "theta:tau^1 nu_3 decreasing for tau >= 80 (sigma = 1e-24)", "cells": 1999, "points": 2000, "violations": 0, "example": null}
+{"key": "theta:tau^1 nu_4 decreasing for tau >= 80 (sigma = 1e-24)", "cells": 1999, "points": 2000, "violations": 0, "example": null}
+{"key": "theta:tau^2 nu_0 decreasing for tau >= 80 (sigma = 1e-24)", "cells": 1999, "points": 2000, "violations": 0, "example": null}
+{"key": "theta:tau^2 nu_1 decreasing for tau >= 80 (sigma = 1e-24)", "cells": 1999, "points": 2000, "violations": 0, "example": null}
+{"key": "theta:tau^2 nu_2 decreasing for tau >= 80 (sigma = 1e-24)", "cells": 1999, "points": 2000, "violations": 0, "example": null}
+{"key": "theta:tau^2 nu_3 decreasing for tau >= 80 (sigma = 1e-24)", "cells": 1999, "points": 2000, "violations": 0, "example": null}
+{"key": "theta:tau^2 nu_4 decreasing for tau >= 80 (sigma = 1e-24)", "cells": 1999, "points": 2000, "violations": 0, "example": null}
+{"key": "theta:tau^3 nu_0 decreasing for tau >= 80 (sigma = 1e-24)", "cells": 1999, "points": 2000, "violations": 0, "example": null}
+{"key": "theta:tau^3 nu_1 decreasing for tau >= 80 (sigma = 1e-24)", "cells": 1999, "points": 2000, "violations": 0, "example": null}
+{"key": "theta:tau^3 nu_2 decreasing for tau >= 80 (sigma = 1e-24)", "cells": 1999, "points": 2000, "violations": 0, "example": null}
+{"key": "theta:tau^3 nu_3 decreasing for tau >= 80 (sigma = 1e-24)", "cells": 1999, "points": 2000, "violations": 0, "example": null}
+{"key": "theta:tau^3 nu_4 decreasing for tau >= 80 (sigma = 1e-24)", "cells": 1999, "points": 2000, "violations": 0, "example": null}
+{"key": "theta:nu_tau = 2 sum e_n (1 + n^2 tau) decreasing for tau >= 80", "cells": 1999, "points": 2000, "violations": 0, "example": null}
+{"key": "theta:BN E_R cells on [1e-12, 1]", "cells": 1334, "points": 8004, "violations": 0, "worst_rel": 0.0, "example": null}
+{"key": "sigc:theta", "cells": 1, "points": 20, "violations": 0, "example": null, "direction": "U"}
+{"key": "sigc:nu", "cells": 1, "points": 20, "violations": 0, "example": null, "direction": "U"}
+{"key": "sigc:V_bar", "cells": 1, "points": 20, "violations": 0, "example": null, "direction": "U"}
+{"key": "sigc:one_minus_C_bar", "cells": 1, "points": 20, "violations": 0, "example": null, "direction": "U"}
+{"key": "sigc:r_bar", "cells": 1, "points": 20, "violations": 0, "example": null, "direction": "U"}
+{"key": "sigc:L2_bar", "cells": 1, "points": 20, "violations": 0, "example": null, "direction": "U"}
+{"key": "sigc:C_s", "cells": 1, "points": 20, "violations": 0, "example": null, "direction": "U"}
+{"key": "sigc:delta_H", "cells": 1, "points": 20, "violations": 0, "example": null, "direction": "U"}
+{"key": "sigc:r_C", "cells": 1, "points": 20, "violations": 0, "example": null, "direction": "U"}
+{"key": "sigc:A_min", "cells": 1, "points": 20, "violations": 0, "example": null, "direction": "L"}
+{"key": "sigc:e_prime", "cells": 1, "points": 20, "violations": 0, "example": null, "direction": "L"}
+{"key": "sigc:q_star", "cells": 1, "points": 20, "violations": 0, "example": null, "direction": "U"}
+{"key": "sigc:a_lower_over_c", "cells": 1, "points": 20, "violations": 0, "example": null, "direction": "L"}
+{"key": "sigc:margin3a", "cells": 1, "points": 20, "violations": 0, "example": null, "direction": "L"}
+{"key": "sigc:gamma_lo", "cells": 1, "points": 20, "violations": 0, "example": null, "direction": "L"}
+{"key": "sigc:W_lower_over_W_cap", "cells": 1, "points": 20, "violations": 0, "example": null, "direction": "L"}
+{"key": "upper:h(k) at interior points against the cell bound (bf_cert_upper)", "cells": 150, "points": 750, "violations": 0, "worst_gap_hi_minus_bound": -6.525153663312413e-06, "example": null, "float_points_k_le_6": 54, "float_violations": 0, "harmonic_parameter_points": 1200, "harmonic_parameter_violations": 0}
+{"key": "members:point enclosures inside the cell enclosures (bg_members, bh_members_fc)", "cells": 120, "points": 600, "violations": 0, "example": null}
+{"key": "tail:T(l) increasing on a grid 20x finer (bl_chain perturbed and bh v1.0)", "cells": 2, "points": 16000, "violations": 0, "parts": {"bl_chain": {"points": 8000, "violations": 0, "min": 0.9999583201658234, "at_l_end": 0.9999583201658234}, "bh_tail": {"points": 8000, "violations": 0, "min": 0.9999588201730871, "at_l_end": 0.9999588201730871}}}
+{"key": "lcells:cell 0", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 55.26204223180184, "lb": 56.36728307643788}
+{"key": "lcells:cell 7", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 63.478715876700015, "lb": 64.74829019423402}
+{"key": "lcells:cell 14", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 72.9170911283461, "lb": 74.37543295091302}
+{"key": "lcells:cell 21", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 83.75881750580764, "lb": 85.4339938559238}
+{"key": "lcells:cell 28", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 96.21255320817286, "lb": 98.13680427233632}
+{"key": "lcells:cell 35", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 110.51798091817193, "lb": 112.72834053653537}
+{"key": "lcells:cell 42", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 126.95042069824073, "lb": 129.48942911220556}
+{"key": "lcells:cell 49", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 145.8261287581157, "lb": 148.742651333278}
+{"key": "lcells:cell 56", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 167.508384073226, "lb": 170.85855175469052}
+{"key": "lcells:cell 63", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 192.41447999600567, "lb": 196.2627695959258}
+{"key": "lcells:cell 70", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 221.0237554196008, "lb": 225.44423052799283}
+{"key": "lcells:cell 77", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 253.88682006051536, "lb": 258.9645564617257}
+{"key": "lcells:cell 84", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 291.63615140856575, "lb": 297.46887443673705}
+{"key": "lcells:cell 91", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 334.9982672914149, "lb": 341.6982326372432}
+{"key": "lcells:cell 98", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 384.807708324991, "lb": 392.5038624914908}
+{"key": "lcells:cell 105", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 442.02309935388166, "lb": 450.8635613409593}
+{"key": "lcells:cell 112", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 507.74559899771765, "lb": 517.900510977672}
+{"key": "lcells:cell 119", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 583.240092380677, "lb": 594.9048942282906}
+{"key": "lcells:cell 126", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 669.9595349161258, "lb": 683.3587256144483}
+{"key": "lcells:cell 133", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 769.5729156631311, "lb": 784.9643739763937}
+{"key": "lcells:cell 140", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 883.9973784333071, "lb": 901.6773260019733}
+{"key": "lcells:cell 147", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 1015.4351188458767, "lb": 1035.7438212227942}
+{"key": "lcells:cell 154", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 1166.415767446002, "lb": 1189.7440827949222}
+{"key": "lcells:cell 161", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 1339.8450745853586, "lb": 1366.6419760770657}
+{"key": "lcells:cell 168", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 1539.060834046682, "lb": 1569.8420507276157}
+{"key": "lcells:cell 175", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 1767.8971217097708, "lb": 1803.2550641439661}
+{"key": "lcells:cell 182", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 2030.7580855864287, "lb": 2071.3732472981574}
+{"key": "lcells:cell 189", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 2332.702707376021, "lb": 2379.3567615235415}
+{"key": "lcells:cell 196", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 2679.542166849508, "lb": 2733.133010186498}
+{"key": "lcells:cell 203", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 3077.951682921925, "lb": 3139.510716580364}
+{"key": "lcells:cell 210", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 3535.598983889397, "lb": 3606.310963567185}
+{"key": "lcells:cell 217", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 4061.291879349108, "lb": 4142.51771693609}
+{"key": "lcells:cell 224", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 4665.147773948728, "lb": 4758.450729427703}
+{"key": "lcells:cell 231", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 5358.788385400849, "lb": 5465.9641531088655}
+{"key": "lcells:cell 238", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 6155.563414275382, "lb": 6278.674682560889}
+{"key": "lcells:cell 245", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 7070.807470284399, "lb": 7212.223619690087}
+{"key": "lcells:cell 252", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 8122.135199823151, "lb": 8284.577903819614}
+{"key": "lcells:cell 259", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 9329.780294746575, "lb": 9516.375900641508}
+{"key": "lcells:cell 266", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 10716.984906892068, "lb": 10931.32460502991}
+{"key": "lcells:cell 273", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 12310.446962960574, "lb": 12556.655902219785}
+{"key": "lcells:cell 280", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 14140.83398870942, "lb": 14423.65066848361}
+{"key": "lcells:cell 287", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 16243.373331438315, "lb": 16568.240798067083}
+{"key": "lcells:cell 294", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 18658.53014009973, "lb": 19031.700742901725}
+{"key": "lcells:cell 301", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 21432.786151334676, "lb": 21861.44187436137}
+{"key": "lcells:cell 308", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 24619.534269830117, "lb": 25111.92495522672}
+{"key": "lcells:cell 315", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 28280.106159954146, "lb": 28845.708283153228}
+{"key": "lcells:cell 322", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 32484.952625539445, "lb": 33134.651678050235}
+{"key": "lcells:cell 329", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 37314.99949522301, "lb": 38061.29948512747}
+{"key": "lcells:cell 336", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 42863.20510850279, "lb": 43720.46921067285}
+{"key": "lcells:cell 343", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 49236.349377648556, "lb": 50221.07636520153}
+{"key": "lcells:cell 350", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 56557.08885747745, "lb": 57688.230634627}
+{"key": "lcells:cell 357", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 64966.317374551145, "lb": 66265.64372204216}
+{"key": "lcells:cell 364", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 74625.8776481013, "lb": 76118.39520106334}
+{"key": "lcells:cell 371", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 85721.67609012275, "lb": 87436.1096119252}
+{"key": "lcells:cell 378", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 98467.26073159797, "lb": 100436.60594622993}
+{"key": "lcells:cell 385", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 113107.93113507135, "lb": 115370.08975777279}
+{"key": "lcells:cell 392", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 129925.45939231825, "lb": 132523.96858016463}
+{"key": "lcells:cell 399", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 149243.51306670453, "lb": 152228.38332803862}
+{"key": "lcells:cell 406", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 171433.8844493515, "lb": 174862.56213833852}
+{"key": "lcells:cell 413", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 196923.64601641285, "lb": 200862.1189367411}
+{"key": "lcells:cell 420", "cells": 1, "points": 10, "violations": 0, "by_quantity": {}, "L_violations": 0, "example": null, "la": 226203.36980029373, "lb": 230258.50929963487}

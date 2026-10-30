@@ -13,7 +13,7 @@ Code, stored results and computer-assisted proofs for the paper by Taishi Namba 
 
 > **Version 1.1 (2026-10-29).** Version 1.0 treated the Gaussian average over v in the window lemmas as an exact period average; for states whose background v-width is only a few σ a correction is needed. Version 1.1 closes this: a computer-assisted lemma shows that every state with a small gap has τ = k′²V > 80, where the correction is below 10⁻¹³ relative, and every certificate is rerun with input perturbations of 10⁻⁶. It also removes the start condition (P8), which now follows from (P0)–(P7). The standing condition L_w ≤ σ⁻¹ᐟ², already used in v1.0, is now listed as (P0), and the statement of the limit now separates what is proved from what is derived; otherwise the theorems are unchanged. The v1.0 certificates are kept in the repository.
 
-> **Note (2026-10-29, after v1.1).** In the certificate of the narrow-width lemma (`certificates/bk_narrow_lemma.py`, Lemma 20 of the paper) one factor, |1 − n²τ|e^{−n²τ/2}, is not monotone in τ, but was evaluated at the smallest τ of each cell. With its supremum over the cell every cell still closes; the smallest margin is 2.78 instead of the stated 2.80. The lemma and the theorems are unchanged. The corrected code will be part of the next version.
+> **Version 1.2 (2026-10-30).** In the certificate of the narrow-width lemma (Lemma 20) one factor, |1 − n²τ|e^{−n²τ/2}, is not monotone in τ; it is now bounded by its supremum over each cell, every cell still closes and the smallest margin is 2.78 (stated as 2.80 in v1.1). Every certificate was then audited at about two million interior points of its cells, with no other violation. Version 1.2 also removes (P5) for strips and weakens it to x ≥ 10⁻¹² for windows with at most six harmonics (Appendix E). The bounds of the theorems are unchanged.
 
 ## The result in brief
 
@@ -26,6 +26,7 @@ This paper asks how fine such a hidden ripple can be, and answers it on the **pe
   (1 − ε̄)(1 − 1.7 lnℓ/ℓ) ≤ g_min √ℓ ≤ (1 + |ε(S′_C)|)(1 + 6.0 lnℓ/ℓ),  ℓ = ln(1/σ).
 
   The lower side is certified on 421 cells covering the whole range and all |ε| ≤ ε̄ ≤ 0.1; the upper side on 1464 cells along an explicit comb sequence, in exact interval arithmetic.
+- **Fewer assumptions** [proof, computer-assisted]. For strips the lower bound holds without (P5); for windows with at most six harmonics, (P5) can be weakened to x ≥ 10⁻¹² (Appendix E).
 - **The limit.** liminf g_min √ln(1/σ) ≥ 1 − ε̄ is proved; the matching limsup ≤ 1, and so the limit 1, is derived, not proved.
 - **A sharper lens** [derivation]. At leading order, the comb at blur σ is the strip at blur σ/256. Combs fall below the best Gaussian mixtures already at σ ≈ 1.4 × 10⁻³ [numerical].
 - **General states.** A decorrelation dichotomy and a three-case split are proved for every state. The remaining case is reduced to one conjectured inequality, so paper E's Conjecture 1 remains open.
@@ -43,17 +44,18 @@ The [Colab notebook](demo/hidden_ripple_demo.ipynb) runs on a CPU in under a min
 
 ```bash
 pip install -r requirements.txt
-python verification/run_all.py              # about 3 minutes
-python verification/run_all.py --recompute  # every certificate in full (about 40 minutes, one core)
+python verification/run_all.py              # about 5 minutes
+python verification/run_all.py --recompute  # every certificate and the full interior-point audit (a few hours, one core)
 ```
 
-`run_all.py` runs 35 checks:
+`run_all.py` runs 46 checks:
 - the SHA-256 hashes in `MANIFEST.sha256`;
 - the stored certificates, with representative cells recomputed (30 lower cells, 184 upper cells);
 - the lemma checks against the evaluator;
-- 102 numbers of the paper against the stored results;
+- 154 numbers of the paper against the stored results;
 - the demo notebook;
-- the v1.1 lemmas: the narrow-width lemma, the θ_τ corrections, the chain with perturbed inputs, the removal of (P8), and the upper side in θ_τ form.
+- the v1.1 lemmas: the narrow-width lemma, the θ_τ corrections, the chain with perturbed inputs, the removal of (P8), and the upper side in θ_τ form;
+- the v1.2 additions: the certificates of Appendix E (removing (P5)) and a reduced interior-point audit of every certificate (`certificates/bp_audit.py`).
 
 With `--recompute`, all 421 lower cells, all 1464 upper cells, the class membership and the monotonicity table are recomputed.
 

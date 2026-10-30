@@ -20,8 +20,12 @@ Proof (all quantities exact; p = N_V(v) Gamma(w) h(k'v, w), h = 1 + sum_n q_n(w)
       sigma^2 int P s_v^2 phi >= b Psi (1 - q H0 g1)/kappa_s - Err,  Psi = 1 - e^{-gamma^2 L^2/2} (gamma = (1 - sigma^2/L^2)/sqrt2), Err explicit (O(sigma sqrt b)).
  (v)  (a') < c gives sigma^2 int P s_v^2 phi = 2 N_phi Z < 2 c sigma theta (b + W) Z.  With L^2 > L1^2 (Psi increasing; Err grows only like sigma sqrt(b) L):
       contradiction as soon as  b Psi(L1^2)(1 - q H0 g1)/kappa_s - Err > 2 c sigma theta (b + W_N)(1 + g1 q H0)  (checked also on the branch gamma L >= 0.71).
-Cells: x in [1, 40] (b >= x/tau0 <= 1 forces x <= tau0), b in [x/tau0, 1]; each cell is evaluated at its worst corner (W_N, kappa decrease in tau, so
-tau_min = x_a/b_b; x-factors at x_b, decay factors at x_a; the main term at b_a, the right side at b_b).  sigma enters only as a small factor (worst at 1e-24).
+Cells: x in [1, 40] (b >= x/tau0 <= 1 forces x <= tau0), b in [x/tau0, 1]; each cell is evaluated at its worst corner (W_N, kappa_w decrease in tau, so
+tau_min = x_a/b_b; x-factors at x_b, decay factors at x_a; the main term at b_a, the right side at b_b).
+v1.2: the factor |1 - n^2 tau| e^{-n^2 tau/2} of H1 is not monotone in tau (it rises on 1 <= n^2 tau <= 3); it now enters by its supremum over the cell's
+tau-range [x_a/b_b, x_b/b_a] (H1_sup).  v1.1 took it at tau_min; with the supremum every cell still closes (smallest ratio 2.788 instead of 2.803).
+Worst sigma and c (paper, proof of Lemma 20 (vi)): M and E_a/sigma do not depend on sigma, E_b/sigma and R/sigma grow with sigma, Lambda_1^2/2 = u grows
+with sigma and u/sigma falls; this makes the cell evaluated at sigma_hat = 1e-24 valid for every smaller sigma; smaller c only helps.
 -> results/bk_narrow_lemma.json.  Python 3.11."""
 import json
 import numpy as np
@@ -41,9 +45,22 @@ def harm(x, tau):
 def m(x): return min(QS, 2 * np.exp(-x / 2))
 
 
+def _f(u): return abs(1 - u) * np.exp(-u / 2)
+
+
+def H1_sup(xa, ta, tb):
+    """sup over tau in [ta, tb] of sum_n dec_n |1 - n^2 tau| e^{-n^2 tau/2} (v1.2): each term by max(f(u_a), f(u_b), f(3) if 3 in [u_a, u_b])."""
+    s = 0.0
+    for n in NN:
+        ua, ub = n * n * ta, n * n * tb
+        s += np.exp(-(n * n - 1) * xa / 2) * max(_f(ua), _f(ub), _f(3.0) if ua <= 3.0 <= ub else 0.0)
+    return float(s)
+
+
 def cell(xa, xb, ba, bb, c=CST, sig=SIG):
     th = 1 / (1 - c * sig); tau_min = xa / bb
-    H0, H1, H2, _, _, delta = harm(xa, tau_min)                       # all decrease in tau and in x (decay factors): worst at (xa, tau_min)
+    H0, _, H2, _, _, delta = harm(xa, tau_min)                        # decrease in tau and in x (decay factors): worst at (xa, tau_min)
+    H1 = H1_sup(xa, tau_min, xb / ba)                                  # v1.2: not monotone in tau; supremum over the cell's tau-range
     _, _, _, Z2, eta1, _ = harm(xa, 0.0)
     q = m(xa)
     kw = (1 + q * H0 * G1 * RSH) / (1 - q * H0 * G1)

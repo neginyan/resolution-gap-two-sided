@@ -21,7 +21,7 @@ train of thin teeth whose fundamental amplitude approaches the largest value $2$
 The central result is:
 
 \begin{quote}
-\textbf{Main result} (Theorem~\ref{thm:BF1} in Sec.~\ref{sec:upper}) \caproofst{App.~\ref{app:cert}}. Under the assumptions (P0)--(P7) of Table~\ref{tab:assumptions},
+\textbf{Main result} (Theorem~\ref{thm:BF1} in Sec.~\ref{sec:upper}) \caproofst{App.~\ref{app:cert}}. Under the assumptions (P0)--(P7) of Table~\ref{tab:assumptions} (for strips without (P5), and for windows with at most six harmonics with (P5) weakened to $x\ge10^{-12}$; App.~\ref{app:P5}),
 $(1-\bar\varepsilon)(1-1.7\tfrac{\ln\ln(1/\sigma)}{\ln(1/\sigma)})\le g_{\min}^{P}\sqrt{\ln(1/\sigma)}
 \le(1+|\varepsilon(S'_C(\sigma))|)(1+6.0\,\tfrac{\ln\ln(1/\sigma)}{\ln(1/\sigma)})$ for every $10^{-100000}\le\sigma\le10^{-24}$, where every state of the class has
 $|\varepsilon|\le\bar\varepsilon\le0.1$ and $S'_C(\sigma)$ is an explicit comb.
@@ -41,6 +41,14 @@ Lemma~\ref{lem:BK1} shows that such narrow states have a large gap, so that ever
 App.~\ref{app:theta} restates every window lemma in $\theta_\tau$ form with explicit remainders; the certificates were re-run with the input lemmas
 perturbed by a relative $10^{-6}$. The bounds of the theorems are unchanged; the standing condition $L_w\le\sigma^{-1/2}$, already used in v1.0, is now listed as (P0), and the limit is stated with what is proved and what is derived kept apart. Version~1.1 also removes the a-priori condition (P8) of v1.0
 ($F_c\ge1.02G$), which now follows from (P0)--(P7) (Lemma~\ref{lem:BJ1}).
+
+\paragraph*{Version~1.2.}
+Version~1.2 removes the condition (P5), $x\ge1$, for strips: a strip whose ripple period is longer than the blur has $g\ge0.134$, by a four-case
+argument of which two cases are computer-assisted (App.~\ref{app:P5}, Theorem~\ref{thm:E6}). For windows with at most six harmonics (P5) is weakened to
+$x\ge10^{-12}$ (Theorem~\ref{thm:E8}). In the certificate of Lemma~\ref{lem:BK1} one factor is not monotone in $\tau$; with its supremum over each cell
+every cell still closes, and the smallest margin is $2.78$ instead of $2.80$; the proof now also states why the cells may be evaluated at $\sigma=10^{-24}$.
+Every certificate was audited at more than two million interior points of its cells (App.~\ref{app:cert}); apart from that factor no quantity was
+found on the wrong side. The bounds of the theorems are unchanged.
 
 \paragraph*{Relation to paper~E.}
 Paper~E \emph{found} the strip law and stated it as a property of the family it had searched; nothing in it is contradicted here.
@@ -79,9 +87,12 @@ Branch identity $(1-|\varepsilon|)((a)+(a'))\le g\le(1+|\varepsilon|)((a)+(a'))$
 Periodic-window lemmas (exact factorisation; $w$- and $v$-information sandwiches; $S$-bounds; Lemmas~\ref{lem:AY1P}, \ref{lem:AY2P}) & proof & Sec.~\ref{sec:windows}, App.~\ref{app:plemmas}\\
 The same lemmas in $\theta_\tau$ form with explicit remainders (Lemmas~\ref{lem:BL0}--\ref{lem:BL6}; upper side Lemma~\ref{lem:BL7}) & proof & App.~\ref{app:theta}\\
 Narrow envelopes have a large gap: $g<G\Rightarrow\tau>80$ (Lemma~\ref{lem:BK1}) & proof (CA) & App.~\ref{app:theta}\\
+Strips need no (P5): $0<x<1\Rightarrow g\ge0.134$ (Theorem~\ref{thm:E6}) & proof (CA; Lemmas~\ref{lem:E2}--\ref{lem:E4}: proof) & App.~\ref{app:P5}\\
+At most six harmonics: (P5) weakened to $x\ge10^{-12}$ (Theorem~\ref{thm:E8}) & proof (CA) & App.~\ref{app:P5}\\
 The start of the bootstrap is automatic: $g<G\Rightarrow F_c\ge0.84$ (Lemma~\ref{lem:BJ1}; former (P8)) & proof (CA) & App.~\ref{app:theta}\\
 Lower side, Theorem~\ref{thm:AY1P}: $g\sqrt{\ls}/(1-\bar\varepsilon)\ge1-1.7\ln\ls/\ls$ on $[10^{-100000},10^{-24}]$, all $\bar\varepsilon\le0.1$; tail (Lemma~\ref{lem:BH2}) & proof (CA; tail: proof) & Sec.~\ref{sec:lower}\\
-Strips read as an upward bootstrap: the strip theorem needs $F_c\ge0.5$ ($10^{-24}$), $\ge0.2$ (below $10^{-96}$) & proof (CA, representative points) & Sec.~\ref{sec:lower}\\
+Audit of every certificate at interior points of its cells ($2.1\times10^6$ points) & numerical & App.~\ref{app:cert}\\
+Strips read as an upward bootstrap: the strip theorem needs $F_c\ge0.5$ ($10^{-24}$), $\ge0.2$ (below $10^{-96}$); superseded by Theorems~\ref{thm:AY1P} and~\ref{thm:E6}, which need no condition on $F_c$ & proof (CA, representative points) & Sec.~\ref{sec:lower}\\
 Upper side, Theorem~\ref{thm:AZ1P} (comb sequence): $U_P\sqrt{\ln}\le1+6.0\ln\ln/\ln$ & proof (CA) & Sec.~\ref{sec:upper}\\
 Theorem~\ref{thm:BF1}: two-sided bounds on $[10^{-100000},10^{-24}]$; Cor.~\ref{cor:limit}: the limit $1$ & proof (CA); limit: $\liminf\ge1-\bar\varepsilon$ proof, $\limsup\le1$ derivation & Sec.~\ref{sec:upper}\\
 Comb $=$ strip at $\sigma/256$ (Prop.~\ref{prop:BE1}) & derivation (exact identity of the leading-order formula) & Sec.~\ref{sec:finite}\\
