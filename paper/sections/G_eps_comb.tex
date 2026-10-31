@@ -1,0 +1,111 @@
+% G_eps_comb.tex — v1.4: paper E's remainder along the comb sequence
+\section{Paper~E's remainder along the comb}
+\label{app:epscomb}
+
+\paragraph*{What this appendix shows.}
+Up to v1.3 the factor $|\varepsilon(S'_C(\sigma))|$ in Theorem~\ref{thm:BF1} was a number for each $\sigma$, known only numerically, and the
+limit of Corollary~\ref{cor:limit} needed $\varepsilon(S'_C)\to0$. Here we bound it for every $\sigma\le10^{-24}$:
+
+\begin{theorem}[the remainder along the comb] \caproofst{\code{bt\_eps.py}}
+\label{thm:G1}
+Along $S'_C$, with $E=e^{-k_0^2}$, for every $k_0\ge3.43$ ($\sigma\le10^{-24}$),
+\begin{equation}
+|\varepsilon(S'_C(\sigma))|\ \le\ 276.4\,k_0^{-2}E^{3/2}\,(1+0.103).
+\end{equation}
+In particular $|\varepsilon(S'_C)|\le5.62\times10^{-7}$ on the whole range, and $\varepsilon(S'_C(\sigma))\to0$ as $\sigma\to0$.
+\end{theorem}
+
+Throughout, $\varepsilon=-(B+R_3)/D$ with $D=\sigma a\sqrt{P_w}=2\sqrt{2A_wN_\phi}$ (Sec.~\ref{sec:setting}), and
+$B+R_3=2\sigma^2\Jww+N-2A_w-N_\phi$ split as $R_3=N-\sigma^2\E[H_{pz}\phi]$ and $B=\sigma^2\E[H_{pz}\phi]-\frac{\sigma^2}2\E[(s_v^2-s_w^2)\phi]$, where
+$N=-\sigma^{-2}\E[\mathrm{Cov}(x_p,x_z-\sin x_z\,|\,y)]$, $p$ and $z$ are the coordinates $(v\mp w)/\sqrt2$ and $\phi=1-\cos m_z$.
+
+\begin{lemma}[the remainder in three parts] \proofst
+\label{lem:G2}
+For every state with sufficient decay,
+\begin{equation*}
+\begin{aligned}
+B&=\frac{\sigma^4}{2}\E[\cos m_z\,H_{pz}]\\&\quad-\frac{\sigma^4}{2}\E\big[\sin m_z\,(s_vH_{vz}-s_wH_{wz})\big],\\
+R_3&=T_2+R_L,\qquad T_2=-\frac{\sigma^4}{2}\E[\sin m_z\,\partial_{pzz}\ln p],\\
+|R_L|&\le\tfrac{\sqrt{960}}6\,\sigma^2 .
+\end{aligned}
+\end{equation*}
+\end{lemma}
+\begin{proof}
+\emph{$B$.} $\E[H_{vv}F]=\E[s_v^2F]+\E[s_v\partial_vF]$ (integrate $-p\,\partial_v^2\ln p$ by parts), and the same in $w$, give
+$B=\frac{\sigma^2}2\E[s_v\partial_v\phi-s_w\partial_w\phi]$. With $m_z=z+\sigma^2s_z$, $\partial_v\phi=\sin m_z(1/\sqrt2-\sigma^2H_{vz})$ and
+$\partial_w\phi=\sin m_z(1/\sqrt2-\sigma^2H_{wz})$; the first parts combine to $\frac{\sigma^2}2\E[s_p\sin m_z]$, and $\E[s_p\sin m_z]=-\E[\partial_p\sin m_z]=\sigma^2\E[\cos m_zH_{pz}]$
+because $\partial_pz=0$.
+\emph{$R_3$.} Put $g(z)=z-\sin z$ and $\delta=x_z-m_z$. Taylor's formula around $m_z=\E[x_z|y]$ with Lagrange remainder, $|g'''|\le1$, gives
+$g(x_z)=g(m_z)+\phi\,\delta+\frac12\sin m_z\,\delta^2+\rho$, $|\rho|\le|\delta|^3/6$. By Tweedie's formula the posterior cumulants of order $n\ge2$ are
+$\sigma^{2n}\nabla^n\ln p$ (plus $\sigma^2I$ for $n=2$), so $\mathrm{Cov}(x_p,x_z|y)=\sigma^4\partial_{pz}\ln p=-\sigma^4H_{pz}$ ($p\perp z$) and
+$\mathrm{Cov}(x_p,\delta^2|y)=\sigma^6\partial_{pzz}\ln p$. The first gives $\sigma^2\E[H_{pz}\phi]$, which is subtracted in $R_3$; the second gives $T_2$.
+\emph{$R_L$} $=-\sigma^{-2}\E_y\mathrm{Cov}(x_p,\rho|y)$, and Cauchy--Schwarz twice gives
+$|R_L|\le\frac{\sigma^{-2}}6\sqrt{\E_y\mathrm{Var}(x_p|y)}\sqrt{\E\delta^6}$. Here $\E_y\mathrm{Var}(x_p|y)=\sigma^2-\sigma^4\E[H_{pp}]\le\sigma^2$, since
+$\E[H]=\E[ss^{\mathsf T}]$; and $\|x_z-m_z\|_6\le\|x_z-y_z\|_6+\|m_z-y_z\|_6\le2\|x_z-y_z\|_6$ (Jensen), where $x_z-y_z$ is the blur's Gaussian noise,
+$\E(x_z-y_z)^6=15\sigma^6$. So $\E\delta^6\le960\sigma^6$. This bound does not depend on the state.
+\end{proof}
+
+\begin{lemma}[Cauchy estimates on a periodic window] \proofst
+\label{lem:G3}
+Let $p=\mathcal N_V(v)\Gamma(w)h(k'v,w)/Z$ (Lemma~\ref{lem:AW1P}), $h=1+u$, $\psi(w)=\exp(-(|w|-s)_+^2/(2s^2))$, $Q_c=\sum_n|q0_n|\cosh n$ and
+$c_M=e^{1/2}Q_c/(1-e^{1/2}Q_c)$ (assumed $<\infty$). Then for $a,b\ge0$
+\begin{equation*}
+|\partial_v^a\partial_w^b\ln h(v,w)|\ \le\ a!\,b!\,k'^a s^{-b}\,c_M\,\psi(w).
+\end{equation*}
+The Gaussian factors are exact: $s_v=-v/V+\partial_v\ln h$, $s_w=-w/L^2+\partial_w\ln h$, $H_{vv}=1/V-\partial_v^2\ln h$, $H_{ww}=1/L^2-\partial_w^2\ln h$, $H_{vw}=-\partial_v\partial_w\ln h$.
+\end{lemma}
+\begin{proof}
+On the polydisc $|v'-v|\le1/k'$, $|w'-w|\le s$: $|\cos(nk'v'-\varphi_n)|\le\cosh n$ and $|e^{-w'^2/2s^2}|=e^{-(\mathrm{Re}\,w'^2)/2s^2}\le e^{1/2}\psi(w)$, because
+$\mathrm{Re}\,w'^2\ge(|w|-s)_+^2-s^2$. So $|u|\le e^{1/2}Q_c\psi(w)<1$, $|\ln(1+u)|\le|u|/(1-|u|)\le c_M\psi(w)$, and Cauchy's estimate in each variable gives the claim.
+\end{proof}
+
+\paragraph*{The numerator.} With Lemma~\ref{lem:G3}, every factor in Lemma~\ref{lem:G2} is bounded by a sum of terms $c\,|v|^a|w|^b\psi(w)^j$:
+$|s_v|\le|v|/V+k'c_M\psi$, $|s_w|\le|w|/L^2+c_M\psi/s$, $|s_z|\le(|s_v|+|s_w|)/\sqrt2$, $|\sin m_z|\le|m_z|\le(|v|+|w|)/\sqrt2+\sigma^2|s_z|$,
+$|H_{pz}|\le\frac1{2V}+(k'^2+s^{-2})c_M\psi$, $|H_{vz}|\le[\frac1V+(2k'^2+k'/s)c_M\psi]/\sqrt2$, $|H_{wz}|\le[\frac1{L^2}+(2s^{-2}+k'/s)c_M\psi]/\sqrt2$, and
+\begin{equation*}
+|\partial_{pzz}\ln p|\le\frac{6k'^3+2k'^2/s+2k'/s^2+6/s^3}{2\sqrt2}\,c_M\psi
+\end{equation*}
+($\partial_{pzz}=2^{-3/2}(\partial_v^3+\partial_v^2\partial_w-\partial_v\partial_w^2-\partial_w^3)$; the Gaussian parts of the third derivatives vanish). Since $h\le1+\Qb$ on the
+reals and $1-\Qb\le Z\le1+\Qb$, $\E_p[F]\le\frac{1+\Qb}{1-\Qb}\int\mathcal N_V\Gamma\,|F|$, and
+$\int\mathcal N_V|v|^a=V^{a/2}\mu_a$, $\int\Gamma|w|^b=L^b\mu_b$, $\int\Gamma|w|^b\psi^j\le s^{b+1}I_j(b)/(\sqrt{2\pi}L)$ ($j\ge1$; $\Gamma\le1/(\sqrt{2\pi}L)$),
+with $\mu_a=\E|Z|^a$ and $I_j(b)=2[\frac1{b+1}+\sum_{i\le b}\binom bij^{-(i+1)/2}\int_0^\infty x^ie^{-x^2/2}dx]$.
+
+\paragraph*{The denominator.} $A_w=\sigma^2\E[s_w^2(1-\phi/4)]\ge\frac{\sigma^2}2\Jww\ge\frac{\sigma^2}{2\E_pw^2}\ge\frac{\sigma^2(1-\Qb)}{2L^2(1+\Qb)}$ (Cram\'er--Rao).
+For $N_\phi=\frac{\sigma^2}2\E[s_v^2\phi]$ restrict to $R'=\{|v|\le3\sqrt V,\ w_0\le|w|\le3L\}$ with $w_0=s(1+\sqrt8\,k_0)$, where $\psi\le E^4$, so that the
+ripple's score $|\partial_v\ln h|\le F_0:=k'c_ME^4$ is negligible. On $R'$, $|m_z|\le M$ and
+$\phi\ge\frac{m_z^2}2(1-\frac{M^2}{12})$; $s_vm_z=-vz/V+r$ with $|r|\le r_0:=3\sigma^2S_z/\sqrt V+F_0M$ ($S_z$ the sup of $|s_z|$ on $R'$), so
+$(s_vm_z)^2\ge\frac12(vz/V)^2-r_0^2$; and $\int_{R'}(vz/V)^2\mathcal N_V\Gamma\ge c_2W_2/(2V)$ with $c_2=\int_{|x|\le3}x^2\,d\mathcal N(x)=0.970709\ldots$ and
+$W_2=\int_{w_0\le|w|\le3L}w^2\Gamma\ge c_2L^2-2w_0^3/(3\sqrt{2\pi}L)$ (the cross term vanishes by symmetry). Hence
+\begin{equation*}
+N_\phi\ge\frac{\sigma^2}2\,\frac{1-\Qb}{1+\Qb}\,\frac{1-M^2/12}2\Big[\frac{c_2W_2}{4V}-r_0^2\Big].
+\end{equation*}
+
+\begin{proof}[Proof of Theorem~\ref{thm:G1}]
+Along $S'_C$ every length is an exact monomial in $k_0$ and $E$ (Sec.~\ref{sec:upper}); $k'\le k_0/\sigma$, $c_b\le1$, $|\hat a_n|\le2$ and
+$K\ge k_0^2(1-\varrho_v)$ with $\varrho_v=\sigma^2/L_v^2$ give $\Qb\le2E^{1/2}(1+64k_0^{-4}E^4)(1+4E^{1.49})$ and
+$Q_c\le2\cosh(1)E^{1/2}(1+64k_0^{-4}E^4)(1+4\frac{\cosh2}{\cosh1}E^{1.49})$ (the ratio of consecutive terms is $\le\frac12$). Every quantity above is carried as
+$c\,k_0^\beta E^\gamma(1+R\,k_0^{-\nu})$ valid for all $k_0\ge K_0=3.43$, as in App.~\ref{app:cert} (exact exponents, outward-rounded interval constants;
+a term with a larger power of $E$ is bounded relative to the leading one by its value at $K_0$, which is legitimate because
+$k_0^{p}E^{q}$ decreases for $k_0\ge K_0$ when $p<2qK_0^2$, checked for every such term). The numerator and denominator then give
+\begin{equation*}
+\begin{aligned}
+|\varepsilon|&\le\frac{|B|+|T_2|+|R_L|}{D}\le276.37\,k_0^{-2}E^{3/2}(1+R),\\
+R&\in[-1.1\times10^{-4},\,0.1024],
+\end{aligned}
+\end{equation*}
+and the supremum over $k_0\ge3.43$ is attained at $k_0=3.43$: $5.62\times10^{-7}$. The leading part is $T_2$ ($k_0^{-2}E^{3/2}$); the others are
+$k_0^{-2}E^2$ (second part of $B$), $k_0^{-8}E^2$ ($R_L$) and $k_0^{-8}E^{7/2}$ (first part of $B$). The side conditions hold on the whole range:
+$w_0\le9.5\times10^{-6}\cdot3L$, $r_0^2\le4.4\times10^{-21}\,c_2W_2/(4V)$, $M\le9.6\times10^{-7}$.
+\end{proof}
+
+\paragraph*{Checks \numst.}
+An independent re-derivation checked each step; on a generic state (three harmonics, $\sigma=0.45$, posterior on a grid) the two forms of $B$ agree,
+the third cumulant equals $\sigma^6\partial_{pzz}\ln p$ to $3\times10^{-13}$ and the numerator decomposition holds to nine digits; on the comb at $k_0=3.43$ and $4$,
+direct quadrature gives $A_w$, $N_\phi$ above and the parts of the numerator below their bounds, and the true $|\varepsilon|$ below $10^{-13}$
+(the bound is not tight; its largest slack is the Cauchy estimate of $\partial_{pzz}\ln p$). Paper~E's evaluator gives $|\varepsilon(S'_C)|=3.6\times10^{-16}$ at
+$\sigma=10^{-24}$, the rounding level.
+
+\paragraph*{Observer picture.}
+$\varepsilon$ measures how far the observer's posterior is from a Gaussian. Along the comb the teeth are blurred away down to a contrast
+$e^{-k_0^2/2}$, the ripple lives only inside a window of width $s\sim e^{-2k_0^2}$, and inside it the angle $m_z$ is as small as the window:
+the three factors together make $\varepsilon$ vanish like $e^{-3k_0^2/2}$.

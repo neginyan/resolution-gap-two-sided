@@ -39,9 +39,9 @@ $(a)\ge c$ or $(a')\ge c$. Hence every state with $g<G$ ($G\le0.134$, $|\varepsi
 \begin{proof}
 All quantities are used exactly (no average is replaced by another). (i) $(a)\ge\sigma^2\Jww/(\sigma\,\mathrm{den})$ and $b+W=\sigma^2\Jvv\le1$, so
 $(a)<c$ gives $\mathrm{den}<\theta(b+W)$, $\theta=1/(1-c\sigma)$. (ii) Cram\'er--Rao for the $w$-marginal, which is
-$\Gamma(w)(1+\sum_nq0_ne^{-w^2/2s^2}e_n)/Z$ exactly: $\Jww\ge1/(\kappa_wL^2)$, hence $L^2>L_1^2=\sigma/(c\theta\kappa_w(b+W))$. (iii) The exact
-$W=(x/Z)\int\Gamma\langle\theta_\tau(h_t^2/h-h_{tt})\rangle$ (Lemma~\ref{lem:BL2}) gives $W\le W_N$ with $-\langle\theta_\tau h_{tt}\rangle=\sum n^2q_ne_n$.
-(iv) Cram\'er--Rao on every $w$-slice in $v$ ($\mathrm{Var}_w\le\kappa_sV$ from $\int\mathcal N_Vv^2\cos(nk'v)=V(1-n^2\tau)e_n$), together with
+$\Gamma(w)(1+\sum_nq0_ne^{-w^2/2s^2}e_n\cos\varphi_n)/Z$ exactly: $\Jww\ge1/(\kappa_wL^2)$, hence $L^2>L_1^2=\sigma/(c\theta\kappa_w(b+W))$. (iii) The exact
+$W=(x/Z)\int\Gamma\langle\theta_\tau(h_t^2/h-h_{tt})\rangle$ (Lemma~\ref{lem:BL2}) gives $W\le W_N$ with $-\langle\theta_\tau h_{tt}\rangle=\sum n^2q_ne_n\cos\varphi_n\le\sum n^2q_ne_n$.
+(iv) Cram\'er--Rao on every $w$-slice in $v$ ($\mathrm{Var}_w\le\kappa_sV$ from $\int\mathcal N_Vv^2\cos(nk'v-\varphi_n)=V(1-n^2\tau)e_n\cos\varphi_n$, used in modulus), together with
 $1-\cos(A+\delta)\ge1-\cos A-|\sin A||\delta|-\delta^2/2$ and Gaussian moments of $\delta$, gives $\sigma^2\int Ps_v^2\phi\ge b\Psi(L)(1-qH_0g_1)/\kappa_s-\mathrm{Err}$,
 $\Psi(L)=1-e^{-\gamma^2L^2/2}$, $\mathrm{Err}=O(\sigma\sqrt b)$ explicit; here $\gamma=(1-\sigma^2/L^2)/\sqrt2$, and $\kappa_w$, $\kappa_s$, $H_0$ and $g_1$ are explicit $O(1)$ factors from the $e_n$ series, defined in \code{bk\_narrow\_lemma.py} (used by \code{bl\_narrow80.py}). (v) Write $\Lambda=\gamma L$ and $F(\Lambda)=M\Psi-E_a\min(\Lambda,0.71)-E_b-R$, where $M=b(1-qH_0g_1)/\kappa_s$ is the main factor,
 $E_a\min(\Lambda,0.71)+E_b$ bounds $\mathrm{Err}$, and $R=2c\sigma\theta(b+W_N)(1+g_1qH_0)$ bounds $\sigma^2\int Ps_v^2\phi$ from above when $(a')<c$. Since
@@ -71,15 +71,15 @@ $\Jww=J_{ww,\mathrm{per}}(1+\epsilon_1)$ with $J_{ww,\mathrm{per}}=1/L^2+\int\Ga
 So the $w$-sandwich of Table~\ref{tab:replace} holds for $J_{ww,\mathrm{per}}$ exactly and for $\Jww$ up to the factor $1\pm\epsilon_1$.
 \end{lemma}
 \begin{proof}
-$Z\Jww=1/L^2+\sum_ne_n\int\Gamma q_n(2/L^2-w^2/L^4)+\int\Gamma\langle\theta_\tau h_w^2/h\rangle$ (expand $s_w=-w/L^2+h_w/h$; the cross term
-$2\int\Gamma'\langle\theta_\tau h_w\rangle=2\sum e_n\int\Gamma'q_n'$ no longer vanishes; integrate by parts). The middle term is at most
+$Z\Jww=1/L^2+\sum_ne_n\cos\varphi_n\int\Gamma q_n(2/L^2-w^2/L^4)+\int\Gamma\langle\theta_\tau h_w^2/h\rangle$ (expand $s_w=-w/L^2+h_w/h$; the cross term
+$2\int\Gamma'\langle\theta_\tau h_w\rangle=2\sum e_n\cos\varphi_n\int\Gamma'q_n'$ no longer vanishes; integrate by parts). The middle term is at most
 $\tfrac32\Qb\nu_0/L^2$ in absolute value, the last lies between $(1\mp\nu_0)\int\Gamma\langle h_w^2/h\rangle$, and $|Z-1|\le\Qb\nu_0/2$.
 \end{proof}
 
 \begin{lemma}[$v$-information] \proofst
 \label{lem:BL2}
 $\sigma^2\Jvv=b+W$ exactly, with
-$ZW=\sigma^2\int\Gamma\langle\theta_\tau h'^2/h\rangle+x\int\Gamma\sum_nn^2q_ne_n$ ($h'=\partial_vh$). Hence, with $W_{\mathrm{per}}=x\int\Gamma\langle h_t^2/h\rangle$,
+$ZW=\sigma^2\int\Gamma\langle\theta_\tau h'^2/h\rangle+x\int\Gamma\sum_nn^2q_ne_n\cos\varphi_n$ ($h'=\partial_vh$; $\cos\varphi_n=1$ for even $f$). Hence, with $W_{\mathrm{per}}=x\int\Gamma\langle h_t^2/h\rangle$,
 \begin{equation}
 \begin{aligned}&\frac{(1-\nu_0)W_{\mathrm{per}}-\tfrac12b\tau\Qb\nu_2}{1+\Qb\nu_0/2}\le W\\&\quad\le\frac{(1+\nu_0)W_{\mathrm{per}}+\tfrac12b\tau\Qb\nu_2}{1-\Qb\nu_0/2}.\end{aligned}
 \end{equation}
@@ -87,8 +87,8 @@ The second term is the one that breaks the $v$-sandwich of v1.0 at small $\tau$ 
 relative as soon as $b\le\beta W$ or $b\le W$ is known, which is where the proofs use the upper side of the sandwich.
 \end{lemma}
 \begin{proof}
-Expand $s_v=-v/V+k'h_t/h$; Lemma~\ref{lem:BL0}(iii) with $\int\mathcal N_V(v/V)^2\cos(nk'v)=(1-n^2\tau)e_n/V$ and
-$\int\mathcal N_V(v/V)\partial_vh=-\tfrac1V\sum n^2\tau q_ne_n$ gives $(b/Z)\int\Gamma(1+\sum q_ne_n)=b$ for the background part.
+Expand $s_v=-v/V+k'h_t/h$; Lemma~\ref{lem:BL0}(iii) with $\int\mathcal N_V(v/V)^2\cos(nk'v-\varphi_n)=(1-n^2\tau)e_n\cos\varphi_n/V$ and
+$\int\mathcal N_V(v/V)\partial_vh=-\tfrac1V\sum n^2\tau q_ne_n\cos\varphi_n$ gives $(b/Z)\int\Gamma(1+\sum q_ne_n\cos\varphi_n)=b$ for the background part.
 \end{proof}
 
 \begin{lemma}[the curvature term in $\theta_\tau$ form; AX3-P] \proofst
@@ -103,8 +103,8 @@ $\Phi=1-C\in[0,2]$ and $\Psi=1-eC(1-y)$. Then $\Psi\ge\min(\Phi,\tfrac12)$, $\Ph
 \label{eq:BL3}
 \end{equation}
 with $E_R(x,\tau)$ the explicit sum of the nine terms in the proof (each a product of $\nu_k$, powers of $\tau$, and $N_1$, $\gamma_P$, $c_\chi$).
-For $\tau\ge80$, $E_R\le9.9\times10^{-15}$. If moreover $\min(\Phi,\tfrac12)\ge\sigma/2$ or $\eta G\theta_G/\varphi_1\le1$ in the chain, all remainders are
-relative:  $2N_\phi\ge(1-e-(1+\epsilon_3)\sigma^2)W+(1-\epsilon_3)b\Psi-(1+\epsilon_3)\sigma^2\gamma_P\Phi$ with $\epsilon_3\le2.1\times10^{-14}$.
+For $\tau\ge80$, $E_R\le1.5\times10^{-14}$ ($9.9\times10^{-15}$ for even $f$). If moreover $\min(\Phi,\tfrac12)\ge\sigma/2$ or $\eta G\theta_G/\varphi_1\le1$ in the chain, all remainders are
+relative:  $2N_\phi\ge(1-e-(1+\epsilon_3)\sigma^2)W+(1-\epsilon_3)b\Psi-(1+\epsilon_3)\sigma^2\gamma_P\Phi$ with $\epsilon_3\le3.0\times10^{-14}$.
 \end{lemma}
 \begin{proof}
 \emph{Exact identity.} For fixed $w$ put $P=\mathcal N_Vh$, $F=h'^2/h$, $D=(h'-ih\psi')e^{i\psi}$, $G[f]=\int\mathcal N_Vf\,dv$, $A[f]=\int\mathcal N_Ve^{i\alpha v}f\,dv$.
@@ -123,10 +123,10 @@ last line has period average $0$.
 $b[1-e(1-y)c_w]$ plus remainders; integrated, $b\Psi$. The bound $\Psi\ge\min(\Phi,\frac12)$: for $C\ge0$, $e(1-y)\le1$; for $C<0$,
 $\Psi\ge1-\max_y(y-1)e^{-y/2}=1-2e^{-3/2}>\tfrac12$. The $F$-term is $(1-e)\sigma^2\langle\theta_\tau F\rangle+e\sigma^2\langle\theta_\tau F(1-\cos\psi)\rangle+\dots\ge(1-e)\sigma^2\langle\theta_\tau F\rangle-\dots$.
 The cross term: $2\alpha\psi'=(1-b)\sigma^2G$ with $|\sigma^2G|\le\gamma_P$ and the exact parity identity $\langle hG\rangle=-\langle F\rangle$
-($\langle h_wh'/h\rangle=0$ for even $f$), so $\langle h\sigma^2G\cos\psi\rangle\ge-\sigma^2\langle F\rangle-\gamma_P\langle h(1-\cos\psi)\rangle$.
+($\langle h_wh'/h\rangle=-(w/s^2)k'\langle\partial_t(h-\ln h)\rangle=0$ for every profile, by the common envelope; v1.3 used the evenness of $f$), so $\langle h\sigma^2G\cos\psi\rangle\ge-\sigma^2\langle F\rangle-\gamma_P\langle h(1-\cos\psi)\rangle$.
 The last line: $\sigma^2A[D']-\sigma^2e^{iw/\sqrt2}A[h'']=-e\sigma^2k'\langle\partial_t\Theta\,(D-h'e^{iw/\sqrt2})\rangle$, and
-$\sigma^2\mathrm{Re}(e^{iw/\sqrt2}A[h''])-\sigma^2G[h'']=t_w(1-e\cos\tfrac{w}{\sqrt2})-e\cos\tfrac{w}{\sqrt2}\,x\sum n^2q_ne_n(\cosh n\beta-1)$ with
-$t_w=x\sum n^2q_ne_n$, which pairs with the second term of $ZW$ in Lemma~\ref{lem:BL2}: $(1-e)t_w$ joins $(1-e)ZW$ and
+$\sigma^2\mathrm{Re}(e^{iw/\sqrt2}A[h''])-\sigma^2G[h'']=t_w(1-e\cos\tfrac{w}{\sqrt2})-e\cos\tfrac{w}{\sqrt2}\,x\sum n^2q_ne_n(\cosh n\beta-1)\cos\varphi_n$ (plus the sine term $a_{10}$ below) with
+$t_w=x\sum n^2q_ne_n\cos\varphi_n$, which pairs with the second term of $ZW$ in Lemma~\ref{lem:BL2}: $(1-e)t_w$ joins $(1-e)ZW$ and
 $e(1-\cos\frac w{\sqrt2})t_w$ is bounded by $\frac12x\Qb\nu_2(\Phi_w+\chi_w)$.
 
 \emph{Remainders.} With $\chi=\psi-w/\sqrt2=\sigma^2(\tilde s+s_w)/\sqrt2$, $\int\Gamma\sup_t|\chi|\le\sigma c_\chi$,
@@ -140,7 +140,12 @@ $a_5=\sigma^2\nu_0(1+\Qb)\gamma_P$,
 $a_6=\nu_1(xN_1\sigma c_\chi+\sigma\sqrt x(1+\Qb)\gamma_P/\sqrt2)$,
 $a_7=\tfrac12x\Qb\nu_2(1+\Qb)\sigma c_\chi$,
 $a_8=\Qb\sigma^2\tau^2\nu_4/8$,
-$a_9=\sigma^2x\Qb\nu_2/(2(1-\nu_0))$ (from $\sigma^2W_{\mathrm{per}}\le\sigma^2(ZW+\tfrac12x\Qb\nu_2)/(1-\nu_0)$);
+$a_9=\sigma^2x\Qb\nu_2/(2(1-\nu_0))$ (from $\sigma^2W_{\mathrm{per}}\le\sigma^2(ZW+\tfrac12x\Qb\nu_2)/(1-\nu_0)$), and, when $f$ has sine components (v1.4),
+$a_{10}=\frac12x\beta\Qb\nu_3\le\sigma\tau\sqrt x\,\Qb\nu_3/(2\sqrt2)$: on $h''$ the operator $\Theta$ gives $\langle\Theta\cos(nt-\varphi_n)\rangle=e_n(\cosh n\beta\cos\varphi_n+i\sinh n\beta\sin\varphi_n)$,
+whose imaginary part adds $e\sin\frac w{\sqrt2}\,x\sum n^2q_ne_n\sinh(n\beta)\sin\varphi_n$ to the last line ($\sinh n\beta\le n\beta e^{n\beta}$), and the $b$-term gets
+the analogous $-eb(1-y)\sin\frac w{\sqrt2}\sum q_ne_n\sinh(n\beta)\sin\varphi_n$. Both are $\sin\frac w{\sqrt2}$ times a function that is even in $w$ ($q_n(w)$ is even), so
+their integrals against the centred $\Gamma$ vanish exactly; we nevertheless keep $a_{10}$ as a bound in modulus (the $b$-term analogue, bounded in modulus, would add
+$\tau\Qb\nu_1/(2\sqrt2)$ to $A_0$ below, $<10^{-6}$ in Lemma~\ref{lem:F6}). Every other step bounds Fourier coefficients in modulus and is unchanged;
 each carries a factor $\sigma$, and $\sum a_i=\sigma b\,E_R$ with $x=b\tau$. The $\Phi$-proportional remainders are
 $\frac12b\Qb\nu_0\Phi$ (from $\langle\theta_\tau h\rangle-1$) and $\frac12x\Qb\nu_2\Phi=\frac12b\tau\Qb\nu_2\Phi$. Dividing by $Z$ gives~\eqref{eq:BL3}.
 For the relative form use $\Phi\le4\Psi$ and $\sigma bE_R\le E_R\,b\min(\Phi,\frac12)\cdot(\eta G\theta_G/\varphi_1)$ in the chain (Lemma~\ref{lem:BL4}),
@@ -231,16 +236,16 @@ averages. On the $22$ states of the numerical check, $2N_\phi$ lies below the bo
 
 \paragraph*{Size of the corrections.} For $\tau\ge80$ and every $x\ge1$ (\code{bl\_theta.py}):
 $\epsilon_1\le1.3\times10^{-17}$, the relative part of Lemma~\ref{lem:BL2} $\le9.6\times10^{-18}$ and its $b$-part $\le8.5\times10^{-17}b$,
-$\epsilon_3\le2.1\times10^{-14}$, the factor of Lemma~\ref{lem:BL5} $\le6.7\times10^{-16}$, $\epsilon_5\le7.1\times10^{-14}$. So
+$\epsilon_3\le3.0\times10^{-14}$, the factor of Lemma~\ref{lem:BL5} $\le6.7\times10^{-16}$, $\epsilon_5\le7.1\times10^{-14}$. So
 $\epsilon_\theta:=\max\le7.1\times10^{-14}$. On $22$ states with $\tau$ from $3$ to $25$ (where the corrections are visible) every inequality of
 Lemmas~\ref{lem:BL1}, \ref{lem:BL2}, \ref{lem:BL3} and \ref{lem:BL5} holds against direct two-dimensional quadrature \numst.
 
 \paragraph*{The start of the bootstrap (former (P8)).}
-The lower-side chain starts its bootstrap from $F_c\ge1.02G$; v1.0 assumed this as (P8). It follows from (P0)--(P7):
+The lower-side chain starts its bootstrap from $F_c\ge1.02G$; v1.0 assumed this as (P8). It follows from (P0), (P2)--(P7):
 
 \begin{lemma}[the start of the bootstrap is automatic] \caproofst{\code{bl\_bj1.py}}
 \label{lem:BJ1}
-Let $\rho$ be a periodic window with (P0)--(P5) and $\sigma\le10^{-24}$, and let $0<c\le c_*:=0.134/0.9$. If both branches are small,
+Let $\rho$ be a periodic window with (P0), (P2)--(P5) and $\sigma\le10^{-24}$, and let $0<c\le c_*:=0.134/0.9$. If both branches are small,
 $(a)<c$ and $(a')<c$, then the factor of Lemma~\ref{lem:AY2P} satisfies $A_1A_2A_3\ge A_{\min}=0.937$. Consequently, for every $G\le0.134$ and every
 state with $|\varepsilon(\rho)|\le\bar\varepsilon\le0.1$,
 \begin{equation}

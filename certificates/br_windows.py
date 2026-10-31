@@ -41,7 +41,8 @@ CP = float(CP_TXT); B0 = CP * 1e-24
 QI = I('0.25'); RHO = I('0.125'); CI = I('0.134') / I('0.9'); SI = I('1e-24'); CPI = I(CP_TXT)
 PI = I('3.14159265358979323846264338327950288419716939937510582097494', '3.14159265358979323846264338327950288419716939937510582097495')
 BR_DIR = os.environ.get('BR_DIR', 'results')                  # where the one-line-per-cell files live (a temporary folder for recomputations)
-FNT = os.path.join(BR_DIR, 'br_cells_%s_N%s' + ('' if CP_TXT == '0.002' else '_cp' + CP_TXT) + '.jsonl')
+PHASE = C.PHASE                                                 # v1.4 (BR_PHASE=1): sine components allowed, e kept in the theta remainders
+FNT = os.path.join(BR_DIR, 'br_cells_%s_N%s' + ('' if CP_TXT == '0.002' else '_cp' + CP_TXT) + ('_ph' if PHASE else '') + '.jsonl')
 
 
 def f(x): return (float(x.lo), float(x.hi))
@@ -123,9 +124,9 @@ def W_over_b_sup(N, ncell=4000):
         TA, TB = I(ta), I(tb)
         dN = I(0)
         for k in range(1, N): dN = dN + 2 * (-(I(k * k) * TA / 2)).exp()
-        for s in range(3, 2 * N): dN = dN + (-(I(s * s) * TA / 2)).exp()
+        for s in (range(2, 2 * N + 1) if PHASE else range(3, 2 * N)): dN = dN + (-(I(s * s) * TA / 2)).exp()
         P = (1 + dN) * S2 / 2; P2 = TB * N2 * N2
-        Pm = P if P.hi <= P2.hi else P2
+        Pm = P if (PHASE or P.hi <= P2.hi) else P2
         h2 = I(0)                                                       # sum n^2 |q0_n| e_n <= Qbar max_n n^2 e_n, tau n^2 e_n <= 2/e
         v = TB * gs * Pm / (1 - QI) + g1 * QI * 2 / I(1).exp()
         v = v / (1 - g1 * QI)
@@ -141,7 +142,15 @@ def caseC(N, c=CI, sig=SI, cp=CPI):
     al = I(((1 - cp * sig) / I(2).sqrt()).lo, (1 / I(2).sqrt()).hi)
     Xmin = (-(al * al) * Vmax / 8).exp() - QI
     assert Xmin.lo > 0
-    main = al * al * Xmin * Xmin / (4 * (1 + QI) * (1 + QI))
+    if PHASE:
+        # X_w is complex: |Re(X_w e^{i theta})| >= (X0 |cos theta| - Qbar)_+, theta = w/(2 sqrt2), X0 = e^{-alpha^2 V/8}, d = X0 - Qbar.  With
+        # W = sqrt(d/X0) and s = |theta|/W <= 1: X0 cos theta - Qbar >= d - X0 theta^2/2 = d (1 - s^2/2), and (1 - s^2/2)^2 >= 1 - s, so the square
+        # is >= d^2 (1 - |theta|/W)_+ (a triangle, pi-periodised).  A triangle's Fourier coefficients are >= 0, hence its Gaussian average over theta
+        # is >= its uniform average d^2 W/pi for every L:  int Gamma |Re X_w e^{i theta}|^2 >= G := d^2 sqrt(d/X0)/pi.
+        X0 = Xmin + QI; G = Xmin * Xmin * (Xmin / X0).sqrt() / PI
+        main = al * al * G / (2 * (1 + QI) * (1 + QI))
+    else:
+        main = al * al * Xmin * Xmin / (4 * (1 + QI) * (1 + QI))
     x = I(80) * cp * sig; N1 = I(N) * QI; N2 = I(N * N) * QI
     gam = (x * (N2 * (1 + QI) + N1 * N1) + x.sqrt() * N1 * (1 + 2 * QI) / I(1).exp().sqrt()) / ((1 - QI) * (1 - QI))
     cchi = (x.sqrt() * N1 / (1 - QI) + (2 / PI).sqrt() + QI * (-I('0.5')).exp() / (1 - QI)) / I(2).sqrt()
@@ -158,7 +167,7 @@ def caseA1(N, c=CI, sig=SI):
     e1 = (-tau / 2).exp()
     dN = I(0)
     for k in range(1, max(N, 2)): dN = dN + 2 * (-(I(k * k) * tau / 2)).exp()
-    for s in range(3, 2 * N): dN = dN + (-(I(s * s) * tau / 2)).exp()
+    for s in (range(2, 2 * N + 1) if PHASE else range(3, 2 * N)): dN = dN + (-(I(s * s) * tau / 2)).exp()
     kw = (1 + QI * g1 * rs * e1) / (1 - QI * g1 * e1)
     h2 = QI * e1                                                        # sum n^2 |q0_n| e_n <= Qbar max_n n^2 e^{-40 n^2} = Qbar e^{-40}
     Wc = ((1 + dN) * S2maxI(N) * gs / (2 * (1 - QI)) + g1 * h2) / (1 - g1 * QI * e1)
@@ -173,6 +182,11 @@ def eps_R(N, Ts, T):
     tau = I(80); beta = tau / (2 * I(Ts)).sqrt()
     def nu(k):
         s = I(0)
+        if PHASE:     # Lemma BL3': every beta-dependent remainder carries e = e^{-beta^2/(2 tau)}: e e_n e^{n beta} = exp(-tau (n - r)^2/2), plus the theta_tau part
+            r = beta / tau
+            for n in range(1, 13): s = s + I(n ** k) * ((-(tau * (I(n) - r) * (I(n) - r)) / 2).exp() + (-(I(n * n) * tau / 2)).exp())
+            last = I(13 ** k) * ((-(tau * (I(13) - r) * (I(13) - r)) / 2).exp() + (-(I(169) * tau / 2)).exp())
+            return 2 * (s + I(0, (2 * last).hi))
         for n in range(1, 13): s = s + I(n ** k) * (-(I(n * n) * tau / 2) + I(n) * beta).exp()
         last = I(13 ** k) * (-(I(169) * tau / 2) + I(13) * beta).exp()
         return 2 * (s + I(0, (2 * last).hi))
@@ -182,12 +196,13 @@ def eps_R(N, Ts, T):
     cc = (N1 / (1 - QI) + (2 / PI).sqrt() + QI * (-I('0.5')).exp() / (1 - QI)) / I(2).sqrt()
     r2 = I(2).sqrt(); Q = QI
     A0 = tau * tau * N1 * N1 * nv[1] / (r2 * (1 - Q)) + tau * nv[1] * (1 + Q) * gmax / r2
+    if PHASE: A0 = A0 + tau * tau * Q * nv[3] / (2 * r2)                  # a_10: the sinh(n beta) sin(phi_n) term of Theta acting on h'' (sine components)
     B0 = I('0.375') * tau * Q * nv[0] + Q * tau * tau * nv[2] / 8 + tau * nv[0] * (1 + Q) * gmax + Q * tau * tau * tau * nv[4] / 8
     C0 = (1 + Q) * (1 + Q / 2) * cc * nv[0] + tau * nv[1] * N1 * cc + tau * Q * nv[2] * (1 + Q) * cc / 2 + tau * Q * nv[2] / (2 * (1 - nv[0]))
     S = A0 + B0 + C0
     case_i = S / (I('0.2') * I(T)); case_ii = (A0 / I(Ts).sqrt() + B0 / I(Ts) + C0) / I('0.2')
     eR = case_i if case_i.hi >= case_ii.hi else case_ii
-    slope = I(3) / tau - I('0.5') + 1 / (2 * I(Ts)).sqrt()
+    slope = (I(3) / tau - (1 - 1 / (2 * I(Ts)).sqrt()) * (1 - 1 / (2 * I(Ts)).sqrt()) / 2) if PHASE else (I(3) / tau - I('0.5') + 1 / (2 * I(Ts)).sqrt())
     phi_rem = 2 * Q * (nv[0] + tau * nv[2])
     return {'beta_over_tau': float(beta.hi / 80), 'A0': f(A0), 'B0': f(B0), 'C0': f(C0), 'eps_R': float(eR.hi), 'slope': float(slope.hi), 'phi_remainder': float(phi_rem.hi),
             'ok': bool(slope.hi < 0)}
@@ -218,8 +233,9 @@ def bj1(N, x0, eps, sig=SIG):
     aw2b = (1 - eps) * ep / (4 * th * (1 + eps) * gst * (1 + sig ** 3)) * J.DN
     r['step2b'] = {'e_prime': ep, 'gamma_star': gst, 'a_lower_over_c': aw2b / c, 'contradiction': bool(aw2b >= c)}
     r['step3a_interval'] = BL.step3a_interval(24, c, eps)
-    r['ok'] = bool(r['step2b']['contradiction'] and r['step3a']['contradiction'] and r['step3b']['contradiction'] and r['A_min'] >= 1.02 * c and r['A_min'] > 0.9
-                   and r['step3a_interval']['g_gt_rhs'] and r['step3a_interval']['unimodal'])
+    r['steps_ok'] = bool(r['step2b']['contradiction'] and r['step3a']['contradiction'] and r['step3b']['contradiction'] and r['A_min'] >= 1.02 * c
+                         and r['step3a_interval']['g_gt_rhs'] and r['step3a_interval']['unimodal'])     # what App. F needs (g >= 0.9 A_min/(2 k_eff))
+    r['ok'] = bool(r['steps_ok'] and r['A_min'] > 0.9)                                                    # + the bootstrap-start flag of Lemma 28
     r['x_cells'] = len(cells) - 1
     return r
 
@@ -237,6 +253,7 @@ def E_R_sup(N, x0=1e-12, sig=SIG):
              + tau ** 2 * N1 ** 2 * nu[1] / (np.sqrt(2 * a) * (1 - Q)) + sig * tau * nu[0] * (1 + Q) * gam / a
              + tau * nu[1] * (N1 * cc + (1 + Q) * gam / np.sqrt(2 * a)) + tau * Q * nu[2] * (1 + Q) * cc / 2 + Q * sig * tau ** 3 * nu[4] / (8 * a)
              + sig * tau * Q * nu[2] / (2 * (1 - nu[0])))
+        if PHASE: e += tau ** 2 * Q * nu[3] / (2 * np.sqrt(2 * a))                 # a_10 (sine components)
         worst = max(worst, e)
     return worst
 
@@ -297,8 +314,10 @@ def run(N, small_x):
         er = eps_R(N, Ts, a1['T_lower']); out['eps_R'] = er
         eps2 = EPS + er['eps_R'] + er['phi_remainder']
         r2 = bj1(N, 0, eps2)
-        out['caseA2'] = {'eps': eps2, 'A_min': r2['A_min'], 'ok': r2['ok'] and er['ok'], 'step3a_margin': r2['step3a_interval']['margin_lower'],
+        out['caseA2'] = {'eps': eps2, 'A_min': r2['A_min'], 'ok': (r2['steps_ok'] if PHASE else r2['ok']) and er['ok'],
+                         'step3a_margin': r2['step3a_interval']['margin_lower'],
                          'step2i': r2['step2b']['a_lower_over_c'], 'step3ii': r2['step3b']['W_lower_over_W_cap'], 'x_cells': r2['x_cells']}
+        if PHASE: out['caseA2']['A_min_gt_0.9'] = bool(r2['A_min'] > 0.9)        # the bootstrap-start flag (not needed for g >= 0.134)
         out['conclusion_x_to_0'] = conclusion(N, r2['A_min'], eps2)
         print('N=%d A1:' % N, a1, 'eps_R:', er, 'A2:', out['caseA2'], out['conclusion_x_to_0'], flush=True)
     return out
@@ -328,7 +347,7 @@ if __name__ == '__main__':
         else:
             r = run(N, small_x=small)
             res = json.load(open(out)) if os.path.exists(out) else {}
-            key = 'N=%d' % N + ('' if CP_TXT == '0.002' else ', c\'=' + CP_TXT)
+            key = 'N=%d' % N + ('' if CP_TXT == '0.002' else ', c\'=' + CP_TXT) + (', phase' if PHASE else '')
             if 'small_x_attempt' in res.get(key, {}): r['small_x_attempt'] = res[key]['small_x_attempt']
             res[key] = r
         json.dump(res, open(out, 'w'), indent=1, default=float)

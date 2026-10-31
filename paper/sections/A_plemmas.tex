@@ -5,24 +5,24 @@
 The proofs below are written with period averages. The Gaussian averages that actually occur are $\theta_\tau$-weighted period averages;
 App.~\ref{app:theta} gives each lemma in that form with explicit remainders (v1.1).
 
-Throughout, $p=\mathcal N_V(v)\Gamma(w)h(t,w)$ with $t=k'v$ and $h=1+\sum_nq_n(w)\cos nt$ (Lemma~\ref{lem:AW1P}); $1-\Qb\le h\le1+\Qb$, and
+Throughout, $p=\mathcal N_V(v)\Gamma(w)h(t,w)$ with $t=k'v$ and $h=1+\sum_nq_n(w)\cos(nt-\varphi_n)$ (Lemma~\ref{lem:AW1P}); $1-\Qb\le h\le1+\Qb$, and
 $\langle\cdot\rangle$ is the average over one period in $t$.
 
 \paragraph*{Lemma~\ref{lem:AW1P}.}
-The blur of $\mathcal N(v;L_v^2)\cos(nk_0v/\sigma)$ is $\mathcal N(v;V)\cos(nk'v)e^{-n^2K/2}$ and the blur of $\mathcal N(w;L_w^2)e^{-w^2/2\ell^2}$ is a
+The blur of $\mathcal N(v;L_v^2)e^{i(nk_0v/\sigma-\varphi_n)}$ is $\mathcal N(v;V)e^{i(nk'v-\varphi_n)}e^{-n^2K/2}$ (the phase is a constant factor), so the blur of $\mathcal N(v;L_v^2)\cos(nk_0v/\sigma-\varphi_n)$ is $\mathcal N(v;V)\cos(nk'v-\varphi_n)e^{-n^2K/2}$; the blur of $\mathcal N(w;L_w^2)e^{-w^2/2\ell^2}$ is a
 Gaussian of variance $S_b+\sigma^2$ times $(S_b/L_w^2)^{1/2}$; dividing by $\Gamma$ gives $q_n(w)=q0_ne^{-w^2/2s^2}$ with the same $s$ and the same factor $c_b$ for every $n$, and $x\le K$ gives the last bound. \qed
 
 \paragraph*{The $w$- and $v$-sandwiches.}
 $\Jww=1/L^2+\int\Gamma\langle h_w^2/h\rangle$: the cross term $2\int\Gamma'\langle h_w\rangle$ vanishes because $\langle h_w\rangle=\partial_w\langle h\rangle=0$.
-With $\langle(\sum q_n'\cos nt)^2\rangle=\tfrac12\sum q_n'^2$ and $1-\Qb\le h\le1+\Qb$ this gives the bounds of Table~\ref{tab:replace};
-$\int\Gamma q_n'^2=u_0$-terms are Gaussian integrals. The $v$-information is the same computation with $\langle(\sum nq_n\sin nt)^2\rangle$. \qed
+With $\langle(\sum q_n'\cos(nt-\varphi_n))^2\rangle=\tfrac12\sum q_n'^2$ and $1-\Qb\le h\le1+\Qb$ this gives the bounds of Table~\ref{tab:replace};
+$\int\Gamma q_n'^2=u_0$-terms are Gaussian integrals. The $v$-information is the same computation with $\langle(\sum nq_n\sin(nt-\varphi_n))^2\rangle=\frac12\sum n^2q_n^2$. \qed
 
 \paragraph*{The $S$-bounds.}
 By the envelope separation (integration by parts in $v$ against $\mathcal N_V$; the Gaussian average of a periodic function is its $\theta_\tau$-weighted
 period average, Lemma~\ref{lem:BL5}), $\keff^2=xS+\sigma^2/(4V)$ up to the relative factor $\nu_\tau$, with $S=\sum n^2\|F_n\|^2/(2\|F_0\|^2+\sum_{n\ge1}\|F_n\|^2)$, $F=\partial_w\sqrt{\Gamma h}$.
 (i) Bounding the three terms of $\partial_w\partial_t\sqrt{p}$ in mean square per period and $\int F^2=\Jww/4$ from below gives
 $S\le8\kappa_2(\Qb,\varrho)u_2/(8+u_0/(1+\Qb))$, $\kappa_2=(1+\varrho+\Qb/(2(1-\Qb)))^2/(8(1-\Qb))$.
-(ii) Wiener majorant: $\sqrt{1+H}=1+\sum_jb_jH^j$ with $H=\sum q_n\cos nt$; the $\cos nt$-coefficient of $H^j$ is at most $2h_\omega^j\omega^{-n}$ for
+(ii) Wiener majorant: $\sqrt{1+H}=1+\sum_jb_jH^j$ with $H=\sum q_n\cos(nt-\varphi_n)$; the $n$-th Fourier coefficient of $H^j$ (in modulus, for $e^{\pm int}$ together) is at most $2h_\omega^j\omega^{-n}$ for
 any $\omega>1$ with $h_\omega=\sum_mq0_m(\omega^m+\omega^{-m})/2<1$, and $\|\partial_w(\sqrt\Gamma g^j)\|/\|\partial_w(\sqrt\Gamma g)\|\le j^{1/4}$ for the
 common envelope $g=e^{-w^2/2s^2}$ (Gaussian integrals). This bounds $\|F_n\|/\|F_1\|$ and gives $S\le S_i(x)$; $\sup_{x\ge1}x(S_i(x)-1)=1.41$ (certified). \qed
 
@@ -31,7 +31,8 @@ Lemma~AW6 of the strip analysis holds verbatim: $\E[s_v^2\phi]=\E[\tilde s^2\phi
 $s_v=-v/V+\tilde s$, $m_z=(v'+R)/\sqrt2$, $R=\sigma^2\tilde s+m_w$, $\alpha=(1-\sigma^2/V)/\sqrt2$, $e=e^{-\alpha^2V/2}$, $C=\langle\cos(R/\sqrt2)\rangle$, $G=\partial_v\tilde s+\partial_vs_w$;
 and $\langle G\rangle=-J_{vv,\mathrm{per}}$ by integration by parts over one period. For the strip the pointwise bound of $\sigma^2G$ used exact
 cancellations; here $|\sigma^2G|\le\gamma_P$ follows from $|h_t|\le N_1$, $|h_{tt}|\le N_2$, $|h_{tw}|\le N_1e^{-1/2}/s$ and $h\ge1-\Qb$, and the
-step $\E_P[\tilde ss_w]=0$ uses that $f$ is even. \qed
+step $\E_P[\tilde ss_w]=0$ holds for every profile: with the common envelope, $h_w=-(w/s^2)(h-1)$, so $\langle h\,\tilde s\,s_w\rangle=-(w/L^2)k'\langle h_t\rangle-(w/s^2)k'\langle\partial_t(h-\ln h)\rangle=0$
+(an exact derivative in $t$; v1.3 used the evenness of $f$ here). \qed
 
 \paragraph*{Lemma~\ref{lem:AY1P}.}
 $\langle h\rangle=1$, so the period average of $p$ has $w$-marginal exactly $\Gamma$. $|\sigma^2\tilde s|=\sigma^2k'|h_t/h|\le\sigma\sqrt xN_1/(1-\Qb)$, and

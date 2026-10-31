@@ -17,6 +17,12 @@ Lemma BL5 (AW3-theta):  k_eff^2 in (x S_per + b/4) [(1 - nu_tau)/(1 + nu_0), (1 
    the Wiener bound unchanged (they are statements about the periodic function F = d_w sqrt(Gamma h)).
 Lemma BL6 (Lemma 5-theta): r_C, r_w of Lemma 5 hold with the factor (1 + e5), e5 = (nu_0 + omega_2 + omega_4/3 + sqrt(tau)(omega'_1 + omega'_3) + Qbar nu_0)/(1 - Qbar nu_0/2).
 -> results/bl_theta.json.  Python 3.11."""
+import os as _os, sys as _sys
+_R = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+for _d in ('src', 'certificates', 'experiments', 'verification'):
+    _p = _os.path.join(_R, _d)
+    if _p not in _sys.path: _sys.path.insert(0, _p)
+_os.chdir(_R)
 import json
 import numpy as np
 from be_cert_p import eta as eta_p, q1, Qb, gamma_P
@@ -42,16 +48,17 @@ def c_chi(x, N1, Q):
     return (np.sqrt(x) * N1 / (1 - Q) + np.sqrt(2 / np.pi) + Q * np.exp(-0.5) / (1 - Q)) / np.sqrt(2)
 
 
-def E_R(x, tau, sig, nu, N1, Q, gam):
-    """sigma b E_R bounds the absolute remainder of Lemma BL3 (a1..a9 in the proof)."""
+def E_R(x, tau, sig, nu, N1, Q, gam, phase=False):
+    """sigma b E_R bounds the absolute remainder of Lemma BL3 (a1..a9 in the proof; v1.4, phase=True: plus a10 = tau^2 Qbar nu_3/(2 sqrt(2x)),
+    the sinh(n beta) sin(phi_n) term that Theta produces on h'' when f has sine components)."""
     cc = c_chi(x, N1, Q)
-    return (0.375 * sig * tau * Q * nu[0] / x + (1 + Q) * (1 + Q / 2) * cc * nu[0] + Q * sig * tau ** 2 * nu[2] / (8 * x)
+    return (tau ** 2 * Q * nu[3] / (2 * np.sqrt(2 * x)) if phase else 0.0) + (0.375 * sig * tau * Q * nu[0] / x + (1 + Q) * (1 + Q / 2) * cc * nu[0] + Q * sig * tau ** 2 * nu[2] / (8 * x)
             + tau ** 2 * N1 ** 2 * nu[1] / (np.sqrt(2 * x) * (1 - Q)) + sig * tau * nu[0] * (1 + Q) * gam / x
             + tau * nu[1] * (N1 * cc + (1 + Q) * gam / np.sqrt(2 * x)) + tau * Q * nu[2] * (1 + Q) * cc / 2 + Q * sig * tau ** 3 * nu[4] / (8 * x)
             + sig * tau * Q * nu[2] / (2 * (1 - nu[0])))
 
 
-def eps_table(tau=TAU0, sig=SIG0):
+def eps_table(tau=TAU0, sig=SIG0, phase=False):
     """the relative corrections of Lemmas BL1-BL6 at tau (each decreases in tau for tau >= 8: tau^k e^{-n^2 tau/2 + n sigma tau} with k <= 3)."""
     nu = nus(tau, sig * tau); om, omp = omegas(tau); Q = 0.25
     # x-suprema over [1, 400] (cells; every factor decreases beyond 8) of N1, gamma_P, c_chi
@@ -59,10 +66,10 @@ def eps_table(tau=TAU0, sig=SIG0):
     for a, b in zip(xs[:-1], xs[1:]):
         N1 = float(q1(a)) * (1 + eta_p(1, a)); N1s.append(N1); gs.append(gamma_P(a, b)); ccs.append((np.sqrt(b) * N1 / (1 - Q) + np.sqrt(2 / np.pi) + Q * np.exp(-0.5) / (1 - Q)) / np.sqrt(2))
     N1m, gm, ccm = max(N1s), max(gs), max(ccs)
-    ER = E_R(1.0, tau, sig, nu, N1m, Q, gm)            # every x-dependence of E_R is a factor 1/x or 1/sqrt x (worst at x = 1) times the suprema
+    ER = E_R(1.0, tau, sig, nu, N1m, Q, gm, phase)     # every x-dependence of E_R is a factor 1/x or 1/sqrt x (worst at x = 1) times the suprema
     ER = max(ER, (0.375 * sig * tau * Q * nu[0] + (1 + Q) * (1 + Q / 2) * ccm * nu[0] + Q * sig * tau ** 2 * nu[2] / 8 + tau ** 2 * N1m ** 2 * nu[1] / (np.sqrt(2) * (1 - Q))
                   + sig * tau * nu[0] * (1 + Q) * gm + tau * nu[1] * (N1m * ccm + (1 + Q) * gm / np.sqrt(2)) + tau * Q * nu[2] * (1 + Q) * ccm / 2
-                  + Q * sig * tau ** 3 * nu[4] / 8 + sig * tau * Q * nu[2] / (2 * (1 - nu[0]))))
+                  + Q * sig * tau ** 3 * nu[4] / 8 + sig * tau * Q * nu[2] / (2 * (1 - nu[0])) + (tau ** 2 * Q * nu[3] / (2 * np.sqrt(2)) if phase else 0.0)))
     z = Q * nu[0] / 2
     e1 = nu[0] * (1 + 2 * Q) / (1 - z)
     e2 = (nu[0] + z) / (1 - z); e2b = tau * Q * nu[2] / (2 * (1 - z))

@@ -14,6 +14,9 @@ v1.3 adds section 9: App. F (windows with at most N harmonics without (P5): Lemm
 k0 = 240 (bs_upper_tail.py).  Default: representative rows of the new cells, all interval constants for N = 16, Lemma F6 and F7 in full (a few
 minutes); --recompute: every row with its in-cell audit, the interval constants for every N, and every run behind results/br_windows.json from
 scratch in a temporary folder (about one hour).
+v1.4 adds section 10: App. G (paper E's remainder along the comb, Theorem G1), App. F with any phases ((P1) dropped) and N = 20 down to x -> 0
+(Lemma Fe: the factor e in the theta remainders), the theta_tau corrections with the sine term a_10.  Default: a few minutes; --recompute: every
+row with its audit and the phase run behind results/bu_windows.json from scratch (about 30 minutes).
 
 Comparisons of recomputed floating-point values with stored ones use a relative tolerance (CPUs differ in the last bits); the interval-arithmetic
 certificate (decimal, 60 digits) is compared exactly.  Each check prints which kind of comparison it made.  Exit code 0 iff every check passes."""
@@ -136,10 +139,10 @@ check('combs have no deep valleys: Lambda* = %s finite' % ', '.join('%.2f' % LA[
       all(np.isfinite(LA['comb_%s' % s]['Lambda_star']) for s in ('1e-06', '1e-12', '1e-24')))
 
 # ---------------------------------------------------------------- 5. the manuscript
-import bs_numbers
+import bu_numbers
 tex = ''.join(open(f).read() for f in sorted(glob.glob('paper/sections/*.tex')))
-N = bs_numbers.numbers(); miss = [x['text'] for x in N if x['text'] not in tex]
-check('every number of the manuscript (v1.3) recomputed from results/ is found in paper/sections (%d numbers)' % len(N), not miss and len(N) >= 200, ', '.join(miss[:5]))
+N = bu_numbers.numbers(); miss = [x['text'] for x in N if x['text'] not in tex]
+check('every number of the manuscript (v1.4) recomputed from results/ is found in paper/sections (%d numbers; 34 numbers of v1.3 App. F superseded)' % len(N), not miss and len(N) >= 210, ', '.join(miss[:5]))
 
 # ---------------------------------------------------------------- 6. the demo notebook (stored with its outputs)
 NBK = json.load(open('demo/hidden_ripple_demo.ipynb'))
@@ -302,5 +305,39 @@ if FULL:
     check('every run behind results/br_windows.json recomputed from scratch in a temporary folder (%s; %.0f s): identical to the stored file up to relative 1e-9' % (
           ', '.join(r.get('keys', [])), r.get('seconds', 0)), r['ok'], r.get('error', ''))
 print('section 9 (v1.3): %.0f s' % (time.time() - t9))
+
+# ---------------------------------------------------------------- 10. v1.4: App. G (eps along the comb), App. F with any phases, N = 20 to x -> 0
+t10 = time.time()
+def v14(comp):
+    out = subprocess.run([sys.executable, 'verification/bu_v14_checks.py', comp] + (['--full'] if FULL else []), capture_output=True, text=True)
+    try: return json.loads(out.stdout.strip().split('\n')[-1])
+    except Exception: return {'ok': False, 'error': (out.stderr or out.stdout)[-300:]}
+r = v14('eps')
+check('Theorem G1: |eps(S\'_C)| <= %.2f k0^-2 e^{-3 k0^2/2}(1 + R) for every k0 >= 3.43, sup %.3e; recomputed, identical to the stored result: %s (decimal intervals; exact)' % (
+      r.get('c', 0), r.get('sup', 1), r.get('identical')), r['ok'], r.get('error', ''))
+r = v14('theta')
+check('theta_tau corrections for tau >= 80 with the sine term a_10: E_R <= %.2e (even: %.2e), eps_3 <= %.2e, eps_theta = %.2e < eps_in = 1e-6 (floating point)' % (
+      r.get('E_R', 1), r.get('E_R_even', 1), r.get('e3', 1), r.get('eps_theta', 1)), r['ok'], r.get('error', ''))
+r = v14('F2i')
+check('Lemma F2(i), any phases (N = 20, 1e-12 <= x <= 1, tau <= 80): %d cells, smallest ratio %.3f, audit %d points; recomputed on %d rows%s (relative %.1e; floating point)' % (
+      r.get('cells', 0), r.get('worst', 0), r.get('audit_points', 0), r.get('rows', 0), ' with the in-cell audit' if FULL else '', r.get('dev', 1)), r['ok'], r.get('error', ''))
+r = v14('F2ii')
+check('Lemma F2(ii), any phases (N = 20, x < 1e-12, b >= c\' 1e-24, c\' = 1e-9): %d cells, smallest ratio %.3f, b-cells cover [1e-33, 1], audit %d points; recomputed on %d of %d b-cells (relative %.1e)' % (
+      r.get('cells', 0), r.get('worst', 0), r.get('audit_points', 0), r.get('rows', 0), r.get('of', 0), r.get('dev', 1)), r['ok'], r.get('error', ''))
+r = v14('intervals')
+check('Lemmas F4 (complex X_w, triangle bound G), F5 and eps_R of F6 (Lemma Fe, a_10) for N = 20, identical to the stored constants: (a\')/c_* >= %.2f, T_20 >= %.4f, eps_R <= %.5f (decimal intervals; exact)' % (
+      r.get('ratio_C', 0), r.get('T', 0), r.get('eps_R', 9)), r['ok'], r.get('error', ''))
+r = v14('F6')
+check('Lemma F6 (20 harmonics, any phases, x -> 0) recomputed: A_min = %.5f, step 2(i) %.3f, step 3(i) margin %.4f > 1 (interval arithmetic) (relative %.1e)' % (
+      r.get('A_min', 0), r.get('step2i', 0), r.get('step3a', 0), r.get('dev', 1)), r['ok'], r.get('error', ''))
+r = v14('F7')
+check('Theorem F8 (20 harmonics, any phases, 0 < x < 1): k_eff^2 <= %.4f, g >= %.4f > 0.134 (floating point)' % (r.get('k_eff2', 9), r.get('g', 0)), r['ok'], r.get('error', ''))
+r = v14('phases')
+check('phase steps on %d random cases: parity identity, phase Toeplitz factor, triangle bound G of Lemma F4, |a_n| >= 2 - n^2 (2 - |a_1|) (numerical illustrations of proved steps)' % r.get('cases', 0),
+      r['ok'], r.get('error', '') or ', '.join(r.get('bad', [])))
+if FULL:
+    r = v14('rerun')
+    check('the phase run behind results/bu_windows.json recomputed from scratch in a temporary folder (%.0f s): identical up to relative 1e-9' % r.get('seconds', 0), r['ok'], r.get('error', ''))
+print('section 10 (v1.4): %.0f s' % (time.time() - t10))
 print('elapsed %.0f s (%s)' % (time.time() - t0, 'full recomputation' if FULL else 'default'))
 finish()

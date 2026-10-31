@@ -94,8 +94,8 @@ statement for all strips is Theorem~\ref{thm:AY1P} with Theorem~\ref{thm:E6}.)
 \subsection{The theorem}
 \begin{theorem}[lower side] \caproofst{\code{bh\_cert\_cells.py}}
 \label{thm:AY1P}
-Let every state of the class satisfy (P0)--(P7) of Table~\ref{tab:assumptions}, with $|\varepsilon(\rho)|\le\bar\varepsilon\le0.1$; for strips and windows with at most $16$ harmonics (P5) is not
-needed, and for windows with at most $20$ harmonics it may be replaced by $x\ge10^{-12}$. Then for every
+Let every state of the class satisfy (P0), (P2)--(P7) of Table~\ref{tab:assumptions}, with $|\varepsilon(\rho)|\le\bar\varepsilon\le0.1$; for windows with at most $20$ harmonics (any phases) and for even strips (P5) is not
+needed. Then for every
 $\ls\in[24\ln10,\,10^5\ln10]$ and every such state,
 \begin{equation}
 \begin{aligned}
@@ -107,8 +107,8 @@ with $G(\ls)=\min(0.134,1.2/\sqrt{\ls})$, $4X_P=\ls+5\ln X_P+K^*$, $S1_P=1.41$, 
 containing $\ls$ ($F_{\mathrm{int}}^*$ includes the factor $(1+\varepsilon_{\mathrm{in}})^{-1/2}$ of Lemma~\ref{lem:BL5}). The constants do not depend on $\bar\varepsilon$ (they are certified at $\bar\varepsilon=0.1$, Lemma~\ref{lem:BH1}). For $\ls>10^5\ln10$ the chain holds as
 well and $\liminf g_{\min}^P\sqrt{\ls}\ge1-\bar\varepsilon$ (Lemma~\ref{lem:BH2}).
 \end{theorem}
-(For $x\ge1$ this is the chain above. A strip or a window with at most $16$ harmonics with $x<1$, and a window with at most $20$ harmonics and $10^{-12}\le x<1$, has $g\ge0.134\ge G(\ls)$
-by Theorems~\ref{thm:E6}, \ref{thm:F8} and~\ref{thm:F9} of Apps.~\ref{app:P5} and~\ref{app:FN}, so the bound holds for it as well.)
+(For $x\ge1$ this is the chain above. A window with at most $20$ harmonics and $x<1$ has $g\ge0.134\ge G(\ls)$
+by Theorem~\ref{thm:F8} of App.~\ref{app:FN} (and an even strip by Theorem~\ref{thm:E6}), so the bound holds for it as well.)
 
 The certificate covers $[24\ln10,10^5\ln10]$ with $421$ cells of ratio $\ell_b/\ell_a=1.02$; every condition holds on every cell, and $d\ge8.9$.
 The constant needed on a cell, $(1-L_{\mathrm{cell}})\ell_a/\ln\ell_a$, is at most $1.615$ (at $\ls\approx80.5$); with $c_1=1.7$ the smallest

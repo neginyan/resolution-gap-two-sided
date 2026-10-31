@@ -17,19 +17,21 @@ Code, stored results and computer-assisted proofs for the paper by Taishi Namba 
 
 > **Version 1.3 (2026-10-31).** The comb's upper bound U_P√ℓ ≤ 1 + 6.0 lnℓ/ℓ now holds for every σ ≤ 10⁻²⁴, not only down to 10⁻¹⁰⁰⁰⁰⁰: beyond the cells every factor is carried as its leading monomial in k₀ and e^{−k₀²} with an exact constant, so U_P√ℓ → 1 is proved and the limit 1 needs only ε(S′_C) → 0. (P5) is removed for windows with at most 16 harmonics and weakened to x ≥ 10⁻¹² for at most 20 (Appendix F). The paper also states explicitly that the comb is in the class only when |ε(S′_C)| ≤ ε̄ (P6), a condition v1.2 left implicit. The bounds of the theorems are unchanged.
 
+> **Version 1.4 (2026-11-01).** Paper E's remainder along the comb is now bounded, |ε(S′_C)| ≤ 276.4 k₀⁻² e^{−3k₀²/2}(1.103) ≤ 5.62 × 10⁻⁷ for every σ ≤ 10⁻²⁴ (Appendix G), so the comb satisfies (P6) and the upper limit limsup g_min√ℓ ≤ 1 is proved on every class with a remainder bound ε̄ ≥ 5.62 × 10⁻⁷; along the comb g√ℓ → 1 without any condition. The evenness condition (P1) is removed (any phases), and (P5) is removed for windows with at most 20 harmonics (Appendix F). The bounds of the theorems are unchanged.
+
 ## The result in brief
 
 An observer who sees a pendulum's phase space through a Gaussian blur of width σ cannot always resolve the arrow of time near the hyperbolic top. The *resolution gap* g measures by how much. The companion paper ([paper E](https://doi.org/10.5281/zenodo.23617343)) showed that g is not bounded below uniformly in σ: a hidden ripple of the right fineness makes it shrink, like 1/√ln(1/σ) on the strips it searched.
 
-This paper asks how fine such a hidden ripple can be, and answers it on the **periodic windows**: states that carry, inside a narrow window, any even periodic profile, from a single cosine (the strip) to a comb of thin teeth.
+This paper asks how fine such a hidden ripple can be, and answers it on the **periodic windows**: states that carry, inside a narrow window, any periodic profile, from a single cosine (the strip) to a comb of thin teeth.
 
-- **Two-sided theorem** [proof, computer-assisted]. Under explicit assumptions (P0)–(P7), for every 10⁻¹⁰⁰⁰⁰⁰ ≤ σ ≤ 10⁻²⁴,
+- **Two-sided theorem** [proof, computer-assisted]. Under explicit assumptions (P0), (P2)–(P7), for every 10⁻¹⁰⁰⁰⁰⁰ ≤ σ ≤ 10⁻²⁴,
 
   (1 − ε̄)(1 − 1.7 lnℓ/ℓ) ≤ g_min √ℓ ≤ (1 + |ε(S′_C)|)(1 + 6.0 lnℓ/ℓ),  ℓ = ln(1/σ).
 
   The lower side is certified on 421 cells covering the whole range and all |ε| ≤ ε̄ ≤ 0.1; the upper side on 1464 cells along an explicit comb sequence, in exact interval arithmetic.
-- **Fewer assumptions** [proof, computer-assisted]. For strips and for windows with at most 16 harmonics the lower bound holds without (P5); for windows with at most 20 harmonics, (P5) can be weakened to x ≥ 10⁻¹² (Appendices E and F).
-- **The limit.** liminf g_min √ln(1/σ) ≥ 1 − ε̄ is proved; the comb's upper bound holds for every σ ≤ 10⁻²⁴, so limsup ≤ 1 + limsup|ε(S′_C)| is proved as long as the comb satisfies (P6) [computer-assisted]. The matching limsup ≤ 1, and so the limit 1, is derived, not proved: it needs ε(S′_C) → 0.
+- **Fewer assumptions** [proof, computer-assisted]. The profile need not be even (any phases). For strips and for windows with at most 20 harmonics the lower bound holds without (P5) (Appendices E and F).
+- **The limit** [proof, computer-assisted]. On every class with a remainder bound ε̄ ∈ [5.62 × 10⁻⁷, 0.1], 1 − ε̄ ≤ liminf g_min √ln(1/σ) ≤ limsup g_min √ln(1/σ) ≤ 1, and along the comb g√ln(1/σ) → 1 without any condition. The limit of the infimum without a class bound on paper E's remainder is not claimed.
 - **A sharper lens** [derivation]. At leading order, the comb at blur σ is the strip at blur σ/256. Combs fall below the best Gaussian mixtures already at σ ≈ 1.4 × 10⁻³ [numerical].
 - **General states.** A decorrelation dichotomy and a three-case split are proved for every state. The remaining case is reduced to one conjectured inequality, so paper E's Conjecture 1 remains open.
 
@@ -50,15 +52,16 @@ python verification/run_all.py              # about 5 minutes
 python verification/run_all.py --recompute  # every certificate and the full interior-point audit (a few hours, one core)
 ```
 
-`run_all.py` runs 54 checks:
+`run_all.py` runs 62 checks:
 - the SHA-256 hashes in `MANIFEST.sha256`;
 - the stored certificates, with representative cells recomputed (30 lower cells, 184 upper cells);
 - the lemma checks against the evaluator;
-- 203 numbers of the paper against the stored results;
+- 211 numbers of the paper against the stored results;
 - the demo notebook;
 - the v1.1 lemmas: the narrow-width lemma, the θ_τ corrections, the chain with perturbed inputs, the removal of (P8), and the upper side in θ_τ form;
 - the v1.2 additions: the certificates of Appendix E (removing (P5)) and a reduced interior-point audit of every certificate (`certificates/bp_audit.py`);
 - the v1.3 additions: the cells and cases of Appendix F (`br_cells.py`, `br_windows.py`) and the comb's upper bound beyond k₀ = 240 (`bs_upper_tail.py`, checked against a direct 300-digit evaluation in `bs_upper_tail_stress.py`).
+- the v1.4 additions: the bound of paper E's remainder along the comb (`bt_eps.py`, Appendix G) and Appendix F with any phases and at most 20 harmonics (`br_cells.py`, `br_windows.py` in phase mode, `bl_theta.py`).
 
 With `--recompute`, all 421 lower cells, all 1464 upper cells, the class membership, the monotonicity table, the full interior-point audit and every run behind Appendix F are recomputed.
 
@@ -69,7 +72,7 @@ The upper certificate uses 60-digit decimal interval arithmetic with outward rou
 | folder | content |
 |---|---|
 | `src/` | the evaluator of paper E and shared tools |
-| `certificates/` | the computer-assisted proofs: lower side (`bh_cert_cells.py` with `bf_cert_p.py`, tail `bh_tail.py`), upper side (`bf_cert_upper.py` with `ba_ivl.py`, `ba_cert.py`), class membership (`bg_members.py`, `bh_members_fc.py`), monotonicity table (`bi_monotone_table.py`); v1.1: narrow width (`bk_narrow_lemma.py`, `bl_narrow80.py`), θ_τ corrections (`bl_theta.py`), perturbed chain (`bl_chain.py`), start condition (`bj_lemma.py`, `bl_bj1.py`), upper side (`bm_bl7.py`); v1.3: Appendix F (`br_cells.py`, `br_windows.py`), the comb beyond k₀ = 240 (`bs_upper_tail.py`, `bs_upper_tail_stress.py`) |
+| `certificates/` | the computer-assisted proofs: lower side (`bh_cert_cells.py` with `bf_cert_p.py`, tail `bh_tail.py`), upper side (`bf_cert_upper.py` with `ba_ivl.py`, `ba_cert.py`), class membership (`bg_members.py`, `bh_members_fc.py`), monotonicity table (`bi_monotone_table.py`); v1.1: narrow width (`bk_narrow_lemma.py`, `bl_narrow80.py`), θ_τ corrections (`bl_theta.py`), perturbed chain (`bl_chain.py`), start condition (`bj_lemma.py`, `bl_bj1.py`), upper side (`bm_bl7.py`); v1.3: Appendix F (`br_cells.py`, `br_windows.py`), the comb beyond k₀ = 240 (`bs_upper_tail.py`, `bs_upper_tail_stress.py`); v1.4: the remainder along the comb (`bt_eps.py`) |
 | `experiments/` | scripts for the numerical results: comb searches, comparison with mixtures, lemma checks, leading-order formulas |
 | `results/` | stored results; `MANIFEST.sha256` lists their SHA-256 |
 | `verification/` | `run_all.py`, the single entry point |

@@ -8,10 +8,17 @@ A \emph{periodic window} is a state
 \rho=\mathcal N(v;L_v^2)\,\mathcal N(w;L_w^2)\Big[1+e^{-w^2/2\ell^2}\big(f(k_0v/\sigma)-1\big)\Big],
 \label{eq:P}
 \end{equation}
-with $f\ge0$ $2\pi$-periodic of mean $1$, $f(t)=1+\sum_{n\ge1}a_n\cos nt$.
+with $f\ge0$ $2\pi$-periodic of mean $1$,
+\begin{equation*}
+\begin{aligned}
+f(t)&=1+\sum_{n\ge1}(a_n\cos nt+b_n\sin nt)\\
+&=1+\sum_{n\ge1}|\hat a_n|\cos(nt-\varphi_n),
+\end{aligned}
+\end{equation*}
+$\hat a_n=a_n+ib_n=|\hat a_n|e^{i\varphi_n}$ (v1.4: sine components allowed; up to v1.3 $f$ was even, $b_n=0$).
 \end{definition}
 
-For every positive profile $|a_n|\le2$ (a positive measure has $|\hat\rho_n|\le\hat\rho_0$). The strip is $a_1=c\le1$, $a_{n\ge2}=0$; a
+For every positive profile $|\hat a_n|\le2$ (a positive measure has $|\hat\rho_n|\le\hat\rho_0$). The strip is $a_1=c\le1$, $a_{n\ge2}=0$; a
 \emph{comb} of Gaussian teeth of width $\tau$ (in units of the period$/2\pi$) has $a_n=2e^{-n^2\tau^2/2}$, so $a_1\to2$ as the teeth sharpen.
 
 \paragraph*{Blurred quantities.}
@@ -19,13 +26,13 @@ Put $V=L_v^2+\sigma^2$, $L^2=L_w^2+\sigma^2$, $S_b=(L_w^{-2}+\ell^{-2})^{-1}$, $
 
 \begin{lemma}[exact factorisation] \proofst
 \label{lem:AW1P}
-$p=\mathcal N(v;V)\,\Gamma(w)\big[1+\sum_nq_n(w)\cos(nk'v)\big]$ with $\Gamma=\mathcal N(0,L^2)$, $q_n(w)=q0_n\,e^{-w^2/2s^2}$,
-$1/s^2=1/(S_b+\sigma^2)-1/L^2$ (one $s$ for all harmonics), and $q0_n=c_ba_ne^{-n^2K/2}$ with one factor $c_b=\big(S_bL^2/(L_w^2(S_b+\sigma^2))\big)^{1/2}\in(0,1]$ for every $n$; so $|q0_n|\le\bar q_n:=|a_n|e^{-n^2K/2}$ and, under (P2), $|q0_n|\le|q0_1|e^{-(n^2-1)x/2}$.
+$p=\mathcal N(v;V)\,\Gamma(w)\big[1+\sum_nq_n(w)\cos(nk'v-\varphi_n)\big]$ with $\Gamma=\mathcal N(0,L^2)$, $q_n(w)=q0_n\,e^{-w^2/2s^2}$,
+$1/s^2=1/(S_b+\sigma^2)-1/L^2$ (one $s$ for all harmonics), the phases $\varphi_n$ of $f$ unchanged, and $q0_n=c_b|\hat a_n|e^{-n^2K/2}\ge0$ with one factor $c_b=\big(S_bL^2/(L_w^2(S_b+\sigma^2))\big)^{1/2}\in(0,1]$ for every $n$; so $q0_n\le\bar q_n:=|\hat a_n|e^{-n^2K/2}$ and, under (P2), $q0_n\le q0_1e^{-(n^2-1)x/2}$.
 \end{lemma}
 (The density is normalised by $Z=\int p=1+O(\Qb\nu_0)$, which does not affect the score; the averages over $v$ in the lemmas below are period averages, and App.~\ref{app:theta} gives the exact Gaussian averages and the factor $Z$.)
 
 We write $\Qb=\sum_n\bar q_n$ (the blurred contrast), $N_p=\sum_nn^p\bar q_n$, $\varrho=s^2/(2L^2)$ (the window's aspect), and use the fact
-that the fundamental dominates after the blur: if $|a_n|\le|a_1|$ then $\bar q_n\le\bar q_1e^{-(n^2-1)x/2}$, and $\bar q_1\le2e^{-x/2}$.
+that the fundamental dominates after the blur: if $|\hat a_n|\le|\hat a_1|$ then $\bar q_n\le\bar q_1e^{-(n^2-1)x/2}$, and $\bar q_1\le2e^{-x/2}$.
 
 \paragraph*{From the strip to the window.}
 The strip analysis used ``$c\le1$'' and ``one cosine'' at a handful of places. Table~\ref{tab:replace} lists them with the replacement; the
@@ -39,13 +46,13 @@ $1/(1\pm\Qb)$.
 \begin{ruledtabular}
 \begin{tabular}{p{0.14\textwidth}p{0.22\textwidth}p{0.56\textwidth}}
 step & strip & periodic window\\ \hline
-factorisation & $p=\mathcal N_V\Gamma[1+q\cos t]$ & exact: $p=\mathcal N_V\Gamma[1+\sum q_n\cos nt]$, one $s$ for all $n$\\
+factorisation & $p=\mathcal N_V\Gamma[1+q\cos t]$ & exact: $p=\mathcal N_V\Gamma[1+\sum q_n\cos(nt-\varphi_n)]$, one $s$ for all $n$\\
 $w$-information & period average up to the relative factor $\delta_\tau$ ($\tau=k'^2V$) & $(1+u_0/(8(1+\Qb)))/L^2\le\Jww\le(1+u_0/(8(1-\Qb)))/L^2$\\
 $v$-information & period average up to the relative factor $\delta_\tau$ ($\tau=k'^2V$) & $xI_2/(2(1+\Qb))\le W_p\le xI_2/(2(1-\Qb))$, $I_2=\sum n^2q0_n^2s/\sqrt{s^2+2L^2}$\\
 envelope separation & $\keff^2=x\,S+\sigma^2/(4V)$ & unchanged up to the relative factor $\nu_\tau$ (Lemma~\ref{lem:BL5})\\
 $S$ (every $u$) & $S\le8\kappa_2u/(8+u)$ & $S\le8\kappa_2(\Qb,\varrho)u_2/(8+u_0/(1+\Qb))$, $u_2$ the $n^2$-weighted $u$\\
 $S\le1+K_1\bar q^2$ & binomial series of $\sqrt{1+q\cos t}$ & Wiener majorant: $S\le S_i(x)$, $\sup_x x(S_i-1)=1.41$\\
-curvature term & exact cancellations, parity & $\gamma_P=[x(N_2(1+\Qb)+N_1^2)+\sqrt xN_1(1+2\Qb)/\sqrt e]/(1-\Qb)^2$; $f$ even\\
+curvature term & exact cancellations, parity & $\gamma_P=[x(N_2(1+\Qb)+N_1^2)+\sqrt xN_1(1+2\Qb)/\sqrt e]/(1-\Qb)^2$; any phases (v1.4)\\
 last step & $q0^2\le e^{-x}$ & $q0_1^2\le4e^{-x}$ ($a_1\le2$): $\ln256$ enters the constant\\
 $L_w$ & assumed $\le1$ & removed (Lemma~\ref{lem:AY1P})\\
 $F_c$ & state factor & bounded by the window's parameters (Lemma~\ref{lem:AY2P})\\

@@ -16,23 +16,23 @@ strip law analytically.
 \paragraph*{What this paper does.}
 We prove the logarithmic law \emph{with the sharp constant} on a family that contains the strips: the \emph{periodic windows}
 (Sec.~\ref{sec:windows}). A periodic window is a Gaussian state that carries, inside a window of width $\ell\sim\sqrt\sigma$ in the
-slow direction $w$, an arbitrary even $2\pi$-periodic profile $f$ in the fast direction $v$; the strip is $f=1+c\cos t$, the comb is a
+slow direction $w$, an arbitrary $2\pi$-periodic profile $f$ in the fast direction $v$; the strip is $f=1+c\cos t$, the comb is a
 train of thin teeth whose fundamental amplitude approaches the largest value $2$ that a positive profile allows.
 The central result is:
 
 \begin{quote}
-\textbf{Main result} (Theorem~\ref{thm:BF1} in Sec.~\ref{sec:upper}) \caproofst{App.~\ref{app:cert}}. Under the assumptions (P0)--(P7) of Table~\ref{tab:assumptions} (for strips and windows with at most $16$ harmonics without (P5), and for windows with at most $20$ harmonics with (P5) weakened to $x\ge10^{-12}$; Apps.~\ref{app:P5}, \ref{app:FN}),
+\textbf{Main result} (Theorem~\ref{thm:BF1} in Sec.~\ref{sec:upper}) \caproofst{App.~\ref{app:cert}}. Under the assumptions (P0), (P2)--(P7) of Table~\ref{tab:assumptions} (for windows with at most $20$ harmonics without (P5); App.~\ref{app:FN}),
 $(1-\bar\varepsilon)(1-1.7\tfrac{\ln\ln(1/\sigma)}{\ln(1/\sigma)})\le g_{\min}^{P}\sqrt{\ln(1/\sigma)}
 \le(1+|\varepsilon(S'_C(\sigma))|)(1+6.0\,\tfrac{\ln\ln(1/\sigma)}{\ln(1/\sigma)})$ for every $10^{-100000}\le\sigma\le10^{-24}$, where every state of the class has
-$|\varepsilon|\le\bar\varepsilon\le0.1$ and $S'_C(\sigma)$ is an explicit comb.
-Below $10^{-100000}$ the lower side is proved analytically (Lemma~\ref{lem:BH2}): $\liminf g_{\min}\sqrt{\ln(1/\sigma)}\ge1-\bar\varepsilon$; the upper bound of the comb holds
-for every $\sigma\le10^{-24}$, so $\limsup g_{\min}\sqrt{\ln(1/\sigma)}\le1+\limsup|\varepsilon(S'_C(\sigma))|$ is proved as long as $|\varepsilon(S'_C)|\le\bar\varepsilon$ (the comb is then in the class). The matching
-$\limsup\le1$, and so the limit $1$, is derived, not proved: it needs $\varepsilon(S'_C(\sigma))\to0$ (Corollary~\ref{cor:limit}).
+$|\varepsilon|\le\bar\varepsilon\le0.1$, $S'_C(\sigma)$ is an explicit comb, and $|\varepsilon(S'_C(\sigma))|\le5.62\times10^{-7}$ (App.~\ref{app:epscomb}).
+Below $10^{-100000}$ the lower side is proved analytically (Lemma~\ref{lem:BH2}) and the comb's bound holds for every $\sigma\le10^{-24}$, so
+$1-\bar\varepsilon\le\liminf g_{\min}\sqrt{\ln(1/\sigma)}\le\limsup g_{\min}\sqrt{\ln(1/\sigma)}\le1$ on every class with $\bar\varepsilon\ge5.62\times10^{-7}$, and
+$g(S'_C)\sqrt{\ln(1/\sigma)}\to1$ (Corollary~\ref{cor:limit}). The limit is $1$ in this sense: both ends tend to $1$ as the class bound $\bar\varepsilon$ does.
 \end{quote}
 
 Here $\varepsilon(\rho)$ is paper~E's remainder of its Theorem~2, a quantity of each state $\rho$ that we carry exactly as paper~E does. The lower
 side assumes a bound $|\varepsilon(\rho)|\le\bar\varepsilon\le0.1$ on the whole class; the upper side holds on one explicit comb $S'_C(\sigma)$ and carries
-that state's own $|\varepsilon(S'_C(\sigma))|$, which is a numerical quantity here ($1.5\times10^{-15}$ at $\sigma=10^{-18}$ and $4\times10^{-16}$ at $10^{-24}$, the smallest $\sigma$ the exact evaluator reaches), not a proved bound.
+that state's own $|\varepsilon(S'_C(\sigma))|$, which we bound by $276.4\,k_0^{-2}e^{-3k_0^2/2}(1.103)\le5.62\times10^{-7}$ (Theorem~\ref{thm:G1}, v1.4; numerically it is at the rounding level, $4\times10^{-16}$ at $10^{-24}$).
 
 \paragraph*{Version~1.1.}
 Version~1.0 treated the Gaussian average over the background's $v$-envelope and the average over one ripple period as equal. For states whose
@@ -57,6 +57,14 @@ Version~1.3 proves the upper bound of the comb, $U_P\sqrt\ls\le1+6.0\ln\ls/\ls$,
 interval $R$ (App.~\ref{app:cert}). So of the two facts that the limit $1$ needed, $U_P\sqrt\ls\to1$ is now proved and only $\varepsilon(S'_C)\to0$ remains.
 It also removes (P5) for windows with at most $16$ harmonics and weakens it to $x\ge10^{-12}$ for at most $20$ harmonics (App.~\ref{app:FN}), with
 budgeted harmonic sums and a bound of $\langle\theta_\tau h_t^2\rangle$ for small $\tau$. Finally, it states explicitly that the comb belongs to the class only when $|\varepsilon(S'_C(\sigma))|\le\bar\varepsilon$ (P6); v1.2 left this condition of the middle inequality of Theorem~\ref{thm:BF1} implicit. The bounds of the theorems are unchanged.
+
+\paragraph*{Version~1.4.}
+Version~1.4 bounds paper~E's remainder along the comb, $|\varepsilon(S'_C(\sigma))|\le276.4\,k_0^{-2}e^{-3k_0^2/2}(1.103)$ for every $\sigma\le10^{-24}$
+(App.~\ref{app:epscomb}): the remainder splits into a part integrated by parts, a third posterior cumulant and a Lagrange remainder bounded independently of the state.
+So the comb belongs to every class with $\bar\varepsilon\ge5.62\times10^{-7}$, and the upper limit $1$ of Corollary~\ref{cor:limit} is proved. It also removes the
+evenness condition (P1): the parity steps are exact derivatives for every profile with a common envelope, and the three places that used evenness
+in an essential way (a Toeplitz factor, a small-$\tau$ bound, and the phase of $X_w$ in case~C) are replaced (App.~\ref{app:FN}). Finally, keeping the
+factor $e=e^{-\alpha^2V/2}$ in the $\theta_\tau$ remainders (Lemma~\ref{lem:Fe}) removes (P5) for windows with at most $20$ harmonics.
 
 \paragraph*{Relation to paper~E.}
 Paper~E \emph{found} the strip law and stated it as a property of the family it had searched; nothing in it is contradicted here.
@@ -96,15 +104,17 @@ Periodic-window lemmas (exact factorisation; $w$- and $v$-information sandwiches
 The same lemmas in $\theta_\tau$ form with explicit remainders (Lemmas~\ref{lem:BL0}--\ref{lem:BL6}; upper side Lemma~\ref{lem:BL7}) & proof & App.~\ref{app:theta}\\
 Narrow envelopes have a large gap: $g<G\Rightarrow\tau>80$ (Lemma~\ref{lem:BK1}) & proof (CA) & App.~\ref{app:theta}\\
 Strips need no (P5): $0<x<1\Rightarrow g\ge0.134$ (Theorem~\ref{thm:E6}) & proof (CA; Lemmas~\ref{lem:E2}--\ref{lem:E4}: proof) & App.~\ref{app:P5}\\
-At most six harmonics: (P5) weakened to $x\ge10^{-12}$ (Theorem~\ref{thm:E8}; superseded by Theorems~\ref{thm:F8}, \ref{thm:F9}) & proof (CA) & App.~\ref{app:P5}\\
-At most $16$ harmonics need no (P5); at most $20$: (P5) weakened to $x\ge10^{-12}$ (Theorems~\ref{thm:F8}, \ref{thm:F9}) & proof (CA; Lemmas~\ref{lem:F1}, \ref{lem:F3}--\ref{lem:F5}: proof) & App.~\ref{app:FN}\\
-Finitely many harmonics exclude combs: $a_n\ge2-n^2(2-a_1)$ & proof & App.~\ref{app:FN}\\
+At most six harmonics: (P5) weakened to $x\ge10^{-12}$ (Theorem~\ref{thm:E8}; superseded by Theorem~\ref{thm:F8}) & proof (CA) & App.~\ref{app:P5}\\
+At most $20$ harmonics, any phases, need no (P5) (Theorem~\ref{thm:F8}; v1.3: $16$, even profiles) & proof (CA; Lemmas~\ref{lem:F1}, \ref{lem:F3}--\ref{lem:Fe}: proof) & App.~\ref{app:FN}\\
+The evenness (P1) is not needed: parity steps are exact derivatives; three steps replaced (Table~\ref{tab:FNrep}) & proof & Apps.~\ref{app:plemmas}, \ref{app:theta}, \ref{app:FN}\\
+Finitely many harmonics exclude combs: $|\hat a_n|\ge2-n^2(2-|\hat a_1|)$ & proof & App.~\ref{app:FN}\\
 The start of the bootstrap is automatic: $g<G\Rightarrow F_c\ge0.84$ (Lemma~\ref{lem:BJ1}; former (P8)) & proof (CA) & App.~\ref{app:theta}\\
 Lower side, Theorem~\ref{thm:AY1P}: $g\sqrt{\ls}/(1-\bar\varepsilon)\ge1-1.7\ln\ls/\ls$ on $[10^{-100000},10^{-24}]$, all $\bar\varepsilon\le0.1$; tail (Lemma~\ref{lem:BH2}) & proof (CA; tail: proof) & Sec.~\ref{sec:lower}\\
 Audit of every certificate at interior points of its cells ($2.1\times10^6$ points) & numerical & App.~\ref{app:cert}\\
 Strips read as an upward bootstrap: the strip theorem needs $F_c\ge0.5$ ($10^{-24}$), $\ge0.2$ (below $10^{-96}$); superseded by Theorems~\ref{thm:AY1P} and~\ref{thm:E6}, which need no condition on $F_c$ & proof (CA, representative points) & Sec.~\ref{sec:lower}\\
 Upper side, Theorem~\ref{thm:AZ1P} (comb sequence): $U_P\sqrt{\ln}\le1+6.0\ln\ln/\ln$ for all $\sigma\le10^{-24}$, $U_P\sqrt{\ln}\to1$ & proof (CA) & Sec.~\ref{sec:upper}\\
-Theorem~\ref{thm:BF1}: two-sided bounds on $[10^{-100000},10^{-24}]$; Cor.~\ref{cor:limit}: the limit $1$ & proof (CA); limit: $\liminf\ge1-\bar\varepsilon$ proof, $\limsup\le1+\limsup|\varepsilon(S'_C)|$ proof (CA, given (P6) for the comb), $\limsup\le1$ derivation (needs $\varepsilon(S'_C)\to0$) & Sec.~\ref{sec:upper}\\
+Paper~E's remainder along the comb: $|\varepsilon(S'_C)|\le276.4\,k_0^{-2}e^{-3k_0^2/2}(1.103)\le5.62\times10^{-7}$ (Theorem~\ref{thm:G1}) & proof (CA; Lemmas~\ref{lem:G2}, \ref{lem:G3}: proof) & App.~\ref{app:epscomb}\\
+Theorem~\ref{thm:BF1}: two-sided bounds on $[10^{-100000},10^{-24}]$; Cor.~\ref{cor:limit}: the limit $1$ & proof (CA); limit: $1-\bar\varepsilon\le\liminf\le\limsup\le1$ for every class bound $\bar\varepsilon\ge5.62\times10^{-7}$ (proof, CA), $g(S'_C)\sqrt\ls\to1$; no claim without a class bound & Sec.~\ref{sec:upper}\\
 Comb $=$ strip at $\sigma/256$ (Prop.~\ref{prop:BE1}) & derivation (exact identity of the leading-order formula) & Sec.~\ref{sec:finite}\\
 Comb below the strip at every finite $\sigma$; below the mixtures ($0.884$) from $\sigma\approx1.4\times10^{-3}$ & numerical & Sec.~\ref{sec:finite}\\
 Combs have no deep valleys ($\Lambda^*$ finite), so paper~E's Proposition~14 applies & numerical & Sec.~\ref{sec:finite}\\

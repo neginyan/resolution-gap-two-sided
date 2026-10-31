@@ -15,6 +15,8 @@ The window's v-information (Lemma 20 (iii)):  W <= W_N = x [g_s P/(1 - Qbar) + g
   P <= tau N2^2           (stage BR: <theta_tau sin nt sin mt> = (e_|n-m| - e_{n+m})/2 <= n m tau, since e^{-a} - e^{-b} <= b - a).
 min(b + W_N, 1) (stage BR): b + W = sigma^2 J_vv <= 1 for every state (Lemma 20 (i)) and W <= W_N, so b + W <= min(b + W_N, 1); every place where Lemma
 20 uses b + W_N needs an upper bound of b + W (L_1^2 = sigma/(c theta kappa_w (b + W)), gamma, R), so the minimum may replace it.
+v1.4 (BR_PHASE=1): f may have sine components; h = 1 + sum q_n(w) cos(nt - phi_n) (the phases survive the blur); every harmonic sum above is a
+sum of |q0_n| and unchanged; the Toeplitz factor takes every e_s, s = 2 .. 2N, and the small-tau bound (which needs h_t(0) = 0) is not used.
 Python 3.11."""
 import os as _os, sys as _sys
 _R = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
@@ -22,8 +24,11 @@ for _d in ('src', 'certificates', 'experiments', 'verification'):
     _p = _os.path.join(_R, _d)
     if _p not in _sys.path: _sys.path.insert(0, _p)
 _os.chdir(_R)
+import os
 import numpy as np
 from math import erfc, sqrt, pi
+
+PHASE = os.environ.get('BR_PHASE', '') == '1'     # v1.4: profiles with sine components ((P1) dropped): phase Toeplitz factor, no small-tau bound
 
 QS, RS = 0.25, 0.125
 G1 = np.sqrt(2 * RS / (1 + 2 * RS)); RSH = 2 * RS / (1 + 2 * RS); GS = np.sqrt(RS / (1 + RS))
@@ -53,6 +58,8 @@ def delta_sup(tau):
 
 def delta_toeplitz(N, tau):
     e = lambda k: np.exp(-k * k * tau / 2)
+    if PHASE:                                      # <theta sin(nt - a) sin(mt - b)> = (e_{|n-m|} cos(a - b) - e_{n+m} cos(a + b))/2: every e_s, s = 2 .. 2N
+        return 2 * sum(e(k) for k in range(1, N)) + sum(e(s) for s in range(2, 2 * N + 1))
     return 2 * sum(e(k) for k in range(1, N)) + sum(e(s) for s in range(3, 2 * N))
 
 
@@ -83,7 +90,7 @@ def cellG(N, xa, xb, ba, bb, c=CST, sig=SIG, dec_one=False, min1=True, small_tau
     H0, H1, H2, N1, N2, S2 = h['H0'], h['H1'], h['H2'], h['N1'], h['N2'], h['S2']
     delta = delta_sup(ta) if N is None else min(delta_sup(ta), delta_toeplitz(N, ta))
     P = (1 + delta) * S2 / 2
-    if small_tau: P = min(P, tb * N2 * N2)
+    if small_tau and not PHASE: P = min(P, tb * N2 * N2)                 # tau N2^2 needs h_t(0) = 0, i.e. an even profile
     kw = (1 + H0 * G1 * RSH) / (1 - H0 * G1); ks = (1 + H1) / (1 - H0)
     WN = xb * (GS * P / (1 - QS) + G1 * H2) / (1 - G1 * H0)
     bW = min(bb + WN, 1.0) if min1 else bb + WN
