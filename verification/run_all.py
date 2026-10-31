@@ -10,6 +10,10 @@ perturbed by eps_in = 1e-6 (421 cells and the tail), Lemma BJ1 (the former (P8))
 v1.2 adds section 8: App. E (strips without (P5): Lemmas 29-33 and Theorem 34; at most six harmonics: Lemma 35 and Theorem 36), the corrected
 certificate of Lemma 20 (section 7 now recomputes it), and the audit at interior points (App. B; default: the reduced audit, a few minutes;
 --recompute: the whole audit, about 40 minutes).
+v1.3 adds section 9: App. F (windows with at most N harmonics without (P5): Lemmas F1-F7, Theorems F8, F9, Table F2) and Theorem 11 beyond
+k0 = 240 (bs_upper_tail.py).  Default: representative rows of the new cells, all interval constants for N = 16, Lemma F6 and F7 in full (a few
+minutes); --recompute: every row with its in-cell audit, the interval constants for every N, and every run behind results/br_windows.json from
+scratch in a temporary folder (about one hour).
 
 Comparisons of recomputed floating-point values with stored ones use a relative tolerance (CPUs differ in the last bits); the interval-arithmetic
 certificate (decimal, 60 digits) is compared exactly.  Each check prints which kind of comparison it made.  Exit code 0 iff every check passes."""
@@ -132,10 +136,10 @@ check('combs have no deep valleys: Lambda* = %s finite' % ', '.join('%.2f' % LA[
       all(np.isfinite(LA['comb_%s' % s]['Lambda_star']) for s in ('1e-06', '1e-12', '1e-24')))
 
 # ---------------------------------------------------------------- 5. the manuscript
-import bq_numbers
+import bs_numbers
 tex = ''.join(open(f).read() for f in sorted(glob.glob('paper/sections/*.tex')))
-N = bq_numbers.numbers(); miss = [x['text'] for x in N if x['text'] not in tex]
-check('every number of the manuscript (v1.2) recomputed from results/ is found in paper/sections (%d numbers)' % len(N), not miss and len(N) >= 150, ', '.join(miss[:5]))
+N = bs_numbers.numbers(); miss = [x['text'] for x in N if x['text'] not in tex]
+check('every number of the manuscript (v1.3) recomputed from results/ is found in paper/sections (%d numbers)' % len(N), not miss and len(N) >= 200, ', '.join(miss[:5]))
 
 # ---------------------------------------------------------------- 6. the demo notebook (stored with its outputs)
 NBK = json.load(open('demo/hidden_ripple_demo.ipynb'))
@@ -261,5 +265,42 @@ check('audit %s: %d checks, %d interior points; the v1.1 code of Lemma 20 is fou
       'recomputed in full' if FULL else 'recomputed in reduced form', r.get('checks', 0), r.get('points', 0), ', '.join(r.get('v1.1_code_reversals', [])),
       '; counts identical to the stored audit' if FULL else ''), r['ok'], r.get('error', ''))
 print('section 8 (v1.2): %.0f s' % (time.time() - t8))
+
+# ---------------------------------------------------------------- 9. v1.3: App. F (at most N harmonics), Theorem 11 beyond k0 = 240
+t9 = time.time()
+def v13(comp):
+    out = subprocess.run([sys.executable, 'verification/bs_v13_checks.py', comp] + (['--full'] if FULL else []), capture_output=True, text=True)
+    try: return json.loads(out.stdout.strip().split('\n')[-1])
+    except Exception: return {'ok': False, 'error': (out.stderr or out.stdout)[-300:]}
+r = v13('tail')
+check('Theorem 11 for k0 >= 240 (sigma < 1e-100000): U_P = (1 + R_U/k0^2)/(2 k0) with R_U <= %.6f, margin %.4f > 0 at k0 = 240 and increasing; members, BL7 tail; recomputed, identical to the stored result: %s (decimal intervals; exact)' % (
+      r.get('R_U_hi', 9), r.get('lhs_at_K0', 0), r.get('identical_to_stored')), r['ok'], r.get('error', ''))
+r = v13('stress')
+check('the asymptotic forms of Theorem 11 against a direct 300-digit evaluation at k0 = 240 ... 1e8: %d comparisons, %d outside their enclosure (numerical)' % (
+      r.get('checks', 0), r.get('failures', -1)), r['ok'], r.get('error', ''))
+r = v13('F2i')
+check('Lemma F2(i) (at most N harmonics, 1e-12 <= x <= 1, tau <= 80): %d cells for N = 16 (smallest ratio %.3f) and N = 20 (%.3f), all close; recomputed on %d rows%s (relative %.1e; floating point)' % (
+      (r.get('N16') or {}).get('cells', 0), (r.get('N16') or {}).get('worst', 0), (r.get('N20') or {}).get('worst', 0), r.get('rows', 0),
+      ' with the in-cell audit, every N' if FULL else '', r.get('dev', 1)), r['ok'], r.get('error', ''))
+r = v13('F2ii')
+check('Lemma F2(ii) (N = 16, x < 1e-12, b >= c\' 1e-24, c\' = 2e-5): %d cells, smallest ratio %.3f, b-cells cover [2e-29, 1], in-cell audit %d points; recomputed on %d of %d b-cells (relative %.1e)' % (
+      r.get('cells', 0), r.get('worst', 0), r.get('audit_points', 0), r.get('rows', 0), r.get('of', 0), r.get('dev', 1)), r['ok'], r.get('error', ''))
+r = v13('intervals')
+check('Lemmas F4, F5 and eps_R of Lemma F6 (interval arithmetic) recomputed for N = %s, identical to the stored constants: (a\')/c_* >= %.3f, T_16 >= %.4f, eps_R <= %.4f (decimal intervals; exact)' % (
+      '6, 8, 12, 16' if FULL else '16', (r.get('N16') or {}).get('a_prime_ratio', 0), (r.get('N16') or {}).get('T', 0), (r.get('N16') or {}).get('eps_R', 9)), r['ok'], r.get('error', ''))
+r = v13('F6')
+check('Lemma F6 (Lemma 28 with N harmonics) recomputed: A_min = %.5f (N = 16, x -> 0), %.5f (N = 20, x >= 1e-12); where it stops (N = 20 below 1e-12, N = 24) is recorded (relative %.1e)' % (
+      r.get('A_min_16', 0), r.get('A_min_20', 0), r.get('dev', 1)), r['ok'], r.get('error', ''))
+r = v13('F7')
+check('Lemma F7 and Theorems F8, F9 recomputed: sup x f* = %.4f (the same for every N checked), g >= %.4f (N <= 16, 0 < x < 1), %.4f (N <= 20, x >= 1e-12) (floating point)' % (
+      r.get('sup_x_fstar', 9), r.get('g_16', 0), r.get('g_20', 0)), r['ok'], r.get('error', ''))
+r = v13('remark')
+check('remark of App. F, a_n >= 2 - n^2 (2 - a_1) (proof): %d random non-negative profiles, %d violations (numerical)' % (r.get('profiles', 0), r.get('violations', -1)),
+      r['ok'], r.get('error', ''))
+if FULL:
+    r = v13('rerun')
+    check('every run behind results/br_windows.json recomputed from scratch in a temporary folder (%s; %.0f s): identical to the stored file up to relative 1e-9' % (
+          ', '.join(r.get('keys', [])), r.get('seconds', 0)), r['ok'], r.get('error', ''))
+print('section 9 (v1.3): %.0f s' % (time.time() - t9))
 print('elapsed %.0f s (%s)' % (time.time() - t0, 'full recomputation' if FULL else 'default'))
 finish()

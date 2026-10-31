@@ -101,7 +101,7 @@ perturbed inputs, $150$ cells of the upper side, and the class membership; in al
 strip cells the main factor $M$; the final ratio of each cell stayed on the right side);
 with the v1.2 code there are none. The new certificates of App.~\ref{app:P5} carry the same audit ($54479$ points for Lemma~\ref{lem:E1}(ii) and
 $43200$ for each $N$ of Lemma~\ref{lem:E1}(iii), none on the wrong side). The audit is numerical: it can find a wrong direction, it does not prove that
-there is none; the proofs of the directions are Lemma~\ref{lem:BH1}, Table~\ref{tab:monoBJ} and the proofs in App.~\ref{app:theta}.
+there is none; the proofs of the directions are Lemma~\ref{lem:BH1}, Table~\ref{tab:monoBJ} and the proofs in App.~\ref{app:theta}. The cells of Appendix~\ref{app:FN} carry the same audit from the start ($17614$ interior points for Lemma~\ref{lem:F2}(i) and up to $58539$ for (ii) at each $N$, none on the wrong side).
 
 \paragraph*{Tail (\code{bh\_tail.py}).}
 Lemma~\ref{lem:BH2} from the last cell's constants ($K_{\mathrm{end}}$, $F_{\mathrm{int,end}}$); the explicit tail bound
@@ -122,3 +122,33 @@ $0\le E_p\le5.8\times10^{-7}$, $0\le Z_p\le8.4\times10^{-14}$ ($a_n\le a_1$ and 
 keeps $n=1$ only. These enter as interval parameters with zero derivative, which is valid for the mean-value form at every fixed value of the
 parameters. On each cell, $h\le h(m)+\max|h'|\cdot(b-a)/2$. Result: $1464$ cells, no bisection, largest upper bound $-1.35\times10^{-4}$ (for $S'$
 with constant $7.4$: $1470$ cells, $-1.98\times10^{-4}$).
+
+\paragraph*{Upper side beyond $k_0=240$ (v1.3, \code{bs\_upper\_tail.py}).}
+Claim: $h(k_0)<0$ for every $k_0\ge240$, i.e.\ every $\sigma<10^{-100000}$ on $S'_C$. On $S'_C$ every quantity of $U_P$ is a monomial $k_0^\beta E^\gamma$, $E=e^{-k_0^2}$,
+times an $O(1)$ factor, and the leading factors combine exactly. Each quantity in the formula of $U_P$ (the same lines as \code{bf\_cert\_upper.py}) is
+carried as an \emph{asymptotic form}
+\begin{equation*}
+X=c\,k_0^{\beta}E^{\gamma}\big(1+R\,k_0^{-\nu}\big)\qquad\text{for all }k_0\ge240,
+\end{equation*}
+with $c$ exact in $\mathbb Q(\sqrt2)$ (an interval only for terms that end up in a remainder), $\beta,\gamma,\nu$ exact rationals and $R$ an outward-rounded interval.
+The rules: a sum keeps its leading monomial; a term with the same $\gamma$ and a smaller $\beta$ becomes the relative remainder $(c_2/c_1)k_0^{-(\beta_1-\beta_2)}$; a term with a
+larger $\gamma$ is super-exponentially small and becomes $R\,k_0^{-6}$ with $R$ its value of $k_0^{\beta+6}E^{\Delta\gamma}$ at $k_0=240$ (this function decreases
+for $k_0\ge240$, since $(\beta+6)/k_0<2\Delta\gamma k_0$, which is checked); products, inverses and the powers $\frac12$, $\frac32$ act on $(1+z)$, $z=Rk_0^{-\nu}$, through
+the mean-value form over the range of $z$. The harmonics enter through $0\le E_p\le8E^{1.4985}$, $0\le Z_p\le8E^{2.997}$ (ratio of consecutive terms $\le\frac12$,
+$K\ge0.999k_0^2$; these bounds fall with $k_0$, unlike the fixed box of the cells, which would not suffice here), $a_1=2(1+z)$ with $z\in[-1/(2k_0^4),0]$, and $\bar q_1=a_1E^{1/2}e^{w}$ with $0\le w\le32k_0^{-4}E^4$. The result is
+\begin{equation*}
+U_P=\frac1{2k_0}\Big(1+\frac{R_U}{k_0^2}\Big),\qquad R_U\in[3.53552,\ 3.53557],
+\end{equation*}
+the leading constant $\frac12$ exact ($R_U\to5/\sqrt2$: $\frac1{4k_0}$ from each branch and $\frac{\sqrt2}{k_0^3}$, $\frac1{2\sqrt2k_0^3}$, $\frac1{2k_0^5}$ at the next order).
+With $\lambda=\ln k_0$: $\sqrt t\le2k_0(1+(11\lambda-8\ln2)/(8k_0^2))$, $t\le4k_0^2+11\lambda$, $\ln t\ge2\lambda+2\ln2$, so
+\begin{equation*}
+\begin{aligned}
+k_0^2h&\le-\Big[\tfrac{13}8\lambda+4\ln2-R_U-B\Big],\\
+B&=\Big[\tfrac{11}8R_U\lambda+\tfrac{11}4(3\lambda+3\ln2)\lambda\Big]\Big/k_0^2 .
+\end{aligned}
+\end{equation*}
+$B$ decreases for $k_0\ge e$ and the rest increases with $\lambda$, so the bracket is at least its value at $k_0=240$, $8.137>0$ (interval arithmetic).
+The same forms give, for $k_0\ge240$, $\Qb\le10^{-12507}$, $\varrho\le10^{-50039}$ and $x\ge57600$ ((P3)--(P5)), and the $\theta_\tau$ corrections of Lemma~\ref{lem:BL7}:
+$\tau$ increases with $k_0$, $1/\sigma\le\tau^2/2$ and $\sqrt t\le\tau$ give $1.5\epsilon_U+\sqrt tA_U\le(25+K_E)\tau^5\nu$, below the margin
+$8.137/k_0^2$ by a factor smaller than $\exp(-10^{100078})$. Checks \numst: the forms enclose \code{bf\_cert\_upper.py}'s interval values of $U_P$ at $k_0=240$, $241.7$, $300$ and
+$1000$, and every one of the $50$ intermediate forms encloses a direct $300$-digit evaluation at ten values of $k_0$ from $240$ to $10^8$ (\code{bs\_upper\_tail\_stress.py}, $1000$ comparisons). As a by-product, $\limsup_{\sigma\to0}(U_P\sqrt\ls-1)\ls/\ln\ls\le\frac{11}4$ along $S'_C$, the constant of the leading-order expansion.

@@ -1,0 +1,225 @@
+% F_harmonics.tex — v1.3: (P5) for windows with at most N harmonics (N <= 16: removed; N <= 20: weakened to x >= 1e-12)
+\section{Windows with finitely many harmonics without (P5)}
+\label{app:FN}
+
+\paragraph*{What this appendix shows.}
+App.~\ref{app:P5} removed (P5) for strips by four cases (Table~\ref{tab:P5cases}). Here the same four cases are redone for a periodic window whose
+profile has finitely many harmonics, $a_n=0$ for $n>N$, with the $a_n$ of either sign. The result is Theorem~\ref{thm:F8}: for $N\le16$ condition (P5) is
+not needed at all, and for $N\le20$ it can be weakened to $x\ge10^{-12}$ (Theorem~\ref{thm:F9}). These replace Theorem~\ref{thm:E8}. A profile with fewer
+than $N$ harmonics is a profile with at most $N$ harmonics, so every bound below for $N$ covers all smaller $N$. Throughout, as in App.~\ref{app:P5}:
+(P0)--(P4), $|\varepsilon(\rho)|\le0.1$, $\sigma\le10^{-24}$, $0<c\le c_*=0.134/0.9$, $\theta=1/(1-c\sigma)$, $b=\sigma^2/V=x/\tau$ and $b+W=\sigma^2\Jvv\le1$.
+The constant $c'$ of the split $b\gtrless c'\sigma$ is chosen with $N$: $c'=2\times10^{-3}$ for $N\le8$, $2\times10^{-4}$ for $N\le12$, $2\times10^{-5}$ for $N\le16$.
+
+\paragraph*{What the strip used, and what replaces it.}
+Write $y:=q0_1>0$. By (P2) and $K\ge x$, $|q0_n|\le y\,d_n$ with $d_n=e^{-(n^2-1)x/2}$; by (P3), $\sum_n|q0_n|\le\Qb\le\frac14$. Hence
+$1-\Qb\le h\le1+\Qb$ and $1-\Qb\le Z\le1+\Qb$ for every $w$, which is all that the proofs of Lemmas~\ref{lem:BK1} and~\ref{lem:BJ1} use of the sign of the
+ripple. The other replacements are in Table~\ref{tab:FNrep}. Two of them get worse as $N$ grows ($S_2$ and $V_{\max}$), and they fix the largest $N$ that closes.
+
+\begin{table}
+\caption{The strip's simplifications and their replacements for at most $N$ harmonics (any signs).}
+\label{tab:FNrep}
+\begin{ruledtabular}
+\begin{tabular}{p{0.33\columnwidth}p{0.55\columnwidth}}
+strip & at most $N$ harmonics\\ \hline
+$q(w)\ge0$ & $|q0_n|\le y\,d_n$, $\sum|q0_n|\le\Qb$; $h,Z\in[1-\Qb,1+\Qb]$\\
+$\eta_p=Z_2=0$ & finite sums over $n=2,\dots,N$ (finite at $x=0$)\\
+$N_1=N_2=q$, $S_2=q^2$ & $N_1\le N\Qb$, $N_2\le N^2\Qb$, $S_2:=\sum n^2q0_n^2\le S_{2,\max}$ (Lemma~\ref{lem:F1}(ii))\\
+$\delta_1=0$ & $\min(\delta_\tau,\delta_N)$; and $\langle\theta_\tau h_t^2\rangle\le\tau N_2^2$ (Lemma~\ref{lem:F1}(iii))\\
+$X_w\ge e^{-\alpha^2V/8}$ & $X_w\ge e^{-\alpha^2V/8}-\Qb$\\
+$W\le x/3$ (Lemma~\ref{lem:E3}) & $W/b\le(W/b)_{\max}(N)$ (Lemma~\ref{lem:F4})\\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\begin{lemma}[harmonic sums] \proofst
+\label{lem:F1}
+Let the profile have at most $N$ harmonics with $|q0_n|\le y\,d_n$ ($n\ge2$) and $\sum_n|q0_n|\le\Qb$.
+(i) For $c_n\ge0$, $\sum_{n\ge2}c_n|q0_n|\le G(c):=$ the greedy value (largest $c_n$ first, each $|q0_n|$ up to $y\,d_n$, until the budget $\Qb-y$ is used).
+(ii) $S_2\le y^2+y\,G(n^2)\le S_{2,\max}=N^4\Qb^2/(4(N^2-1))$ ($N\ge2$).
+(iii) $\langle\theta_\tau h_t^2\rangle\le\tau N_2^2$ with $N_2=\sum n^2|q0_n|$.
+(iv) $b+W\le\min(b+W_N,1)$, where $W_N$ is the bound of Lemma~\ref{lem:BK1}(iii) with the sums of (i)--(iii); in every place where Lemma~\ref{lem:BK1}
+uses $b+W_N$ (the threshold $L_1^2$, $\gamma$ and the right side $R$) the minimum may be used instead.
+\end{lemma}
+\begin{proof}
+(i) A linear function with non-negative coefficients on the polytope $\{0\le z_n\le y\,d_n,\ \sum z_n\le\Qb-y\}$ is largest at the greedy vertex.
+(ii) $q0_n^2\le y|q0_n|$, so $\sum_{n\ge2}n^2q0_n^2\le y\sum n^2|q0_n|\le yG(n^2)\le yN^2(\Qb-y)$, and
+$\max_y[y^2+N^2y(\Qb-y)]$ is attained at $y=N^2\Qb/(2(N^2-1))$.
+(iii) $\langle\theta_\tau\sin nt\sin mt\rangle=(e_{|n-m|}-e_{n+m})/2$ with $e_j=e^{-j^2\tau/2}$, and $e^{-a}-e^{-b}\le b-a$ gives
+$(e_{|n-m|}-e_{n+m})/2\le\tau((n+m)^2-(n-m)^2)/4=nm\tau$. The left side is $\ge0$, so with $h_t^2=\sum_{n,m}nm\,q_nq_m\sin nt\sin mt$ (any signs)
+$\langle\theta_\tau h_t^2\rangle\le\tau\big(\sum n^2|q_n|\big)^2\le\tau N_2^2$ (here $|q_n(w)|\le|q0_n|$).
+(iv) $W\le W_N$ (Lemma~\ref{lem:BK1}(iii)), and $b+W=\sigma^2\Jvv\le1$ (Lemma~\ref{lem:BK1}(i)). Each of $L_1^2=\sigma/(c\theta\kappa_w(b+W))$, $\gamma$ and $R$ is
+used in Lemma~\ref{lem:BK1} as a bound that is monotone in $b+W$ in the safe direction, so an upper bound of $b+W$ is all it needs.
+\end{proof}
+
+\begin{lemma}[narrow envelopes with $N$ harmonics] \caproofst{\code{br\_cells.py}, \code{br\_windows.py}}
+\label{lem:F2}
+Let $\rho$ be a periodic window with (P0)--(P4), $a_n=0$ for $n>N$ and $\tau\le80$. Then $(a)<c$ and $(a')<c$ do not hold together in each of the cases
+(i) $N\le20$ and $10^{-12}\le x\le1$; (ii) $N\le16$, $x<10^{-12}$ and $b\ge c'\cdot10^{-24}$ with $c'=2\times10^{-5}$.
+\end{lemma}
+\begin{proof}
+The proof of Lemma~\ref{lem:E1}, with the harmonic sums of Lemma~\ref{lem:F1}: on $y$-cells $[y_a,y_b]$ (24 cells on $(0,m(x)]$, $m(x)=\min(\Qb,2e^{-x/2})$) each sum is
+bounded with the caps $y_bd_n$ and the budget $\Qb-y_a$, and the cell takes the largest value over the $y$-cells. The sums are
+$H_0=\sum|q0_n|e_n$, $H_1=\sum|q0_n|f_n$ ($f_n=\sup|1-n^2\tau|e^{-n^2\tau/2}$ over the cell), $H_2=\sum n^2|q0_n|e_n$, $N_1$, $N_2$, $S_2$, and
+$W_N=x[g_sP/(1-\Qb)+g_1H_2]/(1-g_1H_0)$ with $P\le\min((1+\delta)S_2/2,\ \tau N_2^2)$, $\delta=\min(\delta_\tau,\delta_N)$, then $\min(b+W_N,1)$.
+For $x<10^{-12}$ the cells put $d_n:=1$, an upper bound for every $x<10^{-12}$, so they are evaluated at $x$-cells starting at $x=0$; they are
+evaluated at $\hat\sigma=10^{-24}$, which covers every smaller $\sigma$ by Lemma~\ref{lem:BK1}(vi).
+(i) $120$ geometric $x$-cells on $[10^{-12},1]$ times $120$ $b$-cells on $[x_a/80,1]$, $14400$ cells for each $N$; smallest ratio $1.731$ ($N=6,8$),
+$1.639$ ($N=12$), $1.452$ ($N=16$), $1.296$ ($N=20$).
+(ii) $N=16$: $287$ geometric $b$-cells on $[2\times10^{-29},1]$, each with $41$ $x$-cells on $[0,\min(10^{-12},80b_b)]$, $11767$ cells; smallest ratio $1.795$.
+The audit of App.~\ref{app:cert} at interior points ($17614$ points for (i) and $58539$ for (ii) at each $N$) found no value on the wrong side \numst.
+\end{proof}
+
+\begin{lemma}[very small $b$ by scaling, $N$ harmonics] \proofst
+\label{lem:F3}
+Let $\rho$ be as in Lemma~\ref{lem:F2}(ii) but with $c'\sigma\le b<b_0:=c'\cdot10^{-24}$. Then $(a)<c$ and $(a')<c$ do not hold together.
+\end{lemma}
+\begin{proof}
+The proof of Lemma~\ref{lem:E2}. With $d_n:=1$ the harmonic sums of Lemma~\ref{lem:F1} are bounded by functions of $\tau$ alone (the caps are $y$, the budget is
+$\Qb-y$, and $e_n$, $f_n$ depend on $\tau$), so every ingredient of the bound is again a function of $(b,r,\tau)$, $r=\sigma/b\le1/c'$, with the same
+monotonicity in $b$. At $b<b_0\le2\times10^{-29}$ one has $b+W_N\le b(1+\tau\omega)<1$, so the minimum of Lemma~\ref{lem:F1}(iv) is $b+W_N$ itself and the scaling
+argument applies unchanged; the reference point lies in a cell of Lemma~\ref{lem:F2}(ii).
+\end{proof}
+
+\begin{lemma}[background narrower than the blur, $N$ harmonics] \proofst{} (constants in interval arithmetic, \code{br\_windows.py})
+\label{lem:F4}
+Let $\rho$ be a periodic window with (P0)--(P4), $a_n=0$ for $n>N\le16$, $\tau\le80$ and $b<c'\sigma$, $c'=2\times10^{-5}$. If $(a)<c$, then $(a')\ge0.6916>4.6\,c_*$.
+\end{lemma}
+\begin{proof}
+As in Lemma~\ref{lem:E3}, with three changes.
+\emph{(1) $W/b$.} From Lemma~\ref{lem:BK1}(iii) and Lemma~\ref{lem:F1}, with $x=\tau b$, $H_0\le\Qb$ and $\tau H_2\le\Qb\sup_n\tau n^2e^{-n^2\tau/2}\le2\Qb/e$,
+\begin{equation*}
+\begin{aligned}
+\frac Wb&\le\frac{\tau g_sP_N/(1-\Qb)+2g_1\Qb/e}{1-g_1\Qb},\\
+P_N&=\min\big((1+\delta_N)S_{2,\max}/2,\ \tau N^4\Qb^2\big);
+\end{aligned}
+\end{equation*}
+its supremum over $\tau\in(0,80]$, on $4000$ cells ($\delta_N$ at the left end, $\tau$ at the right end), is $(W/b)_{\max}\le80.47$ for $N=16$.
+Cram\'er--Rao for the exact $w$-marginal with signs allowed gives $\kappa_w=(1+\Qb g_1r_s)/(1-\Qb g_1)\le1.1511$. Hence $V<V_{\max}=(1+(W/b)_{\max})c\theta\kappa_w(1+\sigma^3)\le13.97$.
+\emph{(2) $X_w$.} The ripple part of $X_w$ is $\sum_n\frac{q_n(w)}2(\cdots)$ with each bracket $\le2$, so $|X_w-e^{-\alpha^2V/8}|\le\Qb$ and
+$X_w\ge X_{\min}=e^{-\alpha^2V_{\max}/8}-\Qb\ge0.1678>0$. With $\int P\le(1+\Qb)\Gamma/Z$ and $1-\Qb\le Z\le1+\Qb$, the slice inequality of Lemma~\ref{lem:E3} gives
+\begin{equation*}
+\begin{aligned}
+\frac{2N_\phi}{\sigma^2}&\ge\frac{\alpha^2X_{\min}^2}{4(1+\Qb)^2}-\alpha E,\\
+E&=\frac{1+\Qb}{1-\Qb}\Big(\frac{\alpha\sigma c_\chi}2+\frac{\gamma_P}{\sqrt2}\Big),
+\end{aligned}
+\end{equation*}
+with $\gamma_P$ and $c_\chi$ of Lemma~\ref{lem:BL3} at $x\le80c'\sigma$, $N_1\le N\Qb$, $N_2\le N^2\Qb$.
+\emph{(3) Constants} (interval arithmetic, $\alpha\ge(1-c'\sigma)/\sqrt2$): the first term is $\ge2.2539\times10^{-3}$, $\alpha E\le2.2\times10^{-13}$.
+\emph{Conclusion.} $\mathrm{den}<\theta b(1+(W/b)_{\max})$ and $\sigma/b>1/c'$ give $(a')>\frac{2N_\phi}{\sigma^2}\big/\big(2\theta(1+(W/b)_{\max})c'\big)\ge0.6916$.
+\end{proof}
+
+\begin{lemma}[sharp $w$-edges, $N$ harmonics] \proofst{} (constants in interval arithmetic, \code{br\_windows.py})
+\label{lem:F5}
+Let $\rho$ be a periodic window with (P0)--(P4), $a_n=0$ for $n>N$ and $\tau>80$. If $(a)<c$, then $x>T_N\sigma^2$ and $L^2>T_N\sigma/x$, with
+$T_N\ge47.61$, $28.19$, $13.01$, $7.422$ for $N=6$, $8$, $12$, $16$ ($4.78$ for $N=20$).
+\end{lemma}
+\begin{proof}
+As Lemma~\ref{lem:E4}: $b+W\le x(1/\tau+W_c)$ with
+\begin{equation*}
+W_c=\frac{(1+\delta_N)S_{2,\max}g_s/(2(1-\Qb))+g_1\Qb e_1}{1-g_1\Qb e_1},
+\end{equation*}
+($H_2\le\Qb\max_nn^2e^{-n^2\tau/2}=\Qb e_1$ at $\tau\ge80$), every term decreasing in $\tau$, so $\tau=80$ is the worst. Then
+$T_N=1/((1/80+W_c)c\theta\kappa_w(1+\sigma^3))$, $\kappa_w=(1+\Qb g_1r_se_1)/(1-\Qb g_1e_1)$. For $N=16$: $W_c\le0.89238$, $T_{16}\ge7.4224$.
+\end{proof}
+
+\paragraph*{The split point.} Lemma~\ref{lem:F5} is used with $T_s=\lfloor0.9T_N\rfloor$ ($42$, $25$, $11$, $6$ for $N=6,8,12,16$): if $x\le T_s\sigma^2$, then $(a)\ge c$.
+
+\begin{lemma}[Lemma~\ref{lem:BJ1} with $N$ harmonics] \caproofst{\code{br\_windows.py}}
+\label{lem:F6}
+Let $\rho$ be a periodic window with (P0)--(P4), $a_n=0$ for $n>N$, $\tau>80$ and $(a)<c$, $(a')<c$. Then $A_1A_2A_3\ge A_{\min}$ with
+(i) $A_{\min}=0.9276$ for $N\le16$ and $T_s\sigma^2<x\le1$; (ii) $A_{\min}=0.9253$ for $N\le20$ and $10^{-12}\le x\le1$.
+\end{lemma}
+\begin{proof}
+The proof of Lemma~\ref{lem:E5} with $\eta_p(x)=\sum_{n=2}^Nn^pe^{-(n^2-1)x/2}$ and $Z_2(x)=\sum_{n=2}^Nn^2e^{-(n^2-1)x}$ (finite at $x=0$), step~2(i) as in
+Lemma~\ref{lem:E5}(a), and the perturbation $\varepsilon=\varepsilon_{\mathrm{in}}+\varepsilon_R+\varepsilon_\Phi$ with $\varepsilon_{\mathrm{in}}=10^{-6}$.
+\emph{The remainder $E_R$ in (i).} Here $x>T_s\sigma^2$, so $\beta\le\sigma\tau/\sqrt{2x}<\tau/\sqrt{2T_s}$ ($\beta/\tau\le0.2887$ for $N=16$). The nine terms of $E_R$
+(Lemma~\ref{lem:BL3}, with $N_1\le N\Qb$, $N_2\le N^2\Qb$ and $\gamma_P\le\Gamma_{\max}$ on $x\le1$) give $E_R\le A_0/\sqrt x+B_0\sigma/x+C_0$, with $\nu_k(\tau,\beta)$
+summed to $n=12$ and the rest bounded by twice the $n=13$ term. Each $\tau^j\nu_k$ ($j\le3$) decreases for $\tau\ge80$, since
+$3/\tau-\tfrac12+1/\sqrt{2T_s}\le-0.17<0$, so the constants are taken at $\tau=80$: for $N=16$, $A_0\le9.93\times10^{-3}$, $B_0\le3.09\times10^{-3}$,
+$C_0\le1.37\times10^{-4}$ (interval arithmetic). By Lemma~\ref{lem:F5}, $L^2>T_N\sigma/x$, and Lemma~\ref{lem:BL4} gives $1-C\ge0.2\min(T_N\sigma/x,1)$. If
+$T_N\sigma/x\le1$, then $\sigma E_R/(0.2T_N\sigma/x)\le(A_0+B_0+C_0)/(0.2T_N)$ ($x\le1$); otherwise $\sigma/\sqrt x<1/\sqrt{T_s}$ and $\sigma^2/x<1/T_s$, and
+$\sigma E_R\le(A_0/\sqrt{T_s}+B_0/T_s+C_0)$. In both cases $\sigma bE_R\le\varepsilon_Rb\min(\Phi,\frac12)$ with $\varepsilon_R\le0.02351$ ($N=16$;
+$8.3\times10^{-10}$, $2.4\times10^{-8}$, $2.4\times10^{-5}$ for $N=6,8,12$), and the $\Phi$-proportional remainder of Lemma~\ref{lem:BL3},
+$2\Qb(\nu_0+\tau\nu_2)\le3.7\times10^{-6}$, is $\varepsilon_\Phi$.
+\emph{The remainder in (ii).} Here $\beta\le10^{-18}\tau$ and, as in Lemma~\ref{lem:E7}, $\sigma bE_R\le2E_Rb\min(\Phi,\frac12)$ with $\sup E_R\le1.29\times10^{-6}$
+($N=20$, $2000$ cells of $x$); $\varepsilon=\varepsilon_{\mathrm{in}}+2\sup E_R+7.1\times10^{-14}\le3.57\times10^{-6}$.
+\emph{Cells and results} at $\sigma=10^{-24}$, $c=c_*$ (monotone in $\sigma$ and $c$ as in Lemma~\ref{lem:E5}):
+(i) $N=16$, $x$-cells $[0,10^{-30}]$, $6000$ geometric up to $0.01$, $4000$ equal up to $1$: $A_{\min}=0.92769$, step~2(i) $(a)/c\ge9.89$, step~3(i) margin
+$1.1314$ (interval arithmetic), step~3(ii) ratio $13.5$;
+(ii) $N=20$, $6000$ cells on $[10^{-12},1]$: $A_{\min}=0.92535$, step~2(i) $2.28$, step~3(i) $1.2334$, step~3(ii) $4.37$.
+\end{proof}
+
+\begin{lemma}[the effective wavenumber with $N$ harmonics] \caproofst{\code{br\_windows.py}}
+\label{lem:F7}
+With a common envelope and $|q0_n|\le q0_1d_n$, $u_2/u_0=\sum n^2q0_n^2/\sum q0_n^2\le f^*(x)$, where $f^*(x)$ is the largest weighted mean of $n^2$ with weights
+$w_1=1$, $0\le w_n\le d_n^2$; $f^*$ is the largest of the means over the sets $\{1\}\cup\{n\ge m\}$, and it decreases in $x$. On $4000$ cells
+($x$ at the right end, $f^*$ at the left), $\sup_{0<x\le1}x f^*(x)\le1.1483$ for every $N\le24$ that we ran.
+\end{lemma}
+\begin{proof}
+$q0_n^2\le q0_1^2d_n^2$, so $u_2/u_0$ is a weighted mean of the $n^2$ with weights in the box. A weighted mean is increased by adding any $n$ with $n^2$ above the
+current mean at its largest weight and removing any below it, so the maximiser takes the largest $n$ first; $d_n$ decreases in $x$.
+The number does not grow with $N$ because the weights $d_n^2=e^{-(n^2-1)x}$ fall off quickly where $x f^*$ is largest; for comparison, the bound $x(1+Z_2(x))$
+of Theorem~\ref{thm:E8} is $1.616$ for $N=6$ and $4.84$ for $N=20$.
+\end{proof}
+
+\begin{theorem}[at most sixteen harmonics need no (P5)] \caproofst{Lemmas~\ref{lem:F2}--\ref{lem:F7}}
+\label{thm:F8}
+Let $\rho$ be a periodic window with (P0)--(P4), $a_n=0$ for $n>16$, $|\varepsilon(\rho)|\le0.1$, $\sigma\le10^{-24}$ and $0<x<1$. Then $g\ge0.134$. Hence
+Theorem~\ref{thm:AY1P} and the lower side of Theorem~\ref{thm:BF1} hold for such windows without (P5), with the same constants.
+\end{theorem}
+\begin{proof}
+Suppose $(a)<c_*$ and $(a')<c_*$, and take $c'=2\times10^{-5}$. If $\tau\le80$ and $x\ge10^{-12}$: Lemma~\ref{lem:F2}(i). If $\tau\le80$, $x<10^{-12}$ and $b\ge c'\sigma$:
+Lemma~\ref{lem:F2}(ii) ($b\ge c'\cdot10^{-24}$) or Lemma~\ref{lem:F3}. If $\tau\le80$ and $b<c'\sigma$: Lemma~\ref{lem:F4}. If $\tau>80$ and $x\le T_s\sigma^2$:
+Lemma~\ref{lem:F5}. If $\tau>80$ and $x>T_s\sigma^2$: Lemma~\ref{lem:F6}(i) gives $F_c\ge0.9A_{\min}$; Lemma~\ref{lem:BL5} and AX4-P give
+\begin{equation*}
+\keff^2\le(1+\varepsilon)\big(8\kappa_2(1+\Qb)\sup_xxf^*(x)+\tfrac14\big)\le3.524
+\end{equation*}
+(Lemma~\ref{lem:F7}, $b\le1$), and Theorem~\ref{thm:AT2} gives $g\ge0.9\times0.92769/(2\sqrt{3.524})\ge0.2223$. So either a branch is $\ge c_*$ and
+$g\ge(1-|\varepsilon|)c_*\ge0.134$, or $g\ge0.2223$.
+\end{proof}
+
+\begin{theorem}[at most twenty harmonics: (P5) weakened] \caproofst{Lemmas~\ref{lem:F2}, \ref{lem:F6}, \ref{lem:F7}}
+\label{thm:F9}
+Let $\rho$ be a periodic window with (P0)--(P4), $a_n=0$ for $n>20$, $|\varepsilon(\rho)|\le0.1$, $\sigma\le10^{-24}$ and $10^{-12}\le x<1$. Then $g\ge0.134$. Hence
+Theorem~\ref{thm:AY1P} and the lower side of Theorem~\ref{thm:BF1} hold for such windows with (P5) replaced by $x\ge10^{-12}$.
+\end{theorem}
+\begin{proof}
+Suppose $(a)<c_*$ and $(a')<c_*$. If $\tau\le80$: Lemma~\ref{lem:F2}(i) is contradicted. If $\tau>80$: Lemma~\ref{lem:F6}(ii), $\keff^2\le3.443$ (Lemma~\ref{lem:F7}) and $g\ge0.9\times0.92535/(2\sqrt{3.443})\ge0.2244$; otherwise a branch is $\ge c_*$, as in Theorem~\ref{thm:F8}.
+\end{proof}
+
+\begin{table}
+\caption{Windows with at most $N$ harmonics: the tightest step of each case. ``B'' and ``(i)'' are the smallest cell ratios of Lemma~\ref{lem:F2}, ``C'' is
+$(a')/c_*$ of Lemma~\ref{lem:F4}, $T_N$ and $\varepsilon_R$ are from Lemmas~\ref{lem:F5} and~\ref{lem:F6}. A dash means that the step was not needed;
+``no'' marks the step at which the certificate stops (a limit of the certificate, not a counterexample).}
+\label{tab:FN}
+\setlength{\tabcolsep}{3pt}
+\begin{ruledtabular}
+\begin{tabular}{lcccccc}
+$N$ & $c'$ & (i) & B & C & $T_N$ & $\varepsilon_R$\\ \hline
+6 & $2\times10^{-3}$ & 1.731 & 1.795 & 4.11 & 47.61 & $8.3\times10^{-10}$\\
+8 & $2\times10^{-3}$ & 1.731 & 1.795 & 1.86 & 28.19 & $2.4\times10^{-8}$\\
+12 & $2\times10^{-4}$ & 1.639 & 1.795 & 3.70 & 13.01 & $2.4\times10^{-5}$\\
+16 & $2\times10^{-5}$ & 1.452 & 1.795 & 4.64 & 7.42 & 0.0236\\
+20 & $10^{-7}$ & 1.296 & 1.795 & 1.34 & 4.78 & 8.03 (no)\\
+24 & -- & 1.168 & -- & -- & -- & --\\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\paragraph*{Where it stops.}
+For $N=20$ at $x<10^{-12}$ the cases B and C close (with $c'=10^{-7}$), but in the last case $T_{20}\ge4.78$ only, so $\beta/\tau\le0.354$ and
+$\varepsilon_R\approx8$: the $\theta_\tau$ remainder can no longer be absorbed. For $N=24$ the cells of Lemma~\ref{lem:F2}(i) close (ratio $1.168$), but
+step~2(i) of Lemma~\ref{lem:F6}(ii) gives $(a)/c\ge0.52$ only. Both limits come from quantities that grow with $N$: $S_{2,\max}\propto N^2$ (through
+$W_c$, $T_N$ and $\varepsilon_R$) and $\gamma_*=\sup\Gamma_1m$ (through $\eta_p$).
+
+\paragraph*{Remark (finitely many harmonics exclude combs).} \proofst{}
+For a non-negative profile $f=1+\sum a_n\cos nt$, $a_n\ge2-n^2(2-a_1)$ for every $n$. Indeed $|\sin(nt/2)|\le n|\sin(t/2)|$ gives $1-\cos nt\le n^2(1-\cos t)$, and
+averaging with the weight $f\ge0$ gives $1-a_n/2\le n^2(1-a_1/2)$. So a window whose fundamental is close to the largest value $a_1=2$ has many strong
+harmonics: $a_1\ge2-\delta$ forces $a_n\ge1$ for all $n\le1/\sqrt\delta$. The windows with a bounded number of harmonics therefore never contain the combs that
+approach the infimum (Sec.~\ref{sec:upper}); the theorems of this appendix are a step, and the form that does not depend on $N$ is the next target.
+
+\paragraph*{Observer picture.}
+With more harmonics, the window carries several ripples finer than its period on top of each other. Each one carries some $v$-information, so the
+background must be narrower before the bend of $m_z$ shows on every $w$-slice (case C, smaller $c'$), and the $w$-edges must be sharper before
+the $w$-branch alone is large (case A1, smaller $T_N$). The effective wavenumber does not grow with $N$, because the higher ripples are damped by
+the blur faster than they add to the mean of $n^2$.

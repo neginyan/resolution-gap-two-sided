@@ -2,8 +2,8 @@ cff-version: 1.2.0
 message: "If you use this code, please cite the paper and this repository."
 title: "resolution-gap-two-sided: code and computer-assisted proofs for 'How fine can a hidden ripple be? A two-sided logarithmic law for the resolution gap of the arrow of time'"
 type: software
-version: 1.2.0
-date-released: 2026-10-30
+version: 1.3.0
+date-released: 2026-10-31
 license: MIT
 doi: "10.5281/zenodo.23746555"
 repository-code: "https://github.com/neginyan/resolution-gap-two-sided"

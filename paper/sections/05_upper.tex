@@ -27,18 +27,22 @@ with Gaussian teeth $a_n=2e^{-n^2/(2k_0^4)}$ ($a_1\to2$, $|a_n|\le a_1$, $f$ eve
 $k_0$ and $e^{k_0^2}$ (for $S'_C$: $\sqrt\sigma=16k_0^{-11/2}e^{-2k_0^2}$, $\ell=32k_0^{-6}e^{-2k_0^2}$, $L_w=8k_0^{-4}e^{-k_0^2}$,
 $L_v=32k_0^{-8}e^{-2k_0^2}$), which is what makes a rigorous evaluation possible far below double precision.
 
-\begin{theorem}[upper side on the comb sequence] \caproofst{\code{bf\_cert\_upper.py}}
+\begin{theorem}[upper side on the comb sequence] \caproofst{\code{bf\_cert\_upper.py}, \code{bs\_upper\_tail.py}}
 \label{thm:AZ1P}
 Along $S'_C$, $g(S'_C(\sigma))\le(1+|\varepsilon(S'_C(\sigma))|)\,U_P(\sigma)$ and
 \begin{equation}
-U_P\sqrt{\ls}\ \le\ 1+6.0\,\frac{\ln\ls}{\ls}\qquad(10^{-100000}\le\sigma\le10^{-24}).
+U_P\sqrt{\ls}\ \le\ 1+6.0\,\frac{\ln\ls}{\ls}\qquad(0<\sigma\le10^{-24}).
 \end{equation}
+Moreover $U_P\sqrt\ls\to1$ and $\limsup_{\sigma\to0}(U_P\sqrt\ls-1)\ls/\ln\ls\le\frac{11}4$.
 The same holds along the strip sequence $S'$ with the constant $7.4$ (certified in the same way, \code{ba\_cert.py}).
 \end{theorem}
 
 The one-variable inequality is verified on $1464$ cells covering $k_0\in[3.43,240]$ ($\ls$ from $55.07$ to $230455$) with exact rational
 exponents for the large factors and $60$-digit outward-rounded interval arithmetic for the $O(1)$ factors; the harmonics $n\ge2$ enter
-through interval parameters of width $\le6\times10^{-7}$ (Appendix~\ref{app:cert}). The comb's constant is smaller than the strip's because
+through interval parameters of width $\le6\times10^{-7}$ (Appendix~\ref{app:cert}). For $k_0\ge240$ (v1.3) every factor of $U_P$ is written as its
+leading monomial in $k_0$ and $e^{-k_0^2}$, with an exact leading constant, times $(1+R\,k_0^{-\nu})$ with an explicit interval $R$; this gives
+$U_P=\frac1{2k_0}(1+R_U/k_0^2)$ with $R_U\le3.5356$ for all $k_0\ge240$ at once, and the inequality follows from an elementary bound whose margin increases
+with $k_0$ (App.~\ref{app:cert}). Since $\ls=4k_0^2+O(\ln k_0)$, the same bound gives $U_P\sqrt\ls\to1$. The comb's constant is smaller than the strip's because
 $S'_C$ is $S'$ at $\sigma/256$ and $\ls$ is shorter by $\ln256$. Paper~E's evaluator confirms the bound (Table~\ref{tab:upper}): it holds
 for $(a)$, $(a')$ and $g$ separately and becomes sharp as $\sigma\to0$ \numst.
 
@@ -68,20 +72,20 @@ $10^{-24}$ & 1.993 & 0.0054 & 0.1904 & 0.1923 & 0.0097\\
 (P2) & $|a_n|\le|a_1|$: the fundamental is the largest harmonic\\
 (P3) & $\Qb\le\tfrac14$ (blurred contrast)\\
 (P4) & $\varrho=s^2/(2L^2)\le\tfrac18$ (window narrower than the envelope)\\
-(P5) & $x=(k'\sigma)^2\ge1$ (period within the blur's reach); not needed for strips, and weakened to $x\ge10^{-12}$ for profiles with at most six harmonics (App.~\ref{app:P5})\\
+(P5) & $x=(k'\sigma)^2\ge1$ (period within the blur's reach); not needed for strips and for profiles with at most $16$ harmonics, and weakened to $x\ge10^{-12}$ for profiles with at most $20$ harmonics (Apps.~\ref{app:P5}, \ref{app:FN})\\
 (P6) & every state of the class has $|\varepsilon(\rho)|\le\bar\varepsilon$, $\bar\varepsilon\le0.1$ (paper~E's remainder, a state quantity)\\
-(P7) & $\sigma\le10^{-24}$ (both certificates cover $10^{-100000}\le\sigma\le10^{-24}$ continuously; below, the lower side by Lemma~\ref{lem:BH2})\\
+(P7) & $\sigma\le10^{-24}$ (both certificates cover $10^{-100000}\le\sigma\le10^{-24}$ continuously; below, the lower side by Lemma~\ref{lem:BH2} and the upper side by Theorem~\ref{thm:AZ1P})\\
 \hline
 \emph{not covered} & odd components of $f$; profiles whose fundamental is not the largest harmonic (a window of a shorter period);
-$x<1$ for profiles with seven or more harmonics, and $x<10^{-12}$ for two to six harmonics (separated lines in a window); windows with $L_w>\sigma^{-1/2}$\\
+$x<1$ for profiles with $21$ or more harmonics, and $x<10^{-12}$ for $17$ to $20$ harmonics (separated lines in a window); windows with $L_w>\sigma^{-1/2}$\\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
 
 \begin{theorem}[periodic windows: the logarithmic law from both sides] \caproofst{\code{bh\_cert\_cells.py}, \code{bf\_cert\_upper.py}}
 \label{thm:BF1}
-Let $g_{\min}^P(\sigma)$ be the infimum of $g$ over the periodic windows that satisfy (P0)--(P7), together with the strips that satisfy (P0)--(P7) except
-(P5) and the windows with at most six harmonics that satisfy (P0)--(P7) with (P5) replaced by $x\ge10^{-12}$. Then for every $\sigma$ with
+Let $g_{\min}^P(\sigma)$ be the infimum of $g$ over the periodic windows that satisfy (P0)--(P7), together with the strips and the windows with at most $16$
+harmonics that satisfy (P0)--(P7) except (P5), and the windows with at most $20$ harmonics that satisfy (P0)--(P7) with (P5) replaced by $x\ge10^{-12}$. Then for every $\sigma$ with
 $10^{-100000}\le\sigma\le10^{-24}$
 \begin{equation}
 \begin{aligned}&(1-\bar\varepsilon)\Big(1-1.7\,\frac{\ln\ls}{\ls}\Big)\ \le\ g_{\min}^P\sqrt{\ls}\\ &\quad\le\ g(S'_C(\sigma))\sqrt{\ls}\\ &\quad\le\ \big(1+|\varepsilon(S'_C(\sigma))|\big)\Big(1+6.0\,\frac{\ln\ls}{\ls}\Big),\end{aligned}
@@ -89,23 +93,28 @@ $10^{-100000}\le\sigma\le10^{-24}$
 where $\bar\varepsilon\le0.1$ is the class bound of (P6), the left side is Theorem~\ref{thm:AY1P} ($421$ cells) and the right side is Theorem~\ref{thm:AZ1P} on
 the explicit comb $S'_C(\sigma)$ ($1464$ cells). The factor $|\varepsilon(S'_C(\sigma))|$ is a number for each $\sigma$; it is not bounded by a proof here
 (numerically $6\times10^{-7}$, $4\times10^{-13}$, $1.5\times10^{-15}$, $4\times10^{-16}$ at $\sigma=10^{-6}$, $10^{-12}$, $10^{-18}$, $10^{-24}$).
+The middle inequality uses that $S'_C(\sigma)$ is in the class, so it holds whenever $|\varepsilon(S'_C(\sigma))|\le\bar\varepsilon$ (P6); the outer inequalities hold for every $\sigma$ in the range.
 \end{theorem}
 \begin{proof}
-The lower side is Theorem~\ref{thm:AY1P}, with Theorems~\ref{thm:E6} and~\ref{thm:E8} for the states with $x<1$. For the upper side, the comb sequence lies in the class on the whole range: (P0) since $L_w=8k_0^{-4}e^{-k_0^2}<1$; (P1), (P2) by construction;
+The lower side is Theorem~\ref{thm:AY1P}, with Theorems~\ref{thm:E6}, \ref{thm:F8} and~\ref{thm:F9} for the states with $x<1$. For the upper side, the comb sequence lies in the class on the whole range: (P0) since $L_w=8k_0^{-4}e^{-k_0^2}<1$; (P1), (P2) by construction;
 $\Qb\le0.0056$, $\varrho\le3.5\times10^{-12}$ and $x\ge11.76$ (interval arithmetic on the same $1464$ cells, \code{bg\_members.py}). So (P3)--(P5) hold
 (the former condition (P8) is no longer an assumption, Lemma~\ref{lem:BJ1}; the comb satisfies it anyway, $F_c\ge(1-|\varepsilon(S'_C)|)(1-1.7\times10^{-13})$, \code{bh\_members\_fc.py});
-(P6) for the comb itself concerns the single number $\varepsilon(S'_C(\sigma))$, which is carried in the statement.
+(P6) for the comb itself is the condition $|\varepsilon(S'_C(\sigma))|\le\bar\varepsilon$ on a single number, which the statement assumes for the middle inequality (numerically $|\varepsilon(S'_C)|\le6\times10^{-7}$ on the range).
 Theorem~\ref{thm:AZ1P} then bounds $g$ on members of the class.
 \end{proof}
 
 \begin{corollary}[the limit] \label{cor:limit}
 (i) \proofst{} $\liminf_{\sigma\to0}g_{\min}^P\sqrt{\ls}\ge1-\bar\varepsilon$ (Lemma~\ref{lem:BH2}).
-(ii) \derivst{} $\limsup_{\sigma\to0}g_{\min}^P\sqrt{\ls}\le1$. This needs two further facts, neither proved here: (a) $\varepsilon(S'_C(\sigma))\to0$ ---
-numerically $|\varepsilon(S'_C)|$ falls from $6\times10^{-7}$ at $10^{-6}$ to $4\times10^{-16}$ at $10^{-24}$; and (b) $U_P\sqrt{\ls}\to1$ beyond
-$10^{-100000}$ --- along $S'_C$ the coefficient $(U_P\sqrt{\ls}-1)\ls/\ln\ls$ decreases on the certified range from $5.9$ to $3.36$, and the leading-order
-expansion gives the limit $\tfrac{11}4$; a proof would need explicit remainders of that expansion.
-So the limit $1$ is \emph{not} claimed as a theorem: the lower limit is proved up to the class bound $1-\bar\varepsilon$ (on the states that approach the infimum $|\varepsilon|$ is numerically below $10^{-15}$, but no bound on it is proved), and the upper limit is derived.
+(ii) \caproofst{Theorem~\ref{thm:AZ1P}} $\limsup_{\sigma\to0}g(S'_C(\sigma))\sqrt{\ls}\le1+\limsup_{\sigma\to0}|\varepsilon(S'_C(\sigma))|$, and the same bound holds for $g_{\min}^P$ if $|\varepsilon(S'_C(\sigma))|\le\bar\varepsilon$ for all small $\sigma$ (P6 for the comb).
+(iii) \derivst{} $\limsup_{\sigma\to0}g_{\min}^P\sqrt{\ls}\le1$. This needs one further fact, not proved here: (a) $\varepsilon(S'_C(\sigma))\to0$ (which also gives (P6) for the comb at small $\sigma$) ---
+numerically $|\varepsilon(S'_C)|$ falls from $6\times10^{-7}$ at $10^{-6}$ to $4\times10^{-16}$ at $10^{-24}$. The second fact needed in v1.2,
+(b) $U_P\sqrt{\ls}\to1$ along $S'_C$, is now proved (Theorem~\ref{thm:AZ1P}, v1.3).
+So the limit $1$ is \emph{not} claimed as a theorem: the lower limit is proved up to the class bound $1-\bar\varepsilon$ (on the states that approach the infimum $|\varepsilon|$ is numerically below $10^{-15}$, but no bound on it is proved), and the upper limit $1$ is derived, with (a) the only step left.
 \end{corollary}
+\begin{proof}
+(ii) For every periodic window $g\le(1+|\varepsilon|)U_P$, and $U_P\sqrt\ls\to1$ along $S'_C$ by Theorem~\ref{thm:AZ1P}; this gives the bound for $g(S'_C)$. For every $\sigma\le10^{-24}$, $S'_C(\sigma)$ satisfies (P0)--(P5) and (P7) (\code{bg\_members.py} for $k_0\le240$, the asymptotic forms of
+App.~\ref{app:cert} for $k_0\ge240$); if moreover $|\varepsilon(S'_C(\sigma))|\le\bar\varepsilon$, it is in the class and $g_{\min}^P\le g(S'_C)$. (iii) follows from (ii) and (a).
+\end{proof}
 
 \paragraph*{Reading (observer).}
 Whatever the shape of the teeth, the observer sees the window through its fundamental. The lower side says that the ripple cannot be finer
