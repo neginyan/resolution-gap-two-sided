@@ -19,6 +19,8 @@ Code, stored results and computer-assisted proofs for the paper by Taishi Namba 
 
 > **Version 1.4 (2026-11-01).** Paper E's remainder along the comb is now bounded, |ε(S′_C)| ≤ 276.4 k₀⁻² e^{−3k₀²/2}(1.103) ≤ 5.62 × 10⁻⁷ for every σ ≤ 10⁻²⁴ (Appendix G), so the comb satisfies (P6) and the upper limit limsup g_min√ℓ ≤ 1 is proved on every class with a remainder bound ε̄ ≥ 5.62 × 10⁻⁷; along the comb g√ℓ → 1 without any condition. The evenness condition (P1) is removed (any phases), and (P5) is removed for windows with at most 20 harmonics (Appendix F). The bounds of the theorems are unchanged.
 
+> **Note (2026-11-01, after v1.4).** In Appendix F, two explanatory sentences about Lemma 44 (one in its proof and one in the observer picture at the end of the appendix) say that the effective wavenumber does not grow with the number of harmonics N. Lemma 44 itself is correct as stated (sup x f* ≤ 1.1483 for every N ≤ 24 that was computed), and Theorem 45 (at most 20 harmonics) uses only that range, so no theorem is affected. For N → ∞ the sentences are not true: x f* grows like ln(1/x)/4. The next version corrects them.
+
 ## The result in brief
 
 An observer who sees a pendulum's phase space through a Gaussian blur of width σ cannot always resolve the arrow of time near the hyperbolic top. The *resolution gap* g measures by how much. The companion paper ([paper E](https://doi.org/10.5281/zenodo.23617343)) showed that g is not bounded below uniformly in σ: a hidden ripple of the right fineness makes it shrink, like 1/√ln(1/σ) on the strips it searched.
