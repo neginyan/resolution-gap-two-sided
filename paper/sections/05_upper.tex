@@ -72,12 +72,12 @@ $10^{-24}$ & 1.993 & 0.0054 & 0.1904 & 0.1923 & 0.0097\\
 (P2) & $|\hat a_n|\le|\hat a_1|$: the fundamental is the largest harmonic\\
 (P3) & $\Qb\le\tfrac14$ (blurred contrast)\\
 (P4) & $\varrho=s^2/(2L^2)\le\tfrac18$ (window narrower than the envelope)\\
-(P5) & $x=(k'\sigma)^2\ge1$ (period within the blur's reach); not needed for profiles with at most $20$ harmonics (any phases; App.~\ref{app:FN}) and for even strips (App.~\ref{app:P5})\\
+(P5) & $x=(k'\sigma)^2\ge1$ (period within the blur's reach); not needed for profiles with at most $20$ harmonics, for profiles with any number of harmonics whose damping exponent is $K\ge0.003$ (v1.5; any phases; App.~\ref{app:FN}), hence for every window with $x\ge0.003$, and for even strips (App.~\ref{app:P5})\\
 (P6) & every state of the class has $|\varepsilon(\rho)|\le\bar\varepsilon$, $\bar\varepsilon\le0.1$ (paper~E's remainder, a state quantity); the comb $S'_C$ satisfies it for every $\bar\varepsilon\ge5.62\times10^{-7}$ (Theorem~\ref{thm:G1})\\
 (P7) & $\sigma\le10^{-24}$ (both certificates cover $10^{-100000}\le\sigma\le10^{-24}$ continuously; below, the lower side by Lemma~\ref{lem:BH2} and the upper side by Theorem~\ref{thm:AZ1P})\\
 \hline
 \emph{not covered} & profiles whose fundamental is not the largest harmonic (a window of a shorter period);
-$x<1$ for profiles with $21$ or more harmonics (separated lines in a window); windows with $L_w>\sigma^{-1/2}$\\
+$x<0.003$ for profiles with $21$ or more harmonics and $K<0.003$ (a ripple at the scale of the blur in a window whose period is longer than about $115$ blur widths, e.g.\ separated lines); windows with $L_w>\sigma^{-1/2}$\\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
@@ -85,7 +85,7 @@ $x<1$ for profiles with $21$ or more harmonics (separated lines in a window); wi
 \begin{theorem}[periodic windows: the logarithmic law from both sides] \caproofst{\code{bh\_cert\_cells.py}, \code{bf\_cert\_upper.py}, \code{bt\_eps.py}}
 \label{thm:BF1}
 Let $g_{\min}^P(\sigma)$ be the infimum of $g$ over the periodic windows that satisfy (P0), (P2)--(P7), together with the windows with at most $20$
-harmonics that satisfy (P0), (P2)--(P7) except (P5). Then for every $\sigma$ with $10^{-100000}\le\sigma\le10^{-24}$
+harmonics, or with any number of harmonics and $K\ge0.003$ (v1.5), that satisfy (P0), (P2)--(P7) except (P5). Then for every $\sigma$ with $10^{-100000}\le\sigma\le10^{-24}$
 \begin{equation}
 \begin{aligned}&(1-\bar\varepsilon)\Big(1-1.7\,\frac{\ln\ls}{\ls}\Big)\ \le\ g_{\min}^P\sqrt{\ls}\\ &\quad\le\ g(S'_C(\sigma))\sqrt{\ls}\\ &\quad\le\ \big(1+|\varepsilon(S'_C(\sigma))|\big)\Big(1+6.0\,\frac{\ln\ls}{\ls}\Big),\end{aligned}
 \end{equation}
@@ -94,7 +94,7 @@ the explicit comb $S'_C(\sigma)$ ($1464$ cells), and $|\varepsilon(S'_C(\sigma))
 the class; it holds for every $\bar\varepsilon\ge5.62\times10^{-7}$ without further condition (v1.4; up to v1.3 it was conditional on $|\varepsilon(S'_C)|\le\bar\varepsilon$).
 \end{theorem}
 \begin{proof}
-The lower side is Theorem~\ref{thm:AY1P}, with Theorems~\ref{thm:E6} and~\ref{thm:F8} for the states with $x<1$. For the upper side, the comb sequence lies in the class on the whole range: (P0) since $L_w=8k_0^{-4}e^{-k_0^2}<1$; (P2) by construction;
+The lower side is Theorem~\ref{thm:AY1P}, with Theorems~\ref{thm:E6}, \ref{thm:F8} and~\ref{thm:F11} for the states with $x<1$. For the upper side, the comb sequence lies in the class on the whole range: (P0) since $L_w=8k_0^{-4}e^{-k_0^2}<1$; (P2) by construction;
 $\Qb\le0.0056$, $\varrho\le3.5\times10^{-12}$ and $x\ge11.76$ (interval arithmetic on the same $1464$ cells, \code{bg\_members.py}). So (P3)--(P5) hold
 (the former condition (P8) is no longer an assumption, Lemma~\ref{lem:BJ1}; the comb satisfies it anyway, $F_c\ge(1-|\varepsilon(S'_C)|)(1-1.7\times10^{-13})$, \code{bh\_members\_fc.py});
 (P6) for the comb is Theorem~\ref{thm:G1}. Theorem~\ref{thm:AZ1P} then bounds $g$ on members of the class.

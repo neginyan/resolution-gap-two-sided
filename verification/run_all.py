@@ -17,6 +17,9 @@ scratch in a temporary folder (about one hour).
 v1.4 adds section 10: App. G (paper E's remainder along the comb, Theorem G1), App. F with any phases ((P1) dropped) and N = 20 down to x -> 0
 (Lemma Fe: the factor e in the theta remainders), the theta_tau corrections with the sine term a_10.  Default: a few minutes; --recompute: every
 row with its audit and the phase run behind results/bu_windows.json from scratch (about 30 minutes).
+v1.5 adds section 11: App. F for any number of harmonics with K >= K0 (Lemmas F9, F10, Theorem F11; K0 = 0.003, and 0.002 for the remark),
+bw_k0cert.py.  Default: the random checks of the proved steps, the harmonic sums, the interval constants, Lemma F10(iv) and (v) from scratch,
+representative rows of the cells (a few minutes); --recompute: every row of the cells with its in-cell audit (about two hours).
 
 Comparisons of recomputed floating-point values with stored ones use a relative tolerance (CPUs differ in the last bits); the interval-arithmetic
 certificate (decimal, 60 digits) is compared exactly.  Each check prints which kind of comparison it made.  Exit code 0 iff every check passes."""
@@ -139,10 +142,10 @@ check('combs have no deep valleys: Lambda* = %s finite' % ', '.join('%.2f' % LA[
       all(np.isfinite(LA['comb_%s' % s]['Lambda_star']) for s in ('1e-06', '1e-12', '1e-24')))
 
 # ---------------------------------------------------------------- 5. the manuscript
-import bu_numbers
+import bw_numbers
 tex = ''.join(open(f).read() for f in sorted(glob.glob('paper/sections/*.tex')))
-N = bu_numbers.numbers(); miss = [x['text'] for x in N if x['text'] not in tex]
-check('every number of the manuscript (v1.4) recomputed from results/ is found in paper/sections (%d numbers; 34 numbers of v1.3 App. F superseded)' % len(N), not miss and len(N) >= 210, ', '.join(miss[:5]))
+N = bw_numbers.numbers(); miss = [x['text'] for x in N if x['text'] not in tex]
+check('every number of the manuscript (v1.5) recomputed from results/ is found in paper/sections (%d numbers; 34 numbers of v1.3 App. F superseded)' % len(N), not miss and len(N) >= 230, ', '.join(miss[:5]))
 
 # ---------------------------------------------------------------- 6. the demo notebook (stored with its outputs)
 NBK = json.load(open('demo/hidden_ripple_demo.ipynb'))
@@ -339,5 +342,39 @@ if FULL:
     r = v14('rerun')
     check('the phase run behind results/bu_windows.json recomputed from scratch in a temporary folder (%.0f s): identical up to relative 1e-9' % r.get('seconds', 0), r['ok'], r.get('error', ''))
 print('section 10 (v1.4): %.0f s' % (time.time() - t10))
+
+# ---------------------------------------------------------------- 11. v1.5: any number of harmonics with K >= K0
+t11 = time.time()
+def v15(comp, k0='0.003'):
+    out = subprocess.run([sys.executable, 'verification/bw_v15_checks.py', comp, k0] + (['--full'] if FULL else []), capture_output=True, text=True)
+    try: return json.loads(out.stdout.strip().split('\n')[-1])
+    except Exception: return {'ok': False, 'error': (out.stderr or out.stdout)[-300:]}
+r = v15('bounds')
+check('Lemma F1(vi), (vii), the dual bound of the linear programmes and the tail bound of Lemma F9 on %d random instances (numerical illustrations of proved steps)' % r.get('cases', 0),
+      r['ok'], r.get('error', '') or ', '.join(r.get('bad', [])))
+for k0 in ('0.003', '0.002'):
+    r = v15('sums', k0)
+    check('K0 = %s, Lemma F9: N1 <= %.4f, N2 <= %.2f, S2 <= %.4f over every x, recomputed (relative %.0e; rigorous floating point)' % (k0, r.get("N1", 0), r.get("N2", 0), r.get("S2", 0), RTOL), r['ok'], r.get('error', ''))
+    r = v15('consts', k0)
+    check("K0 = %s, Lemma F10(ii), (iii) and eps_R of (iv): (a') >= %.1f, T >= %.4f (T_s = %.4f), eps_R <= %.6f; recomputed, identical to the stored constants (decimal intervals; exact)" % (
+          k0, r.get('a_prime', 0), r.get('T', 0), r.get('T_s', 0), r.get('eps_R', 9)), r['ok'], r.get('error', ''))
+    r = v15('F6', k0)
+    check('K0 = %s, Lemma F10(iv) from scratch on %d x-cells: A_min = %.5f, Gamma_* <= %.4f, step 2(i) %.2f, 3(i) %.4f (interval), 3(ii) %.2f; audit clean (relative %.1e)' % (
+          k0, r.get('rows', 0), r.get('A_min', 0), r.get('Gamma_star_budget', 0), r.get('step2i', 0), r.get('step3a_interval_margin', 0), r.get('step3b', 0), r.get('dev', 1)),
+          r['ok'], r.get('error', ''))
+    r = v15('F7', k0)
+    check('K0 = %s, Lemma F10(v): sup x f* <= %.4f by enumeration of m; audit against brute force on %d points (relative %.0e)' % (k0, r.get('sup_x_fstar', 9), r.get("audit_points", 0), RTOL),
+          r['ok'], r.get('error', ''))
+    r = v15('F2i', k0)
+    check('K0 = %s, Lemma F10(i) / F2(i): %d cells, smallest ratio %.3f, audit %d points; recomputed on %d rows%s (relative %.1e; floating point)' % (
+          k0, r.get('cells', 0), r.get('worst', 0), r.get('audit_points', 0), r.get('rows', 0), ' with the in-cell audit' if FULL else '', r.get('dev', 1)), r['ok'], r.get('error', ''))
+    r = v15('F2ii', k0)
+    check('K0 = %s, Lemma F10(i) / F2(ii): %d cells, smallest ratio %.3f, b-cells cover [1e-33, 1], audit %d points; recomputed on %d of %d b-cells%s (relative %.1e)' % (
+          k0, r.get('cells', 0), r.get('worst', 0), r.get('audit_points', 0), r.get('rows', 0), r.get('of', 0), ' with the in-cell audit' if FULL else '', r.get('dev', 1)),
+          r['ok'], r.get('error', ''))
+    r = v15('conclusion', k0)
+    check('K0 = %s, Theorem F11%s: k_eff^2 <= %.4f, g >= %.4f > 0.134 (floating point)' % (k0, '' if k0 == '0.003' else ' (remark)', r.get('k_eff2', 9), r.get('g', 0)),
+          r['ok'], r.get('error', ''))
+print('section 11 (v1.5): %.0f s' % (time.time() - t11))
 print('elapsed %.0f s (%s)' % (time.time() - t0, 'full recomputation' if FULL else 'default'))
 finish()

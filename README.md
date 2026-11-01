@@ -19,7 +19,9 @@ Code, stored results and computer-assisted proofs for the paper by Taishi Namba 
 
 > **Version 1.4 (2026-11-01).** Paper E's remainder along the comb is now bounded, |ε(S′_C)| ≤ 276.4 k₀⁻² e^{−3k₀²/2}(1.103) ≤ 5.62 × 10⁻⁷ for every σ ≤ 10⁻²⁴ (Appendix G), so the comb satisfies (P6) and the upper limit limsup g_min√ℓ ≤ 1 is proved on every class with a remainder bound ε̄ ≥ 5.62 × 10⁻⁷; along the comb g√ℓ → 1 without any condition. The evenness condition (P1) is removed (any phases), and (P5) is removed for windows with at most 20 harmonics (Appendix F). The bounds of the theorems are unchanged.
 
-> **Note (2026-11-01, after v1.4).** In Appendix F, two explanatory sentences about Lemma 44 (one in its proof and one in the observer picture at the end of the appendix) say that the effective wavenumber does not grow with the number of harmonics N. Lemma 44 itself is correct as stated (sup x f* ≤ 1.1483 for every N ≤ 24 that was computed), and Theorem 45 (at most 20 harmonics) uses only that range, so no theorem is affected. For N → ∞ the sentences are not true: x f* grows like ln(1/x)/4. The next version corrects them.
+> **Note (2026-11-01, after v1.4).** In Appendix F, two explanatory sentences about Lemma 44 (one in its proof and one in the observer picture at the end of the appendix) say that the effective wavenumber does not grow with the number of harmonics N. Lemma 44 itself is correct as stated (sup x f* ≤ 1.1483 for every N ≤ 24 that was computed), and Theorem 45 (at most 20 harmonics) uses only that range, so no theorem is affected. For N → ∞ the sentences are not true: x f* grows like ln(1/x)/4. The next version corrects them; corrected in v1.5.
+
+> **Version 1.5 (2026-11-01).** (P5) is removed for windows with any number of harmonics, provided the damping exponent of the harmonics is K ≥ 0.003 (Appendix F); since K ≥ x, every window with x ≥ 0.003 is covered whatever its profile. A bound on the number of harmonics alone cannot reach x → 0: one harmonic at the scale of the blur carries v-information of order Q̄² at every x, and a lower bound on K removes it. The two explanatory sentences of v1.4 noted above are corrected. The bounds of the theorems are unchanged.
 
 ## The result in brief
 
@@ -32,7 +34,7 @@ This paper asks how fine such a hidden ripple can be, and answers it on the **pe
   (1 − ε̄)(1 − 1.7 lnℓ/ℓ) ≤ g_min √ℓ ≤ (1 + |ε(S′_C)|)(1 + 6.0 lnℓ/ℓ),  ℓ = ln(1/σ).
 
   The lower side is certified on 421 cells covering the whole range and all |ε| ≤ ε̄ ≤ 0.1; the upper side on 1464 cells along an explicit comb sequence, in exact interval arithmetic.
-- **Fewer assumptions** [proof, computer-assisted]. The profile need not be even (any phases). For strips and for windows with at most 20 harmonics the lower bound holds without (P5) (Appendices E and F).
+- **Fewer assumptions** [proof, computer-assisted]. The profile need not be even (any phases). For strips, for windows with at most 20 harmonics, and for windows with any number of harmonics whose damping exponent is K ≥ 0.003 (so every window with x ≥ 0.003), the lower bound holds without (P5) (Appendices E and F).
 - **The limit** [proof, computer-assisted]. On every class with a remainder bound ε̄ ∈ [5.62 × 10⁻⁷, 0.1], 1 − ε̄ ≤ liminf g_min √ln(1/σ) ≤ limsup g_min √ln(1/σ) ≤ 1, and along the comb g√ln(1/σ) → 1 without any condition. The limit of the infimum without a class bound on paper E's remainder is not claimed.
 - **A sharper lens** [derivation]. At leading order, the comb at blur σ is the strip at blur σ/256. Combs fall below the best Gaussian mixtures already at σ ≈ 1.4 × 10⁻³ [numerical].
 - **General states.** A decorrelation dichotomy and a three-case split are proved for every state. The remaining case is reduced to one conjectured inequality, so paper E's Conjecture 1 remains open.
@@ -54,16 +56,17 @@ python verification/run_all.py              # about 5 minutes
 python verification/run_all.py --recompute  # every certificate and the full interior-point audit (a few hours, one core)
 ```
 
-`run_all.py` runs 62 checks:
+`run_all.py` runs 77 checks:
 - the SHA-256 hashes in `MANIFEST.sha256`;
 - the stored certificates, with representative cells recomputed (30 lower cells, 184 upper cells);
 - the lemma checks against the evaluator;
-- 211 numbers of the paper against the stored results;
+- 236 numbers of the paper against the stored results;
 - the demo notebook;
 - the v1.1 lemmas: the narrow-width lemma, the θ_τ corrections, the chain with perturbed inputs, the removal of (P8), and the upper side in θ_τ form;
 - the v1.2 additions: the certificates of Appendix E (removing (P5)) and a reduced interior-point audit of every certificate (`certificates/bp_audit.py`);
 - the v1.3 additions: the cells and cases of Appendix F (`br_cells.py`, `br_windows.py`) and the comb's upper bound beyond k₀ = 240 (`bs_upper_tail.py`, checked against a direct 300-digit evaluation in `bs_upper_tail_stress.py`).
 - the v1.4 additions: the bound of paper E's remainder along the comb (`bt_eps.py`, Appendix G) and Appendix F with any phases and at most 20 harmonics (`br_cells.py`, `br_windows.py` in phase mode, `bl_theta.py`).
+- the v1.5 additions: windows with any number of harmonics when K ≥ K₀ (`bw_k0cert.py`: rigorous budgeted sums, (x, q)-cells, the effective wavenumber by enumeration).
 
 With `--recompute`, all 421 lower cells, all 1464 upper cells, the class membership, the monotonicity table, the full interior-point audit and every run behind Appendix F are recomputed.
 
@@ -74,7 +77,7 @@ The upper certificate uses 60-digit decimal interval arithmetic with outward rou
 | folder | content |
 |---|---|
 | `src/` | the evaluator of paper E and shared tools |
-| `certificates/` | the computer-assisted proofs: lower side (`bh_cert_cells.py` with `bf_cert_p.py`, tail `bh_tail.py`), upper side (`bf_cert_upper.py` with `ba_ivl.py`, `ba_cert.py`), class membership (`bg_members.py`, `bh_members_fc.py`), monotonicity table (`bi_monotone_table.py`); v1.1: narrow width (`bk_narrow_lemma.py`, `bl_narrow80.py`), θ_τ corrections (`bl_theta.py`), perturbed chain (`bl_chain.py`), start condition (`bj_lemma.py`, `bl_bj1.py`), upper side (`bm_bl7.py`); v1.3: Appendix F (`br_cells.py`, `br_windows.py`), the comb beyond k₀ = 240 (`bs_upper_tail.py`, `bs_upper_tail_stress.py`); v1.4: the remainder along the comb (`bt_eps.py`) |
+| `certificates/` | the computer-assisted proofs: lower side (`bh_cert_cells.py` with `bf_cert_p.py`, tail `bh_tail.py`), upper side (`bf_cert_upper.py` with `ba_ivl.py`, `ba_cert.py`), class membership (`bg_members.py`, `bh_members_fc.py`), monotonicity table (`bi_monotone_table.py`); v1.1: narrow width (`bk_narrow_lemma.py`, `bl_narrow80.py`), θ_τ corrections (`bl_theta.py`), perturbed chain (`bl_chain.py`), start condition (`bj_lemma.py`, `bl_bj1.py`), upper side (`bm_bl7.py`); v1.3: Appendix F (`br_cells.py`, `br_windows.py`), the comb beyond k₀ = 240 (`bs_upper_tail.py`, `bs_upper_tail_stress.py`); v1.4: the remainder along the comb (`bt_eps.py`); v1.5: any number of harmonics with K ≥ K₀ (`bw_k0cert.py`) |
 | `experiments/` | scripts for the numerical results: comb searches, comparison with mixtures, lemma checks, leading-order formulas |
 | `results/` | stored results; `MANIFEST.sha256` lists their SHA-256 |
 | `verification/` | `run_all.py`, the single entry point |

@@ -21,7 +21,7 @@ train of thin teeth whose fundamental amplitude approaches the largest value $2$
 The central result is:
 
 \begin{quote}
-\textbf{Main result} (Theorem~\ref{thm:BF1} in Sec.~\ref{sec:upper}) \caproofst{App.~\ref{app:cert}}. Under the assumptions (P0), (P2)--(P7) of Table~\ref{tab:assumptions} (for windows with at most $20$ harmonics without (P5); App.~\ref{app:FN}),
+\textbf{Main result} (Theorem~\ref{thm:BF1} in Sec.~\ref{sec:upper}) \caproofst{App.~\ref{app:cert}}. Under the assumptions (P0), (P2)--(P7) of Table~\ref{tab:assumptions} (for windows with at most $20$ harmonics, or with any number of harmonics whose damping exponent is $K\ge0.003$, without (P5); App.~\ref{app:FN}),
 $(1-\bar\varepsilon)(1-1.7\tfrac{\ln\ln(1/\sigma)}{\ln(1/\sigma)})\le g_{\min}^{P}\sqrt{\ln(1/\sigma)}
 \le(1+|\varepsilon(S'_C(\sigma))|)(1+6.0\,\tfrac{\ln\ln(1/\sigma)}{\ln(1/\sigma)})$ for every $10^{-100000}\le\sigma\le10^{-24}$, where every state of the class has
 $|\varepsilon|\le\bar\varepsilon\le0.1$, $S'_C(\sigma)$ is an explicit comb, and $|\varepsilon(S'_C(\sigma))|\le5.62\times10^{-7}$ (App.~\ref{app:epscomb}).
@@ -66,6 +66,16 @@ evenness condition (P1): the parity steps are exact derivatives for every profil
 in an essential way (a Toeplitz factor, a small-$\tau$ bound, and the phase of $X_w$ in case~C) are replaced (App.~\ref{app:FN}). Finally, keeping the
 factor $e=e^{-\alpha^2V/2}$ in the $\theta_\tau$ remainders (Lemma~\ref{lem:Fe}) removes (P5) for windows with at most $20$ harmonics.
 
+\paragraph*{Version~1.5.}
+Version~1.5 removes (P5) for windows with any number of harmonics, provided the damping exponent of the harmonics (Lemma~\ref{lem:AW1P}) is
+$K\ge0.003$ (Theorem~\ref{thm:F11}); since $K\ge x$, every window with $x\ge0.003$ is covered, whatever its profile (Corollary~\ref{cor:F12}). The bound on the
+number of harmonics was needed not because of their number but because of one harmonic at the scale of the blur, which carries $v$-information of order
+$\Qb^2$ at every $x$; a lower bound on $K$ removes that harmonic. Two new one-line bounds (Lemma~\ref{lem:F1}(vi), (vii)), budgeted harmonic sums in
+rigorous floating point, and the budgeted largest $\gamma_0$ of the class make the certificate close. Version~1.5 also corrects two explanatory
+sentences of v1.4 (after Lemma~\ref{lem:F7} and in the observer picture of App.~\ref{app:FN}) which said that the effective wavenumber does not grow with the
+number of harmonics: this holds for the numbers computed ($N\le24$), but for $N\to\infty$ it grows like $\ln(1/x)/4$. Lemma~\ref{lem:F7} and
+Theorem~\ref{thm:F8} are not affected.
+
 \paragraph*{Relation to paper~E.}
 Paper~E \emph{found} the strip law and stated it as a property of the family it had searched; nothing in it is contradicted here.
 Paper~F proves the law from both sides on a family that is larger than the strips, explains the fitted constant $1.02$ as the slow
@@ -106,6 +116,8 @@ Narrow envelopes have a large gap: $g<G\Rightarrow\tau>80$ (Lemma~\ref{lem:BK1})
 Strips need no (P5): $0<x<1\Rightarrow g\ge0.134$ (Theorem~\ref{thm:E6}) & proof (CA; Lemmas~\ref{lem:E2}--\ref{lem:E4}: proof) & App.~\ref{app:P5}\\
 At most six harmonics: (P5) weakened to $x\ge10^{-12}$ (Theorem~\ref{thm:E8}; superseded by Theorem~\ref{thm:F8}) & proof (CA) & App.~\ref{app:P5}\\
 At most $20$ harmonics, any phases, need no (P5) (Theorem~\ref{thm:F8}; v1.3: $16$, even profiles) & proof (CA; Lemmas~\ref{lem:F1}, \ref{lem:F3}--\ref{lem:Fe}: proof) & App.~\ref{app:FN}\\
+Any number of harmonics with $K\ge0.003$, any phases, need no (P5); every window with $x\ge0.003$ (Theorem~\ref{thm:F11}, Corollary~\ref{cor:F12}; v1.5) & proof (CA; Lemma~\ref{lem:F1}(vi), (vii): proof) & App.~\ref{app:FN}\\
+Without a bound on $K$ or on the number of harmonics the form above does not reach $x\to0$ (one harmonic at the scale of the blur) & derivation & App.~\ref{app:FN}\\
 The evenness (P1) is not needed: parity steps are exact derivatives; three steps replaced (Table~\ref{tab:FNrep}) & proof & Apps.~\ref{app:plemmas}, \ref{app:theta}, \ref{app:FN}\\
 Finitely many harmonics exclude combs: $|\hat a_n|\ge2-n^2(2-|\hat a_1|)$ & proof & App.~\ref{app:FN}\\
 The start of the bootstrap is automatic: $g<G\Rightarrow F_c\ge0.84$ (Lemma~\ref{lem:BJ1}; former (P8)) & proof (CA) & App.~\ref{app:theta}\\
